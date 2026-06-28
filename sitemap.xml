@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <url><loc>https://gomytruck.com/</loc></url>
+  <url><loc>https://gomytruck.com/truck</loc></url>
+  <url><loc>https://gomytruck.com/enterprise</loc></url>
+  <url><loc>https://gomytruck.com/about</loc></url>
+  <url><loc>https://gomytruck.com/pricing</loc></url>
+  <url><loc>https://gomytruck.com/driver-partner</loc></url>
+  <url><loc>https://gomytruck.com/fleet-partner-registration</loc></url>
+  <url><loc>https://gomytruck.com/book-truck-online</loc></url>
+  <url><loc>https://gomytruck.com/contact</loc></url>
+  <url><loc>https://gomytruck.com/blog</loc></url>
+
+  <!-- Localized & Specific Services -->
+  <url><loc>https://gomytruck.com/truck-booking-kolkata</loc></url>
+  <url><loc>https://gomytruck.com/mini-truck-booking-kolkata</loc></url>
+  <url><loc>https://gomytruck.com/pickup-truck-booking-kolkata</loc></url>
+  <url><loc>https://gomytruck.com/goods-transport-kolkata</loc></url>
+  <url><loc>https://gomytruck.com/local-transport-kolkata</loc></url>
+  <url><loc>https://gomytruck.com/intercity-transport-from-kolkata</loc></url>
+  <url><loc>https://gomytruck.com/tata-ace-booking-kolkata</loc></url>
+  <url><loc>https://gomytruck.com/truck-booking-barrackpore</loc></url>
+  <url><loc>https://gomytruck.com/goods-transport-barrackpore</loc></url>
+  <url><loc>https://gomytruck.com/transport-service-for-msmes</loc></url>
+  <url><loc>https://gomytruck.com/commercial-goods-transport</loc></url>
+
+  <!-- Legal -->
+  <url><loc>https://gomytruck.com/privacy-policy</loc></url>
+  <url><loc>https://gomytruck.com/terms</loc></url>
+  <url><loc>https://gomytruck.com/partner-terms</loc></url>
+  <url><loc>https://gomytruck.com/refund-cancellation</loc></url>
+
+</urlset>

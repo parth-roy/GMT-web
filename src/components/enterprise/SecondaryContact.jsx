@@ -1,0 +1,48 @@
+import React from "react"
+import { PhoneCall } from "lucide-react"
+
+export default function SecondaryContact() {
+  return (
+    <section className="w-full bg-slate-100 py-16 lg:py-24 border-y border-slate-200 shadow-inner">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
+          
+          {/* Left Column: 2D Illustration */}
+          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+            <img 
+              src="/enterprise_contact_illustration_v2.png" 
+              alt="Logistics Delivery Illustration" 
+              className="w-full max-w-lg lg:scale-110 object-contain drop-shadow-2xl"
+            />
+          </div>
+
+          {/* Right Column: Text & CTA */}
+          <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
+            <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-slate-900 uppercase tracking-tight">
+              Ready to Scale Your Deliveries?
+            </h2>
+            <p className="text-slate-600 text-lg leading-relaxed font-medium">
+              Take the guesswork out of your supply chain. GoMyTruck offers dedicated Key Account Managers, custom API integrations, and guaranteed vehicle availability for our enterprise partners. Let us handle the heavy lifting so you can focus exclusively on growing your core business.
+            </p>
+            
+            <div className="pt-4">
+              <button className="inline-flex items-center gap-3 bg-brand-500 hover:bg-brand-600 text-white font-bold text-base px-6 py-3.5 rounded-full shadow-lg shadow-brand-500/30 transition-all duration-300 hover:-translate-y-1 group">
+                <div className="bg-white/20 p-2 rounded-full group-hover:scale-110 transition-transform">
+                  <PhoneCall size={18} className="text-white" />
+                </div>
+                <span>Request Callback</span>
+              </button>
+            </div>
+            
+            <p className="text-slate-500 text-sm mt-4">
+              Or speak to an expert directly: <a href="tel:789888888" className="text-brand-600 font-bold hover:underline">789888888</a>
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  )
+}

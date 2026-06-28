@@ -1,0 +1,76 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Enforce non-www domain
+[[redirects]]
+  from = "https://www.gomytruck.com/*"
+  to = "https://gomytruck.com/:splat"
+  status = 301
+  force = true
+
+# SEO Route Consolidation (Redirect old overlapping URLs to clean canonicals)
+[[redirects]]
+  from = "/truck-booking-in-kolkata"
+  to = "/truck-booking-kolkata"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/truck-booking-in-barrackpore"
+  to = "/truck-booking-barrackpore"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/mini-truck-booking-in-kolkata"
+  to = "/mini-truck-booking-kolkata"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pickup-truck-booking-in-kolkata"
+  to = "/pickup-truck-booking-kolkata"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/goods-transport-in-kolkata"
+  to = "/goods-transport-kolkata"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/goods-transport-services-kolkata"
+  to = "/goods-transport-kolkata"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/local-transport-in-kolkata"
+  to = "/local-transport-kolkata"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/local-transport-services-kolkata"
+  to = "/local-transport-kolkata"
+  status = 301
+  force = true
+
+# SPA fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Security Headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Content-Security-Policy = "default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https: blob:; font-src 'self' data: https:; connect-src 'self' https: wss:;"

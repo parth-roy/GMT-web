@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: "Outfit", sans-serif;
+    @apply bg-brand-50 text-slate-800;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Sora", sans-serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Interactive custom card styling */
+.service-card-active {
+  border-color: #2563eb;
+  background-color: #f0f6ff;
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1), 0 4px 6px -2px rgba(37, 99, 235, 0.05);
+}
+
+/* Subtle background overlay grid */
+.grid-overlay {
+  background-image: radial-gradient(#e2e8f0 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+/* Ripple Hover Animation */
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.btn-ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease-out, height 0.5s ease-out;
+  z-index: -1;
+  pointer-events: none;
+}
+.btn-ripple:hover::after {
+  width: 400px;
+  height: 400px;
+}
