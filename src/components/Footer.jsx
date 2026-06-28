@@ -156,6 +156,7 @@ export default function Footer({ onScrollToSection }) {
                 <ul className="space-y-3">
                   <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="About GoMyTruck — Online Truck Booking Company India">About Us</Link></li>
                   <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Contact Us</Link></li>
+                  <li><Link to="/workforce" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Join Workforce</Link></li>
                   <li><Link to="/blog" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Blog</Link></li>
                   <li><Link to="/gomytruck-verified" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">GoMyTruck Verified</Link></li>
                 </ul>

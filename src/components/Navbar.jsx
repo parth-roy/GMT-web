@@ -38,6 +38,7 @@ export default function Navbar({ onOpenEstimate, onScrollToSection }) {
   const navItems = [
     { name: "Enterprise", id: "enterprise" },
     { name: "Driver Partner", id: "driver-partner" },
+    { name: "Workforce", id: "workforce" },
     { name: "About", id: "about" },
     { name: "Support", id: "support" }
   ]
