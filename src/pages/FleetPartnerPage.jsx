@@ -71,6 +71,7 @@ export default function FleetPartnerPage() {
             <li><strong>Zero Idle Time:</strong> Our advanced load-matching algorithm ensures that as soon as your truck drops off a shipment, a return load is already lined up. We cover both local routes and <Link to="/intercity-transport-from-kolkata" className="text-brand-600 font-semibold hover:underline">intercity transport</Link>, minimizing empty return trips that eat into your fuel budget.</li>
             <li><strong>Guaranteed Timely Payments:</strong> Say goodbye to chasing brokers for your money. GoMyTruck operates on a transparent, digitized payment system. Your payments are processed automatically and credited directly to your bank account on time, every time.</li>
             <li><strong>High-Quality Demand:</strong> You get direct access to our massive network of verified B2B enterprise clients and regular e-commerce distributors who require daily freight movement.</li>
+            <li><strong>₹2,50,000 Health & Accidental Insurance:</strong> We care about our partners. Every active driver on the GoMyTruck platform receives complimentary insurance coverage, ensuring your family's financial security.</li>
             <li><strong>Complete Control:</strong> You decide your operating routes. Whether you want your trucks running locally within Kolkata, or across West Bengal to Durgapur and Asansol, our Partner App lets you choose loads that fit your fleet's schedule.</li>
           </ul>
 

@@ -1,13 +1,35 @@
 import React from "react"
 import { Star, MessageSquare, Quote } from "lucide-react"
 
-export default function Testimonials() {
-  const testimonials = [
+export default function Testimonials({ city }) {
+  const allTestimonials = [
+    {
+      name: "Ramesh Trading Co.",
+      role: "Wholesale Merchant",
+      location: "Burrabazar, Kolkata",
+      quote: "We use GoMyTruck every day to move textiles from Burrabazar to Howrah. Getting a Tata Ace instantly during peak hours used to be impossible, but now it's guaranteed within 15 minutes. Best goods transport in Kolkata!",
+      rating: 5,
+      type: "Local Business",
+      avatar: null,
+      logo: null,
+      cityTarget: "Kolkata"
+    },
+    {
+      name: "Sanjay Pal",
+      role: "Hardware Shop Owner",
+      location: "Chiriyamore, Barrackpore",
+      quote: "Since GoMyTruck opened their HQ here in Barrackpore, we've shifted all our logistics to them. Booking a mini truck for local hardware deliveries is cheaper than local stands. Plus, the 100% damage guarantee gives peace of mind.",
+      rating: 5,
+      type: "Retail Partner",
+      avatar: null,
+      logo: null,
+      cityTarget: "Barrackpore"
+    },
     {
       name: "Anand Deshmukh",
       role: "Founder, Deshmukh Sweets & Savouries",
       location: "Pune, Maharashtra",
-      quote: "As a sweets manufacturing business, fresh delivery is paramount. Before using GoMyTruck, we had continuous issues with local driver groups and price hikes. Now, with the custom Tata Ace fleet, we have 100% price transparency and on-time distribution to our 14 retail counters.",
+      quote: "As a sweets manufacturing business, fresh delivery is paramount. Before using GoMyTruck, we had continuous issues with local driver groups and price hikes. Now, with the custom Tata Ace fleet, we have 100% price transparency.",
       rating: 5,
       type: "Enterprise Partner",
       avatar: "/avatar_1.png",
@@ -17,7 +39,7 @@ export default function Testimonials() {
       name: "Priya Nair",
       role: "Home Maker",
       location: "Bengaluru, Karnataka",
-      quote: "I was extremely anxious about shifting my entire 3 BHK household from Indiranagar to Whitefield. The Packers & Movers service from GoMyTruck was exceptional. They brought professional bubble wraps, packed every glass item diligently, and shifted everything in under 5 hours. Outstanding value!",
+      quote: "I was extremely anxious about shifting my entire 3 BHK household. The Packers & Movers service from GoMyTruck was exceptional. They packed every glass item diligently, and shifted everything in under 5 hours.",
       rating: 5,
       type: "Shifting Customer",
       avatar: "/avatar_2.png",
@@ -27,7 +49,7 @@ export default function Testimonials() {
       name: "Vikram Malhotra",
       role: "Supply Chain Head, ElectroMart India",
       location: "Gurugram, Delhi NCR",
-      quote: "Integrating GoMyTruck' API into our distribution stack has been a game changer. We auto-book Eicher trucks for inter-warehouse shipments across Haryana and Delhi. Live GPS tracking allows our warehouse managers to keep labor ready exactly at the arrival time. Reduced idle time by 34%!",
+      quote: "Integrating GoMyTruck' API into our distribution stack has been a game changer. Live GPS tracking allows our warehouse managers to keep labor ready exactly at the arrival time. Reduced idle time by 34%!",
       rating: 5,
       type: "Business Account",
       avatar: null,
@@ -37,13 +59,23 @@ export default function Testimonials() {
       name: "Arjun Gupta",
       role: "E-Commerce Merchant",
       location: "Chennai, Tamil Nadu",
-      quote: "I use their on-demand bike delivery for delivering premium customized jewelry across Chennai. The drivers are professional, polite, and ensure signature-on-delivery. Fares starting from ₹49 makes it cheaper than hiring a full-time delivery boy. Highly recommend!",
+      quote: "I use their on-demand bike delivery for delivering premium customized jewelry across Chennai. Fares starting from ₹49 makes it cheaper than hiring a full-time delivery boy. Highly recommend!",
       rating: 4.8,
       type: "Regular Merchant",
       avatar: null,
       logo: null
     }
-  ]
+  ];
+
+  // If a city is provided, prioritize testimonials that match the city, then fill the rest
+  let testimonials = allTestimonials;
+  if (city) {
+    const cityMatches = allTestimonials.filter(t => t.cityTarget && t.cityTarget.toLowerCase() === city.toLowerCase());
+    const others = allTestimonials.filter(t => !t.cityTarget || t.cityTarget.toLowerCase() !== city.toLowerCase());
+    testimonials = [...cityMatches, ...others].slice(0, 4); // Keep it to 4 max
+  } else {
+    testimonials = allTestimonials.slice(0, 4);
+  }
 
   return (
     <section id="testimonials" className="py-24 bg-brand-50 relative overflow-hidden">

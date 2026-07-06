@@ -85,6 +85,15 @@ export default function PartnerHero({ isFleetOwner = false }) {
                   <p className="text-slate-400 text-sm">Start driving today</p>
                 </div>
               </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-blue-400 shadow-inner">
+                  <ShieldCheck size={24} />
+                </div>
+                <div>
+                  <p className="text-white font-semibold">₹2,50,000 Insurance</p>
+                  <p className="text-slate-400 text-sm">Free health & accidental cover</p>
+                </div>
+              </div>
             </div>
           </div>
 

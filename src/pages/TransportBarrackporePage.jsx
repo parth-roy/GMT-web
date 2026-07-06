@@ -128,8 +128,14 @@ export default function TransportBarrackporePage() {
         "Book online in under 2 minutes, 24/7"
       ]}
       customFaqs={customFaqs}
+      pricingRoutes={[
+        { origin: 'Barrackpore', destination: 'Barasat', vehicle: 'Tata Ace', capacity: '750 Kg', price: 400 },
+        { origin: 'Barrackpore', destination: 'Kolkata', vehicle: 'Pickup Truck', capacity: '1.5 Ton', price: 800 },
+        { origin: 'Barrackpore', destination: 'Kalyani', vehicle: '14Ft Truck', capacity: '4 Ton', price: 1200 },
+        { origin: 'Barrackpore', destination: 'Durgapur', vehicle: '20Ft Container', capacity: '7 Ton', price: 7500 }
+      ]}
     >
-      <h2>Top-Rated Truck Booking Agency in Barrackpore</h2>
+      <h2>GoMyTruck: The Premier Transport Service in Barrackpore</h2>
       <p>
         Barrackpore and the wider North 24 Parganas district form a crucial industrial and residential belt in West Bengal. Navigating the logistics in this bustling region requires a transport partner that is local, fast, and highly reliable. <strong>GoMyTruck</strong> offers the premier <strong>truck booking service in Barrackpore</strong>, bridging the gap between local businesses, residents, and verified commercial vehicle owners.
       </p>

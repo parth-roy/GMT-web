@@ -1,5 +1,5 @@
 import React, { useState, Suspense, lazy } from "react"
-import { Routes, Route, useNavigate } from "react-router-dom"
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 import EstimateModal from "./components/EstimateModal"
@@ -153,20 +153,36 @@ export default function App() {
             <Route path="/intercity-transport" element={<IntercityTransportPage />} />
             <Route path="/blog" element={<BlogPage />} />
 
-            {/* Exact URLs requested from the image list (Consolidated to Canonical) */}
-            <Route path="/truck-booking-kolkata" element={<TransportKolkataPage />} />
-            <Route path="/truck-booking-barrackpore" element={<TransportBarrackporePage />} />
-            <Route path="/mini-truck-booking-kolkata" element={<MiniTruckKolkataPage />} />
-            <Route path="/pickup-truck-booking-kolkata" element={<PickupTruckKolkataPage />} />
-            <Route path="/goods-transport-kolkata" element={<GoodsTransportKolkataPage />} />
-            <Route path="/local-transport-kolkata" element={<LocalTransportPage />} />
-            <Route path="/intercity-transport-from-kolkata" element={<IntercityTransportPage />} />
-            <Route path="/tata-ace-booking-kolkata" element={<TataAceKolkataPage />} />
+            {/* NEW SILO ARCHITECTURE ROUTES */}
+            <Route path="/kolkata/truck-booking" element={<TransportKolkataPage />} />
+            <Route path="/barrackpore/truck-booking" element={<TransportBarrackporePage />} />
+            <Route path="/kolkata/mini-truck-booking" element={<MiniTruckKolkataPage />} />
+            <Route path="/kolkata/pickup-truck-rent" element={<PickupTruckKolkataPage />} />
+            <Route path="/kolkata/goods-transport" element={<GoodsTransportKolkataPage />} />
+            <Route path="/kolkata/tata-ace-booking" element={<TataAceKolkataPage />} />
+            <Route path="/barrackpore/goods-transport" element={<GoodsTransportBarrackporePage />} />
+            
+            <Route path="/services/transport-for-msmes" element={<TransportMSMEPage />} />
+            <Route path="/services/commercial-goods-transport" element={<CommercialGoodsTransportPage />} />
+            <Route path="/services/fleet-partner-registration-india" element={<FleetPartnerPage />} />
+            
+            <Route path="/intercity/kolkata" element={<IntercityTransportPage />} />
+            <Route path="/local-transport/kolkata" element={<LocalTransportPage />} />
 
-            <Route path="/goods-transport-barrackpore" element={<GoodsTransportBarrackporePage />} />
-            <Route path="/transport-service-for-msmes" element={<TransportMSMEPage />} />
-            <Route path="/commercial-goods-transport" element={<CommercialGoodsTransportPage />} />
-            <Route path="/fleet-partner-registration-india" element={<FleetPartnerPage />} />
+            {/* REDIRECTS FROM OLD FLAT ARCHITECTURE TO NEW SILOS */}
+            <Route path="/truck-booking-kolkata" element={<Navigate to="/kolkata/truck-booking" replace />} />
+            <Route path="/truck-booking-barrackpore" element={<Navigate to="/barrackpore/truck-booking" replace />} />
+            <Route path="/mini-truck-booking-kolkata" element={<Navigate to="/kolkata/mini-truck-booking" replace />} />
+            <Route path="/pickup-truck-booking-kolkata" element={<Navigate to="/kolkata/pickup-truck-rent" replace />} />
+            <Route path="/goods-transport-kolkata" element={<Navigate to="/kolkata/goods-transport" replace />} />
+            <Route path="/local-transport-kolkata" element={<Navigate to="/local-transport/kolkata" replace />} />
+            <Route path="/intercity-transport-from-kolkata" element={<Navigate to="/intercity/kolkata" replace />} />
+            <Route path="/tata-ace-booking-kolkata" element={<Navigate to="/kolkata/tata-ace-booking" replace />} />
+
+            <Route path="/goods-transport-barrackpore" element={<Navigate to="/barrackpore/goods-transport" replace />} />
+            <Route path="/transport-service-for-msmes" element={<Navigate to="/services/transport-for-msmes" replace />} />
+            <Route path="/commercial-goods-transport" element={<Navigate to="/services/commercial-goods-transport" replace />} />
+            <Route path="/fleet-partner-registration-india" element={<Navigate to="/services/fleet-partner-registration-india" replace />} />
             
             {/* Legal Pages */}
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

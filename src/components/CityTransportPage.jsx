@@ -9,6 +9,9 @@ import { Link } from "react-router-dom"
 import { MapPin, Truck, Bike, Package, Home, ArrowRight, CheckCircle, PhoneCall } from "lucide-react"
 import SEOHead from "../seo/SEOHead"
 import FAQ from "../components/FAQ"
+import GranularPricingTable from "./GranularPricingTable"
+import TrustBadgeRow from "./TrustBadgeRow"
+import Testimonials from "./Testimonials"
 
 const services = [
   { icon: Truck, label: "Mini Truck & Tata Ace", to: "/mini-truck-booking", desc: "Small goods & furniture" },
@@ -29,6 +32,7 @@ export default function CityTransportPage({
   jsonLd = [],
   children,
   customFaqs,
+  pricingRoutes = [],
 }) {
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
@@ -75,6 +79,11 @@ export default function CityTransportPage({
         </div>
       </section>
 
+      {/* Trust Badges */}
+      <section className="bg-white px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto -mt-8 relative z-20">
+        <TrustBadgeRow city={city} />
+      </section>
+
       {/* Services */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -106,6 +115,15 @@ export default function CityTransportPage({
           </div>
         </div>
       </section>
+
+      {/* Pricing Table (if provided) */}
+      {pricingRoutes && pricingRoutes.length > 0 && (
+        <section className="py-12 bg-white">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <GranularPricingTable routes={pricingRoutes} title={`Estimated Route Fares from ${city}`} />
+          </div>
+        </section>
+      )}
 
       {/* Areas served */}
       {areas.length > 0 && (
@@ -185,6 +203,9 @@ export default function CityTransportPage({
           </div>
         </section>
       )}
+
+      {/* Geo-Targeted Testimonials */}
+      <Testimonials city={city} />
 
       {customFaqs ? customFaqs : <FAQ />}
     </div>

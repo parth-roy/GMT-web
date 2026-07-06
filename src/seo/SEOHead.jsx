@@ -18,6 +18,52 @@ const BASE_URL = "https://gomytruck.com"
 const DEFAULT_IMAGE = `${BASE_URL}/og-image.jpg`
 const DEFAULT_TWITTER = "@gomytruck"
 
+const DEFAULT_GLOBAL_SCHEMA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://gomytruck.com/#organization",
+      "name": "GoMyTruck by Parther Technologies",
+      "url": "https://gomytruck.com",
+      "logo": "https://gomytruck.com/logo.png",
+      "sameAs": [
+        "https://www.linkedin.com/company/gomytruck",
+        "https://twitter.com/gomytruck"
+      ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://gomytruck.com/#localbusiness",
+      "name": "GoMyTruck",
+      "image": "https://gomytruck.com/og-image.jpg",
+      "url": "https://gomytruck.com",
+      "telephone": "+919331488999",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Chiriyamore",
+        "addressLocality": "Barrackpore",
+        "addressRegion": "West Bengal",
+        "postalCode": "700120",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 22.7667,
+        "longitude": 88.3667
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+        ],
+        "opens": "00:00",
+        "closes": "23:59"
+      }
+    }
+  ]
+};
+
 export default function SEOHead({
   title,
   description,
@@ -59,7 +105,7 @@ export default function SEOHead({
       <meta name="twitter:site" content={DEFAULT_TWITTER} />
 
       {/* JSON-LD Structured Data (additional, per-page) */}
-      {jsonLd.map((schema, i) => (
+      {[DEFAULT_GLOBAL_SCHEMA, ...jsonLd].map((schema, i) => (
         <script key={i} type="application/ld+json">
           {JSON.stringify(schema)}
         </script>

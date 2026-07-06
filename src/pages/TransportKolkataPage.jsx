@@ -96,6 +96,13 @@ export default function TransportKolkataPage() {
       areas={kolkataAreas}
       jsonLd={schema}
       customFaqs={customFaqs}
+      pricingRoutes={[
+        { origin: 'Kolkata', destination: 'Howrah', vehicle: 'Mini Truck', capacity: '1 Ton', price: 450 },
+        { origin: 'Kolkata', destination: 'Salt Lake', vehicle: 'Tata Ace', capacity: '750 Kg', price: 350 },
+        { origin: 'Kolkata', destination: 'Barrackpore', vehicle: 'Pickup Truck', capacity: '1.5 Ton', price: 800 },
+        { origin: 'Kolkata', destination: 'Asansol', vehicle: '14Ft Truck', capacity: '4 Ton', price: 6500 },
+        { origin: 'Kolkata', destination: 'Siliguri', vehicle: '20Ft Container', capacity: '7 Ton', price: 12500 }
+      ]}
     >
       <h2>Reliable and Fast Transport Services in Kolkata</h2>
       <p>
