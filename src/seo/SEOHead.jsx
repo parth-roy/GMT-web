@@ -73,7 +73,7 @@ export default function SEOHead({
   jsonLd = [],
   noIndex = false,
 }) {
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : `GoMyTruck - Online Truck Booking, Mini Vehicle & Goods Transport Services Kolkata`
+  const fullTitle = title ? `${title} | ${SITE_NAME}` : `Online Truck Booking & Goods Transport | ${SITE_NAME}`
   const fullCanonical = canonical ? `${BASE_URL}${canonical}` : BASE_URL
 
   return (

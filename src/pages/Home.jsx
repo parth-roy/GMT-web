@@ -48,7 +48,7 @@ export default function Home({ selectedService, setSelectedService, onCalculateE
   return (
     <>
       <SEOHead
-        description="GoMyTruck – Book mini truck, Tata Ace on rent, pickup truck & FTL transport near you. Same-day goods transport service across India. Transparent pricing. Serving Kolkata, West Bengal & pan India."
+        description="Book mini trucks, Tata Ace & FTL transport near you. Same-day goods transport across India with transparent pricing. Serving Kolkata & pan-India."
         canonical="/"
         keywords="online truck booking, book truck online, hire truck for goods, truck booking near me, transport service near me, goods transport services, mini truck booking near me, tata ace on rent, pickup truck booking, FTL transport services, part load transport, goods carrier near me, truck booking Kolkata, truck booking West Bengal"
         jsonLd={homeSchema}
