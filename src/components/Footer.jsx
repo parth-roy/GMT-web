@@ -181,11 +181,11 @@ export default function Footer({ onScrollToSection }) {
                   <li><Link to="/support" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Support Center</Link></li>
                   <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Contact Us</Link></li>
                   <li><Link to="/pricing" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Pricing & Fare Estimate</Link></li>
-                  <li><Link to="/privacy-policy" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Privacy Policy</Link></li>
-                  <li><Link to="/terms" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Terms of Service</Link></li>
-                  <li><Link to="/partner-terms" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Driver partner terms and conditions">Partner Agreement</Link></li>
-                  <li><Link to="/refund-cancellation" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Cancellation and refund rules">Refund & Cancellation</Link></li>
-                  <li><Link to="/community-guidelines" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Community Guidelines">Community Guidelines</Link></li>
+                  <li><Link to="/legal/privacy-policy" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Privacy Policy</Link></li>
+                  <li><Link to="/legal/terms" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Terms of Service</Link></li>
+                  <li><Link to="/legal/partner-terms" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Driver partner terms and conditions">Partner Agreement</Link></li>
+                  <li><Link to="/legal/refund-cancellation" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Cancellation and refund rules">Refund & Cancellation</Link></li>
+                  <li><Link to="/legal/community-guidelines" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Community Guidelines">Community Guidelines</Link></li>
                 </ul>
               </div>
 

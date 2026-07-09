@@ -182,11 +182,11 @@ export default function App() {
             <Route path="/fleet-partner-registration-india" element={<Navigate to="/services/fleet-partner-registration-india" replace />} />
             
             {/* Legal Pages */}
-            <Route path="/privacy-policy" element={<LegalDocumentView documentId="privacy-policy" title="Privacy Policy" />} />
-            <Route path="/terms" element={<LegalDocumentView documentId="terms-conditions" title="Terms & Conditions" />} />
-            <Route path="/partner-terms" element={<LegalDocumentView documentId="partner-agreement" title="Independent Partner Agreement" />} />
-            <Route path="/refund-cancellation" element={<LegalDocumentView documentId="cancellation-policy" title="Cancellation & Refund Policy" />} />
-            <Route path="/community-guidelines" element={<LegalDocumentView documentId="community-guidelines" title="Community Guidelines" />} />
+            <Route path="/legal/privacy-policy" element={<LegalDocumentView documentId="privacy-policy" title="Privacy Policy" />} />
+            <Route path="/legal/terms" element={<LegalDocumentView documentId="terms-conditions" title="Terms & Conditions" />} />
+            <Route path="/legal/partner-terms" element={<LegalDocumentView documentId="partner-agreement" title="Independent Partner Agreement" />} />
+            <Route path="/legal/refund-cancellation" element={<LegalDocumentView documentId="cancellation-policy" title="Cancellation & Refund Policy" />} />
+            <Route path="/legal/community-guidelines" element={<LegalDocumentView documentId="community-guidelines" title="Community Guidelines" />} />
             <Route path="/delete-account" element={<DeleteAccountPage />} />
           </Routes>
         </Suspense>
