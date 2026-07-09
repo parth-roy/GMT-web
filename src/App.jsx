@@ -38,12 +38,9 @@ const TransportMSMEPage = lazy(() => import("./pages/TransportMSMEPage"))
 const CommercialGoodsTransportPage = lazy(() => import("./pages/CommercialGoodsTransportPage"))
 const TataAceKolkataPage = lazy(() => import("./pages/TataAceKolkataPage"))
 const GoodsTransportBarrackporePage = lazy(() => import("./pages/GoodsTransportBarrackporePage"))
-const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"))
-const DeleteAccountPage = lazy(() => import("./pages/DeleteAccountPage"))
 
-const TermsPage = lazy(() => import("./pages/TermsPage"))
-const PartnerTermsPage = lazy(() => import("./pages/PartnerTermsPage"))
-const RefundPolicyPage = lazy(() => import("./pages/RefundPolicyPage"))
+const LegalDocumentView = lazy(() => import("./pages/LegalDocumentView"))
+const DeleteAccountPage = lazy(() => import("./pages/DeleteAccountPage"))
 
 // A simple premium spinner for Suspense fallback
 const PageLoader = () => (
@@ -185,10 +182,11 @@ export default function App() {
             <Route path="/fleet-partner-registration-india" element={<Navigate to="/services/fleet-partner-registration-india" replace />} />
             
             {/* Legal Pages */}
-            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-            <Route path="/terms" element={<TermsPage />} />
-            <Route path="/partner-terms" element={<PartnerTermsPage />} />
-            <Route path="/refund-cancellation" element={<RefundPolicyPage />} />
+            <Route path="/privacy-policy" element={<LegalDocumentView documentId="privacy-policy" title="Privacy Policy" />} />
+            <Route path="/terms" element={<LegalDocumentView documentId="terms-conditions" title="Terms & Conditions" />} />
+            <Route path="/partner-terms" element={<LegalDocumentView documentId="partner-agreement" title="Independent Partner Agreement" />} />
+            <Route path="/refund-cancellation" element={<LegalDocumentView documentId="cancellation-policy" title="Cancellation & Refund Policy" />} />
+            <Route path="/community-guidelines" element={<LegalDocumentView documentId="community-guidelines" title="Community Guidelines" />} />
             <Route path="/delete-account" element={<DeleteAccountPage />} />
           </Routes>
         </Suspense>
