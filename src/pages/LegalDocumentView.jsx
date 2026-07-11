@@ -43,7 +43,7 @@ const LegalDocumentView = ({ documentId, title }) => {
               <Shield className="w-8 h-8 text-white" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold">{title}</h1>
+              <div className="text-3xl font-bold">{title}</div>
               <p className="text-blue-100 mt-1">GoMyTruck Logistics Platform</p>
             </div>
           </div>

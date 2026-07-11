@@ -6,35 +6,35 @@ const vehicles = [
     category: "Two Wheelers",
     models: "Bike, Scooty",
     capacity: "Up to 20 Kg",
-    imgSrc: "/bikes/bike.png",
+    imgSrc: "/bikes/bike.webp",
     fallbackIcon: "🏍️"
   },
   {
     category: "3-Wheelers",
     models: "Piaggio Ape, Champion",
     capacity: "Up to 500 Kg",
-    imgSrc: "/trucks/3-Wheeler.png",
+    imgSrc: "/trucks/3-Wheeler.webp",
     fallbackIcon: "🛺"
   },
   {
     category: "Light Commercial",
     models: "Tata Ace, Mahindra Jeeto",
     capacity: "750 Kg - 1 Ton",
-    imgSrc: "/trucks/Tata Ace.png",
+    imgSrc: "/trucks/Tata Ace.webp",
     fallbackIcon: "🛻"
   },
   {
     category: "Medium Commercial",
     models: "Bolero Pickup, Tata 407",
     capacity: "1.5 Ton - 2.5 Ton",
-    imgSrc: "/trucks/Bolero-Pickup.png",
+    imgSrc: "/trucks/Bolero-Pickup.webp",
     fallbackIcon: "🚚"
   },
   {
     category: "Heavy Trucks",
     models: "14ft, 17ft, 19ft, Containers",
     capacity: "3 Ton - 10+ Ton",
-    imgSrc: "/trucks/14ft-Truck.png",
+    imgSrc: "/trucks/14ft-Truck.webp",
     fallbackIcon: "🚛"
   }
 ]

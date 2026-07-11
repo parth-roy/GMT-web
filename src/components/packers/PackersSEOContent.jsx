@@ -16,7 +16,7 @@ export default function PackersSEOContent({ city }) {
               Relocating can be stressful, but with GoMyTruck, your move is completely seamless. We are recognized as the <strong>best packers and movers in {city}</strong> because we handle your belongings as if they were our own. From careful packing to safe transportation, our professional team manages everything end-to-end.
             </p>
             <p>
-              Whether you are looking for <strong>house shifting services in {city}</strong> or <strong>office relocation</strong>, our trained executives use high-quality packaging materials like bubble wrap, foam sheets, and sturdy cartons to ensure a 100% damage-free transit. 
+              Whether you are looking for <strong>house shifting services in {city}</strong> or <strong>office relocation</strong>, our trained executives use high-quality packaging materials like bubble wrap, foam sheets, and sturdy cartons to ensure a careful and secure transit. 
             </p>
             
             <h3 className="text-xl font-bold text-slate-900 mt-8 mb-4">Why Choose Us?</h3>

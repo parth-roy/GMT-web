@@ -26,7 +26,7 @@ const DEFAULT_GLOBAL_SCHEMA = {
       "@id": "https://gomytruck.com/#organization",
       "name": "GoMyTruck by Parther Technologies",
       "url": "https://gomytruck.com",
-      "logo": "https://gomytruck.com/logo.png",
+      "logo": "https://gomytruck.com/logo.webp",
       "sameAs": [
         "https://www.linkedin.com/company/gomytruck",
         "https://twitter.com/gomytruck"

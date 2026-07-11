@@ -4,7 +4,7 @@ import { ShieldCheck, PackageCheck, Clock, MapPin } from 'lucide-react';
 export default function TrustBadgeRow({ city }) {
   const badges = [
     { icon: ShieldCheck, title: "Cargo Insurance", subtitle: "Free coverage up to ₹50,000" },
-    { icon: PackageCheck, title: "Zero Damage Guarantee", subtitle: "100% safe & secure transit" },
+    { icon: PackageCheck, title: "Verified Partners", subtitle: "Reliable background-checked drivers" },
     { icon: Clock, title: "On-Time Dispatch", subtitle: "Under 15 mins allocation" },
     { icon: MapPin, title: `Serving ${city || 'You'}`, subtitle: "GPS tracked live delivery" }
   ];

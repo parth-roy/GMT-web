@@ -4,7 +4,7 @@ import { Weight, Zap } from "lucide-react"
 const BIKE_VEHICLES = [
   {
     name: "Two Wheeler (Petrol)",
-    img: "/bikes/bike.png",
+    img: "/bikes/bike.webp",
     capacity: "20 kg",
     dimension: "1.5 × 1.5 × 1.5 ft",
     startingPrice: "₹49",
@@ -13,7 +13,7 @@ const BIKE_VEHICLES = [
   },
   {
     name: "EV Scooter (Green)",
-    img: "/bikes/scooter.png",
+    img: "/bikes/scooter.webp",
     capacity: "20 kg",
     dimension: "1.5 × 1.5 × 1.5 ft",
     startingPrice: "₹45",
@@ -78,9 +78,12 @@ export default function BikeVehicleSelection({ city }) {
               <span className="text-slate-400 text-xs font-medium">
                 Starting from <span className="text-slate-800 font-extrabold text-sm">{v.startingPrice}</span>
               </span>
-              <a href="#" className="text-brand-600 font-bold text-sm border-b border-dashed border-brand-400 pb-0.5 hover:text-brand-700 transition-colors">
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="text-brand-600 font-bold text-sm border-b border-dashed border-brand-400 pb-0.5 hover:text-brand-700 transition-colors"
+              >
                 Get Estimate
-              </a>
+              </button>
             </div>
           </div>
         ))}

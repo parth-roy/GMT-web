@@ -18,7 +18,7 @@ export default function Testimonials({ city }) {
       name: "Sanjay Pal",
       role: "Hardware Shop Owner",
       location: "Chiriyamore, Barrackpore",
-      quote: "Since GoMyTruck opened their HQ here in Barrackpore, we've shifted all our logistics to them. Booking a mini truck for local hardware deliveries is cheaper than local stands. Plus, the 100% damage guarantee gives peace of mind.",
+      quote: "Since GoMyTruck opened their HQ here in Barrackpore, we've shifted all our logistics to them. Booking a mini truck for local hardware deliveries is cheaper than local stands. Plus, the reliable tracking gives peace of mind.",
       rating: 5,
       type: "Retail Partner",
       avatar: null,
@@ -32,8 +32,8 @@ export default function Testimonials({ city }) {
       quote: "As a sweets manufacturing business, fresh delivery is paramount. Before using GoMyTruck, we had continuous issues with local driver groups and price hikes. Now, with the custom Tata Ace fleet, we have 100% price transparency.",
       rating: 5,
       type: "Enterprise Partner",
-      avatar: "/avatar_1.png",
-      logo: "/logo_1.png"
+      avatar: "/avatar_1.webp",
+      logo: "/logo_1.webp"
     },
     {
       name: "Priya Nair",
@@ -42,7 +42,7 @@ export default function Testimonials({ city }) {
       quote: "I was extremely anxious about shifting my entire 3 BHK household. The Packers & Movers service from GoMyTruck was exceptional. They packed every glass item diligently, and shifted everything in under 5 hours.",
       rating: 5,
       type: "Shifting Customer",
-      avatar: "/avatar_2.png",
+      avatar: "/avatar_2.webp",
       logo: null
     },
     {
@@ -53,7 +53,7 @@ export default function Testimonials({ city }) {
       rating: 5,
       type: "Business Account",
       avatar: null,
-      logo: "/logo_2.png"
+      logo: "/logo_2.webp"
     },
     {
       name: "Arjun Gupta",

@@ -4,7 +4,7 @@ import { Weight, Ruler } from "lucide-react"
 const LIGHT_VEHICLES = [
   {
     name: "3 Wheeler",
-    img: "/trucks/3-Wheeler.png",
+    img: "/trucks/3-Wheeler.webp",
     capacity: "500 kg",
     dimension: "5100 × 1800 mm",
     startingPrice: "₹80",
@@ -12,7 +12,7 @@ const LIGHT_VEHICLES = [
   },
   {
     name: "E-Loader",
-    img: "/trucks/E-Loader.png",
+    img: "/trucks/E-Loader.webp",
     capacity: "500 kg",
     dimension: "2600 × 1700 mm",
     startingPrice: "₹80",
@@ -20,7 +20,7 @@ const LIGHT_VEHICLES = [
   },
   {
     name: "Tata Ace",
-    img: "/trucks/Tata Ace.png",
+    img: "/trucks/Tata Ace.webp",
     capacity: "750 kg",
     dimension: "3800 × 1850 mm",
     startingPrice: "₹150",
@@ -31,7 +31,7 @@ const LIGHT_VEHICLES = [
 const HEAVY_VEHICLES = [
   {
     name: "Pickup",
-    img: "/trucks/Pickup.png",
+    img: "/trucks/Pickup.webp",
     capacity: "1,000 kg",
     dimension: "5200 × 1750 mm",
     startingPrice: "₹300",
@@ -39,7 +39,7 @@ const HEAVY_VEHICLES = [
   },
   {
     name: "Bolero Pickup",
-    img: "/trucks/Bolero-Pickup.png",
+    img: "/trucks/Bolero-Pickup.webp",
     capacity: "1,250 kg",
     dimension: "4950 × 1900 mm",
     startingPrice: "₹350",
@@ -47,7 +47,7 @@ const HEAVY_VEHICLES = [
   },
   {
     name: "14 ft Truck",
-    img: "/trucks/14ft-Truck.png",
+    img: "/trucks/14ft-Truck.webp",
     capacity: "2,500 kg",
     dimension: "14 ft × 7.5 ft",
     startingPrice: "₹500",
@@ -55,7 +55,7 @@ const HEAVY_VEHICLES = [
   },
   {
     name: "17 ft Truck",
-    img: "/trucks/17ft-Truck.png",
+    img: "/trucks/17ft-Truck.webp",
     capacity: "5,000 kg",
     dimension: "17 ft × 7.5 ft",
     startingPrice: "₹800",
@@ -63,7 +63,7 @@ const HEAVY_VEHICLES = [
   },
   {
     name: "20 ft Truck",
-    img: "/trucks/20ft-Truck.png",
+    img: "/trucks/20ft-Truck.webp",
     capacity: "10,000 kg",
     dimension: "20 ft × 12 ft",
     startingPrice: "₹1,200",
@@ -110,12 +110,12 @@ function VehicleCard({ vehicle }) {
           Starting from{" "}
           <span className="text-slate-800 font-extrabold text-sm">{vehicle.startingPrice}</span>
         </span>
-        <a
-          href="#"
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="text-brand-600 font-bold text-sm border-b border-dashed border-brand-400 pb-0.5 hover:text-brand-700 hover:border-brand-700 transition-colors"
         >
           Get Estimate
-        </a>
+        </button>
       </div>
 
     </div>

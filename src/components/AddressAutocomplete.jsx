@@ -6,7 +6,9 @@ export default function AddressAutocomplete({
   label, 
   placeholder, 
   onAddressSelect, 
-  className = "" 
+  className = "",
+  id = "",
+  autoComplete = "off"
 }) {
   const [query, setQuery] = useState("")
   const [predictions, setPredictions] = useState([])
@@ -87,15 +89,18 @@ export default function AddressAutocomplete({
 
   return (
     <div className={`relative flex flex-col ${className}`} ref={wrapperRef}>
-      <label className="text-[10px] sm:text-xs font-bold text-slate-500 mb-1 uppercase tracking-wider">
+      <label htmlFor={id} className="text-[10px] sm:text-xs font-bold text-slate-500 mb-1 uppercase tracking-wider">
         {label}
       </label>
       <input
+        id={id}
         type="text"
         value={query}
         onChange={handleInputChange}
         onFocus={() => { if (query.trim()) setIsOpen(true) }}
         placeholder={placeholder}
+        autoComplete={autoComplete}
+        required
         className="w-full bg-slate-50 border border-slate-200 rounded-lg py-2 px-3 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500"
       />
 

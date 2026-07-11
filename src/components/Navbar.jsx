@@ -61,7 +61,7 @@ export default function Navbar({ onOpenEstimate, onScrollToSection }) {
           <div className="flex-shrink-0 flex items-center gap-1 sm:gap-1.5 cursor-pointer" onClick={() => onScrollToSection('home')}>
             <div className="relative flex items-center">
               <img
-                src="/logo.png"
+                src="/logo.webp"
                 alt="GoMyTruck Logo"
                 className="h-8 sm:h-10 w-auto object-contain mix-blend-multiply"
               />

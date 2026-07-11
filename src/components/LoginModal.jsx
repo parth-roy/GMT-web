@@ -87,7 +87,7 @@ export default function LoginModal({ isOpen, onClose, estimateData, onContinue }
         {/* LEFT COLUMN: Image */}
         <div className="w-full md:w-1/2 h-48 md:h-full bg-slate-100 relative">
           <img 
-            src="/login_poster.png" 
+            src="/login_poster.webp" 
             alt="Delivery Partner" 
             className="w-full h-full object-cover"
           />
@@ -177,7 +177,7 @@ export default function LoginModal({ isOpen, onClose, estimateData, onContinue }
                 {/* Bottom Fixed-ish Section */}
                 <div className="mt-12 md:absolute md:bottom-12 md:left-12 md:right-12">
                   <p className="text-xs text-slate-500 text-center mb-4">
-                    By proceeding, you agree to the <a href="#" className="font-bold text-blue-600 hover:underline">terms of services</a> and <a href="#" className="font-bold text-blue-600 hover:underline">privacy policy</a>
+                    By proceeding, you agree to the <a href="/legal/terms-conditions" target="_blank" rel="noopener noreferrer" className="font-bold text-blue-600 hover:underline">terms of services</a> and <a href="/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="font-bold text-blue-600 hover:underline">privacy policy</a>
                   </p>
                   <button 
                     type="submit"

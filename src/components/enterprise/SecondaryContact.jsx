@@ -11,7 +11,7 @@ export default function SecondaryContact() {
           {/* Left Column: 2D Illustration */}
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
             <img 
-              src="/enterprise_contact_illustration_v2.png" 
+              src="/enterprise_contact_illustration_v2.webp" 
               alt="Logistics Delivery Illustration" 
               className="w-full max-w-lg lg:scale-110 object-contain drop-shadow-2xl"
             />

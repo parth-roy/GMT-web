@@ -92,7 +92,7 @@ We reserve the right to suspend or terminate your access to the Platform at our 
 
 ## 11. Governing Law
 
-These Terms shall be governed by and construed in accordance with the laws of India. Any disputes arising out of or relating to these Terms or the Platform shall be subject to the exclusive jurisdiction of the courts located in [Your City], India.
+These Terms shall be governed by and construed in accordance with the laws of India. Any disputes arising out of or relating to these Terms or the Platform shall be subject to the exclusive jurisdiction of the courts located in Kolkata, India.
 
 ---
 

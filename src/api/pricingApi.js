@@ -126,7 +126,7 @@ export const CITY_HERO_IMAGES = {
   Mumbai:    "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Mumbai_Bandra-Worli_Sea_Link.jpg/1280px-Mumbai_Bandra-Worli_Sea_Link.jpg",
   Delhi:     "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Jama_Masjid_2011.jpg/1280px-Jama_Masjid_2011.jpg",
   Bengaluru: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/View_from_Visvesvaraya_Industrial_and_Technological_Museum_%282025%29_02.jpg/1280px-View_from_Visvesvaraya_Industrial_and_Technological_Museum_%282025%29_02.jpg",
-  Hyderabad: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Downtown_hyderabad_drone.png/1280px-Downtown_hyderabad_drone.png",
+  Hyderabad: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Downtown_hyderabad_drone.webp/1280px-Downtown_hyderabad_drone.webp",
   Chennai:   "/cities/Chennai.jpg",
   Pune:      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Pune_West_skyline_-_March_2017.jpg/1280px-Pune_West_skyline_-_March_2017.jpg",
   Ahmedabad: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Sabarmati_riverside.jpg/1280px-Sabarmati_riverside.jpg",
@@ -158,7 +158,11 @@ export const SERVED_CITIES = [
  * @returns {Promise<string>} City name (matched against SERVED_CITIES if possible)
  */
 export async function detectCurrentCity() {
-  return new Promise((resolve) => {
+  const timeoutPromise = new Promise((resolve) => {
+    setTimeout(() => resolve('Kolkata'), 3000); // Strict 3s timeout
+  });
+
+  const geoPromise = new Promise((resolve) => {
     if (!navigator.geolocation) {
       resolve('Kolkata');
       return;
@@ -175,9 +179,7 @@ export async function detectCurrentCity() {
           if (!json.success || !json.data?.address) throw new Error('no address');
 
           // Mapbox place_name: "Neighbourhood, City, State, India"
-          // City is reliably the second-to-last comma-separated segment before "India"
           const parts = json.data.address.split(',').map((s) => s.trim());
-          // Find the first part that matches a served city (case-insensitive)
           const matched = parts.find((p) =>
             SERVED_CITIES.some((c) => c.toLowerCase() === p.toLowerCase())
           );
@@ -185,14 +187,17 @@ export async function detectCurrentCity() {
             resolve(matched);
             return;
           }
-          // Fallback: second segment often is the city in Mapbox format
-          resolve(parts[1] || 'Kolkata');
+          
+          const fallbackCity = parts[1];
+          resolve(fallbackCity ? fallbackCity : 'Kolkata');
         } catch {
           resolve('Kolkata');
         }
       },
-      () => resolve('Kolkata'),   // permission denied or timeout
-      { timeout: 6000, maximumAge: 300_000 }
+      () => resolve('Kolkata'),
+      { timeout: 3000, maximumAge: 300_000 }
     );
   });
+
+  return Promise.race([geoPromise, timeoutPromise]);
 }

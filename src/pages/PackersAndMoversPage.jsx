@@ -24,7 +24,7 @@ export default function PackersAndMoversPage() {
       "provider": { "@type": "Organization", "name": "GoMyTruck", "url": "https://gomytruck.com" },
       "areaServed": city,
       "serviceType": "Packers and Movers, House Shifting, Office Relocation",
-      "description": `Best packers and movers in ${city}. Safe, affordable, and 100% damage-free house shifting services. Get instant quotes and book online.`
+      "description": `Best packers and movers in ${city}. Safe, affordable, and careful house shifting services. Get instant quotes and book online.`
     },
     {
       "@context": "https://schema.org",
@@ -40,7 +40,7 @@ export default function PackersAndMoversPage() {
     <div className="bg-slate-50 min-h-screen font-sans w-full">
       <SEOHead
         title={`Best Packers and Movers in ${city} | House Shifting Services`}
-        description={`Looking for reliable packers and movers in ${city}? GoMyTruck offers 100% damage-free house shifting, office relocation, and bike transport with transparent pricing.`}
+        description={`Looking for reliable packers and movers in ${city}? GoMyTruck offers careful house shifting, office relocation, and bike transport with transparent pricing.`}
         canonical="/packers-and-movers"
         keywords={`packers and movers in ${city}, house shifting services in ${city}, office relocation ${city}, best packers and movers near me, affordable packers and movers, safe house shifting, bike transport ${city}`}
         jsonLd={packersSchema}

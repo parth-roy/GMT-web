@@ -87,7 +87,7 @@ export default function PackersHero({ city, setCity }) {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/packer_movers/packer_movers_hero.png"
+            src="/packer_movers/packer_movers_hero.webp"
             alt={`Packers and Movers in ${city}`}
             className="w-full h-full object-cover object-top"
           />
@@ -99,7 +99,7 @@ export default function PackersHero({ city, setCity }) {
             Best Packers and Movers in {city}
           </h1>
           <p className="mt-6 text-lg md:text-xl text-slate-300 font-medium leading-relaxed max-w-3xl drop-shadow-md">
-            Safe, fast, and 100% damage-free shifting. Affordable rates start at ₹3,000. Book expert packers in {city} today!
+            Safe, fast, and secure shifting. Affordable rates start at ₹3,000. Book expert packers in {city} today!
           </p>
           <a href="#more" className="mt-8 text-white font-semibold underline underline-offset-4 decoration-2 hover:text-brand-300 transition-colors">
             See Pricing & Services

@@ -71,7 +71,7 @@ export default function Footer({ onScrollToSection }) {
             <div className="flex items-center gap-1 sm:gap-1.5 cursor-pointer" onClick={() => onScrollToSection('home')}>
               <div className="relative flex items-center shrink-0">
                 <img 
-                  src="/logo.png" 
+                  src="/logo.webp" 
                   alt="GoMyTruck — Online Truck Booking & Goods Transport Services India" 
                   className="h-10 sm:h-14 w-auto object-contain" 
                 />
@@ -119,29 +119,7 @@ export default function Footer({ onScrollToSection }) {
                 </div>
               </div>
               <div className="w-[110px] h-[110px] bg-white rounded-md p-1.5 shadow-lg">
-                 <svg width="100%" height="100%" viewBox="0 0 100 100" fill="black" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="0" y="0" width="100" height="100" fill="white"/>
-                    <rect x="5" y="5" width="22" height="22" fill="black"/>
-                    <rect x="9" y="9" width="14" height="14" fill="white"/>
-                    <rect x="12" y="12" width="8" height="8" fill="black"/>
-                    <rect x="73" y="5" width="22" height="22" fill="black"/>
-                    <rect x="77" y="9" width="14" height="14" fill="white"/>
-                    <rect x="80" y="12" width="8" height="8" fill="black"/>
-                    <rect x="5" y="73" width="22" height="22" fill="black"/>
-                    <rect x="9" y="77" width="14" height="14" fill="white"/>
-                    <rect x="12" y="80" width="8" height="8" fill="black"/>
-                    <rect x="40" y="40" width="25" height="25" fill="black"/>
-                    <rect x="70" y="45" width="10" height="15" fill="black"/>
-                    <rect x="40" y="75" width="15" height="15" fill="black"/>
-                    <rect x="80" y="75" width="10" height="10" fill="black"/>
-                    <rect x="5" y="40" width="15" height="10" fill="black"/>
-                    <rect x="25" y="50" width="10" height="15" fill="black"/>
-                    <rect x="45" y="10" width="15" height="10" fill="black"/>
-                    <rect x="65" y="85" width="10" height="10" fill="black"/>
-                    <rect x="25" y="30" width="5" height="5" fill="black"/>
-                    <rect x="60" y="25" width="5" height="5" fill="black"/>
-                    <rect x="85" y="35" width="10" height="5" fill="black"/>
-                 </svg>
+                 <img src="/app-qr.png" alt="Download GoMyTruck App QR Code" className="w-full h-full object-contain" />
               </div>
             </div>
           </div>

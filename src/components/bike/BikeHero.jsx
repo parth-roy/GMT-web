@@ -94,8 +94,8 @@ export default function BikeHero({ city, setCity }) {
         <div className="absolute inset-0 z-0">
           <img
             key={city}
-            src={CITY_HERO_IMAGES[city] || "/hero-bg.png"}
-            alt={`${city} landmark`}
+            src={CITY_HERO_IMAGES[city] || "/hero-bg.webp"}
+            alt={`Online bike booking and goods transport services in ${city}`}
             className="w-full h-full object-cover object-center transition-opacity duration-700"
           />
           <div className="absolute inset-0 bg-slate-950/70"></div>
@@ -171,40 +171,51 @@ export default function BikeHero({ city, setCity }) {
             <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 items-end">
 
               <AddressAutocomplete
+                id="pickup-address-bike"
+                autoComplete="street-address"
                 label="Pickup Address *"
                 placeholder="e.g. Park Street, Kolkata"
                 onAddressSelect={(res) => setForm(prev => ({ ...prev, pickup: res.address, pickupCoords: { lat: res.lat, lng: res.lng } }))}
               />
 
               <AddressAutocomplete
+                id="drop-address-bike"
                 label="Drop Address *"
                 placeholder="e.g. Salt Lake, Kolkata"
                 onAddressSelect={(res) => setForm(prev => ({ ...prev, drop: res.address, dropCoords: { lat: res.lat, lng: res.lng } }))}
               />
 
               <div className="flex flex-col">
-                <label className="text-[10px] sm:text-xs font-bold text-slate-500 mb-1 uppercase tracking-wider">Name *</label>
+                <label htmlFor="name-bike" className="text-[10px] sm:text-xs font-bold text-slate-500 mb-1 uppercase tracking-wider">Name *</label>
                 <input
+                  id="name-bike"
                   name="name" type="text" value={form.name} onChange={handleChange}
                   placeholder="Your Full Name"
+                  autoComplete="name"
+                  required
                   className="w-full bg-slate-50 border border-slate-200 rounded-lg py-2 px-3 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500"
                 />
               </div>
 
               <div className="flex flex-col">
-                <label className="text-[10px] sm:text-xs font-bold text-slate-500 mb-1 uppercase tracking-wider">Phone *</label>
+                <label htmlFor="phone-bike" className="text-[10px] sm:text-xs font-bold text-slate-500 mb-1 uppercase tracking-wider">Phone *</label>
                 <input
+                  id="phone-bike"
                   name="phone" type="tel" value={form.phone} onChange={handleChange}
                   placeholder="10-digit mobile" maxLength={10}
+                  autoComplete="tel-national"
+                  required
                   className="w-full bg-slate-50 border border-slate-200 rounded-lg py-2 px-3 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500"
                 />
               </div>
 
               <div className="flex flex-col">
-                <label className="text-[10px] sm:text-xs font-bold text-slate-500 mb-1 uppercase tracking-wider truncate">What describes you? *</label>
+                <label htmlFor="personType-bike" className="text-[10px] sm:text-xs font-bold text-slate-500 mb-1 uppercase tracking-wider truncate">What describes you? *</label>
                 <div className="relative">
                   <select
+                    id="personType-bike"
                     name="personType" value={form.personType} onChange={handleChange}
+                    required
                     className="w-full bg-slate-50 border border-slate-200 rounded-lg py-2 px-3 text-sm appearance-none focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-slate-600"
                   >
                     {PERSON_TYPES.map((opt) => (

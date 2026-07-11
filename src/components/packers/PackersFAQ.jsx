@@ -12,7 +12,7 @@ export default function PackersFAQ({ city }) {
     },
     {
       question: `Do you provide packing materials?`,
-      answer: `Yes, we provide 100% of the packing materials required for a safe move. Our experts use high-quality corrugated boxes, bubble wrap, stretch film, foam sheets, and sealing tape to ensure zero damage to your belongings during transit.`
+      answer: `Yes, we provide 100% of the packing materials required for a safe move. Our experts use high-quality corrugated boxes, bubble wrap, stretch film, foam sheets, and sealing tape to ensure the safety of your belongings during transit.`
     },
     {
       question: `Are my goods insured during the move?`,

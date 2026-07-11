@@ -12,17 +12,17 @@ export default function Hero({
     {
       id: "truck",
       name: "Truck",
-      imgSrc: "/navy_truck.png",
+      imgSrc: "/navy_truck.webp",
     },
     {
       id: "bike",
       name: "Two Wheeler",
-      imgSrc: "/navy_bike.png",
+      imgSrc: "/navy_bike.webp",
     },
     {
       id: "movers",
       name: "Packers & Movers",
-      imgSrc: "/navy_movers.png",
+      imgSrc: "/navy_movers.webp",
     }
   ]
 
@@ -31,9 +31,10 @@ export default function Hero({
       {/* Standard Image Background with dark overlay for white text contrast */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/hero-bg.png?v=2" 
+          src="/hero-bg.webp" 
           alt="Online truck booking and goods transport services across India – GoMyTruck mini truck and pickup truck fleet" 
           className="w-full h-full object-cover object-center"
+          fetchpriority="high"
         />
         <div className="absolute inset-0 bg-slate-900/60"></div>
       </div>

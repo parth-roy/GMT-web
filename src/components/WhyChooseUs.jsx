@@ -41,7 +41,7 @@ export default function WhyChooseUs() {
   ]
 
   const stats = [
-    { label: "Trips Completed", value: "500k+" },
+    { label: "Trips Completed", value: "10k+" },
     { label: "Active Vehicles", value: "15,000+" },
     { label: "Indian Cities Covered", value: "150+" },
     { label: "Average Pickup Time", value: "38 min" }

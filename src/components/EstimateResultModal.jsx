@@ -5,10 +5,10 @@ import { createBooking, cancelBooking } from "../api/bookingApi"
 
 // Local image map — backend imageUrl is null; use verified local blueprints
 const VEHICLE_IMAGES = {
-  BIKE:          "/bikes/bike.png",
-  THREE_WHEELER: "/trucks/3-Wheeler.png",
-  TATA_ACE:      "/trucks/Tata Ace.png",
-  MINI_TRUCK:    "/trucks/14ft-Truck.png",
+  BIKE:          "/bikes/bike.webp",
+  THREE_WHEELER: "/trucks/3-Wheeler.webp",
+  TATA_ACE:      "/trucks/Tata Ace.webp",
+  MINI_TRUCK:    "/trucks/14ft-Truck.webp",
 }
 
 // Which vehicleTypes to show per service context
@@ -270,7 +270,7 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
                         {filteredVehicles.map(v => {
                           const isSelected = selectedVehicleType === v.vehicleType
                           const fare = calculateFare(v)
-                          const imgSrc = VEHICLE_IMAGES[v.vehicleType] || "/navy_truck.png"
+                          const imgSrc = VEHICLE_IMAGES[v.vehicleType] || "/navy_truck.webp"
 
                           if (isSelected) {
                             return (

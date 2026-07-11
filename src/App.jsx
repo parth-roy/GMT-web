@@ -6,9 +6,12 @@ import EstimateModal from "./components/EstimateModal"
 import GetEstimateModal from "./components/GetEstimateModal"
 import GlobalFABs from "./components/GlobalFABs"
 
-// Code splitting — Lazily load all route pages to fix Vite chunk size warnings
-const Home = lazy(() => import("./pages/Home"))
-const TruckPage = lazy(() => import("./pages/TruckPage"))
+import Home from "./pages/Home"
+import TruckPage from "./pages/TruckPage"
+import PricingPage from "./pages/PricingPage"
+import ContactPage from "./pages/ContactPage"
+
+// Code splitting — Lazily load secondary routes
 const BikePage = lazy(() => import("./pages/BikePage"))
 const ServicesPage = lazy(() => import("./pages/ServicesPage"))
 const EnterprisePage = lazy(() => import("./pages/EnterprisePage"))
@@ -25,11 +28,10 @@ const FleetPartnerPage = lazy(() => import("./pages/FleetPartnerPage"))
 const GoMyTruckVerifiedPage = lazy(() => import("./pages/GoMyTruckVerifiedPage"))
 const TransportKolkataPage = lazy(() => import("./pages/TransportKolkataPage"))
 const TransportBarrackporePage = lazy(() => import("./pages/TransportBarrackporePage"))
-const ContactPage = lazy(() => import("./pages/ContactPage"))
-const PricingPage = lazy(() => import("./pages/PricingPage"))
 const LocalTransportPage = lazy(() => import("./pages/LocalTransportPage"))
 const IntercityTransportPage = lazy(() => import("./pages/IntercityTransportPage"))
 const BlogPage = lazy(() => import("./pages/BlogPage"))
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"))
 
 const MiniTruckKolkataPage = lazy(() => import("./pages/MiniTruckKolkataPage"))
 const PickupTruckKolkataPage = lazy(() => import("./pages/PickupTruckKolkataPage"))
@@ -44,7 +46,7 @@ const DeleteAccountPage = lazy(() => import("./pages/DeleteAccountPage"))
 
 // A simple premium spinner for Suspense fallback
 const PageLoader = () => (
-  <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
+  <div className="py-32 w-full flex items-center justify-center bg-transparent">
     <div className="relative w-16 h-16">
       <div className="absolute inset-0 border-4 border-slate-100 rounded-full"></div>
       <div className="absolute inset-0 border-4 border-brand-500 rounded-full border-t-transparent animate-spin"></div>
@@ -184,10 +186,14 @@ export default function App() {
             {/* Legal Pages */}
             <Route path="/legal/privacy-policy" element={<LegalDocumentView documentId="privacy-policy" title="Privacy Policy" />} />
             <Route path="/legal/terms" element={<LegalDocumentView documentId="terms-conditions" title="Terms & Conditions" />} />
+            <Route path="/terms" element={<Navigate to="/legal/terms" replace />} />
             <Route path="/legal/partner-terms" element={<LegalDocumentView documentId="partner-agreement" title="Independent Partner Agreement" />} />
             <Route path="/legal/refund-cancellation" element={<LegalDocumentView documentId="cancellation-policy" title="Cancellation & Refund Policy" />} />
             <Route path="/legal/community-guidelines" element={<LegalDocumentView documentId="community-guidelines" title="Community Guidelines" />} />
             <Route path="/delete-account" element={<DeleteAccountPage />} />
+
+            {/* Catch-all 404 Route */}
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </main>

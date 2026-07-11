@@ -5,7 +5,7 @@ export default function PackersValueProps() {
   const props = [
     {
       icon: <ShieldCheck size={32} className="text-brand-600" />,
-      title: "100% Damage-Free Shifting",
+      title: "Reliable Shifting Service",
       desc: "Multi-layer packing with bubble wrap, corrugated sheets, and stretch film ensures zero scratches."
     },
     {

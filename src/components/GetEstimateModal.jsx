@@ -6,9 +6,9 @@ import EstimateResultModal from "./EstimateResultModal"
 import AddressAutocomplete from "./AddressAutocomplete"
 
 const SERVICES = [
-  { id: "truck",  name: "Truck",             desc: "For heavy loads and full house shifting.",     imgSrc: "/navy_truck.png"  },
-  { id: "bike",   name: "Two Wheeler",        desc: "Fastest for documents and small parcels.",     imgSrc: "/navy_bike.png"   },
-  { id: "movers", name: "Packers & Movers",   desc: "Complete packing and safe relocation.",        imgSrc: "/navy_movers.png" },
+  { id: "truck",  name: "Truck",             desc: "For heavy loads and full house shifting.",     imgSrc: "/navy_truck.webp"  },
+  { id: "bike",   name: "Two Wheeler",        desc: "Fastest for documents and small parcels.",     imgSrc: "/navy_bike.webp"   },
+  { id: "movers", name: "Packers & Movers",   desc: "Complete packing and safe relocation.",        imgSrc: "/navy_movers.webp" },
 ]
 
 /**

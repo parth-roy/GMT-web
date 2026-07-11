@@ -38,7 +38,7 @@ const CITY_DATA = {
   },
   Hyderabad: {
     imgs: [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Downtown_hyderabad_drone.png/330px-Downtown_hyderabad_drone.png",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Downtown_hyderabad_drone.webp/330px-Downtown_hyderabad_drone.webp",
       "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Charminar_-_Hyderabad.jpg/330px-Charminar_-_Hyderabad.jpg",
     ],
     areas: ["Banjara Hills", "Jubilee Hills", "Gachibowli", "HITEC City", "Secunderabad", "Kukatpally", "Ameerpet", "LB Nagar", "Uppal", "Kompally"],
@@ -67,7 +67,7 @@ const CITY_DATA = {
   },
 }
 
-const FALLBACK_IMG = "/hero-bg.png"
+const FALLBACK_IMG = "/hero-bg.webp"
 
 export default function AreasWeServe({ city }) {
   const data = CITY_DATA[city]

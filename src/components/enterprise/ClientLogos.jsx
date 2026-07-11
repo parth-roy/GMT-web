@@ -2,11 +2,11 @@ import React from "react"
 
 export default function ClientLogos() {
   const clients = [
-    "/our_clients/Garden Reach Ship Builders & Engineers Limited, Kolkata.png",
-    "/our_clients/Hindustan Aeronautics Ltd.png",
-    "/our_clients/Public Health Engineering Dept.png",
-    "/our_clients/SENBO Engineering Ltd.png",
-    "/our_clients/Bhushan Power & Steel Ltd.png",
+    "/our_clients/Garden Reach Ship Builders & Engineers Limited, Kolkata.webp",
+    "/our_clients/Hindustan Aeronautics Ltd.webp",
+    "/our_clients/Public Health Engineering Dept.webp",
+    "/our_clients/SENBO Engineering Ltd.webp",
+    "/our_clients/Bhushan Power & Steel Ltd.webp",
   ]
 
   // Duplicate the array twice to ensure seamless infinite looping without blank spaces
