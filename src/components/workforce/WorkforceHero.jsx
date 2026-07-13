@@ -27,12 +27,13 @@ export default function WorkforceHero() {
     <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-slate-900">
       {/* Background aesthetic */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-600/20 rounded-full blur-[120px] translate-x-1/3 -translate-y-1/4"></div>
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[120px] -translate-x-1/3 translate-y-1/4"></div>
-        <div 
-          className="absolute inset-0 opacity-[0.03]" 
-          style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '40px 40px' }}
-        ></div>
+        <img
+          src="/workforce-hero.webp"
+          alt="GoMyTruck Workforce Professionals"
+          className="w-full h-full object-cover object-center"
+          fetchpriority="high"
+        />
+        <div className="absolute inset-0 bg-slate-950/70"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
