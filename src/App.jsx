@@ -183,6 +183,10 @@ export default function App() {
             <Route path="/local-transport-kolkata" element={<Navigate to="/local-transport/kolkata" replace />} />
             <Route path="/intercity-transport-from-kolkata" element={<Navigate to="/intercity/kolkata" replace />} />
             <Route path="/tata-ace-booking-kolkata" element={<Navigate to="/kolkata/tata-ace-booking" replace />} />
+            <Route path="/goods-transport-kolkata" element={<Navigate to="/kolkata/goods-transport" replace />} />
+            <Route path="/local-transport-kolkata" element={<Navigate to="/local-transport/kolkata" replace />} />
+            <Route path="/intercity-transport-from-kolkata" element={<Navigate to="/intercity/kolkata" replace />} />
+            <Route path="/tata-ace-booking-kolkata" element={<Navigate to="/kolkata/tata-ace-booking" replace />} />
 
             <Route path="/goods-transport-barrackpore" element={<Navigate to="/barrackpore/goods-transport" replace />} />
             <Route path="/transport-service-for-msmes" element={<Navigate to="/services/transport-for-msmes" replace />} />
@@ -191,11 +195,23 @@ export default function App() {
             
             {/* Legal Pages */}
             <Route path="/legal/privacy-policy" element={<StaticLegalDocument documentId="privacy-policy" />} />
+            <Route path="/privacy-policy" element={<Navigate to="/legal/privacy-policy" replace />} />
+            
             <Route path="/legal/terms" element={<StaticLegalDocument documentId="terms-conditions" />} />
             <Route path="/terms" element={<Navigate to="/legal/terms" replace />} />
+            <Route path="/terms-conditions" element={<Navigate to="/legal/terms" replace />} />
+            
             <Route path="/legal/partner-terms" element={<StaticLegalDocument documentId="partner-agreement" />} />
+            <Route path="/partner-terms" element={<Navigate to="/legal/partner-terms" replace />} />
+            <Route path="/partner-agreement" element={<Navigate to="/legal/partner-terms" replace />} />
+            
             <Route path="/legal/refund-cancellation" element={<StaticLegalDocument documentId="cancellation-policy" />} />
+            <Route path="/refund-policy" element={<Navigate to="/legal/refund-cancellation" replace />} />
+            <Route path="/cancellation-policy" element={<Navigate to="/legal/refund-cancellation" replace />} />
+            
             <Route path="/legal/community-guidelines" element={<StaticLegalDocument documentId="community-guidelines" />} />
+            <Route path="/community-guidelines" element={<Navigate to="/legal/community-guidelines" replace />} />
+            
             <Route path="/delete-account" element={<DeleteAccountPage />} />
 
             {/* Catch-all 404 Route */}
