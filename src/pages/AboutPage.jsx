@@ -8,13 +8,6 @@ export default function AboutPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-  const stats = [
-    { number: '10+', label: 'Cities Covered' },
-    { number: '7.5TH+', label: 'Verified Drivers' },
-    { number: '1000+', label: 'Enterprise Clients' },
-    { number: '99%', label: 'On-Time Delivery' },
-  ];
-
   const values = [
     {
       icon: Target,
@@ -37,7 +30,7 @@ export default function AboutPage() {
     <>
       <SEOHead
         title="About Us | GoMyTruck Logistics & Transport Platform"
-        description="Learn about GoMyTruck (Parther Technologies Pvt. Ltd.). We are revolutionizing India's logistics network with transparent pricing, instant booking, and verified driver partners."
+        description="Learn about GoMyTruck by Parther Technologies Private Limited, its route-based logistics marketplace, partner workflows, and operating principles."
         canonical="/about"
         keywords="about gomytruck, logistics company profile, parther technologies, truck booking startup india, tech logistics company"
       />
@@ -61,22 +54,8 @@ export default function AboutPage() {
               </span>
             </h1>
             <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              GoMyTruck is a leading tech-enabled logistics platform by <strong>Parther Technologies Pvt. Ltd.</strong> We bridge the gap between businesses needing reliable freight and truck owners seeking consistent loads.
+              GoMyTruck is a logistics marketplace operated by <strong>Parther Technologies Private Limited</strong>. It connects declared customer transport requirements with eligible driver, fleet, and workforce workflows.
             </p>
-          </div>
-        </section>
-
-        {/* Stats */}
-        <section className="relative -mt-12 z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-3xl shadow-2xl shadow-slate-200/50 border border-slate-100 p-8 sm:p-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x-0 md:divide-x divide-slate-100">
-              {stats.map((stat, idx) => (
-                <div key={idx} className="text-center flex flex-col items-center">
-                  <span className="text-4xl md:text-5xl font-display font-black text-slate-900 mb-2">{stat.number}</span>
-                  <span className="text-sm font-bold text-slate-500 uppercase tracking-wider">{stat.label}</span>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 

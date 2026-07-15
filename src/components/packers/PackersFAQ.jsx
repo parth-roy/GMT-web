@@ -8,27 +8,27 @@ export default function PackersFAQ({ city }) {
   const faqs = [
     {
       question: `How much do packers and movers cost in ${city}?`,
-      answer: `The cost of packers and movers in ${city} depends on the size of your home, the volume of goods, and the distance. Typically, local shifting within ${city} starts at ₹3,000 for a 1 RK, ₹4,500 for a 1 BHK, and ₹6,000 for a 2 BHK. With GoMyTruck, you get a fixed, transparent price before booking with no hidden fees.`
+      answer: `The quote depends on the inventory volume and fragility, pickup and destination access, floors and lift access, packing materials, dismantling or appliance work, route, workforce, and schedule. Share a complete inventory so the team can confirm the scope and price.`
     },
     {
       question: `Do you provide packing materials?`,
-      answer: `Yes, we provide 100% of the packing materials required for a safe move. Our experts use high-quality corrugated boxes, bubble wrap, stretch film, foam sheets, and sealing tape to ensure the safety of your belongings during transit.`
+      answer: `Packing materials can be included when listed in the confirmed quote. The team will specify the material types and quantities based on the declared inventory; do not assume every material or item is included without that scope.`
     },
     {
       question: `Are my goods insured during the move?`,
-      answer: `Yes, GoMyTruck offers transit insurance options to cover any unforeseen damages during the moving process. You can opt for comprehensive insurance during the booking process for complete peace of mind.`
+      answer: `Do not assume automatic insurance. Ask whether a protection option is available for the route and inventory, then review the provider, declared value, exclusions, excess, claim process, and proof of cover before the move.`
     },
     {
       question: `Can you dismantle and reassemble my bed/AC/TV?`,
-      answer: `Absolutely. Our team includes professional carpenters and technicians who will safely dismantle heavy furniture (beds, wardrobes) and uninstall electronics (TVs, ACs) at your old home, and reassemble/reinstall them at your new destination.`
+      answer: `These services may require a suitable technician and must be listed in the confirmed scope. Declare every item and required task; appliance installation, electrical work, gas connections, and specialist handling should never be assumed.`
     },
     {
       question: `How far in advance should I book packers and movers in ${city}?`,
-      answer: `For local house shifting in ${city}, we recommend booking at least 2-3 days in advance. For intercity relocation from ${city}, booking 5-7 days prior ensures we can allocate the best fleet and team for your specific requirements. However, we also accommodate urgent next-day moves subject to availability.`
+      answer: `Submit the requirement as early as possible, especially for larger inventories, restricted access, weekends, or intercity moves. The team confirms the date only after reviewing scope and capacity; urgent or next-day service is not guaranteed.`
     },
     {
       question: `Do you transport bikes and cars?`,
-      answer: `Yes, we provide dedicated vehicle transport services. We use specialized car carriers and bike transport trucks with proper strapping and wheel chocks to ensure your vehicle reaches the destination without a single scratch.`
+      answer: `Vehicle transport is a separate specialist requirement. Ask the team to confirm whether it is available for the route, the carrier and securing method, documentation, inspection record, protection terms, and delivery process.`
     }
   ]
 

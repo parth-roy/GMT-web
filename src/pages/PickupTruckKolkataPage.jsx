@@ -17,7 +17,7 @@ export default function PickupTruckKolkataPage() {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://gomytruck.com" },
-        { "@type": "ListItem", "position": 2, "name": "Pickup Truck Booking Kolkata", "item": "https://gomytruck.com/pickup-truck-booking-kolkata" }
+        { "@type": "ListItem", "position": 2, "name": "Pickup Truck Booking Kolkata", "item": "https://gomytruck.com/kolkata/pickup-truck-booking" }
       ]
     },
     {
@@ -37,7 +37,7 @@ export default function PickupTruckKolkataPage() {
         {
           "@type": "Question",
           "name": "Are there any hidden charges for toll or parking?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Our base fares and per-kilometer charges are 100% transparent. However, state border taxes, toll booth charges, or specific commercial parking fees incurred during your specific route are generally paid by the customer at actuals unless otherwise specified during booking." }
+          "acceptedAnswer": { "@type": "Answer", "text": "The booking flow shows the available route-based fare components before confirmation. Tolls, waiting, parking, route changes and other stated trip actuals may affect the final amount." }
         }
       ]
     }
@@ -72,7 +72,7 @@ export default function PickupTruckKolkataPage() {
               </span>
             </summary>
             <p className="mt-4 text-slate-600 leading-relaxed">
-              Yes, absolutely. Pickup trucks are built for endurance and are frequently used for <Link to="/intercity-transport-from-kolkata" className="text-brand-600 font-semibold hover:underline">intercity transport from Kolkata</Link> to nearby cities like Asansol, Durgapur, Haldia, and Siliguri.
+              Yes, absolutely. Pickup trucks are built for endurance and are frequently used for <Link to="/intercity/kolkata" className="text-brand-600 font-semibold hover:underline">intercity transport from Kolkata</Link> to nearby cities like Asansol, Durgapur, Haldia, and Siliguri.
             </p>
           </details>
           <details className="group bg-white border border-slate-200 rounded-xl p-6 open:shadow-md transition-all">
@@ -83,7 +83,7 @@ export default function PickupTruckKolkataPage() {
               </span>
             </summary>
             <p className="mt-4 text-slate-600 leading-relaxed">
-              Our base fares and per-kilometer charges are 100% transparent. However, state border taxes, toll booth charges, or specific commercial parking fees incurred during your specific route are generally paid by the customer at actuals unless otherwise specified during booking.
+              The booking flow shows the available route-based fare components before confirmation. Tolls, waiting, parking, route changes and other stated trip actuals may affect the final amount.
             </p>
           </details>
         </div>
@@ -95,6 +95,7 @@ export default function PickupTruckKolkataPage() {
     <CityTransportPage
       city="Kolkata"
       slug="pickup-truck-booking-kolkata"
+      canonical="/kolkata/pickup-truck-booking"
       headline="Pickup Truck Booking in Kolkata"
       subheadline="Rent 8ft and 10ft Pickup Trucks online. Perfect for heavy goods, construction materials, and commercial stock delivery."
       description="Book a pickup truck in Kolkata for heavy goods delivery. GoMyTruck offers Bolero Pickup and other 8ft/10ft trucks at cheap per-km rates."
@@ -104,15 +105,15 @@ export default function PickupTruckKolkataPage() {
       highlights={[
         "Heavy-duty pickup trucks (Bolero, Super Carry)",
         "Ideal for B2B commercial transport",
-        "Transparent pricing with no hidden broker fees",
+        "Route-based estimate shown before confirmation",
         "Verified drivers experienced with heavy loads",
-        "Live tracking from pickup to drop"
+        "Tracking on supported active trips"
       ]}
       customFaqs={customFaqs}
     >
       <h2>Heavy-Duty Pickup Truck Booking in Kolkata</h2>
       <p>
-        When you need to transport goods that are too heavy or bulky for a standard <Link to="/mini-truck-booking-kolkata">mini truck</Link>, but you don't quite need the massive space of a 14-ft truck, a pickup truck is the perfect middle ground. <strong>GoMyTruck</strong> provides the most reliable and affordable <strong>pickup truck booking in Kolkata</strong>.
+        When you need to transport goods that are too heavy or bulky for a standard <Link to="/kolkata/mini-truck-booking">mini truck</Link>, but you don't quite need the massive space of a 14-ft truck, a pickup truck is the perfect middle ground. <strong>GoMyTruck</strong> provides the most reliable and affordable <strong>pickup truck booking in Kolkata</strong>.
       </p>
       <p>
         Whether you are transporting construction materials from Howrah, delivering heavy industrial equipment from Burrabazar, or shifting large quantities of agricultural produce, our fleet of 8ft and 10ft pickup trucks (like the Mahindra Bolero Pickup and Tata Yodha) is equipped to handle the toughest loads.
@@ -123,9 +124,9 @@ export default function PickupTruckKolkataPage() {
         Pickup trucks are the ultimate workhorses of the logistics industry. They combine the raw power and payload capacity of larger commercial vehicles with the maneuverability of smaller vans. Here is why you should consider booking a pickup truck for your next consignment:
       </p>
       <ul>
-        <li><strong>High Payload Capacity:</strong> Unlike a <Link to="/tata-ace-booking-kolkata">Tata Ace</Link> which usually carries around 750 kg, a standard pickup truck can comfortably transport payloads ranging from 1,000 kg to 1,500 kg (1 to 1.5 tons).</li>
+        <li><strong>High Payload Capacity:</strong> Unlike a <Link to="/kolkata/tata-ace-booking">Tata Ace</Link> which usually carries around 750 kg, a standard pickup truck can comfortably transport payloads ranging from 1,000 kg to 1,500 kg (1 to 1.5 tons).</li>
         <li><strong>Durability on Rough Terrain:</strong> Pickup trucks are built with heavy-duty suspensions and powerful engines. This makes them ideal for navigating poorly maintained roads, construction sites, and rural areas just outside the Kolkata metropolitan area.</li>
-        <li><strong>Cost-Effective Heavy Transport:</strong> Hiring a massive 14-foot truck for a 1.2-ton payload is inefficient and expensive. A pickup truck provides the exact capacity you need, saving you money on your <Link to="/goods-transport-services-kolkata">goods transport</Link> costs.</li>
+        <li><strong>Cost-Effective Heavy Transport:</strong> Hiring a massive 14-foot truck for a 1.2-ton payload is inefficient and expensive. A pickup truck provides the exact capacity you need, saving you money on your <Link to="/kolkata/goods-transport">goods transport</Link> costs.</li>
         <li><strong>Versatile Cargo Bed:</strong> The open cargo bed of an 8ft or 10ft pickup allows for the transportation of oversized or irregularly shaped items, such as long steel pipes, large wooden boards, or heavy machinery.</li>
       </ul>
 
@@ -156,19 +157,19 @@ export default function PickupTruckKolkataPage() {
 
       <h3>How to Book a Pickup Truck with GoMyTruck</h3>
       <p>
-        Booking a pickup truck has never been easier. Forget about dealing with unreliable local transporters who change their rates at the last minute. With GoMyTruck, the process is streamlined and 100% transparent:
+        The online workflow records the route, vehicle, goods, and handling requirements before showing the current estimate:
       </p>
       <ol>
         <li><strong>Enter Your Route:</strong> Open our app or website and enter your exact pickup and drop-off locations in Kolkata.</li>
         <li><strong>Select Pickup Truck:</strong> Choose the "Pickup Truck" category (typically 8ft or 10ft depending on your load).</li>
-        <li><strong>Get Instant Estimate:</strong> Our algorithm instantly calculates the fare based on the distance. There are no hidden fees. <Link to="/pricing">View our pricing</Link> for more details.</li>
-        <li><strong>Confirm and Track:</strong> Confirm your booking. A verified driver will be assigned immediately, and you can track your truck's live location via GPS from the moment it leaves to the moment your goods are delivered.</li>
+        <li><strong>Review the Estimate:</strong> The pricing engine uses distance, time, vehicle, fuel surcharge, demand, workforce, and tax inputs. <Link to="/pricing">View the pricing explanation</Link>.</li>
+        <li><strong>Confirm and Follow Status:</strong> Confirmation starts partner matching. Assignment is not immediate or guaranteed; supported active trips can provide status and location updates.</li>
       </ol>
 
       <div className="my-10 bg-brand-50 border border-brand-200 rounded-2xl p-8 text-center">
         <h3 className="text-2xl font-bold text-slate-900 mt-0 mb-4">Need a Pickup Truck Now?</h3>
         <p className="text-slate-600 mb-6">
-          Whether it is 1 ton of cement or a massive commercial generator, our pickup trucks are ready to roll. Get a truck at your location in minutes.
+          For cement, machinery, or other dense goods, confirm the actual payload, body fit, securing method, access, and handling requirements before booking a pickup.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link to="/book-truck-online" className="w-full sm:w-auto bg-brand-600 hover:bg-brand-500 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-transform hover:-translate-y-1">

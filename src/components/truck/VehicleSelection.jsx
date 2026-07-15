@@ -7,7 +7,6 @@ const LIGHT_VEHICLES = [
     img: "/trucks/3-Wheeler.webp",
     capacity: "500 kg",
     dimension: "5100 × 1800 mm",
-    startingPrice: "₹80",
     desc: "Ideal for small parcels, courier drops & intra-city deliveries.",
   },
   {
@@ -15,7 +14,6 @@ const LIGHT_VEHICLES = [
     img: "/trucks/E-Loader.webp",
     capacity: "500 kg",
     dimension: "2600 × 1700 mm",
-    startingPrice: "₹80",
     desc: "Eco-friendly open flatbed for light goods & last-mile delivery.",
   },
   {
@@ -23,7 +21,6 @@ const LIGHT_VEHICLES = [
     img: "/trucks/Tata Ace.webp",
     capacity: "750 kg",
     dimension: "3800 × 1850 mm",
-    startingPrice: "₹150",
     desc: "The go-to mini truck for household goods & commercial loads.",
   },
 ]
@@ -34,7 +31,6 @@ const HEAVY_VEHICLES = [
     img: "/trucks/Pickup.webp",
     capacity: "1,000 kg",
     dimension: "5200 × 1750 mm",
-    startingPrice: "₹300",
     desc: "Open flatbed pickup — great for construction material & bulk items.",
   },
   {
@@ -42,7 +38,6 @@ const HEAVY_VEHICLES = [
     img: "/trucks/Bolero-Pickup.webp",
     capacity: "1,250 kg",
     dimension: "4950 × 1900 mm",
-    startingPrice: "₹350",
     desc: "Rugged 4WD pickup built for heavy loads across any terrain.",
   },
   {
@@ -50,7 +45,6 @@ const HEAVY_VEHICLES = [
     img: "/trucks/14ft-Truck.webp",
     capacity: "2,500 kg",
     dimension: "14 ft × 7.5 ft",
-    startingPrice: "₹500",
     desc: "Enclosed box truck for furniture shifting, factory goods & more.",
   },
   {
@@ -58,7 +52,6 @@ const HEAVY_VEHICLES = [
     img: "/trucks/17ft-Truck.webp",
     capacity: "5,000 kg",
     dimension: "17 ft × 7.5 ft",
-    startingPrice: "₹800",
     desc: "High-capacity box truck for large-scale commercial transport.",
   },
   {
@@ -66,7 +59,6 @@ const HEAVY_VEHICLES = [
     img: "/trucks/20ft-Truck.webp",
     capacity: "10,000 kg",
     dimension: "20 ft × 12 ft",
-    startingPrice: "₹1,200",
     desc: "Heavy-duty multi-axle truck for industrial & bulk cargo loads.",
   },
 ]
@@ -80,6 +72,10 @@ function VehicleCard({ vehicle }) {
         <img
           src={vehicle.img}
           alt={vehicle.name}
+          width="640"
+          height="360"
+          loading="lazy"
+          decoding="async"
           className="w-full h-auto group-hover:scale-105 transition-transform duration-300"
         />
       </div>
@@ -107,8 +103,7 @@ function VehicleCard({ vehicle }) {
       {/* Footer */}
       <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-100">
         <span className="text-slate-400 text-xs font-medium">
-          Starting from{" "}
-          <span className="text-slate-800 font-extrabold text-sm">{vehicle.startingPrice}</span>
+          Route-based pricing
         </span>
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -134,7 +129,7 @@ export default function VehicleSelection({ city }) {
           Book Mini Trucks in {city}
         </h2>
         <p className="text-slate-500 mt-2 text-base">
-          Choose from our verified fleet — from lightweight delivery vehicles to heavy-haul trucks.
+          Compare planning capacities, then confirm the exact body, payload, and availability for your declared load.
         </p>
       </div>
 

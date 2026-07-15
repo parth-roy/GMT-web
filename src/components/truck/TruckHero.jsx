@@ -121,10 +121,10 @@ export default function TruckHero({ city, setCity }) {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white tracking-tight leading-tight max-w-4xl drop-shadow-xl">
-            Reliable Online Mini Truck Booking in {city}
+            Online Mini Truck Booking in {city}
           </h1>
           <p className="mt-6 text-lg md:text-xl text-slate-200 font-medium leading-relaxed max-w-3xl drop-shadow-md">
-            Looking for a reliable and affordable online truck booking service in {city}? With economical rates, hassle-free and flexible options, GoMyTruck can be your go-to logistics provider.
+            Enter the route and goods details, review the current estimate, and confirm a request. Vehicle assignment and timing depend on serviceability and partner availability.
           </p>
           <a href="#more" className="mt-8 text-white font-semibold underline underline-offset-4 decoration-2 hover:text-brand-300 transition-colors">
             Know more

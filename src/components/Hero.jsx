@@ -1,10 +1,9 @@
 import React, { useState } from "react"
-import { Bike, Truck, Package, MapPin, ChevronDown, ArrowRight } from "lucide-react"
+import { MapPin, ArrowRight } from "lucide-react"
 
 export default function Hero({ 
   selectedService, 
   setSelectedService, 
-  onCalculateEstimate,
   onOpenEstimate,
   onSelectVehicle
 }) {
@@ -12,17 +11,17 @@ export default function Hero({
     {
       id: "truck",
       name: "Truck",
-      imgSrc: "/navy_truck.webp",
+      imgSrc: "/navy_truck-256.webp",
     },
     {
       id: "bike",
       name: "Two Wheeler",
-      imgSrc: "/navy_bike.webp",
+      imgSrc: "/navy_bike-256.webp",
     },
     {
       id: "movers",
       name: "Packers & Movers",
-      imgSrc: "/navy_movers.webp",
+      imgSrc: "/navy_movers-256.webp",
     }
   ]
 
@@ -30,32 +29,33 @@ export default function Hero({
     <section className="relative min-h-[85vh] pt-24 pb-24 sm:pb-32 flex flex-col justify-end items-center bg-slate-900 overflow-visible mb-32">
       {/* Standard Image Background with dark overlay for white text contrast */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="/hero-bg.webp" 
-          alt="Online truck booking and goods transport services across India – GoMyTruck mini truck and pickup truck fleet" 
-          className="w-full h-full object-cover object-center"
-          fetchpriority="high"
-        />
+        <picture>
+          <source
+            type="image/webp"
+            srcSet="/hero-bg-640.webp 640w, /hero-bg-960.webp 960w, /hero-bg-1600.webp 1600w"
+            sizes="100vw"
+          />
+          <img
+            src="/hero-bg-960.webp"
+            alt="GoMyTruck branded delivery rider, warehouse handler and mini truck"
+            width="1600"
+            height="894"
+            className="h-full w-full object-cover object-center"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
         <div className="absolute inset-0 bg-slate-900/60"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
-        {/* 
-          SEO H1: Visually positioned behind the decorative headline.
-          Google reads this as the primary H1 for the page.
-        */}
-        <h1 className="sr-only">
-          GoMyTruck Online Truck Booking & Goods Transport Platform
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight max-w-4xl mx-auto drop-shadow-lg">
+          Online Truck Booking &amp; Goods Transport in Kolkata
         </h1>
 
-        {/* Decorative Hindi Headline (aria-hidden so screen readers use the SEO h1 above) */}
-        <div aria-hidden="true" className="text-5xl sm:text-6xl lg:text-7xl font-display font-extrabold text-white tracking-tight leading-tight flex flex-col items-start mx-auto w-fit drop-shadow-lg">
-          <span className="text-left">Saaman</span>
-          <span className="text-brand-300 ml-16 sm:ml-32">Aapka,</span>
-          <span className="text-left">Transport Hamara</span>
-        </div>
+        <p className="mt-5 text-2xl sm:text-3xl font-black text-brand-200" lang="hi-Latn">Saaman aapka, transport hamara</p>
         <p className="text-lg sm:text-xl text-slate-100 font-medium leading-relaxed mt-8 max-w-2xl mx-auto drop-shadow-md">
-          Welcome to GoMyTruck, your premier solution for efficient logistics. We provide seamless online truck booking options, mini truck rentals, and comprehensive goods transport services across India. Whether you need an on-demand truck delivery service for local goods transportation or intercity truck booking for commercial vehicle shipping, our affordable logistics platform ensures secure and timely delivery.
+          Enter your route and load details, compare suitable commercial vehicles, and review the current fare estimate before confirming. Assignment and arrival time depend on partner availability and traffic.
         </p>
       </div>
 
@@ -64,10 +64,9 @@ export default function Hero({
         <div className="bg-brand-50 rounded-xl shadow-2xl p-6 sm:p-8 sm:px-12 flex flex-col gap-6 border border-slate-100 w-full sm:w-fit">
           
           {/* Top City Selector */}
-          <div className="flex items-center gap-2 text-slate-900 font-bold text-sm px-2 cursor-pointer w-fit hover:text-brand-600 transition-colors">
+          <div className="flex items-center gap-2 text-slate-900 font-bold text-sm px-2 w-fit">
             <MapPin size={20} className="text-[#001f3f]" />
             <span>City: Kolkata</span>
-            <ChevronDown size={16} className="text-slate-500" />
           </div>
 
           <div className="flex flex-col sm:flex-row justify-center items-center gap-10 lg:gap-16">
@@ -88,6 +87,10 @@ export default function Hero({
                     <img 
                       src={srv.imgSrc} 
                       alt={srv.name} 
+                      width="256"
+                      height="256"
+                      loading="lazy"
+                      decoding="async"
                       className={`w-20 h-20 sm:w-24 sm:h-24 object-contain mix-blend-multiply contrast-[1.20] brightness-[1.10] transition-all duration-500 opacity-85 group-hover:scale-105 group-hover:-translate-y-4 group-hover:opacity-100`} 
                     />
                     <span className="absolute bottom-2 font-bold text-[11px] sm:text-xs text-center px-1 transition-all duration-500 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 text-brand-700">

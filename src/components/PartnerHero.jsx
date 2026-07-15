@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Send, BadgeCheck, ShieldCheck } from "lucide-react"
+import { trackFleetRegistration } from "../utils/analytics"
 
 export default function PartnerHero({ isFleetOwner = false }) {
   const [driverName, setDriverName] = useState("")
@@ -8,8 +9,9 @@ export default function PartnerHero({ isFleetOwner = false }) {
   const [vehicleType, setDriverVehicle] = useState("Tata Ace")
   const [isRegistered, setIsRegistered] = useState(false)
   const [regError, setRegError] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault()
     if (!driverName || !driverPhone || !driverCity) {
       setRegError("Please fill out all the fields.")
@@ -20,16 +22,36 @@ export default function PartnerHero({ isFleetOwner = false }) {
       return
     }
     setRegError("")
-    setIsRegistered(true)
+    setIsLoading(true)
+    try {
+      const response = await fetch("https://api.gomytruck.com/api/v1/leads/workforce", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: driverName.trim(),
+          phone: driverPhone,
+          city: driverCity.trim(),
+          role: `${isFleetOwner ? "Fleet Owner" : "Driver Partner"} - ${vehicleType}`,
+        }),
+      })
+      const data = await response.json().catch(() => ({}))
+      if (!response.ok) throw new Error(data.message || "We could not submit your application. Please try again.")
+      setIsRegistered(true)
+      trackFleetRegistration(vehicleType)
+    } catch (error) {
+      setRegError(error.message)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const headline = isFleetOwner 
     ? "Attach Your Fleet & Grow Your Transport Business"
-    : "Attach Your Vehicle & Earn Up To ₹45,000/Month*"
+    : "Attach Your Vehicle & Earn From Completed Trips"
   
   const subheadline = isFleetOwner
-    ? "Join India's rapidly growing logistics platform. Attach multiple trucks, eliminate idle time with guaranteed return loads, and get paid instantly. Partner with GoMyTruck today."
-    : "Join India's rapidly growing logistics platform. We welcome 2-wheelers, 3-wheelers, mini-trucks, and heavy trucks. Get consistent daily bookings and daily payouts."
+    ? "Register multiple eligible commercial vehicles, review available loads and track accepted work in one partner platform. Trip availability and earnings vary by route and demand."
+    : "Register an eligible two-wheeler, three-wheeler, mini truck or heavy truck. Review available work and earn against trips you choose and complete."
 
   return (
     <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-slate-900">
@@ -50,14 +72,14 @@ export default function PartnerHero({ isFleetOwner = false }) {
           <div className="lg:col-span-7 text-left space-y-8">
             <div className="inline-flex items-center gap-2 bg-slate-800/80 border border-slate-700 backdrop-blur-md text-green-400 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
               <ShieldCheck size={16} />
-              <span>India's Most Trusted Partner Network</span>
+              <span>Driver and fleet partner network</span>
             </div>
 
             <div className="space-y-6">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-white tracking-tight leading-[1.1]">
                 {isFleetOwner ? "Attach Your Fleet &" : "Attach Your Vehicle &"} <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-400 to-brand-400">
-                  {isFleetOwner ? "Grow Your Business" : "Earn Up To ₹45k/Mo*"}
+                  {isFleetOwner ? "Grow Your Business" : "Earn Per Completed Trip"}
                 </span>
               </h1>
               <p className="text-slate-300 font-medium text-lg sm:text-xl max-w-xl leading-relaxed">
@@ -69,20 +91,20 @@ export default function PartnerHero({ isFleetOwner = false }) {
             <div className="flex flex-wrap gap-6 pt-4">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-brand-400 shadow-inner">
-                  <span className="font-bold text-lg">0%</span>
+                  <span className="font-bold text-lg">KYC</span>
                 </div>
                 <div>
-                  <p className="text-white font-semibold">Zero Commission</p>
-                  <p className="text-slate-400 text-sm">On your first 10 trips</p>
+                  <p className="text-white font-semibold">Document Review</p>
+                  <p className="text-slate-400 text-sm">Eligibility checked</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-green-400 shadow-inner">
-                  <span className="font-bold text-lg">24h</span>
+                  <span className="font-bold text-lg">App</span>
                 </div>
                 <div>
-                  <p className="text-white font-semibold">Fast Onboarding</p>
-                  <p className="text-slate-400 text-sm">Start driving today</p>
+                  <p className="text-white font-semibold">Digital Workflow</p>
+                  <p className="text-slate-400 text-sm">Loads and trip updates</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -90,8 +112,8 @@ export default function PartnerHero({ isFleetOwner = false }) {
                   <ShieldCheck size={24} />
                 </div>
                 <div>
-                  <p className="text-white font-semibold">₹2,50,000 Insurance</p>
-                  <p className="text-slate-400 text-sm">Free health & accidental cover</p>
+                  <p className="text-white font-semibold">Clear Terms</p>
+                  <p className="text-slate-400 text-sm">Rates shown per job</p>
                 </div>
               </div>
             </div>
@@ -108,7 +130,7 @@ export default function PartnerHero({ isFleetOwner = false }) {
                   <div className="space-y-2">
                     <h3 className="text-3xl font-display font-extrabold text-white">Application Received!</h3>
                     <p className="text-base text-slate-300 px-4 leading-relaxed">
-                      Thank you, <span className="text-green-400 font-semibold">{driverName}</span>. Our onboarding officer will call you on <span className="text-green-400 font-semibold">+91 {driverPhone}</span> shortly.
+                      Thank you, <span className="text-green-400 font-semibold">{driverName}</span>. Our onboarding team will review the application and contact <span className="text-green-400 font-semibold">+91 {driverPhone}</span> when the relevant capacity is available.
                     </p>
                   </div>
                   <div className="bg-slate-800/80 border border-slate-700 p-5 rounded-2xl text-sm space-y-3 text-left">
@@ -146,6 +168,7 @@ export default function PartnerHero({ isFleetOwner = false }) {
                       <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Full Name</label>
                       <input
                         type="text" placeholder="e.g. Ramesh Kumar" value={driverName}
+                        name="name" autoComplete="name" required
                         onChange={(e) => setDriverName(e.target.value)}
                         className="w-full bg-slate-900/50 border border-slate-700 rounded-xl py-3 px-4 text-white placeholder-slate-500 focus:outline-none focus:border-green-400 focus:ring-1 focus:ring-green-400 transition-all"
                       />
@@ -158,6 +181,7 @@ export default function PartnerHero({ isFleetOwner = false }) {
                         <span className="absolute left-4 top-3 text-base font-semibold text-slate-400">+91</span>
                         <input
                           type="tel" maxLength={10} placeholder="98765 43210" value={driverPhone}
+                          name="phone" autoComplete="tel-national" inputMode="numeric" required
                           onChange={(e) => setDriverPhone(e.target.value.replace(/\D/g, ""))}
                           className="w-full bg-slate-900/50 border border-slate-700 rounded-xl py-3 pl-14 pr-4 text-white placeholder-slate-500 focus:outline-none focus:border-green-400 focus:ring-1 focus:ring-green-400 transition-all"
                         />
@@ -170,6 +194,7 @@ export default function PartnerHero({ isFleetOwner = false }) {
                         <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">City</label>
                         <input
                           type="text" placeholder="e.g. Kolkata" value={driverCity}
+                          name="city" autoComplete="address-level2" required
                           onChange={(e) => setDriverCity(e.target.value)}
                           className="w-full bg-slate-900/50 border border-slate-700 rounded-xl py-3 px-4 text-white placeholder-slate-500 focus:outline-none focus:border-green-400 focus:ring-1 focus:ring-green-400 transition-all"
                         />
@@ -194,14 +219,15 @@ export default function PartnerHero({ isFleetOwner = false }) {
 
                   <button
                     type="submit"
+                    disabled={isLoading}
                     className="w-full mt-4 bg-green-500 hover:bg-green-400 text-slate-900 font-extrabold text-lg py-4 px-6 rounded-xl shadow-lg shadow-green-500/25 hover:shadow-green-500/40 hover:-translate-y-0.5 active:translate-y-0.5 transition-all flex items-center justify-center gap-2 group cursor-pointer"
                   >
-                    <span>Register Now</span>
-                    <Send size={20} className="transition-transform group-hover:translate-x-1" />
+                    <span>{isLoading ? "Submitting…" : "Register Now"}</span>
+                    {!isLoading && <Send size={20} className="transition-transform group-hover:translate-x-1" />}
                   </button>
 
                   <p className="text-xs text-slate-400 text-center leading-relaxed font-medium mt-4">
-                    By submitting, you agree to our <a href="/partner-terms" className="underline hover:text-white">Partner Terms</a> and consent to receiving updates on WhatsApp.
+                    By submitting, you agree to our <a href="/legal/partner-terms" className="underline hover:text-white">Partner Terms</a> and <a href="/legal/privacy-policy" className="underline hover:text-white">Privacy Policy</a>. WhatsApp updates are sent only where consented.
                   </p>
                 </form>
               )}

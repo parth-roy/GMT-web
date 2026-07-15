@@ -18,7 +18,7 @@ export default function TransportBarrackporePage() {
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://gomytruck.com" },
         { "@type": "ListItem", "position": 2, "name": "Goods Transport Services", "item": "https://gomytruck.com/goods-transport-services" },
-        { "@type": "ListItem", "position": 3, "name": "Transport Services in Barrackpore", "item": "https://gomytruck.com/transport-services-barrackpore" }
+        { "@type": "ListItem", "position": 3, "name": "Transport Services in Barrackpore", "item": "https://gomytruck.com/barrackpore/truck-booking" }
       ]
     },
     {
@@ -33,12 +33,12 @@ export default function TransportBarrackporePage() {
         {
           "@type": "Question",
           "name": "Can I rent a Tata Ace in Barrackpore for house shifting?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. Tata Aces (Chota Hathi) are our most popular vehicles for residential moving in Barrackpore. You can book one instantly for shifting rooms, 1BHKs, or PG luggage." }
+          "acceptedAnswer": { "@type": "Answer", "text": "A Tata Ace may suit a smaller residential move, depending on the declared inventory, weight, body dimensions, access, and partner availability. Check the actual load before confirming." }
         },
         {
           "@type": "Question",
           "name": "How long does it take for the truck to arrive after booking?",
-          "acceptedAnswer": { "@type": "Answer", "text": "We maintain a large fleet of active driver partners in the Barrackpore subdivision. Typically, a truck will reach your pickup location within 20 to 30 minutes of a confirmed booking." }
+          "acceptedAnswer": { "@type": "Answer", "text": "There is no fixed arrival promise. Assignment and arrival depend on a matching vehicle and partner, the route, traffic, goods, and current availability. Follow the confirmed booking status." }
         },
         {
           "@type": "Question",
@@ -79,7 +79,7 @@ export default function TransportBarrackporePage() {
               </span>
             </summary>
             <p className="mt-4 text-slate-600 leading-relaxed">
-              Absolutely. Tata Aces (Chota Hathi) are our most popular vehicles for residential moving in Barrackpore. You can book one instantly for shifting rooms, 1BHKs, or PG luggage.
+              A Tata Ace may suit a smaller residential move, depending on the declared inventory, weight, body dimensions, access, and partner availability. Check the actual load before confirming.
             </p>
           </details>
           <details className="group bg-white border border-slate-200 rounded-xl p-6 open:shadow-md transition-all">
@@ -90,7 +90,7 @@ export default function TransportBarrackporePage() {
               </span>
             </summary>
             <p className="mt-4 text-slate-600 leading-relaxed">
-              We maintain a large fleet of active driver partners in the Barrackpore subdivision. Typically, a truck will reach your pickup location within 20 to 30 minutes of a confirmed booking.
+              There is no fixed arrival promise. Assignment and arrival depend on a matching vehicle and partner, the route, traffic, goods, and current availability. Follow the confirmed booking status.
             </p>
           </details>
           <details className="group bg-white border border-slate-200 rounded-xl p-6 open:shadow-md transition-all">
@@ -113,49 +113,44 @@ export default function TransportBarrackporePage() {
     <CityTransportPage
       city="Barrackpore"
       slug="truck-booking-barrackpore"
+      canonical="/barrackpore/truck-booking"
       headline="Truck Booking in Barrackpore"
-      subheadline="Fast and reliable truck booking services in Barrackpore, Titagarh, Sodepur, and North 24 Parganas. Transparent per-km pricing."
-      description="Looking for goods transport in Barrackpore? Book Tata Ace, mini trucks, and pickup trucks online with GoMyTruck for fast local delivery."
+      subheadline="Request a truck in Barrackpore, Titagarh, Sodepur, and North 24 Parganas, then review route-based pricing and current availability."
+      description="Request goods transport in Barrackpore with Tata Ace, mini-truck and pickup options. Review the live route estimate before confirming."
       keywords="truck booking barrackpore, goods transport barrackpore, tata ace rent barrackpore, transport agency barrackpore, local transport north 24 parganas"
       jsonLd={jsonLd}
       areas={barrackporeAreas}
       highlights={[
         "Covering Barrackpore and all surrounding belt areas",
-        "Fast pickup within 20–30 minutes from Barrackpore",
+        "Partner assignment and arrival shown in the booking status",
         "Connects to Kolkata for intercity transport",
-        "Verified, background-checked local drivers",
-        "Transparent per-km pricing — no hidden charges",
-        "Book online in under 2 minutes, 24/7"
+        "Applicable partner and vehicle documents reviewed during onboarding",
+        "Route-based fare components shown before confirmation",
+        "Submit route and goods details online"
       ]}
       customFaqs={customFaqs}
-      pricingRoutes={[
-        { origin: 'Barrackpore', destination: 'Barasat', vehicle: 'Tata Ace', capacity: '750 Kg', price: 400 },
-        { origin: 'Barrackpore', destination: 'Kolkata', vehicle: 'Pickup Truck', capacity: '1.5 Ton', price: 800 },
-        { origin: 'Barrackpore', destination: 'Kalyani', vehicle: '14Ft Truck', capacity: '4 Ton', price: 1200 },
-        { origin: 'Barrackpore', destination: 'Durgapur', vehicle: '20Ft Container', capacity: '7 Ton', price: 7500 }
-      ]}
     >
-      <h2>GoMyTruck: The Premier Transport Service in Barrackpore</h2>
+      <h2>Request Transport Service in Barrackpore</h2>
       <p>
-        Barrackpore and the wider North 24 Parganas district form a crucial industrial and residential belt in West Bengal. Navigating the logistics in this bustling region requires a transport partner that is local, fast, and highly reliable. <strong>GoMyTruck</strong> offers the premier <strong>truck booking service in Barrackpore</strong>, bridging the gap between local businesses, residents, and verified commercial vehicle owners.
+        Barrackpore and the wider North 24 Parganas district form an important industrial and residential belt in West Bengal. <strong>GoMyTruck</strong> accepts <strong>truck-booking requests in Barrackpore</strong> from businesses and residents and makes them available to eligible driver or fleet partners. Service begins only after assignment is confirmed.
       </p>
       <p>
-        Whether you are shifting your home from Titagarh, sending industrial goods from Khardah to Kolkata, or distributing retail products across Sodepur, our digital transport platform provides you with instant access to a vast fleet of commercial vehicles. Say goodbye to negotiating with unorganized local truck stands; with GoMyTruck, you get transparent, algorithm-driven pricing and guaranteed service.
+        Whether you are shifting a home from Titagarh, sending industrial goods from Khardah to Kolkata, or distributing retail products around Sodepur, the platform records the route and goods details and calculates a current estimate. Service begins only after an eligible partner is assigned.
       </p>
 
       <h3>Our Transport Services in Barrackpore</h3>
       <p>
-        We cater to the diverse logistics needs of the Barrackpore subdivision. Here is how our <Link to="/goods-transport-barrackpore">goods transport services</Link> can help you:
+        We cater to the diverse logistics needs of the Barrackpore subdivision. Here is how our <Link to="/barrackpore/goods-transport">goods transport services</Link> can help you:
       </p>
 
       <h4>1. Local Shifting and Relocation</h4>
       <p>
-        Moving to a new house within the Barrackpore cantonment area or shifting to a nearby town like Shyamnagar? Our <Link to="/mini-truck-booking-kolkata">mini trucks</Link> and Tata Aces are perfectly sized for residential relocations. We offer safe, quick, and hassle-free transport for your furniture, appliances, and personal belongings.
+        Moving within Barrackpore or to a nearby town such as Shyamnagar? Compare <Link to="/kolkata/mini-truck-booking">mini-truck</Link> and Tata Ace options against the declared inventory. Packing, workforce, access, timing and protection needs must be confirmed as part of the service scope.
       </p>
 
       <h4>2. B2B and Industrial Transport</h4>
       <p>
-        The Barrackpore belt is home to numerous manufacturing units, jute mills, and small-scale industries. We provide dedicated <Link to="/pickup-truck-booking-kolkata">pickup trucks</Link> (like Bolero Pickups) and larger 14-ft trucks to transport raw materials, machinery, and finished goods from factories to wholesale markets or directly to Kolkata.
+        The Barrackpore belt is home to numerous manufacturing units, jute mills, and small-scale industries. We provide dedicated <Link to="/kolkata/pickup-truck-booking">pickup trucks</Link> (like Bolero Pickups) and larger 14-ft trucks to transport raw materials, machinery, and finished goods from factories to wholesale markets or directly to Kolkata.
       </p>
 
       <h4>3. Retail and FMCG Distribution</h4>
@@ -168,8 +163,8 @@ export default function TransportBarrackporePage() {
         There are several reasons why residents and businesses in North 24 Parganas prefer us over traditional transport brokers:
       </p>
       <ul>
-        <li><strong>Instant Vehicle Allocation:</strong> We have a dense network of driver partners located specifically within the Barrackpore subdivision. When you book a truck, we guarantee a vehicle at your pickup location within 30 minutes.</li>
-        <li><strong>Transparent, Low Fares:</strong> We charge based on the exact distance traveled. Our technology eliminates arbitrary broker margins, meaning you get the most affordable per-kilometer rates in the market.</li>
+        <li><strong>Availability Check:</strong> A confirmed request enters matching. Vehicle assignment and arrival depend on the route, goods, vehicle type, traffic, and current partner supply.</li>
+        <li><strong>Route-Based Estimate:</strong> Pricing can include the mapped distance and time, selected vehicle, fuel surcharge, demand rules, workforce, and tax components.</li>
         <li><strong>Live GPS Tracking:</strong> Security is paramount. From the moment the truck is loaded in Barrackpore until it reaches its destination (whether in Kolkata or another district), you can track its live location directly from your smartphone.</li>
         <li><strong>Wide Fleet Variety:</strong> You don't have to hire a large truck for a small load. Choose from two-wheelers, Tata Aces, 8ft Pickup trucks, and heavy-duty vehicles based entirely on your cargo volume.</li>
       </ul>
@@ -177,7 +172,7 @@ export default function TransportBarrackporePage() {
       <div className="my-10 bg-brand-50 border border-brand-200 rounded-2xl p-8 text-center">
         <h3 className="text-2xl font-bold text-slate-900 mt-0 mb-4">Book Your Truck in Barrackpore Today</h3>
         <p className="text-slate-600 mb-6">
-          Experience the most reliable transport service in North 24 Parganas. Get an instant quote and book your vehicle now.
+          Enter the exact route and load to review a current estimate and check partner availability in North 24 Parganas.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link to="/book-truck-online" className="w-full sm:w-auto bg-brand-600 hover:bg-brand-500 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-transform hover:-translate-y-1">

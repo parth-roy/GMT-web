@@ -4,9 +4,10 @@ import { Menu, X, ChevronRight, PhoneCall } from "lucide-react"
 export default function Navbar({ onOpenEstimate, onScrollToSection }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("vahan_access_token"))
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
+    setIsLoggedIn(!!localStorage.getItem("vahan_access_token"))
     // Check local storage occasionally for cross-tab login sync (optional but good)
     const handleStorageChange = () => {
       setIsLoggedIn(!!localStorage.getItem("vahan_access_token"))
@@ -61,9 +62,11 @@ export default function Navbar({ onOpenEstimate, onScrollToSection }) {
           <div className="flex-shrink-0 flex items-center gap-1 sm:gap-1.5 cursor-pointer" onClick={() => onScrollToSection('home')}>
             <div className="relative flex items-center">
               <img
-                src="/logo.webp"
+                src="/logo-320.webp"
                 alt="GoMyTruck Logo"
-                className="h-8 sm:h-10 w-auto object-contain mix-blend-multiply"
+                width="320"
+                height="213"
+                className="h-8 sm:h-10 w-auto object-contain"
               />
             </div>
             <div className="flex flex-col justify-center items-start">

@@ -22,6 +22,18 @@ export async function createBooking(bookingData) {
   return json.data; // { booking, ... }
 }
 
+export async function confirmBooking(bookingId) {
+  const res = await fetch(`${BASE_URL}/bookings/${bookingId}/confirm`, {
+    method: 'PATCH',
+    headers: getAuthHeaders(),
+  });
+  const json = await res.json();
+  if (!res.ok || !json.success) {
+    throw new Error(json.message || `Failed to confirm booking (${res.status})`);
+  }
+  return json.data;
+}
+
 export async function cancelBooking(bookingId, reason) {
   const res = await fetch(`${BASE_URL}/bookings/${bookingId}/cancel`, {
     method: 'PATCH',

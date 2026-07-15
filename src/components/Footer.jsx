@@ -4,32 +4,12 @@ import { Facebook, Twitter, Linkedin, Instagram, Youtube, Smartphone } from "luc
 
 export default function Footer({ onScrollToSection }) {
   const cities = [
-    { name: "Delhi NCR",     slug: "delhi-ncr" },
-    { name: "Hyderabad",     slug: "hyderabad" },
-    { name: "Bangalore",     slug: "bangalore" },
-    { name: "Mumbai",        slug: "mumbai" },
-    { name: "Vadodara",      slug: "vadodara" },
-    { name: "Chandigarh",    slug: "chandigarh" },
-    { name: "Jaipur",        slug: "jaipur" },
-    { name: "Chennai",       slug: "chennai" },
-    { name: "Kolkata",       slug: "kolkata" },
-    { name: "Indore",        slug: "indore" },
-    { name: "Ahmedabad",     slug: "ahmedabad" },
-    { name: "Surat",         slug: "surat" },
-    { name: "Nagpur",        slug: "nagpur" },
-    { name: "Lucknow",       slug: "lucknow" },
-    { name: "Pune",          slug: "pune" },
-    { name: "Coimbatore",    slug: "coimbatore" },
-    { name: "Kochi",         slug: "kochi" },
-    { name: "Ludhiana",      slug: "ludhiana" },
-    { name: "Nashik",        slug: "nashik" },
-    { name: "Kanpur",        slug: "kanpur" },
-    { name: "Visakhapatnam", slug: "visakhapatnam" },
-    { name: "Trivandrum",    slug: "trivandrum" },
-    // West Bengal local SEO cities
-    { name: "Barrackpore",   slug: "barrackpore" },
-    { name: "Howrah",        slug: "howrah" },
-    { name: "Durgapur",      slug: "durgapur" },
+    { name: "Kolkata",       to: "/kolkata" },
+    { name: "Barrackpore",   to: "/barrackpore" },
+    { name: "Howrah",        to: "/howrah" },
+    { name: "Salt Lake",     to: "/salt-lake" },
+    { name: "New Town",      to: "/new-town" },
+    { name: "Kolkata–Asansol", to: "/routes/kolkata-to-asansol" },
   ]
 
   // Popular Searches — all keyword tiers mapped to site routes
@@ -38,22 +18,22 @@ export default function Footer({ onScrollToSection }) {
     { label: "Mini Truck Booking Near Me",   to: "/mini-truck-booking" },
     { label: "Tata Ace on Rent",             to: "/mini-truck-booking" },
     { label: "Part Load Transport",          to: "/goods-transport-services" },
-    { label: "Full Truck Load (FTL)",        to: "/intercity-transport" },
+    { label: "Full Truck Load (FTL)",        to: "/intercity/kolkata" },
     { label: "Goods Transport Services",     to: "/goods-transport-services" },
-    { label: "Local Transport Near Me",      to: "/local-transport" },
-    { label: "Intercity Transport",          to: "/intercity-transport" },
+    { label: "Local Transport Near Me",      to: "/local-transport/kolkata" },
+    { label: "Intercity Transport",          to: "/intercity/kolkata" },
     { label: "Find Return Load Online",      to: "/driver-partner" },
     { label: "Attach Truck to Company",      to: "/fleet-partner-registration" },
     { label: "B2B Logistics Services",       to: "/enterprise" },
     { label: "FMCG Transport Service",       to: "/enterprise" },
     { label: "Corporate Truck Rental",       to: "/enterprise" },
-    { label: "Truck Booking Kolkata",        to: "/transport-services-kolkata" },
-    { label: "Truck Booking Barrackpore",    to: "/transport-services-barrackpore" },
-    { label: "Intercity Transport Booking",  to: "/intercity-transport" },
+    { label: "Truck Booking Kolkata",        to: "/kolkata/truck-booking" },
+    { label: "Truck Booking Barrackpore",    to: "/barrackpore/truck-booking" },
+    { label: "Intercity Transport Booking",  to: "/intercity/kolkata" },
     { label: "Pickup Truck Near Me",         to: "/book-truck-online" },
     { label: "Lorry Load Matching",          to: "/driver-partner" },
-    { label: "Same Day Truck Transport",     to: "/local-transport" },
-    { label: "PTL Logistics",               to: "/intercity-transport" },
+    { label: "Local Truck Transport",        to: "/local-transport/kolkata" },
+    { label: "PTL Logistics",               to: "/intercity/kolkata" },
     { label: "Supply Chain Logistics",       to: "/enterprise" },
     { label: "Pricing & Fare Estimate",      to: "/pricing" },
     { label: "GoMyTruck Verified",           to: "/gomytruck-verified" },
@@ -71,8 +51,11 @@ export default function Footer({ onScrollToSection }) {
             <div className="flex items-center gap-1 sm:gap-1.5 cursor-pointer" onClick={() => onScrollToSection('home')}>
               <div className="relative flex items-center shrink-0">
                 <img 
-                  src="/logo.webp" 
+                  src="/logo-320.webp"
                   alt="GoMyTruck — Online Truck Booking & Goods Transport Services India" 
+                  width="320"
+                  height="213"
+                  loading="lazy"
                   className="h-10 sm:h-14 w-auto object-contain" 
                 />
               </div>
@@ -88,9 +71,8 @@ export default function Footer({ onScrollToSection }) {
 
             {/* Company Description with WB Local SEO signals */}
             <p className="text-gray-400 text-xs leading-relaxed max-w-xs">
-              India's trusted online truck booking platform. Book mini truck, Tata Ace, pickup truck &amp; FTL transport near you.
-              Headquartered in <strong className="text-gray-300">Barrackpore, West Bengal</strong>.
-              Serving Kolkata, West Bengal &amp; 500+ cities across India.
+              A digital marketplace for truck booking, goods transport and linked logistics services.
+              Headquartered in <strong className="text-gray-300">Barrackpore, West Bengal</strong>. Route and vehicle availability are confirmed during booking.
             </p>
 
             <div className="border-t border-dashed border-gray-700 w-full max-w-[200px]"></div>
@@ -119,7 +101,7 @@ export default function Footer({ onScrollToSection }) {
                 </div>
               </div>
               <div className="w-[110px] h-[110px] bg-white rounded-md p-1.5 shadow-lg">
-                 <img src="/app-qr.png" alt="Download GoMyTruck App QR Code" className="w-full h-full object-contain" />
+                 <img src="/app-qr.png" alt="Download GoMyTruck App QR Code" width="110" height="110" loading="lazy" className="w-full h-full object-contain" />
               </div>
             </div>
           </div>
@@ -173,7 +155,7 @@ export default function Footer({ onScrollToSection }) {
                   <li><Link to="/driver-partner" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Find return load online — load board India">Find Return Load</Link></li>
                   <li><Link to="/driver-partner" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Attach commercial vehicle to GoMyTruck">Attach Truck</Link></li>
                   <li><Link to="/driver-partner" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Truck owner registration — fleet platform">Register as Owner</Link></li>
-                  <li><Link to="/driver-partner" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Load board India — zero commission load booking">Load Board</Link></li>
+                  <li><Link to="/driver-partner" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Driver and fleet load marketplace">Load Marketplace</Link></li>
                 </ul>
               </div>
             </div>
@@ -197,12 +179,12 @@ export default function Footer({ onScrollToSection }) {
 
             {/* Domestic Cities Grid */}
             <div className="space-y-5">
-              <h4 className="text-white font-bold text-sm tracking-wide">Domestic Cities — Truck Booking</h4>
+              <h4 className="text-white font-bold text-sm tracking-wide">Service Areas &amp; Route Guides</h4>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-y-4 gap-x-4">
                 {cities.map((city, index) => (
                   <Link
                     key={index}
-                    to="/truck"
+                    to={city.to}
                     title={`Truck booking in ${city.name} — mini truck & goods transport`}
                     className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium"
                   >
@@ -225,8 +207,7 @@ export default function Footer({ onScrollToSection }) {
             <p>Email: <a href="mailto:hello@parthertech.com" className="hover:text-gray-300 transition-colors">hello@parthertech.com</a></p>
             <p>Phone: <a href="tel:+919331488999" className="hover:text-gray-300 transition-colors">+91 9331488999</a></p>
             <p className="mt-2 text-gray-600">
-              GoMyTruck is India's trusted online truck booking platform — book mini truck, Tata Ace on rent,
-              pickup truck, FTL &amp; part load transport services across Kolkata, West Bengal &amp; pan India.
+              GoMyTruck connects customers with independent logistics partners. Coverage, assignment, price and service scope are confirmed for each booking.
             </p>
           </div>
         </div>

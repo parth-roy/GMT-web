@@ -17,7 +17,7 @@ export default function GoodsTransportKolkataPage() {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://gomytruck.com" },
-        { "@type": "ListItem", "position": 2, "name": "Goods Transport Services Kolkata", "item": "https://gomytruck.com/goods-transport-services-kolkata" }
+        { "@type": "ListItem", "position": 2, "name": "Goods Transport Services Kolkata", "item": "https://gomytruck.com/kolkata/goods-transport" }
       ]
     },
     {
@@ -66,7 +66,7 @@ export default function GoodsTransportKolkataPage() {
               </span>
             </summary>
             <p className="mt-4 text-slate-600 leading-relaxed">
-              Yes, we provide end-to-end transport for industrial and commercial goods. Whether it is raw materials, heavy machinery, or finished textiles, our heavy-duty vehicles and <Link to="/pickup-truck-booking-kolkata" className="text-brand-600 font-semibold hover:underline">pickup trucks</Link> are equipped to handle it safely.
+              Yes, we provide end-to-end transport for industrial and commercial goods. Whether it is raw materials, heavy machinery, or finished textiles, our heavy-duty vehicles and <Link to="/kolkata/pickup-truck-booking" className="text-brand-600 font-semibold hover:underline">pickup trucks</Link> are equipped to handle it safely.
             </p>
           </details>
           <details className="group bg-white border border-slate-200 rounded-xl p-6 open:shadow-md transition-all">
@@ -111,8 +111,9 @@ export default function GoodsTransportKolkataPage() {
     <CityTransportPage
       city="Kolkata"
       slug="goods-transport-kolkata"
+      canonical="/kolkata/goods-transport"
       headline="Goods Transport Services in Kolkata"
-      subheadline="Kolkata's most trusted goods transport agency. We provide Full Truck Load (FTL) and Part Load (PTL) services across West Bengal and India."
+      subheadline="Request local or full-truck transport in Kolkata. Part-load and outstation coverage must be confirmed for the specific goods and route."
       description="Looking for reliable goods transport in Kolkata? GoMyTruck offers online booking for local shifting, B2B logistics, FTL, and PTL transport services."
       keywords="goods transport kolkata, transport agency kolkata, kolkata transport company, logistics services kolkata, freight transport kolkata, lorry booking kolkata"
       jsonLd={jsonLd}
@@ -129,10 +130,10 @@ export default function GoodsTransportKolkataPage() {
     >
       <h2>Top-Rated Goods Transport Agency in Kolkata</h2>
       <p>
-        As a major commercial hub in Eastern India, Kolkata requires a highly efficient, tech-driven logistics network to keep its businesses moving. <strong>GoMyTruck</strong> has established itself as the leading <strong>goods transport agency in Kolkata</strong>, providing scalable, secure, and affordable freight transport solutions for MSMEs, large enterprises, and individuals.
+        As a major commercial hub in Eastern India, Kolkata has varied goods-transport requirements across wholesale, retail, manufacturing and household routes. <strong>GoMyTruck</strong> accepts <strong>goods-transport requests in Kolkata</strong> from MSMEs, enterprises and individuals, subject to route, vehicle and partner availability.
       </p>
       <p>
-        We have replaced the chaotic, opaque traditional transporter model with a seamless digital platform. Whether you need to transport a small batch of garments from Burrabazar using a <Link to="/mini-truck-booking-kolkata">mini truck</Link> or dispatch 10 tons of steel from Howrah via an <Link to="/intercity-transport-from-kolkata">intercity transport</Link> truck, we handle it all with precision and transparency.
+        We have replaced the chaotic, opaque traditional transporter model with a seamless digital platform. Whether you need to transport a small batch of garments from Burrabazar using a <Link to="/kolkata/mini-truck-booking">mini truck</Link> or dispatch 10 tons of steel from Howrah via an <Link to="/intercity/kolkata">intercity transport</Link> truck, we handle it all with precision and transparency.
       </p>
 
       <h3>Complete Freight & Goods Transport Solutions</h3>
@@ -157,7 +158,7 @@ export default function GoodsTransportKolkataPage() {
 
       <h3>Types of Goods We Transport</h3>
       <p>
-        Our diverse fleet of vehicles—ranging from the agile <Link to="/tata-ace-booking-kolkata">Tata Ace</Link> to heavy-duty <Link to="/pickup-truck-booking-kolkata">pickup trucks</Link> and large containers—allows us to transport almost any type of commercial or personal cargo:
+        Our diverse fleet of vehicles—ranging from the agile <Link to="/kolkata/tata-ace-booking">Tata Ace</Link> to heavy-duty <Link to="/kolkata/pickup-truck-booking">pickup trucks</Link> and large containers—allows us to transport almost any type of commercial or personal cargo:
       </p>
       <ul>
         <li><strong>FMCG & Groceries:</strong> Fast-moving consumer goods, packaged foods, and beverages transported from warehouses to local retailers.</li>
@@ -169,19 +170,19 @@ export default function GoodsTransportKolkataPage() {
 
       <h3>Why Trust GoMyTruck for Goods Transport?</h3>
       <p>
-        Choosing the right transport partner directly impacts your business's bottom line and reputation. Here is why GoMyTruck is the preferred choice for thousands of businesses across West Bengal:
+        Choosing the right transport workflow affects cost, timing, and handling. GoMyTruck provides these planning and booking capabilities:
       </p>
       <ul>
         <li><strong>100% Verified Fleet:</strong> We do not broker loads to unknown trucks. Every vehicle and <Link to="/fleet-partner-registration">driver partner</Link> in our network is thoroughly vetted, ensuring the highest level of security for your valuable cargo.</li>
         <li><strong>Live GPS Tracking:</strong> Visibility is crucial in modern logistics. You will receive a tracking link the moment your goods are dispatched, allowing you to monitor the truck's exact location in real-time until delivery is completed.</li>
         <li><strong>Transparent Digital Billing:</strong> Say goodbye to hidden charges and manual paperwork. Our fares are calculated upfront, and GST-compliant digital invoices are generated automatically for easy bookkeeping.</li>
-        <li><strong>Dedicated Support:</strong> Logistics can be unpredictable, but our support team is not. We offer dedicated 24/7 customer support to resolve any transit issues instantly.</li>
+        <li><strong>Published Support Channels:</strong> Phone hours and email or WhatsApp options are listed on the Support page. Response time varies with the issue and current enquiry volume.</li>
       </ul>
 
       <div className="my-10 bg-brand-50 border border-brand-200 rounded-2xl p-8 text-center">
         <h3 className="text-2xl font-bold text-slate-900 mt-0 mb-4">Streamline Your Goods Transport Today</h3>
         <p className="text-slate-600 mb-6">
-          Experience hassle-free, secure, and affordable freight transport in Kolkata. Get an instant estimate for your next shipment.
+          Enter the route and declared goods to review the current estimate and partner availability for a Kolkata shipment.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link to="/book-truck-online" className="w-full sm:w-auto bg-brand-600 hover:bg-brand-500 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-transform hover:-translate-y-1">

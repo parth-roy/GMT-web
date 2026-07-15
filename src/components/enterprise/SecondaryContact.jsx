@@ -23,20 +23,20 @@ export default function SecondaryContact() {
               Ready to Scale Your Deliveries?
             </h2>
             <p className="text-slate-600 text-lg leading-relaxed font-medium">
-              Take the guesswork out of your supply chain. GoMyTruck offers dedicated Key Account Managers, custom API integrations, and guaranteed vehicle availability for our enterprise partners. Let us handle the heavy lifting so you can focus exclusively on growing your core business.
+              Share the routes, shipment profile, frequency, vehicle classes, reporting needs, and operational constraints. The team will confirm feasible coverage, integrations, account support, and any service level in a written commercial scope.
             </p>
             
             <div className="pt-4">
-              <button className="inline-flex items-center gap-3 bg-brand-500 hover:bg-brand-600 text-white font-bold text-base px-6 py-3.5 rounded-full shadow-lg shadow-brand-500/30 transition-all duration-300 hover:-translate-y-1 group">
+              <a href="#enterprise-enquiry" className="inline-flex items-center gap-3 bg-brand-500 hover:bg-brand-600 text-white font-bold text-base px-6 py-3.5 rounded-full shadow-lg shadow-brand-500/30 transition-all duration-300 hover:-translate-y-1 group">
                 <div className="bg-white/20 p-2 rounded-full group-hover:scale-110 transition-transform">
                   <PhoneCall size={18} className="text-white" />
                 </div>
                 <span>Request Callback</span>
-              </button>
+              </a>
             </div>
             
             <p className="text-slate-500 text-sm mt-4">
-              Or speak to an expert directly: <a href="tel:789888888" className="text-brand-600 font-bold hover:underline">789888888</a>
+              Or call the GoMyTruck team: <a href="tel:+919331488999" className="text-brand-600 font-bold hover:underline">+91 93314 88999</a>
             </p>
           </div>
 

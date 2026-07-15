@@ -8,43 +8,43 @@ export default function TruckFAQ({ city }) {
   const faqs = [
     {
       question: `How do I book a mini truck online in ${city}?`,
-      answer: `Booking a mini truck online in ${city} with GoMyTruck takes less than 60 seconds. Enter your pickup and drop address, choose your vehicle (mini truck, Tata Ace, pickup truck, or full truck), submit your cargo details, and get an instant price estimate. Same-day and urgent mini truck booking near me in ${city} is available 24/7 via our app and website.`,
+      answer: `Enter the pickup and destination in ${city}, choose a vehicle, declare the goods and any loading help, and review the current estimate. After confirmation, GoMyTruck looks for an eligible partner. Assignment and arrival are subject to route and vehicle availability.`,
     },
     {
-      question: `What is the Tata Ace on rent price per km in ${city}?`,
-      answer: `The Tata Ace on rent price per km in ${city} ranges from ₹12–₹18/km for local city trips, depending on the distance and time of day. For intercity Tata Ace rental, rates are slightly higher. GoMyTruck shows you the exact fare upfront — no haggling, no hidden fees. You can also book Tata Ace online via our platform for immediate or scheduled trips in ${city}.`,
+      question: `How is a Tata Ace estimate in ${city} calculated?`,
+      answer: `The pricing service uses the mapped route, estimated travel time, selected vehicle, current fuel surcharge, and applicable demand rules. Loading help, waiting, tolls, tax, and confirmed trip changes can affect the total. Check the estimate for the actual route instead of relying on a fixed per-kilometre rate.`,
     },
     {
       question: `What areas in ${city} does GoMyTruck's truck service cover?`,
-      answer: `GoMyTruck covers all major neighbourhoods and surrounding areas within ${city}. Whether you are in the city centre or on the outskirts, our driver-partners are available for mini truck booking near me, pickup truck bookings, and FTL shipments. Our local network ensures the nearest transport agency is always close to your location in ${city}.`,
+      answer: `Published pages describe supported hubs and routes around ${city}. Enter both exact addresses to check serviceability. Coverage information does not guarantee immediate availability of a specific vehicle at every locality.`,
     },
     {
       question: `How does Full Truck Load (FTL) transport work from ${city}?`,
-      answer: `Full Truck Load (FTL) transport from ${city} gives you exclusive use of the vehicle for your shipment. It's ideal for bulk industrial goods, factory-to-warehouse transfers, FMCG distribution, and corporate freight. FTL is faster and more secure than part load transport because your cargo doesn't share space. GoMyTruck offers FTL services on 500+ intercity routes from ${city}.`,
+      answer: `FTL reserves the vehicle capacity for one customer's declared shipment. It can suit bulk or factory-to-warehouse goods. GoMyTruck confirms the route, selected vehicle, operating scope, and availability for each booking.`,
     },
     {
       question: `Can I book part load transport (PTL) from ${city} to another city?`,
-      answer: `Yes! GoMyTruck's part load transport (PTL) service from ${city} lets you pay for only the truck space your goods need. It's perfect for small businesses, startups, and individuals who don't have enough goods to fill a full truck. PTL logistics from ${city} is available to all major Indian cities — Delhi, Mumbai, Bangalore, Chennai, Hyderabad, and more.`,
+      answer: `PTL availability depends on compatible capacity, goods, schedule, and destination. Ask the enterprise team to confirm whether a shared-load option is operating for your specific ${city} route.`,
     },
     {
       question: `How do I find return load online for my truck in ${city}?`,
-      answer: `Truck owners in ${city} can find return loads online by signing up on GoMyTruck's load board. After completing a delivery, you can browse available freight on the same or nearby routes, eliminating empty return trips. Our lorry load matching platform uses smart algorithms to suggest the best return load bookings for your vehicle type and route.`,
+      answer: `Approved drivers and fleets can review eligible marketplace loads and bid where that mode is enabled. Opportunities depend on vehicle, route, timing, and customer demand; a return load is not guaranteed.`,
     },
     {
       question: "How do I attach my commercial vehicle to GoMyTruck?",
-      answer: `Attaching your truck to GoMyTruck is simple. Register as a driver-partner at gomytruck.com/driver-partner, upload your documents (RC, driving licence, insurance), and complete our quick verification. Once approved, you get immediate access to our online load board in ${city} and across India. We offer zero commission load booking on select routes and a dedicated fleet owner logistics dashboard.`,
+      answer: `Register at gomytruck.com/driver-partner and provide the requested identity, driving, and vehicle documents. Activation follows review. Loads, fees, earnings, and settlement terms are shown in the applicable partner workflow and are not guaranteed by registration.`,
     },
     {
       question: "What B2B logistics services does GoMyTruck offer?",
-      answer: "GoMyTruck's B2B and enterprise logistics services include dedicated fleet contracts, corporate truck rental, FMCG transport service, industrial goods transport, warehouse transport services, supply chain logistics management, and API integration with your ERP. Ideal for retail distribution logistics, contract logistics companies, and businesses needing freight forwarding services with SLA guarantees.",
+      answer: "Businesses can discuss recurring transport, dedicated-capacity requirements, reporting, and integration discovery with the enterprise team. Coverage, pricing, support, and any service level apply only when confirmed in a written commercial scope.",
     },
     {
       question: "What happens if the truck breaks down during delivery?",
-      answer: "GoMyTruck has a 24/7 rapid-response protocol for vehicle breakdowns. Our operations team immediately dispatches a backup vehicle to transfer your goods, minimising disruption to your supply chain. Comprehensive cargo insurance is also available at checkout for peace of mind on both FTL and part load transport bookings.",
+      answer: "Use the support option for the active booking and follow the operations team's instructions. Any replacement vehicle, transfer plan, protection option, or cost depends on the incident and the terms confirmed for that trip.",
     },
     {
-      question: `Is GoMyTruck's truck service available 24 hours in ${city}?`,
-      answer: `Yes, GoMyTruck operates round-the-clock in ${city}. You can make an instant truck booking, same-day truck transport booking, or pre-schedule a vehicle at any time — day or night. Our operations and customer support teams are available 24/7, 365 days a year, to ensure your goods keep moving when you need them to.`,
+      question: `Can I submit a scheduled or same-day request in ${city}?`,
+      answer: `The website can accept a request at any time. That is not a promise of round-the-clock operations or same-day dispatch: the team must confirm serviceability, the assigned partner, and timing for the requested route.`,
     }
   ]
 

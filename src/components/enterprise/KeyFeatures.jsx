@@ -23,8 +23,8 @@ export default function KeyFeatures() {
       )
     },
     {
-      title: "Payments through Prepaid Wallet",
-      description: "No cash reimbursement hassles, as all trips are prepaid through our secure business wallet.",
+      title: "Digital Payment Records",
+      description: "Review the payment and invoice records available for eligible enterprise bookings.",
       icon: Wallet,
       mockupColor: "bg-emerald-500/10 border-emerald-500/20",
       mockupElement: (
@@ -32,14 +32,14 @@ export default function KeyFeatures() {
            <div className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center">
              <Wallet size={32} className="text-emerald-400" />
            </div>
-           <div className="text-2xl font-bold text-white">₹ 45,000.00</div>
-           <div className="text-xs text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full">Available Balance</div>
+           <div className="text-lg font-bold text-white">Payment record</div>
+           <div className="text-xs text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full">Illustrative interface</div>
         </div>
       )
     },
     {
       title: "Complete Clarity and Control",
-      description: "Monitor wallet usage with full visibility. Export detailed reports of all transactions.",
+      description: "Review booking and transaction details; reporting scope depends on the agreed enterprise setup.",
       icon: PieChart,
       mockupColor: "bg-purple-500/10 border-purple-500/20",
       mockupElement: (
@@ -53,7 +53,7 @@ export default function KeyFeatures() {
     },
     {
       title: "Multi-User Access",
-      description: "Add, remove, activate, or deactivate users to maintain unified logistics operations securely.",
+      description: "Account and team access requirements can be assessed during enterprise onboarding.",
       icon: Users,
       mockupColor: "bg-amber-500/10 border-amber-500/20",
       mockupElement: (

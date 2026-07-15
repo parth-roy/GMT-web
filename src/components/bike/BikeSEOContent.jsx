@@ -10,19 +10,10 @@ export default function BikeSEOContent({ city }) {
 
         <div className="space-y-4 text-slate-600 leading-relaxed text-lg text-left">
           <p>
-            When it comes to fast and affordable two-wheeler delivery in {city}, GoMyTruck is your
-            most trusted partner. Whether you need to send urgent documents, small parcels, food
-            packages, or business samples across the city, our network of verified bike delivery
-            partners ensures your shipment reaches its destination quickly and safely. With
-            complete fare transparency and no hidden charges, you get peace of mind from pickup
-            to drop-off.
+            GoMyTruck accepts two-wheeler delivery requests for eligible documents and small parcels in supported parts of {city}. Enter the exact route, describe the item accurately, and review current serviceability and the route-based estimate before confirming.
           </p>
           <p>
-            Our dedicated two-wheeler partners in {city} are thoroughly verified, trained, and
-            equipped to handle your deliveries with speed and care. Book a bike delivery instantly
-            on our platform, track your parcel in real-time, and experience a seamless last-mile
-            logistics solution. From individual quick deliveries to high-volume business dispatch,
-            GoMyTruck is powering {city}'s fastest delivery network — one ride at a time.
+            Partner identity and vehicle documents are reviewed during onboarding. Assignment, pickup time, tracking availability, and delivery time depend on partner supply, route conditions, the item, and the confirmed booking. Restricted, unsafe, oversized, or incorrectly declared items may be refused.
           </p>
         </div>
       </div>

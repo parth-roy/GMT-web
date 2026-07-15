@@ -2,16 +2,16 @@ import React, { useState, Suspense, lazy } from "react"
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
-import EstimateModal from "./components/EstimateModal"
-import GetEstimateModal from "./components/GetEstimateModal"
 import GlobalFABs from "./components/GlobalFABs"
+import RouteAnalytics from "./components/RouteAnalytics"
 
 import Home from "./pages/Home"
-import TruckPage from "./pages/TruckPage"
-import PricingPage from "./pages/PricingPage"
-import ContactPage from "./pages/ContactPage"
 
-// Code splitting — Lazily load secondary routes
+// Code splitting — keep the home shell small and load route/modal code on demand.
+const TruckPage = lazy(() => import("./pages/TruckPage"))
+const PricingPage = lazy(() => import("./pages/PricingPage"))
+const ContactPage = lazy(() => import("./pages/ContactPage"))
+const GetEstimateModal = lazy(() => import("./components/GetEstimateModal"))
 const BikePage = lazy(() => import("./pages/BikePage"))
 const ServicesPage = lazy(() => import("./pages/ServicesPage"))
 const EnterprisePage = lazy(() => import("./pages/EnterprisePage"))
@@ -41,7 +41,8 @@ const CommercialGoodsTransportPage = lazy(() => import("./pages/CommercialGoodsT
 const TataAceKolkataPage = lazy(() => import("./pages/TataAceKolkataPage"))
 const GoodsTransportBarrackporePage = lazy(() => import("./pages/GoodsTransportBarrackporePage"))
 
-const LegalDocumentView = lazy(() => import("./pages/LegalDocumentView"))
+const StaticLegalDocument = lazy(() => import("./pages/StaticLegalDocument"))
+const LocalSeoPage = lazy(() => import("./pages/LocalSeoPage"))
 const DeleteAccountPage = lazy(() => import("./pages/DeleteAccountPage"))
 
 // A simple premium spinner for Suspense fallback
@@ -55,11 +56,8 @@ const PageLoader = () => (
 )
 
 export default function App() {
-  // isEstimateOpen / estimateData kept for legacy compatibility
-  const [isEstimateOpen, setIsEstimateOpen] = useState(false)
   const [isSelectServiceOpen, setIsSelectServiceOpen] = useState(false)
   const [selectedService, setSelectedService] = useState(null)
-  const [estimateData, setEstimateData] = useState(null)
   const navigate = useNavigate()
 
   const handleOpenEstimate = () => {
@@ -96,12 +94,6 @@ export default function App() {
     }
   }
 
-  // Legacy: kept in case any sub-component calls onCalculateEstimate with pre-built data
-  const handleCalculateEstimate = (data) => {
-    setEstimateData(data)
-    setIsEstimateOpen(true)
-  }
-
   const handleSelectVehicle = (category) => {
     setSelectedService(category)
     if (category === "truck") navigate("/truck")
@@ -112,7 +104,8 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col font-sans">
+    <div className="min-h-screen flex flex-col font-sans pb-20 md:pb-0">
+      <RouteAnalytics />
       <Navbar
         onOpenEstimate={handleOpenEstimate}
         onScrollToSection={handleScrollToSection}
@@ -124,7 +117,6 @@ export default function App() {
               <Home
                 selectedService={selectedService}
                 setSelectedService={setSelectedService}
-                onCalculateEstimate={handleCalculateEstimate}
                 onOpenEstimate={handleOpenEstimate}
                 onSelectVehicle={handleSelectVehicle}
               />
@@ -144,12 +136,12 @@ export default function App() {
             <Route path="/goods-transport-services" element={<GoodsTransportPage />} />
             <Route path="/fleet-partner-registration" element={<FleetPartnerPage />} />
             <Route path="/gomytruck-verified" element={<GoMyTruckVerifiedPage />} />
-            <Route path="/transport-services-kolkata" element={<TransportKolkataPage />} />
-            <Route path="/transport-services-barrackpore" element={<TransportBarrackporePage />} />
+            <Route path="/transport-services-kolkata" element={<Navigate to="/kolkata/truck-booking" replace />} />
+            <Route path="/transport-services-barrackpore" element={<Navigate to="/barrackpore/truck-booking" replace />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/pricing" element={<PricingPage />} />
-            <Route path="/local-transport" element={<LocalTransportPage />} />
-            <Route path="/intercity-transport" element={<IntercityTransportPage />} />
+            <Route path="/local-transport" element={<Navigate to="/local-transport/kolkata" replace />} />
+            <Route path="/intercity-transport" element={<Navigate to="/intercity/kolkata" replace />} />
             <Route path="/blog" element={<BlogPage />} />
 
             {/* NEW SILO ARCHITECTURE ROUTES */}
@@ -160,10 +152,23 @@ export default function App() {
             <Route path="/kolkata/goods-transport" element={<GoodsTransportKolkataPage />} />
             <Route path="/kolkata/tata-ace-booking" element={<TataAceKolkataPage />} />
             <Route path="/barrackpore/goods-transport" element={<GoodsTransportBarrackporePage />} />
+            <Route path="/kolkata" element={<LocalSeoPage pageKey="kolkata" />} />
+            <Route path="/barrackpore" element={<LocalSeoPage pageKey="barrackpore" />} />
+            <Route path="/howrah" element={<LocalSeoPage pageKey="howrah" />} />
+            <Route path="/salt-lake" element={<LocalSeoPage pageKey="salt-lake" />} />
+            <Route path="/new-town" element={<LocalSeoPage pageKey="new-town" />} />
+            <Route path="/kolkata/pickup-truck-booking" element={<PickupTruckKolkataPage />} />
+            <Route path="/kolkata/14-feet-truck-rental" element={<LocalSeoPage pageKey="kolkata-14ft" />} />
+            <Route path="/kolkata/packers-and-movers" element={<LocalSeoPage pageKey="kolkata-packers" />} />
+            <Route path="/barrackpore/loading-unloading-labour" element={<LocalSeoPage pageKey="barrackpore-labour" />} />
+            <Route path="/howrah/goods-transport" element={<LocalSeoPage pageKey="howrah-goods" />} />
+            <Route path="/salt-lake/goods-transport" element={<LocalSeoPage pageKey="salt-lake-goods" />} />
+            <Route path="/new-town/goods-transport" element={<LocalSeoPage pageKey="new-town-goods" />} />
+            <Route path="/routes/kolkata-to-asansol" element={<LocalSeoPage pageKey="kolkata-asansol" />} />
             
             <Route path="/services/transport-for-msmes" element={<TransportMSMEPage />} />
             <Route path="/services/commercial-goods-transport" element={<CommercialGoodsTransportPage />} />
-            <Route path="/services/fleet-partner-registration-india" element={<FleetPartnerPage />} />
+            <Route path="/services/fleet-partner-registration-india" element={<Navigate to="/fleet-partner-registration" replace />} />
             
             <Route path="/intercity/kolkata" element={<IntercityTransportPage />} />
             <Route path="/local-transport/kolkata" element={<LocalTransportPage />} />
@@ -172,7 +177,8 @@ export default function App() {
             <Route path="/truck-booking-kolkata" element={<Navigate to="/kolkata/truck-booking" replace />} />
             <Route path="/truck-booking-barrackpore" element={<Navigate to="/barrackpore/truck-booking" replace />} />
             <Route path="/mini-truck-booking-kolkata" element={<Navigate to="/kolkata/mini-truck-booking" replace />} />
-            <Route path="/pickup-truck-booking-kolkata" element={<Navigate to="/kolkata/pickup-truck-rent" replace />} />
+            <Route path="/pickup-truck-booking-kolkata" element={<Navigate to="/kolkata/pickup-truck-booking" replace />} />
+            <Route path="/kolkata/pickup-truck-rent" element={<Navigate to="/kolkata/pickup-truck-booking" replace />} />
             <Route path="/goods-transport-kolkata" element={<Navigate to="/kolkata/goods-transport" replace />} />
             <Route path="/local-transport-kolkata" element={<Navigate to="/local-transport/kolkata" replace />} />
             <Route path="/intercity-transport-from-kolkata" element={<Navigate to="/intercity/kolkata" replace />} />
@@ -181,15 +187,15 @@ export default function App() {
             <Route path="/goods-transport-barrackpore" element={<Navigate to="/barrackpore/goods-transport" replace />} />
             <Route path="/transport-service-for-msmes" element={<Navigate to="/services/transport-for-msmes" replace />} />
             <Route path="/commercial-goods-transport" element={<Navigate to="/services/commercial-goods-transport" replace />} />
-            <Route path="/fleet-partner-registration-india" element={<Navigate to="/services/fleet-partner-registration-india" replace />} />
+            <Route path="/fleet-partner-registration-india" element={<Navigate to="/fleet-partner-registration" replace />} />
             
             {/* Legal Pages */}
-            <Route path="/legal/privacy-policy" element={<LegalDocumentView documentId="privacy-policy" title="Privacy Policy" />} />
-            <Route path="/legal/terms" element={<LegalDocumentView documentId="terms-conditions" title="Terms & Conditions" />} />
+            <Route path="/legal/privacy-policy" element={<StaticLegalDocument documentId="privacy-policy" />} />
+            <Route path="/legal/terms" element={<StaticLegalDocument documentId="terms-conditions" />} />
             <Route path="/terms" element={<Navigate to="/legal/terms" replace />} />
-            <Route path="/legal/partner-terms" element={<LegalDocumentView documentId="partner-agreement" title="Independent Partner Agreement" />} />
-            <Route path="/legal/refund-cancellation" element={<LegalDocumentView documentId="cancellation-policy" title="Cancellation & Refund Policy" />} />
-            <Route path="/legal/community-guidelines" element={<LegalDocumentView documentId="community-guidelines" title="Community Guidelines" />} />
+            <Route path="/legal/partner-terms" element={<StaticLegalDocument documentId="partner-agreement" />} />
+            <Route path="/legal/refund-cancellation" element={<StaticLegalDocument documentId="cancellation-policy" />} />
+            <Route path="/legal/community-guidelines" element={<StaticLegalDocument documentId="community-guidelines" />} />
             <Route path="/delete-account" element={<DeleteAccountPage />} />
 
             {/* Catch-all 404 Route */}
@@ -199,19 +205,16 @@ export default function App() {
       </main>
       <Footer onScrollToSection={handleScrollToSection} />
 
-      {/* Legacy EstimateModal — used if estimateData passed directly from a component */}
-      <EstimateModal
-        isOpen={isEstimateOpen}
-        onClose={() => setIsEstimateOpen(false)}
-        estimateData={estimateData}
-      />
-
-      {/* Upgraded 2-step GetEstimateModal: selects service → fills route → calls live API */}
-      <GetEstimateModal
-        isOpen={isSelectServiceOpen}
-        onClose={() => setIsSelectServiceOpen(false)}
-        onSelectService={handleSelectVehicle}
-      />
+      <Suspense fallback={null}>
+        {/* Upgraded 2-step GetEstimateModal: selects service → fills route → calls live API */}
+        {isSelectServiceOpen && (
+          <GetEstimateModal
+            isOpen
+            onClose={() => setIsSelectServiceOpen(false)}
+            onSelectService={handleSelectVehicle}
+          />
+        )}
+      </Suspense>
 
       {/* Global Floating Action Buttons for WhatsApp and Booking */}
       <GlobalFABs onOpenEstimate={handleOpenEstimate} />

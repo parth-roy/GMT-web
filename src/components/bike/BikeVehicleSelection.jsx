@@ -7,18 +7,16 @@ const BIKE_VEHICLES = [
     img: "/bikes/bike.webp",
     capacity: "20 kg",
     dimension: "1.5 × 1.5 × 1.5 ft",
-    startingPrice: "₹49",
-    tag: "Super Fast",
-    desc: "Ideal for documents, keys, small parcels and fast intra-city drops.",
+    tag: "Small Parcels",
+    desc: "A planning option for eligible documents, keys, and small local parcels.",
   },
   {
     name: "EV Scooter (Green)",
     img: "/bikes/scooter.webp",
     capacity: "20 kg",
     dimension: "1.5 × 1.5 × 1.5 ft",
-    startingPrice: "₹45",
-    tag: "Eco Friendly",
-    desc: "Zero-emission electric delivery — same speed, lower cost, greener city.",
+    tag: "Electric Option",
+    desc: "An electric partner option where a suitable vehicle is available for the route.",
   },
 ]
 
@@ -42,11 +40,11 @@ export default function BikeVehicleSelection({ city }) {
           >
             {/* Tag */}
             <span className={`self-start text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border mb-4 ${
-              v.tag === "Eco Friendly"
+              v.tag === "Electric Option"
                 ? "bg-emerald-100 text-emerald-800 border-emerald-200"
                 : "bg-amber-100 text-amber-800 border-amber-200"
             }`}>
-              {v.tag === "Eco Friendly" ? <Zap size={10} className="inline mr-1" /> : null}
+              {v.tag === "Electric Option" ? <Zap size={10} className="inline mr-1" /> : null}
               {v.tag}
             </span>
 
@@ -55,6 +53,10 @@ export default function BikeVehicleSelection({ city }) {
               <img
                 src={v.img}
                 alt={v.name}
+                width="640"
+                height="360"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-auto group-hover:scale-105 transition-transform duration-300"
               />
             </div>
@@ -76,7 +78,7 @@ export default function BikeVehicleSelection({ city }) {
 
             <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-100">
               <span className="text-slate-400 text-xs font-medium">
-                Starting from <span className="text-slate-800 font-extrabold text-sm">{v.startingPrice}</span>
+                Route-based pricing
               </span>
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

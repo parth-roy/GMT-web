@@ -12,7 +12,7 @@ const schema = [
     "provider": { "@type": "Organization", "name": "GoMyTruck", "url": "https://gomytruck.com" },
     "areaServed": "Kolkata, India",
     "serviceType": "Goods Transport, Freight Services, Last-Mile Delivery, House Shifting",
-    "description": "GoMyTruck provides end-to-end goods transport services in Kolkata — from bikes for express parcels to full trucks for industrial freight. Book online, track in real time."
+    "description": "Request goods transport in Kolkata, from eligible small parcels to declared full-truck requirements. Review pricing and current serviceability before confirming."
   },
   {
     "@context": "https://schema.org",
@@ -28,7 +28,7 @@ const services = [
   {
     icon: Bike,
     title: "Bike Delivery",
-    desc: "Express document and parcel delivery within the city. Ideal for e-commerce, medical supplies, and urgent couriers.",
+    desc: "Two-wheeler requests for eligible documents and small parcels, subject to item and route serviceability.",
     link: "/bike",
     cta: "Book Bike Delivery",
     color: "from-green-500 to-emerald-600",
@@ -36,7 +36,7 @@ const services = [
   {
     icon: Truck,
     title: "Mini Truck & Tata Ace",
-    desc: "Book 3-wheeler or Tata Ace for small goods, shop stock, furniture and more. Per-km transparent pricing.",
+    desc: "Request a 3-wheeler or Tata Ace for declared small goods, shop stock, or furniture and review the route-based estimate.",
     link: "/mini-truck-booking",
     cta: "Book Mini Truck",
     color: "from-brand-500 to-brand-700",
@@ -44,7 +44,7 @@ const services = [
   {
     icon: Package,
     title: "Full Truck Load (FTL)",
-    desc: "Full and part truck loads for large-scale industrial and commercial freight across Kolkata and outstation routes.",
+    desc: "Discuss full- or part-load requirements for larger commercial goods; route and PTL availability must be confirmed.",
     link: "/truck",
     cta: "Book FTL Transport",
     color: "from-orange-500 to-amber-600",
@@ -52,7 +52,7 @@ const services = [
   {
     icon: Home,
     title: "Packers & Movers",
-    desc: "Comprehensive house shifting with professional packing, loading, transport, and unpacking services.",
+    desc: "Request a scoped moving quote covering the declared inventory, access, packing, workforce, route, and schedule.",
     link: "/packers-and-movers",
     cta: "Book Packers & Movers",
     color: "from-purple-500 to-violet-600",
@@ -77,7 +77,7 @@ export default function GoodsTransportPage() {
     <div className="bg-white min-h-screen font-sans">
       <SEOHead
         title="Goods Transport Services in Kolkata | Online Freight & Cargo Booking"
-        description="Book goods transport services in Kolkata online. Bike delivery, mini truck, full truck load, and packers & movers available on GoMyTruck. Transparent pricing, same-day service, real-time tracking."
+        description="Request goods transport in Kolkata by bike, mini truck, Tata Ace, or larger vehicle. Declare the load and review pricing and current serviceability before confirming."
         canonical="/goods-transport-services"
         keywords="goods transport services, freight services Kolkata, cargo transport Kolkata, online goods booking, transport company Kolkata, commercial transport services, goods vehicle booking, cargo delivery Kolkata, freight forwarding Kolkata, logistics company Kolkata, transport service provider, goods carrier booking"
         jsonLd={schema}
@@ -88,13 +88,13 @@ export default function GoodsTransportPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-brand-950 opacity-90" />
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/20 border border-brand-400/30 text-brand-300 text-xs font-bold tracking-widest uppercase mb-5">
-            Kolkata's Trusted Transport Platform
+            Route-based transport requests
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-white tracking-tight leading-tight mb-6">
             Goods Transport Services <span className="text-brand-400">in Kolkata</span>
           </h1>
           <p className="text-slate-300 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed mb-8">
-            From a single parcel to a full truckload — GoMyTruck connects you with the right vehicle for every shipment. Book online in 2 minutes.
+            From an eligible small parcel to a full-truck requirement, declare the goods and route so GoMyTruck can check the vehicle, estimate, and current partner availability.
           </p>
           <Link
             to="/book-truck-online"
@@ -113,7 +113,7 @@ export default function GoodsTransportPage() {
               Choose Your <span className="text-brand-600">Transport Service</span>
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              We have the right vehicle for every type of shipment — book online in minutes.
+              Compare common vehicle groups, then confirm that the selected body and payload fit your declared shipment.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -175,8 +175,8 @@ export default function GoodsTransportPage() {
           <h2 className="text-2xl font-bold text-slate-900 mb-8">Transport Services by Location</h2>
           <div className="flex flex-wrap justify-center gap-3">
             {[
-              { to: "/transport-services-kolkata", label: "Kolkata" },
-              { to: "/transport-services-barrackpore", label: "Barrackpore" },
+              { to: "/kolkata/truck-booking", label: "Kolkata" },
+              { to: "/barrackpore/truck-booking", label: "Barrackpore" },
             ].map((loc) => (
               <Link
                 key={loc.to}

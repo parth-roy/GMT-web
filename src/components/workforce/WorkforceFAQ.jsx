@@ -8,7 +8,7 @@ const faqs = [
   },
   {
     q: "How often will I get paid?",
-    a: "We process payouts every week directly to your registered bank account. You can track your daily earnings in the GoMyTruck Workforce app."
+    a: "The assignment screen shows the applicable earning terms. Digital withdrawals are currently paused; approved earnings remain recorded in the platform ledger until an enabled settlement method is confirmed."
   },
   {
     q: "What documents are required for registration?",
@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     q: "Can I choose my own working hours?",
-    a: "Yes, we offer flexible shifts. You can log into the app and choose to accept jobs whenever you are available."
+    a: "You can choose whether to accept an assignment that is offered for your role and area. The number and timing of available assignments are not guaranteed."
   },
   {
     q: "Is there any registration fee?",

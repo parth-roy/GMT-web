@@ -5,43 +5,43 @@ import { Plus, Minus, MessageCircleQuestion } from 'lucide-react';
 const faqs = [
   {
     question: "How do I book a truck online with GoMyTruck?",
-    answer: "Booking a truck online with GoMyTruck is simple and instant. Enter your pickup and drop address, select your vehicle type (mini truck, Tata Ace, pickup truck, or full truck), fill in your cargo details, and get an instant price estimate. You can book 24/7 via our website or app. Same-day and urgent truck booking near me is also available."
+    answer: "Enter the pickup and drop addresses, select a suitable vehicle, declare the goods and any workforce requirement, and review the current estimate. When you confirm, GoMyTruck creates the booking and begins looking for an eligible partner. Assignment and arrival times depend on route, vehicle, and partner availability."
   },
   {
-    question: "What is the Tata Ace on rent price per km?",
-    answer: "The Tata Ace on rent price per km varies by city and route. Typically, Tata Ace rent per km ranges from ₹12–₹18 for local city trips and slightly higher for intercity transport. GoMyTruck offers transparent, upfront pricing with no hidden charges. Use our estimate calculator to get the exact Tata Ace rental rate for your route."
+    question: "How is a Tata Ace or truck estimate calculated?",
+    answer: "The pricing service uses the selected vehicle, mapped distance and travel time, the current fuel surcharge and applicable demand rules. Loading help, waiting, tolls, tax, and other confirmed trip items can also affect the total. Use the booking form for the route-specific estimate rather than relying on a fixed per-kilometre claim."
   },
   {
     question: "Does GoMyTruck offer mini truck booking near me?",
-    answer: "Yes! GoMyTruck provides mini truck booking near you across all major Indian cities. Whether you need a mini truck for shifting goods locally or transporting cargo within the city, our driver-partners are typically available within 15–20 minutes. We cover Delhi NCR, Mumbai, Bangalore, Kolkata, Hyderabad, Barrackpore, and 100+ cities across India."
+    answer: "GoMyTruck currently publishes service information for Kolkata, Barrackpore, Howrah, Salt Lake, New Town, and supported routes from West Bengal. Submit the exact addresses to check route serviceability; a listed area does not guarantee that a particular vehicle is immediately available."
   },
   {
     question: "What are Full Truck Load (FTL) transport services?",
-    answer: "Full Truck Load (FTL) transport means you hire the entire truck exclusively for your shipment — giving you maximum speed, security, and direct delivery. GoMyTruck's FTL transport services cover both intra-city and intercity routes across India. FTL is ideal for bulk industrial goods, factory to warehouse, FMCG distribution, and B2B corporate logistics."
+    answer: "Full Truck Load means one customer reserves the vehicle capacity for a shipment instead of sharing it with other consignments. It can suit bulk goods and factory-to-warehouse movements. Route acceptance, the assigned vehicle, loading scope, and transit plan are confirmed for each booking."
   },
   {
     question: "What is part load transport (PTL) and how does it work?",
-    answer: "Part Load Transport (PTL) — also called LTL or less-than-truckload — lets you share truck space with other shippers, paying only for the portion you use. GoMyTruck's PTL logistics service is ideal for small to medium businesses that don't need a full truck. It's a cost-effective way to move goods between cities without booking an entire truck."
+    answer: "Part Load or LTL combines compatible consignments in shared capacity. It may reduce the vehicle space paid for, but handling and transit can differ from a dedicated truck. Ask the enterprise team whether PTL is available for your goods and route before planning the shipment."
   },
   {
     question: "How do I find return load online for my truck?",
-    answer: "Truck owners can find return loads online by registering on GoMyTruck. Our platform matches empty trucks with available loads on the same route, eliminating the costly problem of returning with an empty vehicle. Search by route, pickup date, and vehicle type. This is also called lorry load matching, load board, or empty truck load matching — all available on GoMyTruck."
+    answer: "An approved driver or fleet account can review eligible marketplace loads and submit a bid where bidding is enabled. Matching uses factors such as route, vehicle type, status, and availability. Registration does not guarantee a return load or a minimum number of jobs."
   },
   {
     question: "How do truck owners attach their vehicle to GoMyTruck?",
-    answer: "To attach your commercial vehicle to GoMyTruck, simply register as a driver-partner on our platform. Upload your vehicle documents, driving license, and RC. Once verified, you get access to our load board and can start accepting freight bookings immediately. We offer zero commission load booking on select routes and a dedicated fleet owner logistics platform."
+    answer: "Submit the partner registration form, then provide the identity, driving, and commercial-vehicle documents requested for your role. GoMyTruck reviews eligibility before activation. Access, fees, available loads, earning terms, and settlement options are shown in the applicable partner workflow and can change."
   },
   {
     question: "Does GoMyTruck provide B2B logistics services for businesses?",
-    answer: "Absolutely. GoMyTruck's Enterprise & B2B Logistics division serves FMCG companies, retail chains, factories, warehouses, and e-commerce brands. Services include dedicated fleet contracts, corporate truck rental, freight forwarding, supply chain logistics management, and API integration with your ERP system. Contact our Key Account team for enterprise logistics solutions."
+    answer: "Businesses can request scheduled or recurring transport, dedicated-capacity discussions, reporting, and integration discovery. The enterprise team confirms coverage, operating process, pricing, support, and any service level in a written commercial scope; these are not automatic website guarantees."
   },
   {
-    question: "Can I book a pickup truck for same-day transport near me?",
-    answer: "Yes! GoMyTruck supports same-day truck transport and urgent truck booking near you. If you need a pickup truck or mini truck today, simply open the app or website, enter your route, and we'll match you with the nearest available vehicle. For same-day delivery, we recommend booking at least 2 hours in advance for best availability."
+    question: "Can I request a pickup truck for the same day?",
+    answer: "You can submit a same-day requirement, but acceptance and dispatch depend on the pickup area, vehicle type, goods, partner availability, and route conditions. Confirm the assigned partner and arrival details before relying on a delivery schedule."
   },
   {
     question: "Is GoMyTruck available for goods transport in West Bengal and Barrackpore?",
-    answer: "Yes! GoMyTruck is headquartered in Barrackpore, West Bengal and provides truck booking in Barrackpore, Kolkata, and across West Bengal. We offer mini truck rent Barrackpore, part load transport Kolkata, FMCG transport West Bengal, and full intercity goods transport services from West Bengal to all major Indian cities."
+    answer: "GoMyTruck is based in Barrackpore and publishes local service pages for Barrackpore, Kolkata, Howrah, Salt Lake, and New Town, plus selected route pages. Actual serviceability and vehicle availability are checked for the submitted pickup, destination, date, and goods."
   }
 ];
 

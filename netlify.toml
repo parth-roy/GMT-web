@@ -2,75 +2,170 @@
   command = "npm run build"
   publish = "dist"
 
-# Enforce non-www domain
+# One-hop host and legacy URL consolidation. Canonical pages are prerendered in dist/.
 [[redirects]]
   from = "https://www.gomytruck.com/*"
   to = "https://gomytruck.com/:splat"
   status = 301
   force = true
 
-# SEO Route Consolidation (Redirect old overlapping URLs to clean canonicals)
+[[redirects]]
+  from = "/transport-services-kolkata"
+  to = "/kolkata/truck-booking"
+  status = 301
+
+[[redirects]]
+  from = "/truck-booking-kolkata"
+  to = "/kolkata/truck-booking"
+  status = 301
+
 [[redirects]]
   from = "/truck-booking-in-kolkata"
-  to = "/truck-booking-kolkata"
+  to = "/kolkata/truck-booking"
   status = 301
-  force = true
+
+[[redirects]]
+  from = "/transport-services-barrackpore"
+  to = "/barrackpore/truck-booking"
+  status = 301
+
+[[redirects]]
+  from = "/truck-booking-barrackpore"
+  to = "/barrackpore/truck-booking"
+  status = 301
 
 [[redirects]]
   from = "/truck-booking-in-barrackpore"
-  to = "/truck-booking-barrackpore"
+  to = "/barrackpore/truck-booking"
   status = 301
-  force = true
+
+[[redirects]]
+  from = "/mini-truck-booking-kolkata"
+  to = "/kolkata/mini-truck-booking"
+  status = 301
 
 [[redirects]]
   from = "/mini-truck-booking-in-kolkata"
-  to = "/mini-truck-booking-kolkata"
+  to = "/kolkata/mini-truck-booking"
   status = 301
-  force = true
+
+[[redirects]]
+  from = "/pickup-truck-booking-kolkata"
+  to = "/kolkata/pickup-truck-booking"
+  status = 301
 
 [[redirects]]
   from = "/pickup-truck-booking-in-kolkata"
-  to = "/pickup-truck-booking-kolkata"
+  to = "/kolkata/pickup-truck-booking"
   status = 301
-  force = true
+
+[[redirects]]
+  from = "/kolkata/pickup-truck-rent"
+  to = "/kolkata/pickup-truck-booking"
+  status = 301
+
+[[redirects]]
+  from = "/goods-transport-kolkata"
+  to = "/kolkata/goods-transport"
+  status = 301
 
 [[redirects]]
   from = "/goods-transport-in-kolkata"
-  to = "/goods-transport-kolkata"
+  to = "/kolkata/goods-transport"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/goods-transport-services-kolkata"
-  to = "/goods-transport-kolkata"
+  to = "/kolkata/goods-transport"
   status = 301
-  force = true
+
+[[redirects]]
+  from = "/tata-ace-booking-kolkata"
+  to = "/kolkata/tata-ace-booking"
+  status = 301
+
+[[redirects]]
+  from = "/goods-transport-barrackpore"
+  to = "/barrackpore/goods-transport"
+  status = 301
+
+[[redirects]]
+  from = "/local-transport"
+  to = "/local-transport/kolkata"
+  status = 301
+
+[[redirects]]
+  from = "/local-transport-kolkata"
+  to = "/local-transport/kolkata"
+  status = 301
 
 [[redirects]]
   from = "/local-transport-in-kolkata"
-  to = "/local-transport-kolkata"
+  to = "/local-transport/kolkata"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/local-transport-services-kolkata"
-  to = "/local-transport-kolkata"
+  to = "/local-transport/kolkata"
   status = 301
-  force = true
 
-# SPA fallback
+[[redirects]]
+  from = "/intercity-transport"
+  to = "/intercity/kolkata"
+  status = 301
+
+[[redirects]]
+  from = "/intercity-transport-from-kolkata"
+  to = "/intercity/kolkata"
+  status = 301
+
+[[redirects]]
+  from = "/transport-service-for-msmes"
+  to = "/services/transport-for-msmes"
+  status = 301
+
+[[redirects]]
+  from = "/commercial-goods-transport"
+  to = "/services/commercial-goods-transport"
+  status = 301
+
+[[redirects]]
+  from = "/fleet-partner-registration-india"
+  to = "/fleet-partner-registration"
+  status = 301
+
+[[redirects]]
+  from = "/services/fleet-partner-registration-india"
+  to = "/fleet-partner-registration"
+  status = 301
+
+[[redirects]]
+  from = "/terms"
+  to = "/legal/terms"
+  status = 301
+
+# Static-file shadowing serves prerendered routes first; unknown URLs return a real 404.
 [[redirects]]
   from = "/*"
-  to = "/index.html"
-  status = 200
+  to = "/404.html"
+  status = 404
 
-# Security Headers
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(self)"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-    Content-Security-Policy = "default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https: blob:; font-src 'self' data: https:; connect-src 'self' https: wss:;"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https: wss: https://www.google-analytics.com https://region1.google-analytics.com https://www.clarity.ms; frame-src https://www.googletagmanager.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"

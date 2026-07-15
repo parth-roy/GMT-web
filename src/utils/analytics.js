@@ -21,19 +21,38 @@ export const trackLead = (source, serviceType) => {
 }
 
 export const trackContact = (method) => {
-  pushEvent("contact", {
+  pushEvent(method === "phone" ? "click_call" : "click_whatsapp", {
     contact_method: method
   })
 }
 
 export const trackWhatsAppClick = (context) => {
-  pushEvent("whatsapp_click", {
+  pushEvent("click_whatsapp", {
     click_context: context
   })
 }
 
+export const trackCallClick = (context) => {
+  pushEvent("click_call", {
+    click_context: context,
+  })
+}
+
+export const trackBeginBooking = (context) => {
+  pushEvent("begin_booking", {
+    booking_context: context,
+  })
+}
+
+export const trackBookingSubmitted = (bookingId, vehicleType) => {
+  pushEvent("submit_booking", {
+    booking_id: bookingId,
+    vehicle_type: vehicleType,
+  })
+}
+
 export const trackFleetRegistration = (vehicleType) => {
-  pushEvent("fleet_registration_submitted", {
+  pushEvent("driver_signup_submit", {
     vehicle_type: vehicleType
   })
 }

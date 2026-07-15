@@ -17,7 +17,7 @@ export default function IntercityTransportPage() {
         "provider": {
           "@type": "Organization",
           "name": "GoMyTruck",
-          "url": "https://vahanlogistics.in"
+          "url": "https://gomytruck.com"
         },
         "description": "Book intercity transport from Kolkata to any city in India. Full truck load (FTL), part load (PTL) and mini truck available for city-to-city freight.",
         "areaServed": "India",
@@ -30,13 +30,13 @@ export default function IntercityTransportPage() {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://vahanlogistics.in/"
+            "item": "https://gomytruck.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Intercity Transport Services",
-            "item": "https://vahanlogistics.in/intercity-transport"
+            "item": "https://gomytruck.com/intercity/kolkata"
           }
         ]
       }
@@ -78,8 +78,8 @@ export default function IntercityTransportPage() {
     "GPS tracking throughout journey",
     "Door-to-door pickup & delivery",
     "Verified long-haul drivers",
-    "Competitive per-km rates",
-    "Insurance available for cargo"
+    "Route-based estimate and stated trip assumptions",
+    "Protection options reviewed only when available"
   ]
 
   return (
@@ -87,7 +87,7 @@ export default function IntercityTransportPage() {
       <SEOHead 
         title="Intercity Transport Services | City-to-City Truck Booking & Freight"
         description="Book intercity transport from Kolkata to any city in India. Full truck load (FTL), part load (PTL) and mini truck available for city-to-city freight. Transparent rates, door-to-door delivery."
-        canonicalUrl="/intercity-transport"
+        canonical="/intercity/kolkata"
         keywords="intercity transport, city to city transport, outstation truck booking, Kolkata to Delhi truck, FTL transport services, PTL logistics, intercity freight, outstation goods transport, long distance truck booking, door to door delivery India"
         jsonLd={jsonLd}
       />
@@ -101,11 +101,11 @@ export default function IntercityTransportPage() {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-sm font-medium text-brand-300 mb-6 backdrop-blur-sm">
-            <Globe size={16} /> Pan-India Coverage
+            <Globe size={16} /> Intercity route requests
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
             Intercity Transport — <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-200">Kolkata to Any City</span> in India
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-200">From Kolkata</span> on supported routes
           </h1>
           <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
             Full truck load (FTL), part load (PTL), and mini truck booking for city-to-city freight. Transparent rates and door-to-door delivery.
@@ -126,7 +126,7 @@ export default function IntercityTransportPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-900 mb-4">Popular Intercity Routes</h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">We cover 500+ cities across India. Here are some of our most frequently requested routes from Kolkata.</p>
+            <p className="text-slate-600 max-w-2xl mx-auto">Ask for route and vehicle availability before relying on an intercity pickup. These are example corridors from Kolkata.</p>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -164,7 +164,7 @@ export default function IntercityTransportPage() {
             {/* Benefits */}
             <div>
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Why Choose GoMyTruck for Intercity?</h2>
-              <p className="text-slate-600 mb-8 text-lg">Shipping goods across states requires trust. We ensure your cargo is safe, tracked, and delivered on time.</p>
+              <p className="text-slate-600 mb-8 text-lg">Intercity transport requires accurate load, route, document and timing details. Confirm the assigned partner, supported tracking, service scope and commercial terms before dispatch.</p>
               
               <ul className="space-y-5">
                 {benefits.map((benefit, idx) => (
@@ -233,7 +233,7 @@ export default function IntercityTransportPage() {
             When your business operations expand beyond city limits, you need a logistics partner that can keep up with long-haul demands. <strong>GoMyTruck</strong> provides fast, secure, and highly reliable <strong>intercity transport from Kolkata</strong> to destinations across West Bengal and the rest of India. Whether you are shipping manufacturing equipment to Durgapur, textiles to Asansol, or bulk agricultural products to Siliguri, our extensive fleet is ready to deploy.
           </p>
           <p>
-            Unlike local shifting, intercity transport requires meticulous planning, robust vehicles, and experienced drivers who can handle highway driving and state borders. We leverage advanced tech to eliminate the traditional inefficiencies of long-haul logistics. With GoMyTruck, you get instant freight quotes, dedicated vehicle allocation, and end-to-end GPS tracking, ensuring that your cargo crosses state lines without unnecessary delays or hidden broker fees.
+            Intercity transport requires route planning, a suitable vehicle, accurate goods documents, and attention to access and state-border requirements. GoMyTruck records these inputs and calculates the current estimate. Vehicle allocation, tracking availability, and transit timing are confirmed for each booking.
           </p>
           
           <h3 className="text-2xl font-semibold text-slate-800 mt-10 mb-4">Our Intercity Transport Solutions</h3>
@@ -241,9 +241,9 @@ export default function IntercityTransportPage() {
             We understand that different shipments require different logistical approaches. That is why we offer flexible options tailored to your specific cargo volume and budget:
           </p>
           <ul className="space-y-2 mb-8">
-            <li><strong>Full Truck Load (FTL):</strong> The best choice for large-volume shipments. You book the entire truck, meaning your goods travel directly from your pickup location in Kolkata to the final destination with no intermediate stops. FTL guarantees the fastest transit times and maximum security for high-value cargo.</li>
-            <li><strong>Part Truck Load (PTL):</strong> If your shipment isn't large enough to warrant an entire truck, PTL is the most cost-effective solution. You share the truck space with other shippers and only pay for the volume your goods occupy. While transit times may be slightly longer due to multiple drops, it drastically reduces shipping costs for SMEs.</li>
-            <li><strong>Express Intercity Mini Trucks:</strong> For urgent, smaller consignments (like emergency spare parts, medical equipment, or perishable goods) traveling to nearby cities like Haldia or Kharagpur, you can book an express <Link to="/mini-truck-booking-kolkata" className="text-brand-600 font-semibold hover:underline">mini truck</Link> or <Link to="/pickup-truck-booking-kolkata" className="text-brand-600 font-semibold hover:underline">pickup truck</Link> for direct, same-day delivery.</li>
+            <li><strong>Full Truck Load (FTL):</strong> FTL reserves the selected vehicle capacity for one customer&apos;s declared shipment. The route plan, timing, stops, vehicle, and operating scope still require confirmation.</li>
+            <li><strong>Part Truck Load (PTL):</strong> PTL shares compatible capacity. Ask the enterprise team to confirm whether it is operating for the specific goods, destination, and schedule before planning around it.</li>
+            <li><strong>Smaller Intercity Loads:</strong> A <Link to="/kolkata/mini-truck-booking" className="text-brand-600 font-semibold hover:underline">mini truck</Link> or <Link to="/kolkata/pickup-truck-booking" className="text-brand-600 font-semibold hover:underline">pickup truck</Link> may suit certain nearby routes, subject to payload, body fit, goods, availability, and confirmed transit plan.</li>
           </ul>
 
           <h3 className="text-2xl font-semibold text-slate-800 mt-10 mb-4">Why Businesses Trust Our Outstation Transport</h3>
@@ -253,7 +253,7 @@ export default function IntercityTransportPage() {
           <ol className="space-y-4 mb-8">
             <li><strong>Verified Highway Fleet:</strong> We don't just use any truck. Our intercity fleet consists of well-maintained 14-ft, 17-ft, 19-ft, and multi-axle trucks driven by experienced professionals who are well-versed in highway safety and toll protocols.</li>
             <li><strong>Real-Time Transit Updates:</strong> Once your goods leave Kolkata, you won't be left guessing. Our live GPS tracking allows you to monitor the truck's progress across highways, providing accurate ETAs for your receiving teams.</li>
-            <li><strong>Transit Insurance:</strong> Highway transport carries inherent risks. We offer comprehensive transit insurance options to protect your valuable commercial shipments against unforeseen incidents during the journey.</li>
+            <li><strong>Protection Review:</strong> Do not assume automatic cargo insurance. If an option is available, review the provider, declared value, exclusions, excess, proof of cover, and claim process before dispatch.</li>
             <li><strong>Digital Documentation:</strong> From e-way bills to GST-compliant digital invoicing and proof of delivery (POD), all documentation is handled digitally, simplifying your accounting and compliance processes.</li>
           </ol>
 
@@ -267,7 +267,7 @@ export default function IntercityTransportPage() {
                 </span>
               </summary>
               <p className="mt-4 text-slate-600 leading-relaxed">
-                We provide transport across West Bengal (including Asansol, Durgapur, Siliguri, Haldia) and pan-India routes connecting Kolkata to major metro cities like Delhi, Mumbai, Chennai, and Bangalore.
+                GoMyTruck publishes selected West Bengal route information, including Kolkata to Asansol. Other destinations are assessed from the exact pickup, destination, goods, vehicle, date, and current partner capacity.
               </p>
             </details>
             <details className="group bg-white border border-slate-200 rounded-xl p-6 open:shadow-md transition-all">
@@ -300,7 +300,7 @@ export default function IntercityTransportPage() {
                 </span>
               </summary>
               <p className="mt-4 text-slate-600 leading-relaxed">
-                While we can often arrange FTL vehicles on the same day, we highly recommend booking at least 24 to 48 hours in advance for intercity routes to ensure the best vehicle availability and optimal pricing.
+                Submit intercity requirements as early as practical. The team confirms capacity and timing after reviewing the vehicle, route, goods, documents, and partner availability; no fixed lead time guarantees allocation.
               </p>
             </details>
           </div>
@@ -310,7 +310,7 @@ export default function IntercityTransportPage() {
       {/* Bottom CTA */}
       <section className="py-16 bg-brand-600 text-center px-4">
         <h2 className="text-3xl font-bold text-white mb-6">Ready to Ship Intercity?</h2>
-        <p className="text-brand-100 mb-8 max-w-2xl mx-auto text-lg">Book online for immediate dispatch or contact our enterprise team for regular freight requirements.</p>
+        <p className="text-brand-100 mb-8 max-w-2xl mx-auto text-lg">Submit the route and goods for an availability review, or contact the enterprise team for recurring freight requirements.</p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Link to="/book-truck-online" className="bg-white text-brand-700 hover:bg-slate-50 px-8 py-3.5 rounded-xl font-bold text-lg transition-all shadow-lg flex items-center justify-center gap-2">
             Book Now <ArrowRight size={20} />

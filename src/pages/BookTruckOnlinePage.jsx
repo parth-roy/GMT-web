@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { Truck, Package, Clock, Shield, Star, ArrowRight, CheckCircle, PhoneCall } from "lucide-react"
 import SEOHead from "../seo/SEOHead"
@@ -13,7 +13,7 @@ const schema = [
     "provider": { "@type": "Organization", "name": "GoMyTruck", "url": "https://gomytruck.com" },
     "areaServed": "Kolkata, India",
     "serviceType": "Online Truck Booking, Goods Transport, Mini Truck Rental",
-    "description": "Book a truck online instantly in Kolkata. Mini truck, Tata Ace, 3-wheeler & full truck load available. Transparent pricing, same-day dispatch, real-time tracking.",
+    "description": "Request a mini truck, Tata Ace, 3-wheeler, or full truck load in Kolkata. Review a route-based estimate and current availability before confirming.",
     "url": "https://gomytruck.com/book-truck-online"
   },
   {
@@ -27,36 +27,37 @@ const schema = [
 ]
 
 const steps = [
-  { icon: Package, title: "Enter Pickup & Drop", desc: "Type your pickup and delivery address. We cover all of Kolkata and surrounding areas." },
+  { icon: Package, title: "Enter Pickup & Drop", desc: "Use exact addresses so the platform can map the route and check serviceability." },
   { icon: Truck, title: "Choose Your Vehicle", desc: "Select from Bike, 3-Wheeler, Tata Ace, or Mini Truck based on your load size." },
-  { icon: Clock, title: "Get Instant Estimate", desc: "See the fare upfront — no hidden charges, no surprises. Confirm with one click." },
-  { icon: Star, title: "Track in Real-Time", desc: "A verified GoMyTruck driver picks up and you track every km on the app." },
+  { icon: Clock, title: "Review the Estimate", desc: "Check the current route, vehicle, pricing components, and stated trip assumptions." },
+  { icon: Star, title: "Confirm and Follow Status", desc: "Confirmation begins partner matching; supported active trips can provide status and tracking updates." },
 ]
 
 const benefits = [
-  "Book in under 2 minutes — no calls needed",
-  "Same-day & scheduled bookings available",
-  "Transparent, distance-based pricing",
-  "Verified, background-checked drivers",
-  "Real-time GPS tracking on every trip",
-  "24/7 customer support",
+  "Exact route and complete goods declaration",
+  "Scheduled or same-day requests, subject to availability",
+  "Distance, time, fuel, demand, workforce, and tax components",
+  "Identity and vehicle documents reviewed during onboarding",
+  "Trip-status and GPS visibility where supported",
+  "Phone support hours published on the Support page",
 ]
 
 export default function BookTruckOnlinePage() {
+  const [city, setCity] = useState("Kolkata")
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
   return (
     <div className="bg-white min-h-screen font-sans">
       <SEOHead
         title="Book Truck Online in Kolkata | Instant Mini Truck & Goods Transport Booking"
-        description="Book a truck online in Kolkata in just 2 minutes. Choose from mini truck, Tata Ace, 3-wheeler & full truck load. Transparent pricing, same-day dispatch, real-time GPS tracking. GoMyTruck — India's trusted logistics platform."
+        description="Request a truck online in Kolkata. Choose a vehicle, declare the goods, review a route-based estimate, and check current partner availability before confirming."
         canonical="/book-truck-online"
         keywords="book truck online, book mini truck online, online truck booking Kolkata, instant truck booking, truck booking app, book goods vehicle online, online transport booking, hire truck online Kolkata, lorry booking online, book tempo online"
         jsonLd={schema}
       />
 
       {/* Reuse the full TruckHero with booking form */}
-      <TruckHero />
+      <TruckHero city={city} setCity={setCity} />
 
       {/* How It Works */}
       <section className="py-20 bg-slate-50">
@@ -69,7 +70,7 @@ export default function BookTruckOnlinePage() {
               Book a Truck Online in <span className="text-brand-600">4 Easy Steps</span>
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              No phone calls, no waiting. Get your goods moving in minutes.
+              Complete the booking details online, then wait for an explicit partner assignment and arrival update.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -110,7 +111,7 @@ export default function BookTruckOnlinePage() {
             <Shield size={40} className="mb-4 opacity-80" />
             <h3 className="text-2xl font-bold mb-3">GoMyTruck Verified</h3>
             <p className="text-brand-100 leading-relaxed mb-6">
-              Every driver on our platform is background-verified, trained, and carries valid commercial vehicle documentation. Your goods are in safe hands.
+              GoMyTruck collects and reviews identity, driving, and vehicle documents applicable to the partner role. Verification reduces onboarding risk, but it is not a guarantee against delay, loss, damage, or misconduct.
             </p>
             <Link
               to="/gomytruck-verified"

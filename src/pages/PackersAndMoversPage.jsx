@@ -6,7 +6,6 @@ import PackersSEOContent from "../components/packers/PackersSEOContent"
 import PackersLocalSEO from "../components/packers/PackersLocalSEO"
 import PackersFAQ from "../components/packers/PackersFAQ"
 import AppDownloadBanner from "../components/truck/AppDownloadBanner"
-import Testimonials from "../components/Testimonials"
 import SEOHead from "../seo/SEOHead"
 
 export default function PackersAndMoversPage() {
@@ -24,7 +23,7 @@ export default function PackersAndMoversPage() {
       "provider": { "@type": "Organization", "name": "GoMyTruck", "url": "https://gomytruck.com" },
       "areaServed": city,
       "serviceType": "Packers and Movers, House Shifting, Office Relocation",
-      "description": `Best packers and movers in ${city}. Safe, affordable, and careful house shifting services. Get instant quotes and book online.`
+      "description": `Request a packing and moving quote in ${city}. The scope and price depend on inventory, access, packing, route, workforce, and schedule.`
     },
     {
       "@context": "https://schema.org",
@@ -39,10 +38,10 @@ export default function PackersAndMoversPage() {
   return (
     <div className="bg-slate-50 min-h-screen font-sans w-full">
       <SEOHead
-        title={`Best Packers and Movers in ${city} | House Shifting Services`}
+        title={`Packers and Movers in ${city} | Request a Moving Quote`}
         description={`Looking for reliable packers and movers in ${city}? GoMyTruck offers careful house shifting, office relocation, and bike transport with transparent pricing.`}
         canonical="/packers-and-movers"
-        keywords={`packers and movers in ${city}, house shifting services in ${city}, office relocation ${city}, best packers and movers near me, affordable packers and movers, safe house shifting, bike transport ${city}`}
+        keywords={`packers and movers in ${city}, house shifting request in ${city}, office relocation ${city}, moving quote near me, scoped moving services, bike transport ${city}`}
         jsonLd={packersSchema}
       />
       
@@ -51,7 +50,6 @@ export default function PackersAndMoversPage() {
       <PackersExtraServices />
       <PackersSEOContent city={city} />
       <AppDownloadBanner />
-      <Testimonials />
       <PackersLocalSEO city={city} />
       <PackersFAQ city={city} />
     </div>

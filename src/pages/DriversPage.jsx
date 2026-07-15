@@ -4,7 +4,6 @@ import PartnerHero from '../components/PartnerHero';
 import PartnerBenefits from '../components/PartnerBenefits';
 import PartnerVehicles from '../components/PartnerVehicles';
 import PartnerHowItWorks from '../components/PartnerHowItWorks';
-import PartnerTestimonials from '../components/PartnerTestimonials';
 import PartnerFAQ from '../components/PartnerFAQ';
 
 const driverSchema = [
@@ -15,7 +14,7 @@ const driverSchema = [
     "provider": { "@type": "Organization", "name": "GoMyTruck", "url": "https://gomytruck.com" },
     "areaServed": "India",
     "serviceType": "Driver Partner Onboarding, Return Load Matching, Load Board India",
-    "description": "GoMyTruck helps truck owners find return loads online, attach their commercial vehicle to the company, and access India's biggest load board with zero commission on select routes."
+    "description": "GoMyTruck lets approved truck owners and drivers review eligible loads, submit bids where enabled, and manage accepted trips. Opportunities and earnings vary by route and demand."
   },
   {
     "@context": "https://schema.org",
@@ -36,9 +35,9 @@ export default function DriversPage() {
     <>
       <SEOHead
         title="Find Return Load Online | Attach Truck to Company — GoMyTruck Driver Partner"
-        description="Truck owners: attach your commercial vehicle to GoMyTruck, access India's load board, get daily bookings and zero commission on select routes. Register now to start earning."
+        description="Truck owners can apply to attach an eligible commercial vehicle, review available loads, bid where enabled, and manage accepted trips. Work is subject to verification and demand."
         canonical="/driver-partner"
-        keywords="find return load online, return load booking, return load app, load board India, attach truck to company, truck owner registration, find freight for truck, zero commission load booking, empty truck load matching"
+        keywords="find return load online, return load booking, return load app, load board West Bengal, attach truck to company, truck owner registration, find freight for truck, empty truck load matching"
         jsonLd={driverSchema}
       />
       
@@ -47,10 +46,8 @@ export default function DriversPage() {
         <PartnerVehicles />
         <PartnerHowItWorks />
         <PartnerBenefits />
-        <PartnerTestimonials />
         <PartnerFAQ isFleetOwner={false} />
       </main>
     </>
   );
 }
-

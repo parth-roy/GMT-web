@@ -10,6 +10,7 @@ import {
   CheckCircle,
 } from 'lucide-react';
 import SEOHead from '../seo/SEOHead';
+import { trackLead, trackWhatsAppClick } from '../utils/analytics';
 
 /* ─── JSON-LD schemas ─────────────────────────────────────── */
 const localBusinessSchema = {
@@ -18,7 +19,7 @@ const localBusinessSchema = {
   name: 'GoMyTruck',
   telephone: '+919331488999',
   email: 'hello@parthertech.com',
-  url: 'https://www.gomytruck.in',
+  url: 'https://gomytruck.com',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Chiriyamore, Barrackpore',
@@ -47,8 +48,8 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.gomytruck.in/' },
-    { '@type': 'ListItem', position: 2, name: 'Contact', item: 'https://www.gomytruck.in/contact' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://gomytruck.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Contact', item: 'https://gomytruck.com/contact' },
   ],
 };
 
@@ -76,6 +77,10 @@ export default function ContactPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const text = `Hi GoMyTruck, I am ${form.name}. Phone: ${form.phone}. ${form.message}`;
+    window.open(`https://wa.me/919331488999?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    trackLead('contact_form_whatsapp', 'support');
+    trackWhatsAppClick('contact_form');
     setSubmitted(true);
   };
 
@@ -83,7 +88,7 @@ export default function ContactPage() {
     <>
       <SEOHead
         title="Contact GoMyTruck | WhatsApp, Call & Email Support"
-        description="Contact GoMyTruck for truck booking help, support, partnership or complaints. Reach us on WhatsApp, call 9331488999, or email hello@parthertech.com. We respond within minutes."
+        description="Contact GoMyTruck for truck booking help, active-trip support, partnerships or complaints by WhatsApp, phone or email."
         canonical="/contact"
         keywords="GoMyTruck contact, truck booking support, contact transport company, logistics helpline, GoMyTruck WhatsApp, GoMyTruck phone number"
         jsonLd={jsonLd}
@@ -110,7 +115,7 @@ export default function ContactPage() {
             {/* badge */}
             <span className="inline-flex items-center gap-2 rounded-full bg-brand-600/20 border border-brand-500/30 px-4 py-1.5 text-sm font-medium text-brand-300 mb-6">
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              We're online — response within minutes
+              Phone, WhatsApp and email support
             </span>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight tracking-tight">
@@ -121,15 +126,14 @@ export default function ContactPage() {
             </h1>
 
             <p className="mt-5 text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-              Our support team is available&nbsp;<strong className="text-white">24&nbsp;×&nbsp;7</strong> to help
-              you with bookings, driver coordination, freight quotes, and anything in between.
+              Contact our team for booking questions, active-trip coordination, freight enquiries and account support.
               Pick your preferred channel below.
             </p>
 
             {/* trust pills */}
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               {[
-                'Instant WhatsApp replies',
+                'WhatsApp enquiries',
                 'Dedicated phone line',
                 'Hindi · Bengali · English',
               ].map((pill) => (
@@ -162,7 +166,7 @@ export default function ContactPage() {
                   </p>
                   <h2 className="text-xl font-bold text-slate-900">WhatsApp Us</h2>
                   <p className="mt-2 text-sm text-slate-500 leading-relaxed">
-                    Send a message and get a reply in under 2 minutes — day or night.
+                    Start a WhatsApp conversation for booking and support enquiries.
                   </p>
                 </div>
                 <a
@@ -218,7 +222,7 @@ export default function ContactPage() {
                   </p>
                   <h2 className="text-xl font-bold text-slate-900">Email Us</h2>
                   <p className="mt-2 text-sm text-slate-500 leading-relaxed">
-                    For partnerships, invoices, or detailed complaints — we reply within 4 hours.
+                    Use email for partnerships, invoices or detailed complaints.
                   </p>
                 </div>
                 <a
@@ -274,7 +278,7 @@ export default function ContactPage() {
                   Monday – Saturday<br />
                   <span className="text-white font-semibold">8:00 AM – 8:00 PM IST</span>
                 </p>
-                <p className="text-slate-400 text-xs mt-1">WhatsApp support is available 24 × 7</p>
+                <p className="text-slate-400 text-xs mt-1">For active trips, use the in-app support options shown on your booking.</p>
               </div>
             </div>
 
@@ -317,10 +321,9 @@ export default function ContactPage() {
                 <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
                   <CheckCircle size={32} className="text-green-500" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900">Message Sent!</h3>
+                <h3 className="text-xl font-bold text-slate-900">WhatsApp opened</h3>
                 <p className="text-slate-500 text-sm max-w-xs">
-                  Thank you, <strong className="text-slate-700">{form.name || 'there'}</strong>! We've received your message
-                  and will reply on <strong className="text-slate-700">{form.phone || 'your number'}</strong> within minutes.
+                  Review the pre-filled message in WhatsApp and tap Send to share it with GoMyTruck.
                 </p>
                 <button
                   onClick={() => { setSubmitted(false); setForm({ name: '', phone: '', message: '' }); }}
@@ -330,7 +333,7 @@ export default function ContactPage() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
+              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                 {/* Name */}
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="contact-name" className="text-sm font-semibold text-slate-700">
@@ -341,6 +344,7 @@ export default function ContactPage() {
                     name="name"
                     type="text"
                     required
+                    autoComplete="name"
                     placeholder="e.g. Rajan Sharma"
                     value={form.name}
                     onChange={handleChange}
@@ -358,6 +362,9 @@ export default function ContactPage() {
                     name="phone"
                     type="tel"
                     required
+                    autoComplete="tel-national"
+                    inputMode="numeric"
+                    pattern="[0-9]{10}"
                     placeholder="e.g. 9831000000"
                     value={form.phone}
                     onChange={handleChange}

@@ -4,36 +4,36 @@ import { DollarSign, Route, ShieldCheck, Map, Smartphone } from "lucide-react"
 const benefitsData = [
   {
     icon: DollarSign,
-    title: "Highest Earnings",
-    description: "Earn up to ₹45,000+ per month. We charge the lowest marketplace commission per trip, maximizing your take-home pay.",
+    title: "Earning Terms Per Load",
+    description: "Review the quoted or awarded amount and the applicable trip terms before accepting work. Income varies with completed loads, route, and demand.",
     color: "text-emerald-600",
     bgColor: "bg-emerald-100",
   },
   {
     icon: Route,
-    title: "Zero Empty Returns",
-    description: "Our smart load-matching algorithm ensures you get return loads, minimizing idle time and empty kilometers.",
+    title: "Route-Matched Opportunities",
+    description: "Review loads for eligible vehicles and routes, including possible return directions. The platform does not guarantee a matching return load.",
     color: "text-brand-600",
     bgColor: "bg-brand-100",
   },
   {
     icon: ShieldCheck,
-    title: "Free Family Insurance",
-    description: "Your safety is our priority. We provide free accidental and medical insurance worth ₹2,50,000 for you and your family.",
+    title: "Documented Onboarding",
+    description: "Identity, driving, and commercial-vehicle documents are reviewed before activation. Approval is based on the current eligibility rules.",
     color: "text-rose-600",
     bgColor: "bg-rose-100",
   },
   {
     icon: Map,
-    title: "Be Your Own Boss",
-    description: "Drive according to your own comfort. Log in and log out anytime. No fixed shifts, complete freedom over your schedule.",
+    title: "Accept Suitable Work",
+    description: "Choose whether to accept or bid on an available load after reviewing its route, goods, vehicle requirement, and timing.",
     color: "text-orange-600",
     bgColor: "bg-orange-100",
   },
   {
     icon: Smartphone,
     title: "Easy to Use App",
-    description: "View trips, navigate with GPS, and track your daily earnings all within our simple, driver-friendly mobile app.",
+    description: "Review eligible loads, manage accepted work, use trip navigation, and view recorded earnings in the partner workflow.",
     color: "text-indigo-600",
     bgColor: "bg-indigo-100",
   }
@@ -48,7 +48,7 @@ export default function PartnerBenefits() {
             Why Drive With GoMyTruck?
           </h2>
           <p className="text-lg text-slate-600">
-            We provide our partners with consistent income, maximum flexibility, and absolute peace of mind.
+            The platform supports onboarding, load discovery, bidding, trip execution, and internal earnings records without promising a minimum income or load volume.
           </p>
         </div>
 
@@ -76,7 +76,7 @@ export default function PartnerBenefits() {
             <div className="absolute top-0 right-0 w-32 h-32 bg-brand-500/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
             <h3 className="text-2xl font-display font-extrabold mb-3 relative z-10">Ready to start?</h3>
             <p className="text-slate-400 text-sm mb-6 relative z-10">
-              Complete the registration form above to get a call back within 2 hours.
+              Complete the registration form above. The onboarding team will review it and contact you when the relevant capacity is available.
             </p>
             <button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="bg-brand-600 hover:bg-brand-500 text-white font-bold py-3 px-6 rounded-xl transition-colors relative z-10 w-max">
               Register Now

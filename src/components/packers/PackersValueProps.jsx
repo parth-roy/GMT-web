@@ -6,17 +6,17 @@ export default function PackersValueProps() {
     {
       icon: <ShieldCheck size={32} className="text-brand-600" />,
       title: "Reliable Shifting Service",
-      desc: "Multi-layer packing with bubble wrap, corrugated sheets, and stretch film ensures zero scratches."
+      desc: "The quote states the agreed packing materials, handling scope, and inventory assumptions for the move."
     },
     {
       icon: <Banknote size={32} className="text-brand-600" />,
-      title: "Affordable & Assured Prices",
-      desc: "Transparent quotes with no hidden charges on moving day. Best rates in the market guaranteed."
+      title: "Scope-Based Quote",
+      desc: "Pricing is prepared from the inventory, floors, access, distance, packing needs, workforce, and schedule you provide."
     },
     {
       icon: <Wrench size={32} className="text-brand-600" />,
       title: "Expert Handling & Assembly",
-      desc: "Our trained professionals safely dismantle, transport, and reassemble your heavy furniture."
+      desc: "Dismantling, appliance work, reassembly, and specialist handling apply only when they are listed in the confirmed scope."
     }
   ];
 

@@ -17,7 +17,7 @@ const schema = [
     "provider": { "@type": "Organization", "name": "GoMyTruck", "url": "https://gomytruck.com" },
     "areaServed": { "@type": "City", "name": "Kolkata", "sameAs": "https://en.wikipedia.org/wiki/Kolkata" },
     "serviceType": "Goods Transport, Truck Booking, Last-Mile Delivery, Packers and Movers",
-    "description": "GoMyTruck provides full-range transport services across Kolkata — mini trucks, Tata Ace, full truck load, bike delivery, and packers & movers. Instant online booking, transparent pricing."
+    "description": "Request mini trucks, Tata Ace, larger goods vehicles, bike delivery, or a moving quote in Kolkata. Review serviceability and route-based pricing before confirming."
   },
   {
     "@context": "https://schema.org",
@@ -25,7 +25,7 @@ const schema = [
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://gomytruck.com" },
       { "@type": "ListItem", "position": 2, "name": "Goods Transport Services", "item": "https://gomytruck.com/goods-transport-services" },
-      { "@type": "ListItem", "position": 3, "name": "Transport Services in Kolkata", "item": "https://gomytruck.com/transport-services-kolkata" }
+      { "@type": "ListItem", "position": 3, "name": "Transport Services in Kolkata", "item": "https://gomytruck.com/kolkata/truck-booking" }
     ]
   }
 ]
@@ -55,7 +55,7 @@ export default function TransportKolkataPage() {
               </span>
             </summary>
             <p className="mt-4 text-slate-600 leading-relaxed">
-              Our pricing is 100% transparent and based on distance and vehicle type. Mini truck bookings generally start at a very affordable base fare, plus a per-kilometer charge. There are no hidden costs. <Link to="/pricing" className="text-brand-600 font-semibold hover:underline">Check our pricing page</Link> for exact estimates.
+              The estimate uses the route, vehicle, duration, current pricing configuration, declared goods and optional services. Review the component breakdown and any stated toll or waiting treatment before confirming. <Link to="/pricing" className="text-brand-600 font-semibold hover:underline">See how estimates work</Link>.
             </p>
           </details>
           <details className="group bg-white border border-slate-200 rounded-xl p-6 open:shadow-md transition-all">
@@ -77,7 +77,7 @@ export default function TransportKolkataPage() {
               </span>
             </summary>
             <p className="mt-4 text-slate-600 leading-relaxed">
-              Absolutely. Safety and security are our top priorities. Every driver and vehicle registered with GoMyTruck undergoes a strict background check, documentation verification, and vehicle fitness test before onboarding. 
+              GoMyTruck collects and reviews the identity, driving and vehicle documents applicable to each partner role. This onboarding review reduces risk but is not a guarantee against delay, loss, damage or misconduct.
             </p>
           </details>
         </div>
@@ -89,49 +89,43 @@ export default function TransportKolkataPage() {
     <CityTransportPage
       city="Kolkata"
       slug="kolkata"
+      canonical="/kolkata/truck-booking"
       headline="Transport Services in Kolkata"
-      subheadline="Book mini truck, Tata Ace, bike delivery, and packers & movers anywhere in Kolkata. Instant booking, verified drivers, real-time tracking."
-      description="Looking for transport services in Kolkata? GoMyTruck offers mini truck booking, Tata Ace rental, full truck load, bike delivery & packers and movers across all areas of Kolkata. Transparent pricing, same-day service, verified drivers."
+      subheadline="Request a mini truck, Tata Ace, bike delivery, or moving quote in Kolkata. Review route-based pricing and current availability."
+      description="Request transport services in Kolkata, including mini trucks, Tata Ace, larger goods vehicles, eligible bike delivery, and scoped moving quotes."
       keywords="transport services Kolkata, truck booking Kolkata, goods transport Kolkata, mini truck Kolkata, logistics company Kolkata, movers and packers Kolkata, transport company Kolkata, cargo delivery Kolkata, tempo service Kolkata, freight services Kolkata, same day delivery Kolkata, truck rental Kolkata"
       areas={kolkataAreas}
       jsonLd={schema}
       customFaqs={customFaqs}
-      pricingRoutes={[
-        { origin: 'Kolkata', destination: 'Howrah', vehicle: 'Mini Truck', capacity: '1 Ton', price: 450 },
-        { origin: 'Kolkata', destination: 'Salt Lake', vehicle: 'Tata Ace', capacity: '750 Kg', price: 350 },
-        { origin: 'Kolkata', destination: 'Barrackpore', vehicle: 'Pickup Truck', capacity: '1.5 Ton', price: 800 },
-        { origin: 'Kolkata', destination: 'Asansol', vehicle: '14Ft Truck', capacity: '4 Ton', price: 6500 },
-        { origin: 'Kolkata', destination: 'Siliguri', vehicle: '20Ft Container', capacity: '7 Ton', price: 12500 }
-      ]}
     >
       <h2>Reliable and Fast Transport Services in Kolkata</h2>
       <p>
-        Navigating the bustling streets of the City of Joy requires a logistics partner who understands the local terrain. <strong>GoMyTruck</strong> stands out as the premier provider of <strong>transport services in Kolkata</strong>, bridging the gap between businesses, individuals, and verified truck owners. Whether you need to transport heavy machinery from Howrah, shift your household goods from Salt Lake, or deliver urgent commercial parcels to New Town, our tech-driven platform ensures your goods arrive safely and on time.
+        Navigating the streets of Kolkata requires route, access and vehicle details to be captured accurately. <strong>GoMyTruck</strong> is a digital marketplace for <strong>transport requests in Kolkata</strong>, connecting customers with eligible driver and fleet partners. Assignment, pickup time and trip outcome depend on the declared load, route and current partner availability.
       </p>
       <p>
-        We have revolutionized the traditional transport industry by eliminating middlemen, hidden charges, and haggling. With a few clicks, you can book everything from a <Link to="/bike">bike courier</Link> to a <Link to="/mini-truck-booking-kolkata">mini truck</Link> or a heavy-duty container. We bring complete transparency to truck booking in Kolkata.
+        The web flow supports requests ranging from an eligible <Link to="/bike">bike delivery</Link> to a <Link to="/kolkata/mini-truck-booking">mini truck</Link> or a larger goods vehicle. The current estimate and its available components are shown before confirmation; route changes, tolls, waiting and service-scope changes can affect trip actuals.
       </p>
 
-      <h3>Why GoMyTruck is the Best Transport Company in Kolkata</h3>
+      <h3>How the GoMyTruck Kolkata Workflow Helps</h3>
       <p>
-        In a city as dynamic as Kolkata, logistics requirements change rapidly. Businesses need an agile partner, while individuals need an affordable, stress-free moving experience. Here is why thousands of customers rate us as the best transport company in Kolkata:
+        Kolkata transport requirements vary by route, goods, access, vehicle, and timing. The platform is designed to collect those details before confirmation:
       </p>
       <ul>
-        <li><strong>Instant Online Truck Booking:</strong> No more waiting hours for a transporter to confirm. Our intelligent routing system matches your requirement with the nearest available verified truck in minutes.</li>
-        <li><strong>Transparent, Zero-Surprise Pricing:</strong> We believe in honest pricing. Our fares are calculated based on accurate distance and vehicle type. You know exactly what you will pay before the trip begins.</li>
-        <li><strong>Wide Fleet of Vehicles:</strong> From the highly maneuverable <strong><Link to="/tata-ace-booking-kolkata">Tata Ace</Link></strong> (Chota Hathi) for narrow lanes to 14-ft, 17-ft, and 19-ft trucks for heavy industrial freight, our fleet can accommodate any load.</li>
-        <li><strong>Real-Time GPS Tracking:</strong> Once your goods are loaded, you can track the vehicle’s live location right from your smartphone. Peace of mind is guaranteed.</li>
-        <li><strong>Verified Driver Partners:</strong> Every driver goes through rigorous KYC and background verification. Your cargo is always in safe, professional hands.</li>
+        <li><strong>Online Request:</strong> Enter both addresses, choose a vehicle, declare the goods, and state optional workforce needs before partner matching starts.</li>
+        <li><strong>Pricing Breakdown:</strong> Review the available base, distance, time, fuel, demand, workforce, and tax components plus any stated toll or waiting treatment.</li>
+        <li><strong>Vehicle options:</strong> Compare options such as a <strong><Link to="/kolkata/tata-ace-booking">Tata Ace</Link></strong>, pickup or larger truck. Eligibility is checked against declared weight, dimensions, route and availability.</li>
+        <li><strong>Trip Visibility:</strong> Supported active bookings can provide trip-status and location updates after a partner is assigned.</li>
+        <li><strong>Partner Review:</strong> Applicable identity, driving, and vehicle documents are collected during onboarding. This reduces risk but is not a performance guarantee.</li>
       </ul>
 
       <h3>Comprehensive Goods Transport Solutions</h3>
       <p>
-        At GoMyTruck, we cater to a diverse array of logistics needs under one roof. Our <strong><Link to="/goods-transport-services-kolkata">goods transport services in Kolkata</Link></strong> are categorized to serve different use cases efficiently:
+        At GoMyTruck, we cater to a diverse array of logistics needs under one roof. Our <strong><Link to="/kolkata/goods-transport">goods transport services in Kolkata</Link></strong> are categorized to serve different use cases efficiently:
       </p>
 
       <h4>1. Mini Truck & Tata Ace Booking</h4>
       <p>
-        For intra-city transport of light to medium goods, nothing beats the agility of a mini truck. Whether it's shifting a 1 BHK, delivering FMCG products to retailers, or transporting electronics, booking a Tata Ace or <Link to="/pickup-truck-booking-kolkata">Pickup Truck</Link> ensures fast navigation through Kolkata's dense traffic.
+        For intra-city transport of light to medium goods, nothing beats the agility of a mini truck. Whether it's shifting a 1 BHK, delivering FMCG products to retailers, or transporting electronics, booking a Tata Ace or <Link to="/kolkata/pickup-truck-booking">Pickup Truck</Link> ensures fast navigation through Kolkata's dense traffic.
       </p>
 
       <h4>2. Full Truck Load (FTL) Services</h4>
@@ -151,13 +145,13 @@ export default function TransportKolkataPage() {
 
       <h3>Intercity and Local Transport</h3>
       <p>
-        While we excel in <strong><Link to="/local-transport-services-kolkata">local transport services within Kolkata</Link></strong>, our network stretches far beyond the city limits. We provide highly efficient <strong><Link to="/intercity-transport-from-kolkata">intercity transport from Kolkata</Link></strong> to destinations like Asansol, Durgapur, Siliguri, Haldia, and neighboring states. Whether it is a single factory shipment or regular regional distribution, we maintain the same high standards of punctuality and safety.
+        While we excel in <strong><Link to="/local-transport/kolkata">local transport services within Kolkata</Link></strong>, our network stretches far beyond the city limits. We provide highly efficient <strong><Link to="/intercity/kolkata">intercity transport from Kolkata</Link></strong> to destinations like Asansol, Durgapur, Siliguri, Haldia, and neighboring states. Whether it is a single factory shipment or regular regional distribution, we maintain the same high standards of punctuality and safety.
       </p>
 
       <div className="my-10 bg-brand-50 border border-brand-200 rounded-2xl p-8 text-center">
         <h3 className="text-2xl font-bold text-slate-900 mt-0 mb-4">Ready to Book Your Truck?</h3>
         <p className="text-slate-600 mb-6">
-          Experience the fastest, most reliable goods transport service in Kolkata today. Get an instant quote and a truck at your doorstep in minutes.
+          Enter the Kolkata route and declared load to review a current estimate and check partner availability.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link to="/book-truck-online" className="w-full sm:w-auto bg-brand-600 hover:bg-brand-500 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-transform hover:-translate-y-1">
@@ -171,4 +165,3 @@ export default function TransportKolkataPage() {
     </CityTransportPage>
   )
 }
-

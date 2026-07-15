@@ -7,23 +7,23 @@ export default function EnterpriseFAQ() {
   const faqs = [
     {
       question: "What makes GoMyTruck Enterprise different for B2B?",
-      answer: "GoMyTruck Enterprise is a powerful, centralized platform built specifically to streamline complex corporate logistics. It grants you complete control over bulk dispatches, multi-branch access, detailed analytics, and simplified post-paid billing cycles."
+      answer: "GoMyTruck can assess scheduled distribution, recurring vehicle needs, reporting, and integration requirements. The exact operating model, billing terms, access, and coverage are defined in an approved commercial scope."
     },
     {
       question: "How does GoMyTruck support massive supply chain demands?",
-      answer: "We act as an extension of your operations team. You get guaranteed fleet availability, strict SLA compliance, direct API connectivity to your warehouse software, and customized fixed-route planning to optimize your delivery costs."
+      answer: "Share route volumes, shipment characteristics, vehicle classes, timing, and escalation needs. GoMyTruck will assess capacity and propose a workflow. Fleet availability and service levels apply only when explicitly agreed in writing."
     },
     {
       question: "What is the onboarding timeline for corporate accounts?",
-      answer: "Once your KYC and service agreements are submitted, our team expedites the process. Your Enterprise dashboard is typically live and ready to deploy vehicles within a swift 24 to 48 hour window."
+      answer: "The timeline depends on KYC, commercial review, route and capacity validation, integration scope, and signed agreements. The enterprise team will provide a project timeline after discovery."
     },
     {
       question: "Who do I contact if my business faces an operational issue?",
-      answer: "Every enterprise partner is assigned a dedicated Key Account Manager (KAM). This single point of contact, along with our priority 24/7 corporate support line, ensures any operational hurdles are resolved instantly."
+      answer: "The agreement identifies the support channels, operating contacts, escalation path, and support window for the account. Do not assume a dedicated manager or round-the-clock response unless it is included in that scope."
     },
     {
       question: "How do I monitor my company's total logistics spend?",
-      answer: "Our robust Enterprise Dashboard gives you a bird's-eye view. You can track all live fleets, export customized GST invoices, manage departmental budgets, and analyze route efficiency in real-time."
+      answer: "Available booking, tracking, invoice, and reporting capabilities are demonstrated during discovery. Any custom report, departmental control, or integration requirement must be confirmed before contracting."
     }
   ]
 

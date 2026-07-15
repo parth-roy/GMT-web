@@ -25,7 +25,7 @@ export default function TruckPage() {
       "provider": { "@type": "Organization", "name": "GoMyTruck", "url": "https://gomytruck.com" },
       "areaServed": city,
       "serviceType": "Truck Booking, Mini Truck Rental, FTL Transport, PTL Logistics",
-      "description": `Book mini truck, Tata Ace on rent, pickup truck & full truck load (FTL) transport in ${city}. Same-day booking, transparent pricing, real-time tracking.`
+      "description": `Request a mini truck, Tata Ace, pickup truck, or full truck load in ${city}. Review route-based pricing and current serviceability before confirming.`
     },
     {
       "@context": "https://schema.org",
@@ -41,7 +41,7 @@ export default function TruckPage() {
     <div className="bg-slate-50 min-h-screen font-sans w-full">
       <SEOHead
         title={`Truck Booking in ${city} | Mini Truck, Tata Ace on Rent & FTL Transport`}
-        description={`Book mini truck, Tata Ace on rent, pickup truck & full truck load (FTL) transport in ${city} online. Same-day goods transport, transparent pricing, real-time tracking. GoMyTruck — India's trusted logistics platform.`}
+        description={`Request a mini truck, Tata Ace, pickup truck, or full truck load in ${city}. Review route-based pricing, declare the goods, and check current availability before confirming.`}
         canonical="/truck"
         keywords={`truck booking ${city}, mini truck booking near me, tata ace on rent, tata ace rent per km, pickup truck booking, FTL transport services, part load transport, goods transport ${city}, intercity transport booking, commercial truck rental, PTL logistics`}
         jsonLd={truckSchema}
@@ -58,4 +58,3 @@ export default function TruckPage() {
     </div>
   )
 }
-

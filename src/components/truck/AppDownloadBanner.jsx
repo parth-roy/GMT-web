@@ -13,7 +13,7 @@ export default function AppDownloadBanner() {
               Think Logistics, Think GoMyTruck!
             </h2>
             <p className="text-brand-100 text-lg md:text-xl max-w-2xl font-medium">
-              Get the GoMyTruck mobile app to start booking your orders instantly and track them in real-time!
+              Use the GoMyTruck app to submit bookings and follow supported trip-status and tracking updates for active orders.
             </p>
             <div className="pt-4 flex flex-col sm:flex-row items-center md:justify-start justify-center gap-4">
               <button className="bg-slate-900 hover:bg-black text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-colors">

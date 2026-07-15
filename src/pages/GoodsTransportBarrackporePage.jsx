@@ -17,7 +17,7 @@ export default function GoodsTransportBarrackporePage() {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://gomytruck.com" },
-        { "@type": "ListItem", "position": 2, "name": "Goods Transport in Barrackpore", "item": "https://gomytruck.com/goods-transport-barrackpore" }
+        { "@type": "ListItem", "position": 2, "name": "Goods Transport in Barrackpore", "item": "https://gomytruck.com/barrackpore/goods-transport" }
       ]
     },
     {
@@ -96,6 +96,7 @@ export default function GoodsTransportBarrackporePage() {
     <CityTransportPage
       city="Barrackpore"
       slug="goods-transport-barrackpore"
+      canonical="/barrackpore/goods-transport"
       headline="Goods Transport in Barrackpore"
       subheadline="Comprehensive goods transport and logistics services across Barrackpore and North 24 Parganas. Fast, secure, and affordable."
       description="Looking for goods transport in Barrackpore? Book Tata Ace, mini trucks, and pickup trucks online with GoMyTruck for fast local delivery."
@@ -104,40 +105,40 @@ export default function GoodsTransportBarrackporePage() {
       areas={barrackporeAreas}
       highlights={[
         "Serving Barrackpore and the entire North 24 Parganas belt",
-        "Fast pickup within 20–30 minutes",
+        "Partner assignment and arrival shown in booking status",
         "Seamless connectivity to Kolkata and beyond",
         "Verified and highly experienced local drivers",
-        "Transparent pricing with no hidden broker fees",
+        "Fare components shown before confirmation",
         "Specialized solutions for local SMEs and industries"
       ]}
       customFaqs={customFaqs}
     >
-      <h2>Premier Goods Transport Agency in Barrackpore</h2>
+      <h2>Goods Transport Requests in Barrackpore</h2>
       <p>
         The Barrackpore belt, stretching along the Hooghly River in North 24 Parganas, is a vital economic corridor teeming with jute mills, small-scale industries, and dense residential areas. To keep this region moving, you need a logistics partner that understands the local terrain. <strong>GoMyTruck</strong> stands as the most reliable and tech-driven <strong>goods transport agency in Barrackpore</strong>, serving businesses and individuals alike.
       </p>
       <p>
-        From transporting raw jute in Titagarh to delivering electronic goods to retail stores in Sodepur, our digital platform offers a seamless way to book commercial vehicles. We have replaced the inefficient traditional transporter model with instant online booking, upfront pricing, and live GPS tracking.
+        From declared raw jute in Titagarh to electronic goods for a Sodepur retailer, the platform records the route and load, calculates a current estimate, and begins partner matching after confirmation. Supported active trips can provide status and location updates.
       </p>
 
       <h3>Complete Freight Solutions for North 24 Parganas</h3>
       <p>
-        We provide a full spectrum of <Link to="/goods-transport-services-kolkata">goods transport services</Link> tailored to the unique demands of the Barrackpore subdivision:
+        We provide a full spectrum of <Link to="/kolkata/goods-transport">goods transport services</Link> tailored to the unique demands of the Barrackpore subdivision:
       </p>
 
       <h4>1. Industrial & B2B Logistics</h4>
       <p>
-        The factories and manufacturing units scattered across Khardah, Shyamnagar, and Naihati require robust supply chains. We supply heavy-duty <Link to="/pickup-truck-booking-kolkata">pickup trucks</Link> and large 14-ft vehicles for the daily movement of raw materials, machinery parts, and finished industrial goods. Our vehicles ensure your production lines never halt due to logistics failures.
+        The factories and manufacturing units scattered across Khardah, Shyamnagar, and Naihati require robust supply chains. We supply heavy-duty <Link to="/kolkata/pickup-truck-booking">pickup trucks</Link> and large 14-ft vehicles for the daily movement of raw materials, machinery parts, and finished industrial goods. Our vehicles ensure your production lines never halt due to logistics failures.
       </p>
 
       <h4>2. Wholesale and Retail Distribution</h4>
       <p>
-        Local markets in Barrackpore rely on constant inventory replenishment. We partner with wholesalers to distribute FMCG products, groceries, and textiles to retail outlets across the region. Our <Link to="/mini-truck-booking-kolkata">mini trucks</Link> and Tata Aces are perfect for navigating crowded local markets for swift mid-mile and last-mile deliveries.
+        Local markets in Barrackpore rely on constant inventory replenishment. We partner with wholesalers to distribute FMCG products, groceries, and textiles to retail outlets across the region. Our <Link to="/kolkata/mini-truck-booking">mini trucks</Link> and Tata Aces are perfect for navigating crowded local markets for swift mid-mile and last-mile deliveries.
       </p>
 
       <h4>3. Relocation and Packers & Movers</h4>
       <p>
-        Whether you are a family moving to a new apartment in Kamarhati or a student shifting to a PG near the cantonment, we offer specialized household shifting services. Book a <Link to="/tata-ace-booking-kolkata">Tata Ace</Link> for a quick local move, or opt for our comprehensive packers and movers service for complete peace of mind.
+        Whether you are a family moving to a new apartment in Kamarhati or a student shifting to a PG near the cantonment, we offer specialized household shifting services. Book a <Link to="/kolkata/tata-ace-booking">Tata Ace</Link> for a quick local move, or opt for our comprehensive packers and movers service for complete peace of mind.
       </p>
 
       <h3>Why Trust GoMyTruck for Your Transport Needs?</h3>
@@ -145,7 +146,7 @@ export default function GoodsTransportBarrackporePage() {
         Choosing the right transport provider is critical for the safety of your goods and the efficiency of your business. Here is why Barrackpore trusts GoMyTruck:
       </p>
       <ul>
-        <li><strong>Hyper-Local Driver Network:</strong> We don't dispatch trucks from central Kolkata for a Barrackpore booking. Our extensive network of local driver partners ensures that a vehicle is always available near you, drastically reducing wait times.</li>
+        <li><strong>Local opportunity matching:</strong> Eligible nearby driver and fleet partners may receive the request. Vehicle availability and waiting time are confirmed only after a partner accepts or is assigned.</li>
         <li><strong>Transparent, Algorithm-Driven Fares:</strong> We charge based on the actual distance of your route. By cutting out the middlemen and brokers, we offer the most competitive per-kilometer transport rates in North 24 Parganas.</li>
         <li><strong>Live GPS Tracking:</strong> Security is our top priority. You can monitor the exact location of your goods via our app from the moment they are loaded in Barrackpore until they reach their final destination.</li>
         <li><strong>Scalable Fleet:</strong> Whether you need a small Piaggio Ape for a quick courier run or a 14-ft truck for bulk industrial goods, our diverse fleet ensures you only pay for the capacity you actually need.</li>

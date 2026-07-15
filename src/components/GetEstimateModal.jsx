@@ -17,8 +17,6 @@ const SERVICES = [
  *  Step 2: Enter route details → call API → open EstimateResultModal
  */
 export default function GetEstimateModal({ isOpen, onClose, onSelectService }) {
-  if (!isOpen) return null
-
   const [step, setStep] = useState(1)
   const [selectedService, setSelectedService] = useState(null)
 
@@ -107,6 +105,8 @@ export default function GetEstimateModal({ isOpen, onClose, onSelectService }) {
     setPickup(""); setPickupCoords(null); setDrop(""); setDropCoords(null); setWeight(""); setPhone(""); setPincode("")
     setError("")
   }
+
+  if (!isOpen) return null
 
   return (
     <>
@@ -202,6 +202,8 @@ export default function GetEstimateModal({ isOpen, onClose, onSelectService }) {
                   {/* Pickup City */}
                   <div>
                     <AddressAutocomplete
+                      id="estimate-pickup"
+                      autoComplete="street-address"
                       label="Pickup City / Address *"
                       placeholder="e.g. Kolkata"
                       onAddressSelect={(res) => {
@@ -214,6 +216,7 @@ export default function GetEstimateModal({ isOpen, onClose, onSelectService }) {
                   {/* Drop City */}
                   <div>
                     <AddressAutocomplete
+                      id="estimate-drop"
                       label="Drop City / Address *"
                       placeholder="e.g. Mumbai"
                       onAddressSelect={(res) => {
@@ -228,6 +231,7 @@ export default function GetEstimateModal({ isOpen, onClose, onSelectService }) {
                     <label className="block text-[10px] font-bold text-slate-500 uppercase mb-1">Load Weight (kg)</label>
                     <input
                       type="number" min="1"
+                      inputMode="numeric"
                       placeholder="e.g. 500"
                       value={weight}
                       onChange={e => setWeight(e.target.value)}
@@ -240,6 +244,8 @@ export default function GetEstimateModal({ isOpen, onClose, onSelectService }) {
                     <label className="block text-[10px] font-bold text-slate-500 uppercase mb-1">Pickup Pincode</label>
                     <input
                       type="text" maxLength={6}
+                      inputMode="numeric"
+                      autoComplete="postal-code"
                       placeholder="e.g. 700001"
                       value={pincode}
                       onChange={e => setPincode(e.target.value.replace(/\D/g, ""))}
@@ -252,6 +258,8 @@ export default function GetEstimateModal({ isOpen, onClose, onSelectService }) {
                     <label className="block text-[10px] font-bold text-slate-500 uppercase mb-1">Mobile Number *</label>
                     <input
                       type="tel" required maxLength={10}
+                      inputMode="numeric"
+                      autoComplete="tel-national"
                       placeholder="10-digit Indian mobile"
                       value={phone}
                       onChange={e => setPhone(e.target.value.replace(/\D/g, ""))}

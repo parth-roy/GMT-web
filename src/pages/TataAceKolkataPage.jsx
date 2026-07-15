@@ -17,7 +17,7 @@ export default function TataAceKolkataPage() {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://gomytruck.com" },
-        { "@type": "ListItem", "position": 2, "name": "Tata Ace Booking Kolkata", "item": "https://gomytruck.com/tata-ace-booking-kolkata" }
+        { "@type": "ListItem", "position": 2, "name": "Tata Ace Booking Kolkata", "item": "https://gomytruck.com/kolkata/tata-ace-booking" }
       ]
     },
     {
@@ -96,14 +96,15 @@ export default function TataAceKolkataPage() {
     <CityTransportPage
       city="Kolkata"
       slug="tata-ace-booking-kolkata"
+      canonical="/kolkata/tata-ace-booking"
       headline="Tata Ace Booking in Kolkata"
       subheadline="Rent Tata Ace (Chota Hathi) online. Perfect for 1BHK shifting, appliances, and FMCG deliveries across Kolkata."
-      description="Book a Tata Ace in Kolkata instantly. GoMyTruck provides Chota Hathi on rent for local goods transport at the cheapest per-km rates."
+      description="Request a Tata Ace in Kolkata for eligible local goods. Review the declared load, route-based estimate, and current partner availability before confirming."
       keywords="tata ace booking kolkata, chota hathi rent kolkata, tata ace for shifting, rent tata ace kolkata, book chota hathi online"
       jsonLd={jsonLd}
       areas={areas}
       highlights={[
-        "Available in 20 minutes across Kolkata",
+        "Assignment and arrival depend on current availability",
         "Perfect for 1BHK house shifting",
         "Transparent, low per-km rates",
         "Verified drivers",
@@ -111,9 +112,9 @@ export default function TataAceKolkataPage() {
       ]}
       customFaqs={customFaqs}
     >
-      <h2>Book Tata Ace (Chota Hathi) in Kolkata Instantly</h2>
+      <h2>Request a Tata Ace (Chota Hathi) in Kolkata</h2>
       <p>
-        The Tata Ace, fondly known as the <em>Chota Hathi</em>, revolutionized local logistics in India. It is the perfect vehicle for navigating the narrow, bustling streets of Kolkata. Whether you are moving to a new apartment in Salt Lake, shifting office equipment to New Town, or transporting wholesale goods from Burrabazar, <strong>GoMyTruck</strong> offers the fastest and most reliable <strong>Tata Ace booking in Kolkata</strong>.
+        The Tata Ace, often called a <em>Chota Hathi</em>, is a compact commercial vehicle used for many local routes. It may suit apartment goods, office equipment or wholesale inventory after the weight, dimensions and access conditions are checked. <strong>GoMyTruck</strong> accepts <strong>Tata Ace booking requests in Kolkata</strong> subject to eligible partner availability.
       </p>
       <p>
         Skip the hassle of negotiating with local truck stands. With our digital platform, you can book a Tata Ace online in seconds, get a transparent upfront price, and track your goods in real-time.
@@ -125,7 +126,7 @@ export default function TataAceKolkataPage() {
       </p>
       <ul>
         <li><strong>Unmatched Maneuverability:</strong> The compact size of the Tata Ace allows it to enter narrow lanes and congested market areas where larger trucks simply cannot fit.</li>
-        <li><strong>Fewer Traffic Restrictions:</strong> Large commercial vehicles face severe daytime "No Entry" restrictions in Kolkata. The Tata Ace, being a light commercial vehicle (LCV), faces fewer restrictions, ensuring your <Link to="/local-transport-services-kolkata">local transport</Link> needs are met promptly during the day.</li>
+        <li><strong>Fewer Traffic Restrictions:</strong> Large commercial vehicles face severe daytime "No Entry" restrictions in Kolkata. The Tata Ace, being a light commercial vehicle (LCV), faces fewer restrictions, ensuring your <Link to="/local-transport/kolkata">local transport</Link> needs are met promptly during the day.</li>
         <li><strong>Economical Pricing:</strong> Why pay for a large truck when you only have a small load? The excellent fuel efficiency of the Tata Ace translates to significantly lower booking fares for our customers.</li>
         <li><strong>Optimal Capacity:</strong> With a payload capacity of up to 750 kg, it is spacious enough to hold a refrigerator, a washing machine, a double bed, and several cartons simultaneously.</li>
       </ul>
@@ -137,7 +138,7 @@ export default function TataAceKolkataPage() {
 
       <h4>1. Small Scale House Shifting</h4>
       <p>
-        If you are a student, a bachelor, or a small family moving out of a 1BHK or a PG accommodation, the Tata Ace is your best friend. It provides exactly the right amount of space for your essential furniture and belongings.
+        For a smaller household or PG move, a Tata Ace may be suitable after the inventory, dimensions, weight and access conditions are checked. Choose the vehicle only after comparing those details with its stated capacity.
       </p>
 
       <h4>2. E-commerce and Retail Delivery</h4>
@@ -152,13 +153,13 @@ export default function TataAceKolkataPage() {
 
       <h3>Transparent Fare Structure</h3>
       <p>
-        We believe in 100% pricing transparency. When you book a Tata Ace with GoMyTruck, our algorithm calculates the fare based on the exact distance between your pickup and drop locations. There is a fixed base fare, followed by a transparent per-kilometer charge. No hidden fees, no haggling with drivers. <Link to="/pricing">Check our pricing page</Link> for current rates.
+        The server calculates the current estimate from the route, estimated duration, vehicle configuration, declared load and optional services. Applicable toll, waiting or scope changes can affect trip actuals. <Link to="/pricing">See how fare components work</Link>.
       </p>
 
       <div className="my-10 bg-brand-50 border border-brand-200 rounded-2xl p-8 text-center">
         <h3 className="text-2xl font-bold text-slate-900 mt-0 mb-4">Ready to Rent a Tata Ace?</h3>
         <p className="text-slate-600 mb-6">
-          Do not wait for hours. Book a Chota Hathi online and get it at your doorstep anywhere in Kolkata within 20 minutes!
+          Enter the route and load details to check whether a suitable Tata Ace and partner are currently available.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link to="/book-truck-online" className="w-full sm:w-auto bg-brand-600 hover:bg-brand-500 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-transform hover:-translate-y-1">

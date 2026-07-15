@@ -1,19 +1,18 @@
 import React, { useState } from "react"
+import SEOHead from "../seo/SEOHead"
 
 export default function DeleteAccountPage() {
   const [phone, setPhone] = useState("")
   const [reason, setReason] = useState("")
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [emailOpened, setEmailOpened] = useState(false)
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     if (!phone.trim()) return
-    setLoading(true)
-    // Simulate submission (replace with real API call if needed)
-    await new Promise((r) => setTimeout(r, 1500))
-    setLoading(false)
-    setSubmitted(true)
+    const subject = encodeURIComponent("Delete My Account")
+    const body = encodeURIComponent(`Registered phone: +91 ${phone}\nReason: ${reason || "Not provided"}\n\nPlease contact me to verify this account-deletion request.`)
+    window.location.href = `mailto:support@gomytruck.com?subject=${subject}&body=${body}`
+    setEmailOpened(true)
   }
 
   const s = {
@@ -66,34 +65,14 @@ export default function DeleteAccountPage() {
     "Anonymised aggregate statistics (no personal identifiers)",
   ]
 
-  if (submitted) {
-    return (
-      <div style={s.page}>
-        <header style={s.header}>
-          <div style={s.badge}>Account Deletion</div>
-          <h1 style={s.h1}>Request <span style={{ color: "#FCA5A5" }}>Submitted</span></h1>
-        </header>
-        <div style={s.container}>
-          <div style={s.card}>
-            <div style={s.success}>
-              <div style={{ fontSize: "64px", marginBottom: "20px" }}>✅</div>
-              <h2 style={{ fontSize: "22px", fontWeight: 800, color: "#065F46", marginBottom: "12px" }}>Request Received</h2>
-              <p style={{ fontSize: "15px", color: "#374151", marginBottom: "8px" }}>
-                We have received your account deletion request for <strong>+91 {phone}</strong>.
-              </p>
-              <p style={{ fontSize: "14px", color: "#6B7280" }}>
-                Our team will process it within <strong>30 days</strong> and send a confirmation to your registered details. If you have any questions, email us at{" "}
-                <a href="mailto:support@gomytruck.com" style={{ color: "#DC2626" }}>support@gomytruck.com</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
   return (
     <div style={s.page}>
+      <SEOHead
+        title="Delete a GoMyTruck Account"
+        description="Request deletion of a GoMyTruck account and associated personal data after identity verification."
+        canonical="/delete-account"
+        noIndex
+      />
       {/* Header */}
       <header style={s.header}>
         <div style={s.badge}>GoMyTruck Captain</div>
@@ -139,23 +118,37 @@ export default function DeleteAccountPage() {
             📧 Alternatively, email us at <strong>support@gomytruck.com</strong> with subject <strong>"Delete My Account"</strong>
           </div>
 
+          {emailOpened && (
+            <div role="status" style={{ ...s.infoBox, background: "#ECFDF5", borderColor: "#A7F3D0", color: "#065F46" }}>
+              Your email app was opened with a prepared request. You must review it and press Send; GoMyTruck has not received anything until the email is sent.
+            </div>
+          )}
+
           <form onSubmit={handleSubmit}>
             <div style={{ marginBottom: "20px" }}>
-              <label style={s.label}>Registered Phone Number *</label>
+              <label htmlFor="delete-account-phone" style={s.label}>Registered Phone Number *</label>
               <input
+                id="delete-account-phone"
+                name="phone"
                 style={s.input}
                 type="tel"
                 placeholder="Enter your 10-digit mobile number"
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
                 required
                 maxLength={10}
+                minLength={10}
+                pattern="[0-9]{10}"
+                inputMode="numeric"
+                autoComplete="tel-national"
               />
             </div>
 
             <div style={{ marginBottom: "24px" }}>
-              <label style={s.label}>Reason for deletion (optional)</label>
+              <label htmlFor="delete-account-reason" style={s.label}>Reason for deletion (optional)</label>
               <textarea
+                id="delete-account-reason"
+                name="reason"
                 style={s.textarea}
                 placeholder="Tell us why you're leaving (helps us improve)..."
                 value={reason}
@@ -165,18 +158,17 @@ export default function DeleteAccountPage() {
 
             <button
               type="submit"
-              style={{ ...s.btn, opacity: loading ? 0.7 : 1 }}
-              disabled={loading}
+              style={s.btn}
             >
-              {loading ? "Submitting..." : "🗑️ Request Account Deletion"}
+              🗑️ Prepare Deletion Request Email
             </button>
           </form>
         </div>
 
         {/* Footer note */}
         <p style={{ textAlign: "center", fontSize: "13px", color: "#94A3B8" }}>
-          © 2025 Parther Technologies · GoMyTruck Captain ·{" "}
-          <a href="/privacy-policy" style={{ color: "#2563EB" }}>Privacy Policy</a>
+          © 2026 Parther Technologies · GoMyTruck Captain ·{" "}
+          <a href="/legal/privacy-policy" style={{ color: "#2563EB" }}>Privacy Policy</a>
         </p>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react"
 import { MapPin, Loader2 } from "lucide-react"
 import { fetchAutocomplete, fetchPlaceDetails } from "../api/pricingApi"
+import { trackBeginBooking } from "../utils/analytics"
 
 export default function AddressAutocomplete({ 
   label, 
@@ -16,6 +17,7 @@ export default function AddressAutocomplete({
   const [loading, setLoading] = useState(false)
   const wrapperRef = useRef(null)
   const debounceRef = useRef(null)
+  const hasTrackedFocusRef = useRef(false)
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -97,11 +99,21 @@ export default function AddressAutocomplete({
         type="text"
         value={query}
         onChange={handleInputChange}
-        onFocus={() => { if (query.trim()) setIsOpen(true) }}
+        onFocus={() => {
+          if (!hasTrackedFocusRef.current) {
+            hasTrackedFocusRef.current = true
+            trackBeginBooking(id || label || "address-autocomplete")
+          }
+          if (query.trim()) setIsOpen(true)
+        }}
         placeholder={placeholder}
         autoComplete={autoComplete}
         required
-        className="w-full bg-slate-50 border border-slate-200 rounded-lg py-2 px-3 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500"
+        role="combobox"
+        aria-autocomplete="list"
+        aria-expanded={isOpen}
+        aria-controls={id ? `${id}-suggestions` : undefined}
+        className="min-h-11 w-full bg-slate-50 border border-slate-300 rounded-lg py-2 px-3 text-sm focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30"
       />
 
       {isOpen && (
@@ -111,12 +123,14 @@ export default function AddressAutocomplete({
               <Loader2 size={14} className="animate-spin" /> Searching...
             </div>
           ) : predictions.length > 0 ? (
-            <ul>
+            <ul id={id ? `${id}-suggestions` : undefined} role="listbox">
               {predictions.map((p) => (
                 <li 
                   key={p.placeId} 
                   onClick={() => handleSelect(p)}
-                  className="flex items-start gap-2 p-3 hover:bg-slate-50 cursor-pointer border-b border-slate-100 last:border-0"
+                  role="option"
+                  aria-selected="false"
+                  className="flex min-h-11 items-start gap-2 p-3 hover:bg-slate-50 cursor-pointer border-b border-slate-100 last:border-0"
                 >
                   <MapPin size={16} className="text-slate-400 shrink-0 mt-0.5" />
                   <div className="flex flex-col">

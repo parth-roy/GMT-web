@@ -5,7 +5,7 @@ const links = [
   { label: "Online Truck Booking",         href: "/truck",          title: "Book truck online – GoMyTruck" },
   { label: "Mini Truck Booking Near Me",   href: "/truck",          title: "Mini truck booking near you" },
   { label: "Part Load Transport (PTL)",    href: "/services",       title: "Affordable part load transport services" },
-  { label: "Full Truck Load (FTL)",        href: "/services",       title: "Full truck load transport across India" },
+  { label: "Full Truck Load (FTL)",        href: "/services",       title: "Request full-truck-load transport" },
   { label: "B2B Enterprise Logistics",     href: "/enterprise",     title: "Corporate & B2B logistics solutions" },
   { label: "Packers & Movers",             href: "/packers-and-movers",               title: "Packers and movers service – GoMyTruck" },
   { label: "Two-Wheeler Courier",          href: "/bike",           title: "Two-wheeler goods transport and courier" },

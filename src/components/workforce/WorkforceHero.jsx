@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Send, BadgeCheck, MapPin, X } from "lucide-react"
+import { trackFleetRegistration } from "../../utils/analytics"
 
 export default function WorkforceHero() {
   const [isOpen, setIsOpen] = useState(false)
@@ -40,6 +41,7 @@ export default function WorkforceHero() {
       }
 
       setIsRegistered(true)
+      trackFleetRegistration(role)
     } catch (err) {
       setRegError(err.message)
     } finally {
@@ -118,7 +120,7 @@ export default function WorkforceHero() {
                   <h3 className="text-xl font-bold text-slate-800">Application Received!</h3>
                   <p className="text-sm text-slate-500 mt-1">
                     Thanks, <span className="text-blue-600 font-semibold">{name}</span>. We'll call{" "}
-                    <span className="text-blue-600 font-semibold">+91 {phone}</span> shortly.
+                    <span className="text-blue-600 font-semibold">+91 {phone}</span> after review.
                   </p>
                 </div>
                 <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl text-sm text-left space-y-1">
@@ -160,6 +162,9 @@ export default function WorkforceHero() {
                       type="text"
                       placeholder="e.g. Ramesh Kumar"
                       value={name}
+                      name="name"
+                      autoComplete="name"
+                      required
                       onChange={(e) => setName(e.target.value)}
                       className="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-3 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all"
                     />
@@ -177,6 +182,10 @@ export default function WorkforceHero() {
                         maxLength={10}
                         placeholder="98765 43210"
                         value={phone}
+                        name="phone"
+                        autoComplete="tel-national"
+                        inputMode="numeric"
+                        required
                         onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
                         className="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 pl-12 pr-3 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all"
                       />
@@ -193,6 +202,9 @@ export default function WorkforceHero() {
                         type="text"
                         placeholder="e.g. Kolkata"
                         value={city}
+                        name="city"
+                        autoComplete="address-level2"
+                        required
                         onChange={(e) => setCity(e.target.value)}
                         className="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-3 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all"
                       />
@@ -225,7 +237,7 @@ export default function WorkforceHero() {
 
                 <p className="text-[10px] text-slate-400 text-center leading-relaxed">
                   By submitting, you agree to our{" "}
-                  <a href="/partner-terms" className="underline hover:text-slate-600">
+                  <a href="/legal/partner-terms" className="underline hover:text-slate-600">
                     Partner Terms
                   </a>{" "}
                   and consent to WhatsApp updates.

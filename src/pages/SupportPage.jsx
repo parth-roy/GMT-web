@@ -21,17 +21,17 @@ export default function SupportPage() {
       icon: Mail,
       title: 'Email Support',
       detail: 'hello@parthertech.com',
-      sub: 'We aim to reply within 2 hours',
+      sub: 'Response time varies with enquiry volume',
       color: 'bg-emerald-50 text-emerald-600',
       action: 'mailto:hello@parthertech.com'
     },
     {
       icon: LifeBuoy,
-      title: 'Live Chat',
-      detail: 'In-App Support',
-      sub: 'Available 24/7 for active trips',
+      title: 'WhatsApp',
+      detail: '+91 93314 88999',
+      sub: 'Send the booking reference and issue',
       color: 'bg-blue-50 text-blue-600',
-      action: '#'
+      action: 'https://wa.me/919331488999?text=Hi%20GoMyTruck%2C%20I%20need%20help%20with%20a%20booking'
     }
   ];
 

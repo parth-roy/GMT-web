@@ -16,6 +16,7 @@ export default function TransportMSMEPage() {
     <CityTransportPage
       city="India (B2B/MSME)"
       slug="transport-service-msme"
+      canonical="/services/transport-for-msmes"
       headline="Transport Service for MSMEs"
       subheadline="Scalable, affordable, and GST-compliant logistics solutions designed specifically for Small and Medium Enterprises (MSMEs)."
       description="GoMyTruck provides dedicated transport services for MSMEs. Manage your supply chain with FTL, PTL, GST invoicing, and verified commercial vehicles."
@@ -26,12 +27,12 @@ export default function TransportMSMEPage() {
         "Chennai", "Pune", "Ahmedabad", "Surat", "Ludhiana"
       ]}
       highlights={[
-        "100% GST compliant automated invoicing",
-        "Credit lines available for verified MSME partners",
+        "GST invoice details available for eligible completed bookings",
+        "Commercial terms documented for approved enterprise accounts",
         "Part Load (PTL) solutions to save costs on small shipments",
-        "Dedicated Key Account Manager (KAM) for your business",
-        "API integration for your ERP/Shopify store",
-        "Pan-India delivery network"
+        "Account support can be scoped in an enterprise agreement",
+        "API integration requirements assessed during onboarding",
+        "Route coverage confirmed before each booking"
       ]}
     />
   )

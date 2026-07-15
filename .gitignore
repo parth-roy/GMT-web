@@ -1,7 +1,9 @@
 node_modules/
 dist/
+dist-ssr/
 .env
 .env.*
 !.env.example
 .DS_Store
 scratch/
+preview*.log

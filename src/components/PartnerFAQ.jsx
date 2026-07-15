@@ -19,11 +19,11 @@ export default function PartnerFAQ({ isFleetOwner = false }) {
     },
     {
       q: "When will I get paid for my trips?",
-      a: "We offer both daily and weekly payout options directly to your linked bank account. Most drivers prefer our instant daily settlement for better cash flow."
+      a: "The app records approved earnings against completed work. Digital withdrawals and participant-to-participant transfers are currently paused, so do not rely on an advertised daily or weekly bank settlement. The applicable settlement method must be confirmed with the operations team."
     },
     {
       q: "Can I choose my own working hours?",
-      a: "Yes! You are completely independent. You can log into the Partner App whenever you want to work, and log out when you're done. No forced shifts."
+      a: "You can choose whether to accept an eligible load shown for your vehicle and area. Load quantity, timing, and route availability are not guaranteed."
     },
     {
       q: "Do I have to wear a uniform?",
@@ -34,7 +34,7 @@ export default function PartnerFAQ({ isFleetOwner = false }) {
   if (isFleetOwner) {
     faqs.push({
       q: "Can I attach multiple trucks under one account?",
-      a: "Yes, our Fleet Owner panel allows you to attach unlimited trucks and drivers under a single master account, making it easy to track total earnings and individual vehicle performance."
+      a: "The fleet workflow supports multiple vehicles and drivers under an owner account. Each vehicle and driver remains subject to document review and the platform's current limits."
     })
   }
 

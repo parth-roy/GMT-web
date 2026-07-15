@@ -18,8 +18,8 @@ const jsonLd = [
     name: 'GoMyTruck Truck Booking Service – Pricing',
     provider: {
       '@type': 'Organization',
-      name: 'GoMyTruck by GoMyTruck',
-      url: 'https://www.gomytruck.in',
+      name: 'GoMyTruck',
+      url: 'https://gomytruck.com',
       telephone: '+919331488999',
       email: 'hello@parthertech.com',
       address: {
@@ -36,43 +36,7 @@ const jsonLd = [
       name: 'Kolkata',
     },
     description:
-      'Transparent, distance-based truck booking charges in Kolkata. Per-km pricing for bike delivery, 3-wheeler tempo, Tata Ace and mini truck. No hidden fees.',
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Truck Rental Pricing',
-      itemListElement: [
-        {
-          '@type': 'Offer',
-          name: 'Bike Delivery',
-          price: '25',
-          priceCurrency: 'INR',
-          description: 'Base fare Rs.25, Rs.8/km – documents & parcels up to 10 kg',
-        },
-        {
-          '@type': 'Offer',
-          name: '3-Wheeler / Tempo',
-          price: '80',
-          priceCurrency: 'INR',
-          description: 'Base fare Rs.80, Rs.12/km – small goods & furniture up to 500 kg',
-        },
-        {
-          '@type': 'Offer',
-          name: 'Tata Ace',
-          price: '120',
-          priceCurrency: 'INR',
-          description:
-            'Base fare Rs.120, Rs.15/km – business delivery & shop stock up to 750 kg',
-        },
-        {
-          '@type': 'Offer',
-          name: 'Mini Truck',
-          price: '200',
-          priceCurrency: 'INR',
-          description:
-            'Base fare Rs.200, Rs.18/km – large shifting & FTL up to 1500 kg',
-        },
-      ],
-    },
+      'Pricing guide for GoMyTruck route-based logistics estimates. The booking flow shows the current fare components before confirmation.',
   },
   {
     '@context': 'https://schema.org',
@@ -82,13 +46,13 @@ const jsonLd = [
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://www.gomytruck.in/',
+        item: 'https://gomytruck.com/',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Pricing',
-        item: 'https://www.gomytruck.in/pricing',
+        item: 'https://gomytruck.com/pricing',
       },
     ],
   },
@@ -153,41 +117,41 @@ const vehicles = [
 const howItWorks = [
   {
     icon: <CheckCircle className="w-5 h-5 text-brand-600 mt-0.5 shrink-0" />,
-    heading: 'Distance-based transparent pricing',
-    body: 'Your fare = Base fare + (Distance in km x per-km rate). That is it. No surge multipliers, no fuel surcharge, no night charge surprises.',
+    heading: 'Route and vehicle form the starting point',
+    body: 'The pricing engine starts with the active vehicle configuration, route distance and estimated duration, then applies the current commercial rules.',
   },
   {
     icon: <CheckCircle className="w-5 h-5 text-brand-600 mt-0.5 shrink-0" />,
-    heading: 'Zero hidden fees — ever',
-    body: 'The price you see in the app or on our website is the price you pay. Tolls, if applicable, are communicated upfront and split fairly.',
+    heading: 'Review every applicable component',
+    body: 'The estimate can include base, distance, time, fuel adjustment, demand adjustment, GST, waiting, toll, labour and optional protection where relevant.',
   },
   {
     icon: <CheckCircle className="w-5 h-5 text-brand-600 mt-0.5 shrink-0" />,
-    heading: 'Final amount confirmed before booking',
-    body: 'Enter pick-up and drop locations, choose your vehicle type, and review the exact amount before you confirm your booking.',
+    heading: 'Estimate first, final trip amount after actuals',
+    body: 'Review the estimate before confirmation. Changes to the route, waiting time, tolls, declared load or requested services can affect the final payable amount.',
   },
 ];
 
 const faqs = [
   {
     q: 'How is the truck booking fare calculated?',
-    a: 'Your fare is calculated as: Base Fare + (Distance in km x Per-km Rate). For example, a 10 km trip in a Tata Ace would be Rs.120 + (10 x Rs.15) = Rs.270. Minimum fare applies if the total is below the minimum.',
+    a: 'The estimate uses the active vehicle configuration, route distance, estimated duration and current pricing rules. Applicable fuel adjustment, demand adjustment, minimum platform price, GST, toll, waiting, labour and optional protection are shown in the booking breakdown.',
   },
   {
     q: 'Are there any hidden charges in truck booking?',
-    a: 'No. GoMyTruck follows a zero-hidden-charges policy. The fare estimate shown before booking is what you pay. Tolls, if any, are disclosed separately before you confirm.',
+    a: 'GoMyTruck displays the fare components available at confirmation. The final amount can change for actual tolls, waiting, route or service-scope changes; these should appear in the trip record or invoice.',
   },
   {
     q: 'What if the route changes mid-trip?',
-    a: 'If the destination changes after the trip has started, additional kilometres will be billed at the standard per-km rate for the chosen vehicle type. The driver will update the trip details accordingly.',
+    a: 'A route or destination change can affect distance, duration, tolls and the final amount. Agree the change through the supported trip workflow and review the updated record or invoice instead of relying on a generic per-kilometre promise.',
   },
   {
     q: 'Is loading and unloading included in the price?',
-    a: 'Loading and unloading assistance is not included in the base fare by default. You can add a helper/labour service at the time of booking for a nominal additional charge.',
+    a: 'Loading and unloading assistance is separate unless the booking explicitly includes linked workforce. Select the required workforce type and count so the server can include the applicable amount in the estimate.',
   },
   {
     q: 'Do truck booking prices vary by time of day?',
-    a: 'Standard rates apply for most bookings. During peak demand windows (e.g., month-end or festival seasons) a surge adjustment may apply — you will always see this reflected in your fare estimate before confirming.',
+    a: 'The backend currently returns the demand multiplier configured for the estimate; dynamic surge logic is not yet active. If this capability is enabled later, the booking breakdown must show the applied adjustment before confirmation.',
   },
 ];
 
@@ -333,7 +297,7 @@ export default function PricingPage() {
     <>
       <SEOHead
         title="Truck Booking Charges in Kolkata | Fare Calculator & Pricing Guide"
-        description="Know GoMyTruck truck booking charges before you book. Transparent per-km pricing for 3-wheeler, Tata Ace, mini truck & full truck. Get an instant fare estimate online."
+        description="Learn how GoMyTruck builds route-based estimates for 3-wheelers, Tata Ace, mini trucks and larger goods vehicles, then request the current fare online."
         canonical="/pricing"
         keywords="truck booking charges, truck booking fare, mini truck rent per km, Tata Ace rent price, transport charges Kolkata, logistics pricing, truck rental rates India, freight cost calculator, tempo rent charges"
         jsonLd={jsonLd}
@@ -344,16 +308,16 @@ export default function PricingPage() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-brand-600/20 border border-brand-500/30 text-brand-400 text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
             <Truck className="w-3.5 h-3.5" />
-            Honest Pricing &middot; Always
+            Route-based estimate
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-5">
-            Transparent Truck Booking Prices &mdash;{' '}
-            <span className="text-brand-400">No Hidden Charges</span>
+            Understand Your Truck Booking Estimate{' '}
+            <span className="text-brand-400">Before You Confirm</span>
           </h1>
           <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mb-8">
             From bike deliveries to full-size mini trucks, every fare on
-            GoMyTruck is calculated upfront so you know exactly what you&apos;ll
-            pay before you confirm.
+            GoMyTruck uses route, vehicle and trip conditions to build an estimate.
+            Review its components and the conditions that can change the final amount.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
@@ -393,11 +357,10 @@ export default function PricingPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-3">
-              Vehicle-wise Fare Rates
+              Illustrative Vehicle Pricing Examples
             </h2>
             <p className="text-slate-500 max-w-xl mx-auto text-sm sm:text-base">
-              Choose the vehicle that fits your load. Every price below is the
-              live rate &mdash; no surprises at checkout.
+              These examples explain base, distance and minimum-fare concepts; they are not live quotes. Use the booking flow for the current route-specific estimate.
             </p>
           </div>
 
@@ -409,9 +372,7 @@ export default function PricingPage() {
 
           {/* Legend */}
           <p className="mt-8 text-center text-xs text-slate-400">
-            * Prices are indicative and may vary slightly based on exact route.
-            Final fare shown before booking confirmation. GST applicable as per
-            government norms.
+            * Illustrative examples only—not a rate card or offer. Current values and all applicable fare components are returned by the live estimate. GST and trip actuals may apply.
           </p>
         </div>
       </section>
@@ -424,7 +385,7 @@ export default function PricingPage() {
               How Our Pricing Works
             </h2>
             <p className="text-slate-500 text-sm sm:text-base">
-              Simple. Fair. Always in your favour.
+              A clear breakdown of inputs and possible adjustments.
             </p>
           </div>
 
@@ -454,14 +415,14 @@ export default function PricingPage() {
         <div className="max-w-2xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 text-white/90 text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 border border-white/20">
             <BadgeCheck className="w-3.5 h-3.5" />
-            Instant Quote
+            Current estimate
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-4">
-            Get Your Exact Fare Estimate
+            Get Your Current Fare Estimate
           </h2>
           <p className="text-brand-100 text-sm sm:text-base mb-8 max-w-lg mx-auto">
             Enter your pick-up and drop locations, pick a vehicle, and get your
-            exact fare in seconds &mdash; before you commit to anything.
+            current route estimate before you confirm a booking.
           </p>
           <Link
             to="/book-truck-online"
@@ -471,8 +432,7 @@ export default function PricingPage() {
             <ArrowRight className="w-5 h-5" />
           </Link>
           <p className="mt-5 text-brand-200 text-xs">
-            No registration needed &middot; Instant estimate &middot; Book in 60
-            seconds
+            Current price rules &middot; Route-based estimate &middot; Review before confirming
           </p>
         </div>
       </section>
@@ -513,7 +473,7 @@ export default function PricingPage() {
               {
                 to: '/book-truck-online',
                 title: 'Book a Truck Online',
-                desc: 'Instant booking in 60 seconds',
+                desc: 'Enter route and goods details',
                 icon: '📦',
               },
               {

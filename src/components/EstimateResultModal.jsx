@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react"
 import { X, Check, Truck, Loader2, Package, Banknote, ChevronDown, MapPin, Gift, MousePointerClick, AlertCircle } from "lucide-react"
-import { fetchVehicles } from "../api/pricingApi"
-import { createBooking, cancelBooking } from "../api/bookingApi"
+import { fetchEstimate, fetchVehicles } from "../api/pricingApi"
+import { createBooking, confirmBooking, cancelBooking } from "../api/bookingApi"
+import { trackBookingSubmitted } from "../utils/analytics"
 
 // Local image map — backend imageUrl is null; use verified local blueprints
 const VEHICLE_IMAGES = {
@@ -28,15 +29,15 @@ import GoodsTypeModal from "./GoodsTypeModal"
  * }
  */
 export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
-  if (!isOpen || !estimateData) return null
-
   const [vehicles, setVehicles] = useState([])
   const [loading, setLoading] = useState(true)
-  const [selectedVehicleType, setSelectedVehicleType] = useState(estimateData.vehicle?.vehicleType || "MINI_TRUCK")
+  const [selectedVehicleType, setSelectedVehicleType] = useState(estimateData?.vehicle?.vehicleType || "MINI_TRUCK")
+  const [liveEstimate, setLiveEstimate] = useState(estimateData)
+  const [estimateRefreshing, setEstimateRefreshing] = useState(false)
   
   // Modals & States
   const [showLogin, setShowLogin] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('vahan_access_token'))
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [showGoodsModal, setShowGoodsModal] = useState(false)
   const [selectedGoods, setSelectedGoods] = useState(null)
   
@@ -57,6 +58,7 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
   ]
 
   useEffect(() => {
+    setIsLoggedIn(!!localStorage.getItem('vahan_access_token'))
     const handleAuthChange = () => setIsLoggedIn(!!localStorage.getItem('vahan_access_token'))
     window.addEventListener("auth_changed", handleAuthChange)
     window.addEventListener("storage", handleAuthChange)
@@ -82,12 +84,13 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
     if (isOpen) load()
   }, [isOpen])
 
-  // Calculate fare for a given vehicle based on distance
-  const calculateFare = (vehicle) => {
-    const dist = estimateData.estimatedDistanceKm || 0
-    const calc = vehicle.baseFare + (dist * vehicle.pricePerKm)
-    return Math.max(calc, vehicle.minFare)
-  }
+  useEffect(() => {
+    if (!isOpen || !estimateData) return
+    setLiveEstimate(estimateData)
+    setSelectedVehicleType(estimateData.vehicle?.vehicleType || "MINI_TRUCK")
+  }, [isOpen, estimateData])
+
+  if (!isOpen || !estimateData) return null
 
   const handleBookNowClick = async () => {
     if (!isLoggedIn) {
@@ -110,13 +113,16 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
               address: estimateData.dropAddress,
             }],
             hasLoadingService: false,
-            estimatedFare: currentFare,
-            estimatedDistanceKm: estimateData.estimatedDistanceKm
+            estimatedFare: Number(liveEstimate.totalFare ?? currentFare),
+            estimatedDistanceKm: liveEstimate.estimatedDistanceKm,
+            ...selectedGoods,
           }
-          const data = await createBooking(payload)
+          const draft = await createBooking(payload)
+          const data = await confirmBooking(draft.id)
           setCrn(data.bookingNumber)
           setBookingId(data.id)
           setBookingState('SEARCHING')
+          trackBookingSubmitted(data.id, selectedVehicleType)
         } catch (err) {
           const msg = err.message || "";
           if (msg.toLowerCase().includes("token") || msg.toLowerCase().includes("unauthorized") || msg.toLowerCase().includes("jwt")) {
@@ -144,8 +150,31 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
     ? vehicles.filter(v => allowedTypes.includes(v.vehicleType))
     : vehicles
 
-  const selectedVehicleObj = filteredVehicles.find(v => v.vehicleType === selectedVehicleType) || filteredVehicles[0]
-  const currentFare = selectedVehicleObj ? calculateFare(selectedVehicleObj) : 0
+  const currentFare = Number(liveEstimate?.grandTotal ?? liveEstimate?.totalFare ?? liveEstimate?.estimatedFare ?? 0)
+  const fareBreakdown = liveEstimate?.fareBreakdown || {}
+  const totalGst = Number(liveEstimate?.gstBreakdown?.totalGst ?? 0)
+  const selectVehicle = async (vehicle) => {
+    if (vehicle.vehicleType === selectedVehicleType) return
+    setSelectedVehicleType(vehicle.vehicleType)
+    setEstimateRefreshing(true)
+    setBookingError("")
+    try {
+      const estimate = await fetchEstimate({
+        pickupLat: estimateData.pickupLat,
+        pickupLng: estimateData.pickupLng,
+        dropLat: estimateData.dropLat,
+        dropLng: estimateData.dropLng,
+        vehicleType: vehicle.vehicleType,
+        hasLoadingService: !!selectedGoods?.laborRequired,
+        helperCount: selectedGoods?.laborersCount,
+      })
+      setLiveEstimate(estimate)
+    } catch (error) {
+      setBookingError(error.message || "Could not refresh the estimate for this vehicle.")
+    } finally {
+      setEstimateRefreshing(false)
+    }
+  }
 
   return (
     <>
@@ -205,23 +234,22 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
                   <div className="mt-8 pt-6 border-t border-slate-200">
                     <h3 className="font-extrabold text-slate-900 mb-4 text-base">Fare Breakdown</h3>
                     <div className="space-y-3 text-sm text-slate-600 mb-4">
-                      <div className="flex justify-between">
-                        <span>Trip Fare <span className="text-slate-400 text-xs">(incl. Toll, if applicable)</span></span>
-                        <span className="font-semibold text-slate-800">₹{currentFare.toFixed(2)}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Net Fare</span>
-                        <span className="font-semibold text-slate-800">₹{currentFare.toFixed(2)}</span>
-                      </div>
+                      <div className="flex justify-between"><span>Base fare</span><span className="font-semibold text-slate-800">₹{Number(fareBreakdown.baseFare || 0).toFixed(2)}</span></div>
+                      <div className="flex justify-between"><span>Distance fare</span><span className="font-semibold text-slate-800">₹{Number(fareBreakdown.distanceFare || 0).toFixed(2)}</span></div>
+                      {Number(fareBreakdown.timeFare) > 0 && <div className="flex justify-between"><span>Time fare</span><span>₹{Number(fareBreakdown.timeFare).toFixed(2)}</span></div>}
+                      {Number(fareBreakdown.fuelSurcharge) > 0 && <div className="flex justify-between"><span>Fuel adjustment</span><span>₹{Number(fareBreakdown.fuelSurcharge).toFixed(2)}</span></div>}
+                      {Number(fareBreakdown.loadingCharge) > 0 && <div className="flex justify-between"><span>Workforce</span><span>₹{Number(fareBreakdown.loadingCharge).toFixed(2)}</span></div>}
+                      <div className="flex justify-between"><span>GST</span><span className="font-semibold text-slate-800">₹{totalGst.toFixed(2)}</span></div>
                       <div className="flex justify-between font-bold text-slate-900 pt-3 border-t border-slate-100">
-                        <span>Amount Payable</span>
+                        <span>Estimated payable</span>
                         <span>₹{currentFare.toFixed(2)}</span>
                       </div>
+                      <p className="text-xs text-slate-500">Actual toll and post-free-window waiting charges are added when applicable.</p>
                     </div>
                     <div className="flex justify-between items-center py-4 border-t border-slate-100 text-sm">
                       <div className="flex items-center gap-2 text-slate-500">
                         <Package size={16} /> 
-                        <span>{selectedGoods || "Select a Goods Type"}</span>
+                        <span>{selectedGoods?.goodsType || "Select goods details"}</span>
                       </div>
                       <button onClick={() => setShowGoodsModal(true)} className="font-semibold text-blue-600 hover:underline">Change</button>
                     </div>
@@ -238,7 +266,7 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
                     </div>
                     <h3 className="text-2xl font-extrabold text-slate-900 mb-4">Confirm Delivery Details</h3>
                     <p className="text-sm text-slate-500 mb-8 max-w-[280px] leading-relaxed">
-                      Every move is unique! Our experts will contact you on <strong className="text-slate-800">{estimateData.phone}</strong> to discuss your inventory and give you the best price.
+                      Every move is different. The team can use <strong className="text-slate-800">{estimateData.phone}</strong> to clarify the inventory, access conditions, service scope and quote.
                     </p>
                     {bookingError && (
                       <div className="mb-4 flex items-center gap-2 bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold rounded-lg px-3 py-2">
@@ -269,7 +297,7 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
                       <div className="flex-grow overflow-y-auto px-6 sm:px-8 custom-scrollbar space-y-4 pb-4">
                         {filteredVehicles.map(v => {
                           const isSelected = selectedVehicleType === v.vehicleType
-                          const fare = calculateFare(v)
+                          const fare = isSelected ? currentFare : null
                           const imgSrc = VEHICLE_IMAGES[v.vehicleType] || "/navy_truck.webp"
 
                           if (isSelected) {
@@ -282,7 +310,7 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
                                 <h4 className="font-bold text-slate-800 text-lg text-center relative z-10">{v.displayName}</h4>
                                 <div className="flex justify-between items-end mt-2 relative z-10">
                                   <span className="text-sm font-semibold text-slate-600">{v.capacityDesc || `${v.capacityKg} Kg`}</span>
-                                  <span className="text-xl font-black text-slate-900">₹ {Math.round(fare)}</span>
+                                  <span className="text-xl font-black text-slate-900">{estimateRefreshing ? "Refreshing…" : `₹ ${Math.round(fare)}`}</span>
                                 </div>
                               </div>
                             )
@@ -291,7 +319,7 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
                           return (
                             <div
                               key={v.vehicleType}
-                              onClick={() => setSelectedVehicleType(v.vehicleType)}
+                              onClick={() => selectVehicle(v)}
                               className="flex items-center justify-between border border-slate-200 bg-white rounded-xl p-3 cursor-pointer hover:border-blue-400 hover:shadow-md transition-all"
                             >
                               <div className="flex items-center gap-4">
@@ -303,7 +331,7 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
                                   <span className="text-xs font-semibold text-slate-500">{v.capacityDesc || `${v.capacityKg} Kg`}</span>
                                 </div>
                               </div>
-                              <span className="text-base font-black text-slate-900 shrink-0">₹ {Math.round(fare)}</span>
+                              <span className="text-xs font-bold text-brand-700 shrink-0">Select for estimate</span>
                             </div>
                           )
                         })}
@@ -316,7 +344,7 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
                       {!isLoggedIn ? (
                         <div className="bg-[#0b8a57] text-white text-xs font-bold py-2.5 px-4 rounded-lg flex items-center gap-2 mb-4">
                           <span className="bg-white/20 p-1 rounded-full"><Package size={14} /></span>
-                          Get up to 30% off on your first order. *T&C apply
+                          Log in to save your declared load and confirm the booking request.
                         </div>
                       ) : (
                         <div className="flex justify-between items-center mb-4 bg-white p-3 rounded-xl border border-slate-200">
@@ -339,7 +367,7 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
                       
                       <button 
                         onClick={handleBookNowClick}
-                        disabled={bookingLoading}
+                        disabled={bookingLoading || estimateRefreshing || currentFare <= 0}
                         className="w-full bg-[#1e5eff] hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg active:scale-95 text-sm tracking-wide flex justify-center items-center gap-2"
                       >
                         {bookingLoading && <Loader2 size={16} className="animate-spin" />}
@@ -367,7 +395,7 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
                         </div>
                       </div>
                       <h2 className="text-2xl font-bold text-slate-900 mb-2">Looking for partner...</h2>
-                      <p className="text-sm text-slate-500 mb-8">We expect to find a partner within <span className="font-bold text-slate-700">9:55 mins</span></p>
+                      <p className="text-sm text-slate-500 mb-8">Your request is open for matching. Assignment and arrival time depend on a suitable partner accepting the route and load.</p>
 
                       <div className="border-t border-slate-200 py-4 mt-auto">
                         <div className="flex justify-between items-center cursor-pointer mb-2">
@@ -506,10 +534,8 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
                   <div className="flex justify-between items-start mb-8 z-10">
                     <h2 className="text-2xl md:text-3xl font-bold max-w-[200px] leading-snug">Supercharge Your Logistics!</h2>
                     <div className="bg-blue-600 rounded-xl px-3 py-2 flex flex-col items-center shadow-lg border border-blue-500">
-                      <span className="text-[10px] font-bold tracking-wider mb-1">VAHAN</span>
-                      <div className="bg-white text-slate-900 text-xs font-bold px-2 py-0.5 rounded flex items-center gap-1">
-                        4.8 <span className="text-yellow-500 text-[10px]">★</span>
-                      </div>
+                      <span className="text-[10px] font-bold tracking-wider mb-1">GoMyTruck</span>
+                      <div className="bg-white text-slate-900 text-xs font-bold px-2 py-0.5 rounded">App</div>
                     </div>
                   </div>
                   
@@ -554,9 +580,26 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
       <GoodsTypeModal
         isOpen={showGoodsModal}
         onClose={() => setShowGoodsModal(false)}
-        onSelect={(goods) => {
+        onSelect={async (goods) => {
           setSelectedGoods(goods)
           setShowGoodsModal(false)
+          setEstimateRefreshing(true)
+          try {
+            const estimate = await fetchEstimate({
+              pickupLat: estimateData.pickupLat,
+              pickupLng: estimateData.pickupLng,
+              dropLat: estimateData.dropLat,
+              dropLng: estimateData.dropLng,
+              vehicleType: selectedVehicleType,
+              hasLoadingService: goods.laborRequired,
+              helperCount: goods.laborRequired ? goods.laborersCount : undefined,
+            })
+            setLiveEstimate(estimate)
+          } catch (error) {
+            setBookingError(error.message || "Could not update the estimate.")
+          } finally {
+            setEstimateRefreshing(false)
+          }
         }}
       />
     </>

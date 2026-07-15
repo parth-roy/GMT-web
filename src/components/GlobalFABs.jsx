@@ -1,23 +1,47 @@
 import React from "react"
-import { MessageCircle, Truck } from "lucide-react"
-import { Link } from "react-router-dom"
-import { trackWhatsAppClick } from "../utils/analytics"
+import { MessageCircle, PhoneCall, Truck } from "lucide-react"
+import { Link, useLocation } from "react-router-dom"
 
 export default function GlobalFABs() {
+  const { pathname } = useLocation()
   const whatsappNumber = "919331488999"
-  const whatsappMessage = encodeURIComponent("Hi GoMyTruck, I want to book a truck.")
+  const whatsappMessage = encodeURIComponent(
+    `Hi GoMyTruck, I need a logistics quote. I am viewing ${pathname}.`,
+  )
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`
 
   return (
-    <div className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 flex flex-col gap-4 items-end pointer-events-none">
+    <>
+      <div className="fixed inset-x-0 bottom-0 z-[70] grid grid-cols-2 gap-2 border-t border-slate-200 bg-white p-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] shadow-[0_-6px_20px_rgba(15,23,42,0.14)] md:hidden">
+        <a
+          href="tel:+919331488999"
+          data-analytics-context={`mobile-sticky:${pathname}`}
+          className="flex min-h-12 items-center justify-center gap-2 rounded-xl border-2 border-brand-600 bg-white px-3 py-2.5 text-sm font-extrabold text-brand-700"
+          aria-label="Call GoMyTruck now"
+        >
+          <PhoneCall size={20} /> Call Now
+        </a>
+        <a
+          href={whatsappLink}
+          data-analytics-context={`mobile-sticky:${pathname}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#0B6B2E] px-3 py-2.5 text-sm font-extrabold text-white"
+          aria-label="Request a quote on WhatsApp"
+        >
+          <MessageCircle size={20} /> WhatsApp
+        </a>
+      </div>
+
+      <div className="fixed bottom-8 right-8 z-50 hidden flex-col gap-4 items-end pointer-events-none md:flex">
       
       {/* WhatsApp FAB */}
       <a
         href={whatsappLink}
-        onClick={() => trackWhatsAppClick("Global FAB")}
+        data-analytics-context={`desktop-fab:${pathname}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="pointer-events-auto bg-[#25D366] hover:bg-[#1ebe57] text-white p-3.5 sm:p-4 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center group"
+        className="pointer-events-auto bg-[#128C3E] hover:bg-[#0B6B2E] text-white p-3.5 sm:p-4 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center group"
         aria-label="Chat on WhatsApp"
         title="Chat on WhatsApp"
       >
@@ -43,6 +67,7 @@ export default function GlobalFABs() {
         </span>
       </Link>
 
-    </div>
+      </div>
+    </>
   )
 }

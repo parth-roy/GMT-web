@@ -103,10 +103,10 @@ export default function BikeHero({ city, setCity }) {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white tracking-tight leading-tight max-w-4xl drop-shadow-xl">
-            Fast Two-Wheeler Delivery in {city}
+            Two-Wheeler Delivery Requests in {city}
           </h1>
           <p className="mt-6 text-lg md:text-xl text-slate-200 font-medium leading-relaxed max-w-3xl drop-shadow-md">
-            Looking for quick and affordable bike delivery in {city}? From documents and parcels to small packages, GoMyTruck gets it there fast.
+            Request delivery for eligible documents and small parcels. Review route serviceability, the current estimate, and partner availability before confirming.
           </p>
           <a href="#more" className="mt-8 text-white font-semibold underline underline-offset-4 decoration-2 hover:text-brand-300 transition-colors">
             Know more

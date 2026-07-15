@@ -8,45 +8,45 @@ export default function Services({ onSelectVehicle }) {
   const fleet = [
     // 0-20kg
     {
-      id: "bike-petrol", cat: "0-20", title: "Two Wheeler (Petrol)", image: "/bikes/bike.webp", capacity: "20 kg", dimensions: "1.5 x 1.5 x 1.5 ft", basePrice: "₹49", perKm: "₹10/km", ideal: "Documents, keys, small boxes, fast delivery.", tag: "Super Fast", tagColor: "bg-amber-100 text-amber-800 border-amber-200"
+      id: "bike-petrol", cat: "0-20", title: "Two Wheeler (Petrol)", image: "/bikes/bike.webp", capacity: "20 kg", dimensions: "1.5 x 1.5 x 1.5 ft", ideal: "Documents, keys, small boxes, fast delivery.", tag: "Super Fast", tagColor: "bg-amber-100 text-amber-800 border-amber-200"
     },
     {
-      id: "bike-ev", cat: "0-20", title: "EV Scooter (Green)", image: "/bikes/scooter.webp", capacity: "20 kg", dimensions: "1.5 x 1.5 x 1.5 ft", basePrice: "₹45", perKm: "₹8/km", ideal: "Eco-friendly instant local delivery.", tag: "Eco Friendly", tagColor: "bg-emerald-100 text-emerald-800 border-emerald-200"
+      id: "bike-ev", cat: "0-20", title: "EV Scooter (Green)", image: "/bikes/scooter.webp", capacity: "20 kg", dimensions: "1.5 x 1.5 x 1.5 ft", ideal: "Smaller local deliveries where an EV partner is available.", tag: "Electric Option", tagColor: "bg-emerald-100 text-emerald-800 border-emerald-200"
     },
 
     // 21-500kg
     {
-      id: "auto-petrol", cat: "21-500", title: "Three Wheeler Auto", image: "/trucks/3-Wheeler.webp", capacity: "500 kg", dimensions: "5.5 x 4.5 x 4 ft", basePrice: "₹199", perKm: "₹18/km", ideal: "Crates, small appliances, inventory.", tag: "Most Popular", tagColor: "bg-brand-100 text-brand-800 border-brand-200"
+      id: "auto-petrol", cat: "21-500", title: "Three Wheeler Auto", image: "/trucks/3-Wheeler.webp", capacity: "500 kg", dimensions: "5.5 x 4.5 x 4 ft", ideal: "Crates, small appliances, inventory.", tag: "Compact Cargo", tagColor: "bg-brand-100 text-brand-800 border-brand-200"
     },
     {
-      id: "auto-ev", cat: "21-500", title: "EV Cargo Auto", image: "/trucks/E-Loader.webp", capacity: "500 kg", dimensions: "5.5 x 4.5 x 4 ft", basePrice: "₹189", perKm: "₹15/km", ideal: "Local shops, green urban logistics.", tag: "Zero Emission", tagColor: "bg-emerald-100 text-emerald-800 border-emerald-200"
+      id: "auto-ev", cat: "21-500", title: "EV Cargo Auto", image: "/trucks/E-Loader.webp", capacity: "500 kg", dimensions: "5.5 x 4.5 x 4 ft", ideal: "Local shops and urban logistics where an EV is available.", tag: "Electric Option", tagColor: "bg-emerald-100 text-emerald-800 border-emerald-200"
     },
 
     // 501-850kg
     {
-      id: "ace-standard", cat: "501-850", title: "Tata Ace (Chota Hathi)", image: "/trucks/Tata Ace.webp", capacity: "850 kg", dimensions: "7 x 4.8 x 4.8 ft", basePrice: "₹349", perKm: "₹22/km", ideal: "Furniture, commercial goods, hardware.", tag: "Versatile", tagColor: "bg-blue-100 text-blue-800 border-blue-200"
+      id: "ace-standard", cat: "501-850", title: "Tata Ace (Chota Hathi)", image: "/trucks/Tata Ace.webp", capacity: "850 kg", dimensions: "7 x 4.8 x 4.8 ft", ideal: "Furniture, commercial goods, hardware.", tag: "Versatile", tagColor: "bg-blue-100 text-blue-800 border-blue-200"
     },
     {
-      id: "super-carry", cat: "501-850", title: "Maruti Super Carry", image: "/trucks/Tata Ace.webp", capacity: "740 kg", dimensions: "7.1 x 4.9 x 4.8 ft", basePrice: "₹339", perKm: "₹21/km", ideal: "FMCG, hardware, textiles, fast transit.", tag: "Economical", tagColor: "bg-indigo-100 text-indigo-800 border-indigo-200"
+      id: "super-carry", cat: "501-850", title: "Maruti Super Carry", image: "/trucks/Tata Ace.webp", capacity: "740 kg", dimensions: "7.1 x 4.9 x 4.8 ft", ideal: "FMCG, hardware, textiles and local distribution.", tag: "Compact", tagColor: "bg-indigo-100 text-indigo-800 border-indigo-200"
     },
     {
-      id: "ace-ht", cat: "501-850", title: "Tata Ace High Deck", image: "/trucks/Tata Ace.webp", capacity: "850 kg", dimensions: "7 x 4.8 x 6 ft", basePrice: "₹399", perKm: "₹24/km", ideal: "Tall items, secure cargo, electronics.", tag: "Extra Height", tagColor: "bg-purple-100 text-purple-800 border-purple-200"
+      id: "ace-ht", cat: "501-850", title: "Tata Ace High Deck", image: "/trucks/Tata Ace.webp", capacity: "850 kg", dimensions: "7 x 4.8 x 6 ft", ideal: "Tall items, boxed goods and electronics.", tag: "Extra Height", tagColor: "bg-purple-100 text-purple-800 border-purple-200"
     },
 
     // 851-1500kg
     {
-      id: "bolero", cat: "851-1500", title: "Bolero Pickup (1.5T)", image: "/trucks/Bolero-Pickup.webp", capacity: "1,500 kg", dimensions: "8.5 x 5 x 5 ft", basePrice: "₹499", perKm: "₹26/km", ideal: "Heavy machinery, building raw materials.", tag: "Heavy Duty", tagColor: "bg-rose-100 text-rose-800 border-rose-200"
+      id: "bolero", cat: "851-1500", title: "Bolero Pickup (1.5T)", image: "/trucks/Bolero-Pickup.webp", capacity: "1,500 kg", dimensions: "8.5 x 5 x 5 ft", ideal: "Machinery and building materials within declared limits.", tag: "Heavy Duty", tagColor: "bg-rose-100 text-rose-800 border-rose-200"
     },
     {
-      id: "dost", cat: "851-1500", title: "Ashok Leyland Dost", image: "/trucks/Pickup.webp", capacity: "1,500 kg", dimensions: "8.8 x 5.2 x 5 ft", basePrice: "₹529", perKm: "₹27/km", ideal: "Agricultural produce, crates, heavy loads.", tag: "Spacious", tagColor: "bg-orange-100 text-orange-800 border-orange-200"
+      id: "dost", cat: "851-1500", title: "Ashok Leyland Dost", image: "/trucks/Pickup.webp", capacity: "1,500 kg", dimensions: "8.8 x 5.2 x 5 ft", ideal: "Agricultural produce, crates and declared goods.", tag: "Spacious", tagColor: "bg-orange-100 text-orange-800 border-orange-200"
     },
 
     // 1501-3500kg+
     {
-      id: "eicher-14", cat: "1501-3500", title: "Eicher 14ft (3.4 Ton)", image: "/trucks/14ft-Truck.webp", capacity: "3,400 kg", dimensions: "14 x 6 x 6.5 ft", basePrice: "₹1,199", perKm: "₹35/km", ideal: "Bulk goods, 2-3 BHK shifting.", tag: "Enterprise", tagColor: "bg-slate-800 text-slate-100 border-slate-700"
+      id: "eicher-14", cat: "1501-3500", title: "Eicher 14ft (3.4 Ton)", image: "/trucks/14ft-Truck.webp", capacity: "3,400 kg", dimensions: "14 x 6 x 6.5 ft", ideal: "Bulk goods and larger moving inventories.", tag: "Enterprise", tagColor: "bg-slate-800 text-slate-100 border-slate-700"
     },
     {
-      id: "canter-17", cat: "1501-3500", title: "Tata 407 / 17ft", image: "/trucks/17ft-Truck.webp", capacity: "4,000 kg", dimensions: "17 x 6.5 x 7 ft", basePrice: "₹1,499", perKm: "₹40/km", ideal: "Factory supply, massive moves, pallets.", tag: "Maximum Load", tagColor: "bg-red-100 text-red-800 border-red-200"
+      id: "canter-17", cat: "1501-3500", title: "Tata 407 / 17ft", image: "/trucks/17ft-Truck.webp", capacity: "4,000 kg", dimensions: "17 x 6.5 x 7 ft", ideal: "Factory supply, larger moves and pallets.", tag: "Larger Load", tagColor: "bg-red-100 text-red-800 border-red-200"
     }
   ]
 
@@ -84,7 +84,7 @@ export default function Services({ onSelectVehicle }) {
           </h2>
           <div className="w-20 h-1.5 bg-brand-500 mx-auto rounded-full"></div>
           <p className="text-slate-600 font-medium text-lg sm:text-xl">
-            From envelopes to entire factory raw materials, our extensive network of verified driver partners ensures safe, on-time delivery across any terrain.
+            Compare indicative load capacities, then enter the route and goods declaration to check current serviceability and pricing.
           </p>
         </div>
 
@@ -142,6 +142,10 @@ export default function Services({ onSelectVehicle }) {
                     <img
                       src={vehicle.image}
                       alt={vehicle.title}
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-auto"
                     />
                   </div>
@@ -166,11 +170,10 @@ export default function Services({ onSelectVehicle }) {
                     </div>
                   </div>
 
-                  {/* Pricing Info */}
+                  {/* Pricing is calculated by the live pricing engine for the submitted route and load. */}
                   <div className="flex items-baseline gap-2 mb-6">
-                    <span className="text-sm text-slate-500 font-bold uppercase tracking-wider">Starting at</span>
-                    <span className="text-3xl font-black text-slate-900">{vehicle.basePrice}</span>
-                    <span className="text-xs text-brand-700 font-bold bg-brand-100 px-2.5 py-1 rounded-md">{vehicle.perKm}</span>
+                    <span className="text-sm text-slate-500 font-bold uppercase tracking-wider">Pricing</span>
+                    <span className="text-lg font-black text-slate-900">Route and load based</span>
                   </div>
 
                   {/* Description */}
@@ -226,9 +229,8 @@ export default function Services({ onSelectVehicle }) {
               </div>
 
               <div className="flex items-baseline gap-2 mb-6">
-                <span className="text-sm text-slate-400 font-bold uppercase tracking-wider">Starting at</span>
-                <span className="text-3xl font-black text-white">₹2,999</span>
-                <span className="text-xs text-emerald-300 font-bold bg-emerald-900/50 px-2.5 py-1 rounded-md">Includes Labor</span>
+                <span className="text-sm text-slate-400 font-bold uppercase tracking-wider">Pricing</span>
+                <span className="text-lg font-black text-white">Quoted for your move</span>
               </div>
 
               <div className="text-slate-300 text-sm leading-relaxed border-t border-slate-800 pt-5 text-left mb-6">
@@ -236,7 +238,7 @@ export default function Services({ onSelectVehicle }) {
                   What's Included:
                 </p>
                 <p className="text-slate-300 font-medium text-sm">
-                  Bubble wrapping, loading/unloading, secure sealed container transport, and unpacking at destination with insurance.
+                  Tell us the inventory, floors, access conditions, route, packing requirement, and preferred schedule. The confirmed scope is stated in your quote.
                 </p>
               </div>
             </div>

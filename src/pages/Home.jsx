@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
-import Testimonials from '../components/Testimonials';
+import WhyChooseUs from '../components/WhyChooseUs';
 import FAQ from '../components/FAQ';
 import SEOHead from '../seo/SEOHead';
 
@@ -39,7 +39,7 @@ const homeSchema = [
   }
 ];
 
-export default function Home({ selectedService, setSelectedService, onCalculateEstimate, onOpenEstimate, onSelectVehicle }) {
+export default function Home({ selectedService, setSelectedService, onOpenEstimate, onSelectVehicle }) {
   
   useEffect(() => {
     setSelectedService(null)
@@ -48,15 +48,17 @@ export default function Home({ selectedService, setSelectedService, onCalculateE
   return (
     <>
       <SEOHead
-        description="Book mini trucks, Tata Ace & FTL transport near you. Same-day goods transport across India with transparent pricing. Serving Kolkata & pan-India."
+        title="Online Truck Booking & Goods Transport in Kolkata"
+        description="Request mini trucks, Tata Ace and larger goods vehicles in Kolkata and supported routes. Review a route-based estimate before confirming."
         canonical="/"
         keywords="online truck booking, book truck online, hire truck for goods, truck booking near me, transport service near me, goods transport services, mini truck booking near me, tata ace on rent, pickup truck booking, FTL transport services, part load transport, goods carrier near me, truck booking Kolkata, truck booking West Bengal"
         jsonLd={homeSchema}
+        preloadImage="/hero-bg-960.webp"
+        preloadImageSrcSet="/hero-bg-640.webp 640w, /hero-bg-960.webp 960w, /hero-bg-1600.webp 1600w"
       />
       <Hero 
         selectedService={selectedService} 
         setSelectedService={setSelectedService} 
-        onCalculateEstimate={onCalculateEstimate} 
         onOpenEstimate={onOpenEstimate}
         onSelectVehicle={onSelectVehicle}
       />
@@ -65,19 +67,16 @@ export default function Home({ selectedService, setSelectedService, onCalculateE
           <h2>Reliable Online Truck Booking & Logistics Services</h2>
           
           <p style={{ fontSize: '16px', lineHeight: '1.6', color: '#333', marginTop: '15px' }}>
-              Welcome to GoMyTruck, your premier digital platform for efficient supply chain and freight management. 
-              Whether you need a quick <strong>online truck booking</strong> for local deliveries or an enterprise-grade 
-              <strong>truck rental</strong> for interstate goods transport, our fleet is equipped to handle your requirements safely. 
-              We specialize in everything from <strong>mini truck</strong> logistics for small business distribution to heavy-duty 
-              commercial <strong>truck</strong> transportation across major routes. Trust our reliable logistics framework to offer secure, 
-              on-time, and budget-friendly <strong>truck</strong> booking options tailored to keep your business moving forward seamlessly.
+              GoMyTruck is a digital logistics marketplace for local deliveries, household goods and commercial freight.
+              Enter the pickup, drop, goods declaration and handling needs for an <strong>online truck booking</strong>; the platform can then
+              show suitable <strong>mini truck</strong>, pickup or larger commercial vehicle options. Route coverage, partner assignment, pickup
+              timing and final trip charges are confirmed through the booking flow rather than promised by this page.
           </p>
       </section>
 
       <Services onSelectVehicle={onSelectVehicle} />
-      <Testimonials />
+      <WhyChooseUs />
       <FAQ />
     </>
   );
 }
-

@@ -15,8 +15,8 @@ export default function WorkforceHowItWorks() {
     },
     {
       icon: Banknote,
-      title: "3. Start Earning",
-      desc: "Get onboarded onto the GoMyTruck Workforce app and start receiving daily jobs."
+      title: "3. Review Opportunities",
+      desc: "If approved, use the GoMyTruck Workforce app to review available assignments and their stated terms."
     }
   ]
 
@@ -28,7 +28,7 @@ export default function WorkforceHowItWorks() {
             How to Join
           </h2>
           <p className="text-lg text-slate-600">
-            It takes less than 24 hours to go from registration to your first job.
+            Verification time and assignment availability vary by role, location, and current demand.
           </p>
         </div>
 

@@ -45,11 +45,11 @@ export async function fetchVehicles() {
  *   vehicle: VehiclePricing
  * }
  */
-export async function fetchEstimate({ pickupLat, pickupLng, dropLat, dropLng, vehicleType, hasLoadingService = false, insuranceOpted = false }) {
+export async function fetchEstimate({ pickupLat, pickupLng, dropLat, dropLng, vehicleType, hasLoadingService = false, helperCount, insuranceOpted = false }) {
   const res = await fetch(`${BASE_URL}/pricing/estimate`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ pickupLat, pickupLng, dropLat, dropLng, vehicleType, hasLoadingService, insuranceOpted }),
+    body: JSON.stringify({ pickupLat, pickupLng, dropLat, dropLng, vehicleType, hasLoadingService, helperCount, insuranceOpted }),
   });
   if (!res.ok) throw new Error(`Estimate request failed: ${res.status}`);
   const json = await res.json();
@@ -85,26 +85,15 @@ export async function fetchPlaceDetails(placeId) {
 /**
  * Geocode an address string into { lat, lng } using the server's maps geocode API.
  * POST /api/v1/maps/geocode  or  GET /api/v1/maps/geocode?address=...
- * Falls back to a free Nominatim call if server doesn't respond.
+ * Uses the same backend Mapbox integration as the mobile apps.
  */
 export async function geocodeAddress(address) {
-  try {
-    const url = `${BASE_URL}/maps/geocode?address=${encodeURIComponent(address)}`;
-    const res = await fetch(url);
-    if (res.ok) {
-      const json = await res.json();
-      if (json.success && json.data) {
-        return { lat: json.data.lat, lng: json.data.lng };
-      }
-    }
-  } catch (_) { /* fallthrough to Nominatim */ }
-
-  // Fallback: OpenStreetMap Nominatim (free, no key needed)
-  const nominatimUrl = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address)}&format=json&limit=1`;
-  const res = await fetch(nominatimUrl, { headers: { 'Accept-Language': 'en' } });
-  const results = await res.json();
-  if (!results.length) throw new Error(`Could not locate address: "${address}"`);
-  return { lat: parseFloat(results[0].lat), lng: parseFloat(results[0].lon) };
+  const url = `${BASE_URL}/maps/geocode?address=${encodeURIComponent(address)}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Address lookup is temporarily unavailable. Please try again.');
+  const json = await res.json();
+  if (!json.success || !json.data) throw new Error(`Could not locate address: "${address}"`);
+  return { lat: json.data.lat, lng: json.data.lng };
 }
 
 /**
@@ -117,19 +106,14 @@ export const SERVICE_TO_VEHICLE_TYPE = {
 };
 
 /**
- * Hero background images per city — real landmark photos.
- * Same verified Wikipedia URLs used in CityCoverage.jsx, scaled to 1280px for hero quality.
- * Chennai uses the local file already in /public/cities/.
+ * Local first-party hero media avoids render-blocking third-party image hosts.
  */
 export const CITY_HERO_IMAGES = {
-  Kolkata:   "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Kolkata_maidan.jpg/1280px-Kolkata_maidan.jpg",
-  Mumbai:    "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Mumbai_Bandra-Worli_Sea_Link.jpg/1280px-Mumbai_Bandra-Worli_Sea_Link.jpg",
-  Delhi:     "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Jama_Masjid_2011.jpg/1280px-Jama_Masjid_2011.jpg",
-  Bengaluru: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/View_from_Visvesvaraya_Industrial_and_Technological_Museum_%282025%29_02.jpg/1280px-View_from_Visvesvaraya_Industrial_and_Technological_Museum_%282025%29_02.jpg",
-  Hyderabad: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Downtown_hyderabad_drone.webp/1280px-Downtown_hyderabad_drone.webp",
-  Chennai:   "/cities/Chennai.jpg",
-  Pune:      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Pune_West_skyline_-_March_2017.jpg/1280px-Pune_West_skyline_-_March_2017.jpg",
-  Ahmedabad: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Sabarmati_riverside.jpg/1280px-Sabarmati_riverside.jpg",
+  Kolkata: "/hero-bg-1600.webp",
+  Barrackpore: "/hero-bg-1600.webp",
+  Howrah: "/hero-bg-1600.webp",
+  "Salt Lake": "/hero-bg-1600.webp",
+  "New Town": "/hero-bg-1600.webp",
 }
 
 /**
@@ -138,13 +122,10 @@ export const CITY_HERO_IMAGES = {
  */
 export const SERVED_CITIES = [
   'Kolkata',
-  'Mumbai',
-  'Delhi',
-  'Bengaluru',
-  'Hyderabad',
-  'Chennai',
-  'Pune',
-  'Ahmedabad',
+  'Barrackpore',
+  'Howrah',
+  'Salt Lake',
+  'New Town',
 ];
 
 /**

@@ -7,19 +7,19 @@ export default function BikeFAQ({ city }) {
   const faqs = [
     {
       question: `How do I book a two-wheeler delivery in ${city}?`,
-      answer: `Booking a bike delivery in ${city} is simple. Enter your pickup and drop address in the estimate form above, fill in your name and mobile number, and click Get Estimate. Our team will confirm your booking instantly. You can also download the GoMyTruck app for one-tap booking and live tracking.`,
+      answer: `Enter the pickup and destination, describe the parcel, and review the estimate. Confirmation creates the request and starts partner matching; it does not guarantee immediate assignment or pickup. Tracking is available only when supported by the active trip workflow.`,
     },
     {
       question: `Which areas in ${city} does GoMyTruck bike delivery cover?`,
-      answer: `GoMyTruck covers all major neighbourhoods and localities across ${city} — from the city centre to the outskirts. Our growing network of verified bike partners ensures fast pickup and delivery no matter where you are in ${city}.`,
+      answer: `Enter both exact addresses to check current serviceability in ${city}. A published city page does not mean that every locality has an immediately available bike partner.`,
     },
     {
       question: "What is the maximum weight a two-wheeler delivery can carry?",
-      answer: "Our two-wheeler delivery service can handle packages up to 20 kg. For anything heavier or bulkier — furniture, appliances, large parcels — we recommend booking a Tata Ace or Mini Truck through our truck booking service.",
+      answer: "The booking flow uses a 20 kg planning ceiling for the bike category, but size, shape, fragility, safety, and local rules also matter. Use a goods vehicle for anything unsuitable for safe two-wheeler transport.",
     },
     {
       question: "How fast is a two-wheeler delivery compared to other vehicles?",
-      answer: "Two-wheelers are the fastest option for intra-city deliveries. With no parking constraints and the ability to navigate city traffic efficiently, a bike delivery can often reach the destination 30–50% faster than a mini truck for short distances under 15 km.",
+      answer: "A two-wheeler can be practical for a small local parcel, but GoMyTruck does not promise a percentage time saving. Pickup and delivery time depend on partner availability, traffic, route, weather, and the confirmed trip.",
     },
   ]
 

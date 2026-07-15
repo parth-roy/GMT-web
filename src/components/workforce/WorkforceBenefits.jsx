@@ -4,36 +4,36 @@ import { DollarSign, Clock, ShieldCheck, TrendingUp, HeartHandshake } from "luci
 const benefitsData = [
   {
     icon: DollarSign,
-    title: "Weekly Payouts",
-    description: "Get paid every week directly into your bank account. No more waiting for the end of the month to receive your hard-earned money.",
+    title: "Terms Shown Per Assignment",
+    description: "Review the role, expected work, and stated earning terms before accepting an available assignment.",
     color: "text-emerald-600",
     bgColor: "bg-emerald-100",
   },
   {
     icon: Clock,
-    title: "Flexible Shifts",
-    description: "Choose your own working hours. Whether you want to work full-time or part-time, we have shifts that fit your schedule.",
+    title: "Choose Available Work",
+    description: "Review assignments that appear for your role and area. Availability is not guaranteed and can change with local demand.",
     color: "text-blue-600",
     bgColor: "bg-blue-100",
   },
   {
     icon: ShieldCheck,
-    title: "Free Accidental Insurance",
-    description: "Your safety is our top priority. All our workforce partners get free accidental coverage up to ₹2,00,000.",
+    title: "Documented Onboarding",
+    description: "Our team reviews identity and role documents and explains the current onboarding requirements before activation.",
     color: "text-rose-600",
     bgColor: "bg-rose-100",
   },
   {
     icon: TrendingUp,
-    title: "Performance Bonuses",
-    description: "Earn extra for your dedication! We offer exciting weekly and monthly bonuses for completing targets and maintaining high ratings.",
+    title: "Assignment History",
+    description: "Use the workforce app to view active work and the information recorded for completed assignments.",
     color: "text-orange-600",
     bgColor: "bg-orange-100",
   },
   {
     icon: HeartHandshake,
-    title: "Supportive Community",
-    description: "Join a network of thousands of professionals. Get 24/7 dedicated support for any issues on the field.",
+    title: "Operational Support",
+    description: "Use the support options provided in the app if you need help with an active assignment.",
     color: "text-indigo-600",
     bgColor: "bg-indigo-100",
   }
@@ -48,7 +48,7 @@ export default function WorkforceBenefits() {
             Why Join Our Workforce?
           </h2>
           <p className="text-lg text-slate-600">
-            We provide our delivery executives and drivers with consistent jobs, flexibility, and absolute peace of mind.
+            Understand the process, review current opportunities, and decide whether an available assignment fits.
           </p>
         </div>
 
@@ -76,7 +76,7 @@ export default function WorkforceBenefits() {
             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
             <h3 className="text-2xl font-display font-extrabold mb-3 relative z-10">Ready to start?</h3>
             <p className="text-slate-400 text-sm mb-6 relative z-10">
-              Complete the registration form above to get a call back within 2 hours.
+              Complete the registration form above. The team will review it and contact you when the relevant onboarding capacity is available.
             </p>
             <button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-xl transition-colors relative z-10 w-max">
               Register Now

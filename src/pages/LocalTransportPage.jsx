@@ -16,7 +16,7 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'Local Transport Services in Kolkata',
   description:
-    'Same-day local goods transport in Kolkata. Book mini truck, Tata Ace, tempo or bike delivery across all Kolkata areas instantly with verified drivers.',
+    'Request local goods transport in Kolkata by mini truck, Tata Ace, tempo, or eligible bike delivery. Check route serviceability and partner availability before confirming.',
   provider: {
     '@type': 'Organization',
     name: 'GoMyTruck – GoMyTruck',
@@ -36,7 +36,7 @@ const serviceSchema = {
     name: 'Kolkata',
   },
   serviceType: 'Intracity Goods Transport',
-  url: 'https://gomytruck.in/local-transport',
+  url: 'https://gomytruck.com/local-transport/kolkata',
 };
 
 const breadcrumbSchema = {
@@ -47,13 +47,13 @@ const breadcrumbSchema = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://gomytruck.in/',
+      item: 'https://gomytruck.com/',
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'Local Transport Services',
-      item: 'https://gomytruck.in/local-transport',
+      item: 'https://gomytruck.com/local-transport/kolkata',
     },
   ],
 };
@@ -63,17 +63,17 @@ const reasons = [
   {
     icon: <Zap className="w-8 h-8 text-brand-600" />,
     title: 'Save Time',
-    body: 'No phone calls, no waiting. Book your local truck in under 2 minutes from anywhere in Kolkata.',
+    body: 'Enter the route and load online, then review the estimate and assignment status in the booking flow.',
   },
   {
     icon: <CheckCircle className="w-8 h-8 text-brand-600" />,
     title: 'Transparent Price',
-    body: 'Pay a clear per-km rate with zero hidden charges. No bargaining, no surprises at the destination.',
+    body: 'Review the available fare components before payment. Trip actuals and disclosed service changes may affect the final amount.',
   },
   {
     icon: <Truck className="w-8 h-8 text-brand-600" />,
     title: 'Verified Drivers',
-    body: 'Every driver on our platform is background-checked, licensed and rated by previous customers.',
+    body: 'Identity, licence and vehicle records applicable to the partner role are collected during onboarding.',
   },
 ];
 
@@ -81,7 +81,7 @@ const useCases = [
   {
     icon: '\uD83C\uDFE0',
     title: 'Home Shifting within Kolkata',
-    desc: 'Move furniture, appliances & packed items door-to-door within the city, same day.',
+    desc: 'Request transport for declared furniture, appliances, or packed items after confirming load fit and availability.',
   },
   {
     icon: '\uD83D\uDED2',
@@ -121,7 +121,7 @@ const areas = [
 const stats = [
   { icon: <Clock className="w-7 h-7 text-brand-400" />, value: '~20 min', label: 'Avg. Pickup Time' },
   { icon: <MapPin className="w-7 h-7 text-brand-400" />, value: '50+ Areas', label: 'Coverage across Kolkata' },
-  { icon: <Zap className="w-7 h-7 text-brand-400" />, value: '24 / 7', label: 'Always Available' },
+  { icon: <Zap className="w-7 h-7 text-brand-400" />, value: 'Online', label: 'Request submission' },
 ];
 
 /* ─── Component ───────────────────────────────────────────────── */
@@ -133,9 +133,9 @@ export default function LocalTransportPage() {
   return (
     <>
       <SEOHead
-        title="Local Transport Services in Kolkata | Same-Day Goods Delivery & Truck Booking"
-        description="Book local transport services in Kolkata for same-day goods delivery. Mini truck, Tata Ace, bike delivery & tempo available across all Kolkata areas. Instant booking, verified drivers."
-        canonical="/local-transport"
+        title="Local Transport Services in Kolkata | Truck and Goods Requests"
+        description="Request local transport in Kolkata by mini truck, Tata Ace, tempo, or eligible bike delivery. Review the route estimate and current partner availability before confirming."
+        canonical="/local-transport/kolkata"
         keywords="local transport services, local goods transport Kolkata, same day delivery Kolkata, local truck booking, local tempo service, local mini truck, goods delivery Kolkata, intracity transport, local lorry booking, same day truck Kolkata"
         jsonLd={[serviceSchema, breadcrumbSchema]}
       />
@@ -155,7 +155,7 @@ export default function LocalTransportPage() {
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 flex flex-col items-center text-center gap-6">
           {/* badge */}
           <span className="inline-flex items-center gap-2 bg-brand-600/20 text-brand-400 text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full ring-1 ring-brand-600/40">
-            <Zap className="w-3.5 h-3.5" /> Same-Day City Delivery
+            <Zap className="w-3.5 h-3.5" /> Local City Transport
           </span>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight max-w-3xl">
@@ -164,9 +164,8 @@ export default function LocalTransportPage() {
           </h1>
 
           <p className="text-slate-300 text-lg sm:text-xl max-w-2xl leading-relaxed">
-            Book a verified mini truck, tempo or Tata Ace for same-day goods
-            delivery anywhere across Kolkata &mdash; in under 2&nbsp;minutes.
-            Transparent pricing. No bargaining. Just go.
+            Request a mini truck, tempo, or Tata Ace for a declared Kolkata route and load.
+            Review the estimate, current availability, and assignment status before relying on a schedule.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mt-2">
@@ -207,8 +206,7 @@ export default function LocalTransportPage() {
               3 Reasons to Book Local Transport Online
             </h2>
             <p className="mt-3 text-slate-500 max-w-xl mx-auto">
-              Skip the hassle of roadside negotiation. Here&apos;s why thousands of
-              Kolkata residents trust GoMyTruck.
+              The online workflow records the route, load, vehicle, and pricing inputs before confirmation.
             </p>
           </div>
 
@@ -237,8 +235,7 @@ export default function LocalTransportPage() {
               What Can You Transport Locally?
             </h2>
             <p className="mt-3 text-slate-500 max-w-xl mx-auto">
-              From home shifting to event logistics &mdash; our fleet handles it all
-              across Kolkata on the same day.
+              From home-moving enquiries to event logistics, each request is checked for route, load, vehicle, and partner availability.
             </p>
           </div>
 
@@ -270,8 +267,7 @@ export default function LocalTransportPage() {
               Areas Covered in Kolkata
             </h2>
             <p className="mt-3 text-slate-500 max-w-lg mx-auto">
-              We operate across all major neighbourhoods of Kolkata. If you
-              don&apos;t see your area, just call us &mdash; we&apos;ll sort it out.
+              These are common Kolkata service-area enquiries. Enter the exact addresses or call the team to check current route serviceability.
             </p>
           </div>
 
@@ -339,11 +335,10 @@ export default function LocalTransportPage() {
       <section className="bg-brand-600 py-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center gap-6">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-            Ready for Same-Day Delivery in Kolkata?
+            Ready to Request Local Transport in Kolkata?
           </h2>
           <p className="text-brand-100 text-lg max-w-xl">
-            Book your local truck online right now &mdash; no calls needed. Our
-            verified drivers are standing by across the city.
+            Enter the route and load online, or call if the requirement needs a manual serviceability review.
           </p>
           <Link
             to="/book-truck-online"
@@ -362,7 +357,7 @@ export default function LocalTransportPage() {
             Navigating the bustling, narrow lanes of Kolkata requires a logistics partner who understands the city's unique geography. <strong>GoMyTruck</strong> provides top-tier <strong>local transport services in Kolkata</strong>, ensuring your goods are delivered quickly and safely, no matter where you are located. From the busy commercial hubs of Burrabazar and Posta to the modern IT corridors of Salt Lake and New Town, our fleet is equipped to handle every local shifting and delivery requirement.
           </p>
           <p>
-            Local transport is the lifeblood of urban commerce. Whether you are a small business owner needing daily stock replenishment, a family moving to a new apartment in South Kolkata, or a distributor handling last-mile deliveries for e-commerce giants, you need vehicles that are prompt and drivers who are professional. GoMyTruck bridges this gap with technology, offering instant bookings, transparent pricing, and live tracking for absolute peace of mind.
+            Local transport supports stock replenishment, residential moves, and distribution work. GoMyTruck collects the exact route, declared goods, vehicle, and handling requirements, calculates a current estimate, and starts partner matching after confirmation. Supported active trips can provide status and location updates.
           </p>
           
           <h3 className="text-2xl font-semibold text-slate-800 mt-10 mb-4">Comprehensive Local Goods Transport Solutions</h3>
@@ -370,10 +365,10 @@ export default function LocalTransportPage() {
             We cater to a diverse array of local transport needs. Our services are designed to be flexible, accommodating varying load capacities and route requirements:
           </p>
           <ul className="space-y-2 mb-8">
-            <li><strong>House & Room Shifting:</strong> Moving within Kolkata? We provide right-sized vehicles like <Link to="/mini-truck-booking-kolkata" className="text-brand-600 font-semibold hover:underline">Mini Trucks</Link> and Tata Aces, perfect for shifting 1BHKs, PG luggage, and individual rooms through narrow alleys without a hitch.</li>
+            <li><strong>House & Room Shifting:</strong> Moving within Kolkata? We provide right-sized vehicles like <Link to="/kolkata/mini-truck-booking" className="text-brand-600 font-semibold hover:underline">Mini Trucks</Link> and Tata Aces, perfect for shifting 1BHKs, PG luggage, and individual rooms through narrow alleys without a hitch.</li>
             <li><strong>B2B Logistics & Retail Distribution:</strong> For SMEs and wholesalers, we offer dedicated fleet assignments. Transport raw materials to your factory in Howrah, or distribute finished FMCG products to retailers across North and South 24 Parganas effortlessly.</li>
-            <li><strong>Heavy Commercial Deliveries:</strong> When a Tata Ace isn't enough, book our sturdy <Link to="/pickup-truck-booking-kolkata" className="text-brand-600 font-semibold hover:underline">Pickup Trucks</Link> (like the Bolero Pickup). They are ideal for transporting construction materials, heavy machinery, and bulk wholesale goods up to 1.5 tons.</li>
-            <li><strong>E-Commerce & Courier Last-Mile:</strong> Speed is critical for e-commerce. We partner with courier hubs to provide agile vehicles for rapid, same-day local distribution to end customers.</li>
+            <li><strong>Heavy Commercial Deliveries:</strong> When a Tata Ace isn't enough, book our sturdy <Link to="/kolkata/pickup-truck-booking" className="text-brand-600 font-semibold hover:underline">Pickup Trucks</Link> (like the Bolero Pickup). They are ideal for transporting construction materials, heavy machinery, and bulk wholesale goods up to 1.5 tons.</li>
+            <li><strong>E-Commerce & Courier Last-Mile:</strong> Businesses can discuss recurring local distribution requirements. Coverage, capacity, and timing must be confirmed for the operating scope.</li>
           </ul>
 
           <h3 className="text-2xl font-semibold text-slate-800 mt-10 mb-4">Why GoMyTruck is Kolkata's Preferred Local Transporter</h3>
@@ -381,10 +376,10 @@ export default function LocalTransportPage() {
             The local transport market is often plagued by unreliable service, hidden costs, and unavailable vehicles. GoMyTruck eliminates these pain points entirely:
           </p>
           <ol className="space-y-4 mb-8">
-            <li><strong>Instant Availability:</strong> With thousands of verified driver partners spread across the city, we guarantee vehicle allocation within 15 to 30 minutes of booking.</li>
-            <li><strong>100% Transparent Pricing:</strong> We calculate fares based on the exact distance between pickup and drop points via GPS. No haggling, no unexpected demands for extra money from drivers. What you see is what you pay.</li>
+            <li><strong>Availability Status:</strong> The booking enters partner matching after confirmation. Allocation and arrival depend on the route, goods, vehicle class, traffic, and current partner supply.</li>
+            <li><strong>Pricing Breakdown:</strong> The estimate uses the mapped distance and time, vehicle, fuel, demand, workforce, and tax inputs. Toll, waiting, or confirmed trip changes can affect the final total as stated in the booking terms.</li>
             <li><strong>Wide Range of Vehicles:</strong> Our fleet includes everything from two-wheelers for fast document delivery to Tata Aces, Bolero Pickups, and larger 14-ft trucks. We match the right vehicle to your specific cargo volume, saving you money.</li>
-            <li><strong>Real-Time Tracking:</strong> Know exactly where your goods are. Our app provides live GPS tracking from the moment the vehicle leaves the pickup point until it reaches the destination.</li>
+            <li><strong>Trip visibility:</strong> Supported active bookings can provide status and location updates after an eligible partner is assigned and tracking is active.</li>
           </ol>
 
           <h3 className="text-2xl font-semibold text-slate-800 mt-10 mb-4">Frequently Asked Questions (FAQs)</h3>
@@ -397,7 +392,7 @@ export default function LocalTransportPage() {
                 </span>
               </summary>
               <p className="mt-4 text-slate-600 leading-relaxed">
-                It is incredibly simple. Just visit our <Link to="/book-truck-online" className="text-brand-600 font-semibold hover:underline">booking page</Link> or send us a message on WhatsApp. Enter your pickup and drop locations, choose the vehicle type, and confirm. A truck will be assigned instantly.
+                Visit the <Link to="/book-truck-online" className="text-brand-600 font-semibold hover:underline">booking page</Link> or message on WhatsApp. Enter the addresses, choose a vehicle, declare the goods, and review the estimate. Confirmation starts partner matching; assignment is not immediate or guaranteed.
               </p>
             </details>
             <details className="group bg-slate-50 border border-slate-200 rounded-xl p-6 open:shadow-md transition-all">
@@ -419,7 +414,7 @@ export default function LocalTransportPage() {
                 </span>
               </summary>
               <p className="mt-4 text-slate-600 leading-relaxed">
-                Kolkata traffic police impose "No Entry" timings for large commercial vehicles during peak hours. However, smaller vehicles like the Tata Ace generally face fewer restrictions. Our system automatically routes your booking and advises on the best dispatch time to avoid delays.
+                Commercial-vehicle restrictions and local access rules can vary by road, time and vehicle class. Confirm the planned route and dispatch window with the assigned partner; the website does not automatically certify legal access or a delay-free time.
               </p>
             </details>
             <details className="group bg-slate-50 border border-slate-200 rounded-xl p-6 open:shadow-md transition-all">
@@ -430,7 +425,7 @@ export default function LocalTransportPage() {
                 </span>
               </summary>
               <p className="mt-4 text-slate-600 leading-relaxed">
-                Absolutely! Our local transport services cover the entire Kolkata Metropolitan Area, including seamless transport to <Link to="/goods-transport-barrackpore" className="text-brand-600 font-semibold hover:underline">Barrackpore</Link>, Howrah, Hooghly, and parts of North/South 24 Parganas.
+                Absolutely! Our local transport services cover the entire Kolkata Metropolitan Area, including seamless transport to <Link to="/barrackpore/goods-transport" className="text-brand-600 font-semibold hover:underline">Barrackpore</Link>, Howrah, Hooghly, and parts of North/South 24 Parganas.
               </p>
             </details>
           </div>
@@ -451,13 +446,13 @@ export default function LocalTransportPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               {
-                to: '/transport-services-kolkata',
+                to: '/kolkata/truck-booking',
                 label: 'Transport Services in Kolkata',
                 desc: 'Full city-wide goods transport solutions.',
                 icon: <Truck className="w-5 h-5" />,
               },
               {
-                to: '/transport-services-barrackpore',
+                to: '/barrackpore/truck-booking',
                 label: 'Transport in Barrackpore',
                 desc: 'Dedicated logistics for Barrackpore & North 24 Pgs.',
                 icon: <MapPin className="w-5 h-5" />,
@@ -465,7 +460,7 @@ export default function LocalTransportPage() {
               {
                 to: '/book-truck-online',
                 label: 'Book Truck Online',
-                desc: 'Instant truck booking in 2 minutes flat.',
+                desc: 'Submit the route and goods details online.',
                 icon: <Zap className="w-5 h-5" />,
               },
               {

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react"
-import { MapPin, ChevronDown, ArrowRight, Loader2, AlertCircle } from "lucide-react"
+import { MapPin, ChevronDown, ArrowRight, AlertCircle } from "lucide-react"
 import { SERVED_CITIES } from "../../api/pricingApi"
-import EstimateResultModal from "../EstimateResultModal"
 import AddressAutocomplete from "../AddressAutocomplete"
+import { trackLead, trackWhatsAppClick } from "../../utils/analytics"
 
 export default function PackersHero({ city, setCity }) {
   const [form, setForm] = useState({
@@ -16,18 +16,14 @@ export default function PackersHero({ city, setCity }) {
     phone: "",
     date: "",
   })
-  const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
-  const [estimateResult, setEstimateResult] = useState(null)
-  const [showResult, setShowResult] = useState(false)
+  const [today, setToday] = useState("")
 
   const [cityOpen, setCityOpen] = useState(false)
   const cityRef = useRef(null)
 
-  // Default to today's date for date picker minimum
-  const today = new Date().toISOString().split("T")[0]
-
   useEffect(() => {
+    setToday(new Date().toISOString().split("T")[0])
     function handleOutside(e) {
       if (cityRef.current && !cityRef.current.contains(e.target)) {
         setCityOpen(false)
@@ -51,34 +47,11 @@ export default function PackersHero({ city, setCity }) {
     if (!form.phone.trim() || !/^[6-9]\d{9}$/.test(form.phone.trim()))
       return setError("Please enter a valid 10-digit Indian mobile number.")
 
-    setLoading(true)
     setError("")
-
-    try {
-      // Simulate API call for packers estimate
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-      
-      setEstimateResult({
-        pickupAddress: form.pickup,
-        pickupLat: form.pickupLat,
-        pickupLng: form.pickupLng,
-        dropAddress: form.drop,
-        dropLat: form.dropLat,
-        dropLng: form.dropLng,
-        name: form.name,
-        phone: form.phone,
-        service: "packers",
-        date: form.date,
-        estimatedFare: 4500, // Placeholder base fare
-        distance: "Calculating...",
-        duration: "Calculating..."
-      })
-      setShowResult(true)
-    } catch (err) {
-      setError("Could not calculate estimate. Please try again.")
-    } finally {
-      setLoading(false)
-    }
+    const text = `Hi GoMyTruck, I need a packers and movers quote in ${city}. Pickup: ${form.pickup}. Drop: ${form.drop}. Moving date: ${form.date}. Phone: ${form.phone}.`
+    window.open(`https://wa.me/919331488999?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer")
+    trackLead("packers_quote_whatsapp", "packers_and_movers")
+    trackWhatsAppClick("packers_quote_form")
   }
 
   return (
@@ -86,20 +59,26 @@ export default function PackersHero({ city, setCity }) {
       <section className="relative bg-slate-900 pb-48 pt-32 mb-40 mt-[52px]">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
+          <picture className="block w-full h-full">
+            <source type="image/webp" srcSet="/packer_movers/packer_movers_hero-640.webp 640w, /packer_movers/packer_movers_hero-960.webp 960w, /packer_movers/packer_movers_hero-1600.webp 1600w" sizes="100vw" />
           <img
-            src="/packer_movers/packer_movers_hero.webp"
+            src="/packer_movers/packer_movers_hero-960.webp"
             alt={`Packers and Movers in ${city}`}
+            width="1600"
+            height="900"
+            fetchpriority="high"
             className="w-full h-full object-cover object-top"
           />
+          </picture>
           <div className="absolute inset-0 bg-slate-950/70"></div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-white tracking-tight leading-tight max-w-4xl drop-shadow-xl">
-            Best Packers and Movers in {city}
+            Packers and Movers in {city}
           </h1>
           <p className="mt-6 text-lg md:text-xl text-slate-300 font-medium leading-relaxed max-w-3xl drop-shadow-md">
-            Safe, fast, and secure shifting. Affordable rates start at ₹3,000. Book expert packers in {city} today!
+            Share your route, moving date and inventory details to request a packing and moving quote in {city}.
           </p>
           <a href="#more" className="mt-8 text-white font-semibold underline underline-offset-4 decoration-2 hover:text-brand-300 transition-colors">
             See Pricing & Services
@@ -196,6 +175,8 @@ export default function PackersHero({ city, setCity }) {
                 <input
                   name="phone"
                   type="tel"
+                  autoComplete="tel-national"
+                  inputMode="numeric"
                   value={form.phone}
                   onChange={handleChange}
                   placeholder="10-digit mobile"
@@ -207,20 +188,10 @@ export default function PackersHero({ city, setCity }) {
               <div className="flex flex-col h-full justify-end">
                 <button
                   type="submit"
-                  disabled={loading}
-                  className="w-full bg-brand-600 hover:bg-brand-700 disabled:bg-brand-400 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-1.5 transition-all shadow-md shadow-brand-500/20 active:scale-95 cursor-pointer whitespace-nowrap text-sm h-[38px]"
+                  className="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-1.5 transition-all shadow-md shadow-brand-500/20 active:scale-95 cursor-pointer whitespace-nowrap text-sm h-[38px]"
                 >
-                  {loading ? (
-                    <>
-                      <Loader2 size={16} className="animate-spin" />
-                      Wait...
-                    </>
-                  ) : (
-                    <>
-                      Check Price
-                      <ArrowRight size={16} />
-                    </>
-                  )}
+                  Request Quote
+                  <ArrowRight size={16} />
                 </button>
               </div>
 
@@ -229,14 +200,6 @@ export default function PackersHero({ city, setCity }) {
         </div>
       </section>
 
-      {/* Estimate Result Modal */}
-      {showResult && estimateResult && (
-        <EstimateResultModal
-          isOpen={showResult}
-          onClose={() => setShowResult(false)}
-          estimateData={estimateResult}
-        />
-      )}
     </>
   )
 }

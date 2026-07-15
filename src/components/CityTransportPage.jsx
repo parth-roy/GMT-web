@@ -9,9 +9,7 @@ import { Link } from "react-router-dom"
 import { MapPin, Truck, Bike, Package, Home, ArrowRight, CheckCircle, PhoneCall } from "lucide-react"
 import SEOHead from "../seo/SEOHead"
 import FAQ from "../components/FAQ"
-import GranularPricingTable from "./GranularPricingTable"
 import TrustBadgeRow from "./TrustBadgeRow"
-import Testimonials from "./Testimonials"
 
 const services = [
   { icon: Truck, label: "Mini Truck & Tata Ace", to: "/mini-truck-booking", desc: "Small goods & furniture" },
@@ -23,6 +21,8 @@ const services = [
 export default function CityTransportPage({
   city,
   slug,
+  canonical,
+  seoTitle,
   headline,
   subheadline,
   description,
@@ -32,16 +32,15 @@ export default function CityTransportPage({
   jsonLd = [],
   children,
   customFaqs,
-  pricingRoutes = [],
 }) {
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
   return (
     <div className="bg-white min-h-screen font-sans">
       <SEOHead
-        title={`Transport Services in ${city} | Truck Booking, Goods Transport & Movers`}
+        title={seoTitle || `Transport Services in ${city} | Truck Booking & Goods Transport`}
         description={description}
-        canonical={`/transport-services-${slug}`}
+        canonical={canonical || `/transport-services-${slug}`}
         keywords={keywords}
         jsonLd={jsonLd}
       />
@@ -60,7 +59,7 @@ export default function CityTransportPage({
             {headline || `Transport Services in ${city}`}
           </h1>
           <p className="text-slate-300 text-xl max-w-2xl mx-auto leading-relaxed mb-10">
-            {subheadline || `Book truck, bike delivery, and movers in ${city} online. Transparent pricing, same-day service, verified drivers.`}
+            {subheadline || `Request truck, bike delivery, or moving support in ${city}. Review route-based pricing and current availability before confirming.`}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
@@ -78,6 +77,16 @@ export default function CityTransportPage({
           </div>
         </div>
       </section>
+
+      <nav aria-label="Breadcrumb" className="border-b border-slate-200 bg-white">
+        <ol className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center gap-2 text-sm text-slate-600">
+          <li><Link to="/" className="hover:text-brand-700">Home</Link></li>
+          <li aria-hidden="true">/</li>
+          <li><Link to="/services" className="hover:text-brand-700">Services</Link></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page" className="font-semibold text-slate-900">{headline || `Transport in ${city}`}</li>
+        </ol>
+      </nav>
 
       {/* Trust Badges */}
       <section className="bg-white px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto -mt-8 relative z-20">
@@ -116,15 +125,6 @@ export default function CityTransportPage({
         </div>
       </section>
 
-      {/* Pricing Table (if provided) */}
-      {pricingRoutes && pricingRoutes.length > 0 && (
-        <section className="py-12 bg-white">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <GranularPricingTable routes={pricingRoutes} title={`Estimated Route Fares from ${city}`} />
-          </div>
-        </section>
-      )}
-
       {/* Areas served */}
       {areas.length > 0 && (
         <section className="py-20 bg-white">
@@ -153,16 +153,16 @@ export default function CityTransportPage({
               Why Choose GoMyTruck in {city}
             </div>
             <h2 className="text-3xl font-display font-extrabold text-slate-900 mb-6">
-              The Most Trusted Transport Partner in {city}
+              Transport built around your route and load
             </h2>
             <ul className="space-y-3">
               {(highlights.length ? highlights : [
-                `Widest coverage across ${city} and nearby areas`,
-                "Transparent per-km pricing — no hidden charges",
-                "Verified, background-checked drivers",
-                "Real-time GPS tracking on every booking",
-                "Same-day bookings available",
-                "24/7 customer support",
+                `Route coverage across ${city} and nearby areas`,
+                "Fare components shown before payment",
+                "Driver and vehicle documents checked during onboarding",
+                "Live tracking is available for supported active trips",
+                "Same-day requests are subject to vehicle availability",
+                "Trip support through app, phone and WhatsApp",
               ]).map((h, i) => (
                 <li key={i} className="flex items-center gap-3 text-slate-700 font-medium">
                   <CheckCircle size={20} className="text-brand-600 shrink-0" />
@@ -174,13 +174,13 @@ export default function CityTransportPage({
           <div className="flex-1 bg-white rounded-3xl p-8 border border-slate-200 shadow-sm">
             <div className="grid grid-cols-2 gap-4 mb-6">
               {[
-                { v: "500+", l: "Verified Drivers" },
-                { v: "4.8★", l: "Avg Rating" },
-                { v: "2 min", l: "Avg Booking Time" },
-                { v: "24/7", l: "Support Available" },
+                { v: "Route based", l: "Digital estimates" },
+                { v: "Multiple", l: "Vehicle categories" },
+                { v: "In app", l: "Booking updates" },
+                { v: "Documented", l: "Partner onboarding" },
               ].map((s, i) => (
                 <div key={i} className="bg-slate-50 rounded-xl p-4 text-center">
-                  <div className="text-2xl font-black text-brand-600">{s.v}</div>
+                  <div className="text-lg font-black text-brand-700">{s.v}</div>
                   <div className="text-slate-500 text-xs font-semibold mt-1">{s.l}</div>
                 </div>
               ))}
@@ -203,9 +203,6 @@ export default function CityTransportPage({
           </div>
         </section>
       )}
-
-      {/* Geo-Targeted Testimonials */}
-      <Testimonials city={city} />
 
       {customFaqs ? customFaqs : <FAQ />}
     </div>

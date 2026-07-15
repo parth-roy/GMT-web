@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { Link } from "react-router-dom"
-import { BookOpen, Clock, ArrowRight, Tag, Mail } from "lucide-react"
+import { BookOpen, Clock, ArrowRight, Tag } from "lucide-react"
 import SEOHead from "../seo/SEOHead"
 
 // ─── JSON-LD ────────────────────────────────────────────────────────────────
 const jsonLdSchema = [
   {
     "@context": "https://schema.org",
-    "@type": "Blog",
+    "@type": "CollectionPage",
     "name": "GoMyTruck Knowledge Hub",
     "headline": "Logistics & Transport Blog | Truck Booking Tips, Guides & News",
     "description":
@@ -37,58 +37,64 @@ const jsonLdSchema = [
 // ─── Blog Posts ──────────────────────────────────────────────────────────────
 const blogPosts = [
   {
-    title: "How to Book a Mini Truck in Kolkata: Complete 2025 Guide",
+    title: "How to Request a Truck Online in Kolkata",
     category: "Booking Guide",
     readTime: "5 min read",
-    date: "June 2025",
+    date: "Service guide",
     excerpt:
-      "Step-by-step guide to booking a mini truck online in Kolkata. Learn about pricing, vehicle selection, and what to expect on your first booking.",
-    slug: "how-to-book-mini-truck-kolkata",
+      "Review the route, vehicle, goods declaration, estimate, confirmation, and partner-assignment stages.",
+    slug: "book-truck-online",
+    href: "/book-truck-online",
   },
   {
-    title: "Tata Ace Rent Per KM: Complete Price Breakdown",
+    title: "How GoMyTruck Route Pricing Is Calculated",
     category: "Pricing",
     readTime: "4 min read",
-    date: "May 2025",
+    date: "Pricing guide",
     excerpt:
-      "Everything you need to know about Tata Ace rental charges — base fare, per km rates, loading charges, and how to get the best deal.",
-    slug: "tata-ace-rent-per-km",
+      "Understand base, distance, time, fuel, demand, workforce, GST, toll, and waiting components.",
+    slug: "pricing",
+    href: "/pricing",
   },
   {
-    title: "House Shifting Checklist: 20 Things to Do Before Moving",
+    title: "How to Scope a Packing and Moving Quote",
     category: "Moving Tips",
     readTime: "8 min read",
-    date: "May 2025",
+    date: "Moving guide",
     excerpt:
-      "Planning to shift your home? Use our comprehensive checklist to make sure nothing is missed — from packing fragile items to choosing the right truck size.",
-    slug: "house-shifting-checklist",
+      "Declare inventory, access, packing materials, specialist work, vehicle, workforce, and timing before acceptance.",
+    slug: "packers-and-movers",
+    href: "/packers-and-movers",
   },
   {
-    title: "FTL vs PTL: Which Freight Option Saves You More?",
+    title: "FTL and PTL Transport Planning",
     category: "Freight Guide",
     readTime: "6 min read",
-    date: "April 2025",
+    date: "Freight guide",
     excerpt:
-      "Not sure whether to book a full truck or part load? We break down the cost, timeline, and use cases for FTL and PTL shipping.",
-    slug: "ftl-vs-ptl-freight",
+      "Compare dedicated and shared capacity, then confirm route-specific PTL availability and operating terms.",
+    slug: "ftl-vs-ptl",
+    href: "/truck",
   },
   {
-    title: "Top 10 Areas for Fast Truck Booking in Kolkata",
+    title: "Kolkata Transport Service Hubs",
     category: "Local Guide",
     readTime: "3 min read",
-    date: "April 2025",
+    date: "Local guide",
     excerpt:
-      "Discover which Kolkata areas have the fastest driver availability on GoMyTruck and how to guarantee a vehicle in under 20 minutes.",
-    slug: "fast-truck-booking-kolkata-areas",
+      "Explore the Kolkata hub and linked local pages, then check exact route serviceability and current availability.",
+    slug: "kolkata-hub",
+    href: "/kolkata",
   },
   {
-    title: "How to Pack Goods for Safe Transport: Pro Tips",
+    title: "Declaring Goods for a Transport Request",
     category: "Packing Tips",
     readTime: "5 min read",
-    date: "March 2025",
+    date: "Goods guide",
     excerpt:
-      "Proper packing prevents damage. Learn professional techniques for securing furniture, electronics, and fragile items during truck transport.",
-    slug: "pack-goods-safe-transport",
+      "Review the goods category, description, weight, quantity, handling, restricted-goods declaration, and workforce fields.",
+    slug: "declare-goods",
+    href: "/goods-transport-services",
   },
 ]
 
@@ -138,10 +144,9 @@ function BlogCard({ post }) {
 
   return (
     <a
-      href="#"
+      href={post.href}
       className="group flex flex-col bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
       aria-label={`Read: ${post.title}`}
-      onClick={(e) => e.preventDefault()}
     >
       {/* Coloured accent bar */}
       <div className={`h-1.5 w-full ${styles.bar}`} />
@@ -193,20 +198,9 @@ function BlogCard({ post }) {
 
 // ─── Page Component ──────────────────────────────────────────────────────────
 export default function BlogPage() {
-  const [email, setEmail] = useState("")
-  const [subscribed, setSubscribed] = useState(false)
-
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" })
   }, [])
-
-  const handleSubscribe = (e) => {
-    e.preventDefault()
-    if (email.trim()) {
-      setSubscribed(true)
-      setEmail("")
-    }
-  }
 
   return (
     <>
@@ -240,7 +234,7 @@ export default function BlogPage() {
           <div className="flex flex-wrap items-center justify-center gap-6 mt-8 text-sm text-slate-500">
             <span className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-green-500" />
-              6 Articles Published
+              6 linked service guides
             </span>
             <span className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-blue-500" />
@@ -248,7 +242,7 @@ export default function BlogPage() {
             </span>
             <span className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-orange-500" />
-              Updated regularly
+              Aligned with current platform flows
             </span>
           </div>
         </div>
@@ -260,14 +254,14 @@ export default function BlogPage() {
           {/* Section header */}
           <div className="flex items-center justify-between mb-10">
             <div>
-              <h2 className="text-2xl font-bold text-slate-900">Latest Articles</h2>
+              <h2 className="text-2xl font-bold text-slate-900">Service Guides</h2>
               <p className="text-slate-500 text-sm mt-1">
-                Practical guides written by logistics experts
+                Current explanations linked to the relevant service workflows
               </p>
             </div>
             <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium text-slate-400 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-full">
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-              6 posts
+              6 guides
             </span>
           </div>
 
@@ -277,59 +271,6 @@ export default function BlogPage() {
               <BlogCard key={post.slug} post={post} />
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── Newsletter ────────────────────────────────────────────────────── */}
-      <section className="bg-slate-50 border-y border-slate-100 py-16">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-600 mb-5">
-            <Mail className="w-5 h-5 text-white" />
-          </div>
-          <h2 className="text-2xl font-bold text-slate-900 mb-2">
-            Get Transport Tips in Your Inbox
-          </h2>
-          <p className="text-slate-500 text-sm mb-6">
-            No spam. Just practical logistics guides, pricing updates &amp; industry
-            insights — twice a month.
-          </p>
-
-          {subscribed ? (
-            <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 font-semibold px-6 py-3 rounded-xl text-sm">
-              <span className="w-2 h-2 rounded-full bg-green-500" />
-              You&apos;re subscribed! Thanks for joining.
-            </div>
-          ) : (
-            <form
-              onSubmit={handleSubscribe}
-              className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-            >
-              <label htmlFor="newsletter-email" className="sr-only">
-                Email address
-              </label>
-              <input
-                id="newsletter-email"
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@example.com"
-                className="flex-1 px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent shadow-sm"
-              />
-              <button
-                type="submit"
-                className="px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm rounded-xl transition-colors duration-200 shadow-sm whitespace-nowrap"
-              >
-                Subscribe
-              </button>
-            </form>
-          )}
-
-          {!subscribed && (
-            <p className="text-xs text-slate-400 mt-3">
-              Get transport tips in your inbox. No spam. Unsubscribe anytime.
-            </p>
-          )}
         </div>
       </section>
 

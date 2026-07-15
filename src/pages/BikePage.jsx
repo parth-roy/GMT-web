@@ -8,6 +8,7 @@ import OtherServices from "../components/truck/OtherServices"
 import BikeSEOContent from "../components/bike/BikeSEOContent"
 import InternalLinks from "../components/truck/InternalLinks"
 import BikeFAQ from "../components/bike/BikeFAQ"
+import SEOHead from "../seo/SEOHead"
 
 export default function BikePage() {
   const [city, setCity] = useState("Kolkata")
@@ -18,6 +19,11 @@ export default function BikePage() {
 
   return (
     <div className="bg-slate-50 min-h-screen font-sans w-full">
+      <SEOHead
+        title="Bike Delivery Service in Kolkata"
+        description="Request two-wheeler delivery for eligible documents and small parcels in Kolkata. Review route availability and the current estimate before confirming."
+        canonical="/bike"
+      />
       <BikeHero city={city} setCity={setCity} />
       <BikeVehicleSelection city={city} />
       <BikePopularRoutes city={city} />

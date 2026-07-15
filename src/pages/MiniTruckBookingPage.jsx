@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { ArrowRight, CheckCircle, Package, Truck } from "lucide-react"
 import SEOHead from "../seo/SEOHead"
@@ -13,7 +13,7 @@ const schema = [
     "provider": { "@type": "Organization", "name": "GoMyTruck", "url": "https://gomytruck.com" },
     "areaServed": "Kolkata, India",
     "serviceType": "Mini Truck Booking, 3-Wheeler Rental, Tata Ace on Rent",
-    "description": "Book mini truck, Tata Ace, or 3-wheeler online in Kolkata. Ideal for small goods, furniture shifting, and business deliveries. Instant booking, transparent rates."
+    "description": "Request a mini truck, Tata Ace, or 3-wheeler in Kolkata. Declare the load and review a route-based estimate and current availability before confirming."
   },
   {
     "@context": "https://schema.org",
@@ -51,13 +51,14 @@ const useCases = [
 ]
 
 export default function MiniTruckBookingPage() {
+  const [city, setCity] = useState("Kolkata")
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
   return (
     <div className="bg-white min-h-screen font-sans">
       <SEOHead
         title="Mini Truck Booking Near Me in Kolkata | 3-Wheeler & Tata Ace on Rent"
-        description="Book mini truck near you in Kolkata instantly. 3-wheeler tempo, Tata Ace (Chhota Hathi), and pickup vans available for small goods, furniture shifting & business delivery. Transparent per-km pricing. Book online now."
+        description="Request a mini truck in Kolkata for eligible small goods, furniture, or business deliveries. Check load fit, route-based pricing, and current availability before confirming."
         canonical="/mini-truck-booking"
         keywords="mini truck booking near me, mini truck booking Kolkata, tata ace on rent, tata ace booking near me, chhota hathi booking, 3 wheeler tempo booking, small truck for rent, tempo booking near me, mini truck rent per km, light commercial vehicle booking, small goods vehicle booking Kolkata"
         jsonLd={schema}
@@ -67,7 +68,7 @@ export default function MiniTruckBookingPage() {
       {/* Note: canonical is set to /mini-truck-booking — unique enough content for its own page */}
 
       {/* Reuse booking form */}
-      <TruckHero />
+      <TruckHero city={city} setCity={setCity} />
 
       {/* Vehicle showcase */}
       <section className="py-20 bg-slate-50">

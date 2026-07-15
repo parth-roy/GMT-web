@@ -6,17 +6,17 @@ export default function PackersExtraServices() {
     {
       icon: <Monitor size={28} className="text-brand-600" />,
       title: "Appliance Installation",
-      desc: "Safe unmounting and re-installation of TVs, washing machines, and ACs by trained technicians."
+      desc: "Ask whether a suitable technician is available and ensure every appliance task is stated in the confirmed scope."
     },
     {
       icon: <Zap size={28} className="text-brand-600" />,
       title: "Professional Electrician",
-      desc: "Get fans, lights, and heavy appliances wired safely in your new home."
+      desc: "Electrical work is separate from transport and applies only when a qualified provider and written scope are confirmed."
     },
     {
       icon: <Hammer size={28} className="text-brand-600" />,
       title: "Professional Carpenter",
-      desc: "Custom fitting, bed assembly, and wardrobe dismantling by expert carpenters."
+      desc: "Declare dismantling and assembly needs so the team can confirm suitable labour, tools, timing, and cost."
     }
   ];
 
@@ -28,7 +28,7 @@ export default function PackersExtraServices() {
             Need an Extra Hand?
           </h2>
           <p className="text-slate-600 max-w-2xl mx-auto">
-            Make your move completely hassle-free. Add these premium services to your booking to get settled into your new home instantly.
+            These specialist tasks are optional and subject to provider availability. They are included only when listed in the confirmed quote.
           </p>
         </div>
 
