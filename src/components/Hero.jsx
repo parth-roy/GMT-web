@@ -54,9 +54,9 @@ export default function Hero({
         </h1>
 
         <p className="mt-5 text-2xl sm:text-3xl font-black text-brand-200" lang="hi-Latn">Saaman aapka, transport hamara</p>
-        <p className="text-lg sm:text-xl text-slate-100 font-medium leading-relaxed mt-8 max-w-2xl mx-auto drop-shadow-md">
+        {/* <p className="text-lg sm:text-xl text-slate-100 font-medium leading-relaxed mt-8 max-w-2xl mx-auto drop-shadow-md">
           Enter your route and load details, compare suitable commercial vehicles, and review the current fare estimate before confirming. Assignment and arrival time depend on partner availability and traffic.
-        </p>
+        </p> */}
       </div>
 
       {/* Floating Services Bar (Porter style) */}
