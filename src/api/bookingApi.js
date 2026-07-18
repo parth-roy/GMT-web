@@ -1,18 +1,9 @@
 import { BASE_URL } from './authApi';
-
-// Get token from localStorage
-const getAuthHeaders = () => {
-  const token = localStorage.getItem('vahan_access_token');
-  return {
-    'Content-Type': 'application/json',
-    ...(token ? { Authorization: `Bearer ${token}` } : {})
-  };
-};
+import { apiClient } from './apiClient';
 
 export async function createBooking(bookingData) {
-  const res = await fetch(`${BASE_URL}/bookings`, {
+  const res = await apiClient(`${BASE_URL}/bookings`, {
     method: 'POST',
-    headers: getAuthHeaders(),
     body: JSON.stringify(bookingData),
   });
   const json = await res.json();
@@ -23,9 +14,8 @@ export async function createBooking(bookingData) {
 }
 
 export async function confirmBooking(bookingId) {
-  const res = await fetch(`${BASE_URL}/bookings/${bookingId}/confirm`, {
+  const res = await apiClient(`${BASE_URL}/bookings/${bookingId}/confirm`, {
     method: 'PATCH',
-    headers: getAuthHeaders(),
   });
   const json = await res.json();
   if (!res.ok || !json.success) {
@@ -35,9 +25,8 @@ export async function confirmBooking(bookingId) {
 }
 
 export async function cancelBooking(bookingId, reason) {
-  const res = await fetch(`${BASE_URL}/bookings/${bookingId}/cancel`, {
+  const res = await apiClient(`${BASE_URL}/bookings/${bookingId}/cancel`, {
     method: 'PATCH',
-    headers: getAuthHeaders(),
     body: JSON.stringify({ reason }),
   });
   const json = await res.json();

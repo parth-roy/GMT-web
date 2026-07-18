@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 import GlobalFABs from "./components/GlobalFABs"
 import RouteAnalytics from "./components/RouteAnalytics"
+import LoginModal from "./components/LoginModal"
 
 import Home from "./pages/Home"
 
@@ -234,6 +235,9 @@ export default function App() {
 
       {/* Global Floating Action Buttons for WhatsApp and Booking */}
       <GlobalFABs onOpenEstimate={handleOpenEstimate} />
+      
+      {/* Global Authentication Modal */}
+      <LoginModal />
     </div>
   )
 }

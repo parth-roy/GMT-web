@@ -3,6 +3,7 @@ import { createRoot, hydrateRoot } from "react-dom/client"
 import { BrowserRouter } from "react-router-dom"
 import { HelmetProvider } from "react-helmet-async"
 import App from "./App.jsx"
+import { AuthProvider } from "./context/AuthContext.jsx"
 import "./index.css"
 
 const rootElement = document.getElementById("root")
@@ -10,7 +11,9 @@ const app = (
   <React.StrictMode>
     <HelmetProvider>
       <BrowserRouter>
-        <App />
+        <AuthProvider>
+          <App />
+        </AuthProvider>
       </BrowserRouter>
     </HelmetProvider>
   </React.StrictMode>

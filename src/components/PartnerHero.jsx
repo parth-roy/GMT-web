@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { Send, BadgeCheck, ShieldCheck } from "lucide-react"
 import { trackFleetRegistration } from "../utils/analytics"
+import { useAuth } from "../context/AuthContext"
 
 export default function PartnerHero({ isFleetOwner = false }) {
   const [driverName, setDriverName] = useState("")
@@ -10,6 +11,8 @@ export default function PartnerHero({ isFleetOwner = false }) {
   const [isRegistered, setIsRegistered] = useState(false)
   const [regError, setRegError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  
+  const { requireAuth } = useAuth()
 
   const handleRegister = async (e) => {
     e.preventDefault()
@@ -23,26 +26,33 @@ export default function PartnerHero({ isFleetOwner = false }) {
     }
     setRegError("")
     setIsLoading(true)
-    try {
-      const response = await fetch("https://api.gomytruck.com/api/v1/leads/workforce", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: driverName.trim(),
-          phone: driverPhone,
-          city: driverCity.trim(),
-          role: `${isFleetOwner ? "Fleet Owner" : "Driver Partner"} - ${vehicleType}`,
-        }),
-      })
-      const data = await response.json().catch(() => ({}))
-      if (!response.ok) throw new Error(data.message || "We could not submit your application. Please try again.")
-      setIsRegistered(true)
-      trackFleetRegistration(vehicleType)
-    } catch (error) {
-      setRegError(error.message)
-    } finally {
-      setIsLoading(false)
-    }
+    requireAuth(async (token) => {
+      try {
+        const headers = { "Content-Type": "application/json" }
+        if (token) {
+          headers["Authorization"] = `Bearer ${token}`
+        }
+        
+        const response = await fetch("https://api.gomytruck.com/api/v1/leads/workforce", {
+          method: "POST",
+          headers,
+          body: JSON.stringify({
+            name: driverName.trim(),
+            phone: driverPhone,
+            city: driverCity.trim(),
+            role: `${isFleetOwner ? "Fleet Owner" : "Driver Partner"} - ${vehicleType}`,
+          }),
+        })
+        const data = await response.json().catch(() => ({}))
+        if (!response.ok) throw new Error(data.message || "We could not submit your application. Please try again.")
+        setIsRegistered(true)
+        trackFleetRegistration(vehicleType)
+      } catch (error) {
+        setRegError(error.message)
+      } finally {
+        setIsLoading(false)
+      }
+    })
   }
 
   const headline = isFleetOwner 

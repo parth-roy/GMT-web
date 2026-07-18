@@ -2,12 +2,16 @@ import React, { useState, useRef, useEffect } from "react"
 import { X, User, Phone, Mail, Check, Loader2 } from "lucide-react"
 import { sendOtp, verifyOtp } from "../api/authApi"
 
-export default function LoginModal({ isOpen, onClose, estimateData, onContinue }) {
-  if (!isOpen) return null
+import { useAuth } from "../context/AuthContext"
+
+export default function LoginModal() {
+  const { isLoginModalOpen, closeLoginModal, login } = useAuth()
+  
+  if (!isLoginModalOpen) return null
 
   const [step, setStep] = useState(1) // 1: Login, 2: OTP
-  const [name, setName] = useState(estimateData?.name || "")
-  const [phone, setPhone] = useState(estimateData?.phone || "")
+  const [name, setName] = useState("")
+  const [phone, setPhone] = useState("")
   const [email, setEmail] = useState("")
   const [whatsapp, setWhatsapp] = useState(true)
   
@@ -66,12 +70,10 @@ export default function LoginModal({ isOpen, onClose, estimateData, onContinue }
     const otpCode = otp.join("")
     try {
       const data = await verifyOtp(phone, otpCode)
-      // Save token for future API requests
       if (data.accessToken) {
-        localStorage.setItem("vahan_access_token", data.accessToken)
-        window.dispatchEvent(new Event("auth_changed"))
+        login(data.accessToken, data.user || { name, phone, email, whatsapp })
       }
-      if (onContinue) onContinue(data.user || { name, phone, email, whatsapp })
+      closeLoginModal()
     } catch (err) {
       setError(err.message)
     } finally {
@@ -81,7 +83,7 @@ export default function LoginModal({ isOpen, onClose, estimateData, onContinue }
 
   return (
     <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 sm:p-6 md:p-10">
-      <div className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm" onClick={onClose}></div>
+      <div className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm" onClick={closeLoginModal}></div>
 
       <div className="relative bg-white rounded-3xl w-full max-w-4xl shadow-2xl overflow-hidden z-10 flex flex-col md:flex-row min-h-[500px] md:h-[600px]">
         {/* LEFT COLUMN: Image */}
@@ -95,7 +97,7 @@ export default function LoginModal({ isOpen, onClose, estimateData, onContinue }
 
         {/* RIGHT COLUMN: Form */}
         <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col relative bg-white overflow-y-auto">
-          <button onClick={onClose} className="absolute top-4 right-4 p-2 rounded-full hover:bg-slate-100 text-slate-700 cursor-pointer transition-colors z-20">
+          <button onClick={closeLoginModal} className="absolute top-4 right-4 p-2 rounded-full hover:bg-slate-100 text-slate-700 cursor-pointer transition-colors z-20">
             <X size={20} />
           </button>
 

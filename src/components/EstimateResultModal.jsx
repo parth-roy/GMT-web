@@ -17,7 +17,7 @@ const SERVICE_VEHICLE_FILTER = {
   truck: ["THREE_WHEELER", "TATA_ACE", "MINI_TRUCK"],
   bike:  ["BIKE"],
 }
-import LoginModal from "./LoginModal"
+import { useAuth } from "../context/AuthContext"
 import GoodsTypeModal from "./GoodsTypeModal"
 
 /**
@@ -36,8 +36,8 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
   const [estimateRefreshing, setEstimateRefreshing] = useState(false)
   
   // Modals & States
-  const [showLogin, setShowLogin] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const { user, accessToken, requireAuth } = useAuth()
+  const isLoggedIn = !!accessToken
   const [showGoodsModal, setShowGoodsModal] = useState(false)
   const [selectedGoods, setSelectedGoods] = useState(null)
   
@@ -56,17 +56,6 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
     "Booked by mistake",
     "Fare is too high"
   ]
-
-  useEffect(() => {
-    setIsLoggedIn(!!localStorage.getItem('vahan_access_token'))
-    const handleAuthChange = () => setIsLoggedIn(!!localStorage.getItem('vahan_access_token'))
-    window.addEventListener("auth_changed", handleAuthChange)
-    window.addEventListener("storage", handleAuthChange)
-    return () => {
-      window.removeEventListener("auth_changed", handleAuthChange)
-      window.removeEventListener("storage", handleAuthChange)
-    }
-  }, [])
 
   // Load all vehicles when modal opens
   useEffect(() => {
@@ -93,9 +82,7 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
   if (!isOpen || !estimateData) return null
 
   const handleBookNowClick = async () => {
-    if (!isLoggedIn) {
-      setShowLogin(true)
-    } else {
+    requireAuth(async () => {
       if (!selectedGoods && estimateData.service !== "packers") {
         setShowGoodsModal(true)
       } else {
@@ -126,10 +113,7 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
         } catch (err) {
           const msg = err.message || "";
           if (msg.toLowerCase().includes("token") || msg.toLowerCase().includes("unauthorized") || msg.toLowerCase().includes("jwt")) {
-            localStorage.removeItem('vahan_access_token');
-            setIsLoggedIn(false);
-            setShowLogin(true);
-            setBookingError("Session expired. Please log in again to confirm your request.");
+            setBookingError("Session expired. Please click Book Now again to log in and confirm your request.");
           } else {
             setBookingError(msg);
           }
@@ -137,12 +121,7 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
           setBookingLoading(false)
         }
       }
-    }
-  }
-
-  const handleLoginContinue = (formData) => {
-    setIsLoggedIn(true)
-    setShowLogin(false)
+    });
   }
 
   const allowedTypes = SERVICE_VEHICLE_FILTER[estimateData.service]
@@ -569,13 +548,6 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
           .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
         `}} />
       </div>
-
-      <LoginModal 
-        isOpen={showLogin} 
-        onClose={() => setShowLogin(false)}
-        estimateData={estimateData}
-        onContinue={handleLoginContinue}
-      />
 
       <GoodsTypeModal
         isOpen={showGoodsModal}

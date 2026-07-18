@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { Send, BadgeCheck, MapPin, X } from "lucide-react"
 import { trackFleetRegistration } from "../../utils/analytics"
+import { useAuth } from "../../context/AuthContext"
 
 export default function WorkforceHero() {
   const [isOpen, setIsOpen] = useState(false)
@@ -11,6 +12,8 @@ export default function WorkforceHero() {
   const [isRegistered, setIsRegistered] = useState(false)
   const [regError, setRegError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+
+  const { requireAuth } = useAuth()
 
   const handleRegister = async (e) => {
     e.preventDefault()
@@ -26,27 +29,34 @@ export default function WorkforceHero() {
     setRegError("")
     setIsLoading(true)
 
-    try {
-      // Send data to backend
-      const response = await fetch("https://api.gomytruck.com/api/v1/leads/workforce", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, phone, city, role })
-      })
+    requireAuth(async (token) => {
+      try {
+        const headers = { "Content-Type": "application/json" }
+        if (token) {
+          headers["Authorization"] = `Bearer ${token}`
+        }
 
-      const data = await response.json()
+        // Send data to backend
+        const response = await fetch("https://api.gomytruck.com/api/v1/leads/workforce", {
+          method: "POST",
+          headers,
+          body: JSON.stringify({ name, phone, city, role })
+        })
 
-      if (!response.ok) {
-        throw new Error(data.message || "Something went wrong. Please try again.")
+        const data = await response.json()
+
+        if (!response.ok) {
+          throw new Error(data.message || "Something went wrong. Please try again.")
+        }
+
+        setIsRegistered(true)
+        trackFleetRegistration(role)
+      } catch (err) {
+        setRegError(err.message)
+      } finally {
+        setIsLoading(false)
       }
-
-      setIsRegistered(true)
-      trackFleetRegistration(role)
-    } catch (err) {
-      setRegError(err.message)
-    } finally {
-      setIsLoading(false)
-    }
+    })
   }
 
   const handleClose = () => {

@@ -1,18 +1,42 @@
 import React, { useState } from "react"
 import { User, Briefcase, Phone, Mail, CheckCircle2 } from "lucide-react"
 import { trackLead, trackWhatsAppClick } from "../../utils/analytics"
+import { useAuth } from "../../context/AuthContext"
 
 export default function EnterpriseHero() {
   const [form, setForm] = useState({ name: "", company: "", phone: "", email: "" })
   const [submitted, setSubmitted] = useState(false)
   const update = (event) => setForm((current) => ({ ...current, [event.target.name]: event.target.value }))
+  const { requireAuth } = useAuth()
+  
   const submit = (event) => {
     event.preventDefault()
-    const text = `Enterprise logistics enquiry from ${form.name}, ${form.company}. Phone: ${form.phone}. Email: ${form.email || "not supplied"}.`
-    window.open(`https://wa.me/919331488999?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer")
-    trackLead("enterprise_form_whatsapp", "enterprise_logistics")
-    trackWhatsAppClick("enterprise_form")
-    setSubmitted(true)
+    requireAuth(async (token) => {
+      try {
+        const headers = { "Content-Type": "application/json" }
+        if (token) {
+          headers["Authorization"] = `Bearer ${token}`
+        }
+        
+        // Save as a lead in backend with role 'Enterprise'
+        await fetch("https://api.gomytruck.com/api/v1/leads/workforce", {
+          method: "POST",
+          headers,
+          body: JSON.stringify({
+            name: form.name.trim(),
+            phone: form.phone,
+            city: "Enterprise (Not specified)", 
+            role: `Enterprise - ${form.company}`,
+          }),
+        }).catch(err => console.warn("Failed to save enterprise lead", err))
+      } finally {
+        const text = `Enterprise logistics enquiry from ${form.name}, ${form.company}. Phone: ${form.phone}. Email: ${form.email || "not supplied"}.`
+        window.open(`https://wa.me/919331488999?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer")
+        trackLead("enterprise_form_whatsapp", "enterprise_logistics")
+        trackWhatsAppClick("enterprise_form")
+        setSubmitted(true)
+      }
+    })
   }
 
   const fields = [
