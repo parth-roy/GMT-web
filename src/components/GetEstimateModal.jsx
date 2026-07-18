@@ -89,6 +89,19 @@ export default function GetEstimateModal({ isOpen, onClose, onSelectService }) {
       trackEstimateRequested(selectedService)
       trackLead("Get Estimate Modal", selectedService)
 
+      // Save as a lead in backend with role 'Estimate' so it shows in admin
+      fetch("https://api.gomytruck.com/api/v1/leads/workforce", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: "Estimate Request",
+          phone: phone,
+          city: pickup,
+          role: "Estimate",
+          notes: `Pickup: ${pickup}, Drop: ${drop}, Service: ${selectedService}, Weight: ${weight || "N/A"}`
+        })
+      }).catch(err => console.warn("Failed to save estimate lead", err))
+
       onClose()
       setShowEstimate(true)
     } catch (err) {

@@ -5,7 +5,7 @@ const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [accessToken, setAccessToken] = useState(() => localStorage.getItem('vahan_access_token'));
+  const [accessToken, setAccessToken] = useState(() => typeof window !== 'undefined' ? localStorage.getItem('vahan_access_token') : null);
   
   // A queue of callbacks waiting for authentication
   const [authCallback, setAuthCallback] = useState(null);
@@ -15,8 +15,10 @@ export function AuthProvider({ children }) {
     // If we have a token, we might want to decode it or fetch the user profile later.
     // For now, if the token is present, we consider them logged in.
     const handleAuthChange = () => {
-      const token = localStorage.getItem('vahan_access_token');
-      setAccessToken(token);
+      if (typeof window !== 'undefined') {
+        const token = localStorage.getItem('vahan_access_token');
+        setAccessToken(token);
+      }
     };
 
     window.addEventListener("auth_changed", handleAuthChange);
@@ -24,15 +26,17 @@ export function AuthProvider({ children }) {
     
     // Inject getter and setter into apiClient
     setupApiClient(
-      () => localStorage.getItem('vahan_access_token'),
+      () => typeof window !== 'undefined' ? localStorage.getItem('vahan_access_token') : null,
       (token) => {
-        if (!token) {
-          localStorage.removeItem('vahan_access_token');
-          setAccessToken(null);
-          setUser(null);
-        } else {
-          localStorage.setItem('vahan_access_token', token);
-          setAccessToken(token);
+        if (typeof window !== 'undefined') {
+          if (!token) {
+            localStorage.removeItem('vahan_access_token');
+            setAccessToken(null);
+            setUser(null);
+          } else {
+            localStorage.setItem('vahan_access_token', token);
+            setAccessToken(token);
+          }
         }
         window.dispatchEvent(new Event("auth_changed"));
       }
@@ -45,10 +49,12 @@ export function AuthProvider({ children }) {
   }, []);
 
   const login = (token, userData) => {
-    localStorage.setItem('vahan_access_token', token);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('vahan_access_token', token);
+      window.dispatchEvent(new Event("auth_changed"));
+    }
     setAccessToken(token);
     setUser(userData);
-    window.dispatchEvent(new Event("auth_changed"));
     
     // Resume execution of pending action
     if (authCallback) {
@@ -58,10 +64,12 @@ export function AuthProvider({ children }) {
   };
 
   const logout = () => {
-    localStorage.removeItem('vahan_access_token');
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('vahan_access_token');
+      window.dispatchEvent(new Event("auth_changed"));
+    }
     setAccessToken(null);
     setUser(null);
-    window.dispatchEvent(new Event("auth_changed"));
   };
 
   /**

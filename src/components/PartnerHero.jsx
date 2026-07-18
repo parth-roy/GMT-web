@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Send, BadgeCheck, ShieldCheck } from "lucide-react"
+import { Send, BadgeCheck, ShieldCheck, MapPin, X } from "lucide-react"
 import { trackFleetRegistration } from "../utils/analytics"
 import { useAuth } from "../context/AuthContext"
 
@@ -11,6 +11,7 @@ export default function PartnerHero({ isFleetOwner = false }) {
   const [isRegistered, setIsRegistered] = useState(false)
   const [regError, setRegError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   
   const { requireAuth } = useAuth()
 
@@ -55,196 +56,184 @@ export default function PartnerHero({ isFleetOwner = false }) {
     })
   }
 
-  const headline = isFleetOwner 
-    ? "Attach Your Fleet & Grow Your Transport Business"
-    : "Attach Your Vehicle & Earn From Completed Trips"
-  
-  const subheadline = isFleetOwner
-    ? "Register multiple eligible commercial vehicles, review available loads and track accepted work in one partner platform. Trip availability and earnings vary by route and demand."
-    : "Register an eligible two-wheeler, three-wheeler, mini truck or heavy truck. Review available work and earn against trips you choose and complete."
+  const handleClose = () => {
+    setIsOpen(false)
+  }
 
   return (
-    <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-slate-900">
-      {/* Background aesthetic */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-600/20 rounded-full blur-[120px] translate-x-1/3 -translate-y-1/4"></div>
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-green-500/20 rounded-full blur-[120px] -translate-x-1/3 translate-y-1/4"></div>
-        <div 
-          className="absolute inset-0 opacity-[0.03]" 
-          style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '40px 40px' }}
-        ></div>
-      </div>
+    <>
+      <h1 className="sr-only">
+        {isFleetOwner 
+          ? "Attach Your Fleet & Grow Your Transport Business - GoMyTruck Fleet Partner" 
+          : "Attach Your Vehicle & Earn From Completed Trips - GoMyTruck Driver Partner"}
+      </h1>
+      {/* ── Hero Section ─────────────────────────────────────────────── */}
+      <section className="relative overflow-hidden bg-white pt-16 sm:pt-20">
+        {/* Full-width image, no crop */}
+        <img
+          src="/driver-hero.webp"
+          alt={isFleetOwner ? "GoMyTruck Fleet Partner Operations" : "GoMyTruck Driver Partner Operations"}
+          className="w-full h-auto block"
+          fetchpriority="high"
+        />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
-          {/* Left: Copy */}
-          <div className="lg:col-span-7 text-left space-y-8">
-            <div className="inline-flex items-center gap-2 bg-slate-800/80 border border-slate-700 backdrop-blur-md text-green-400 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
-              <ShieldCheck size={16} />
-              <span>Driver and fleet partner network</span>
-            </div>
+        {/* Bouncing Map Pin — centred horizontally, ~30% from top of image */}
+        <div
+          className="absolute left-1/2 top-[28%] -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-1 cursor-pointer group"
+          onClick={() => setIsOpen(true)}
+          role="button"
+          aria-label="Join our driver network"
+        >
+          {/* Pulse ring */}
+          <span className="absolute -inset-3 rounded-full bg-orange-500/20 animate-ping group-hover:bg-orange-500/30" />
 
-            <div className="space-y-6">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-white tracking-tight leading-[1.1]">
-                {isFleetOwner ? "Attach Your Fleet &" : "Attach Your Vehicle &"} <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-400 to-brand-400">
-                  {isFleetOwner ? "Grow Your Business" : "Earn Per Completed Trip"}
-                </span>
-              </h1>
-              <p className="text-slate-300 font-medium text-lg sm:text-xl max-w-xl leading-relaxed">
-                {subheadline}
-              </p>
-            </div>
-
-            {/* Trust Badges */}
-            <div className="flex flex-wrap gap-6 pt-4">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-brand-400 shadow-inner">
-                  <span className="font-bold text-lg">KYC</span>
-                </div>
-                <div>
-                  <p className="text-white font-semibold">Document Review</p>
-                  <p className="text-slate-400 text-sm">Eligibility checked</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-green-400 shadow-inner">
-                  <span className="font-bold text-lg">App</span>
-                </div>
-                <div>
-                  <p className="text-white font-semibold">Digital Workflow</p>
-                  <p className="text-slate-400 text-sm">Loads and trip updates</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-blue-400 shadow-inner">
-                  <ShieldCheck size={24} />
-                </div>
-                <div>
-                  <p className="text-white font-semibold">Clear Terms</p>
-                  <p className="text-slate-400 text-sm">Rates shown per job</p>
-                </div>
-              </div>
-            </div>
+          {/* Pin button */}
+          <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-orange-500 shadow-xl shadow-orange-500/40 flex items-center justify-center animate-bounce group-hover:scale-110 transition-transform">
+            <MapPin size={26} className="text-white" />
           </div>
 
-          {/* Right: Registration Form */}
-          <div className="lg:col-span-5 relative z-20">
-            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-[2rem] p-6 sm:p-8 shadow-2xl shadow-black/50">
-              {isRegistered ? (
-                <div className="text-center py-12 space-y-6">
-                  <div className="h-20 w-20 bg-green-500/20 border border-green-500/30 text-green-400 rounded-full flex items-center justify-center mx-auto animate-bounce shadow-lg shadow-green-500/20">
-                    <BadgeCheck size={40} />
-                  </div>
-                  <div className="space-y-2">
-                    <h3 className="text-3xl font-display font-extrabold text-white">Application Received!</h3>
-                    <p className="text-base text-slate-300 px-4 leading-relaxed">
-                      Thank you, <span className="text-green-400 font-semibold">{driverName}</span>. Our onboarding team will review the application and contact <span className="text-green-400 font-semibold">+91 {driverPhone}</span> when the relevant capacity is available.
-                    </p>
-                  </div>
-                  <div className="bg-slate-800/80 border border-slate-700 p-5 rounded-2xl text-sm space-y-3 text-left">
-                    <p className="font-semibold text-white">Please prepare these documents:</p>
-                    <ul className="space-y-2 text-slate-300 list-disc list-inside marker:text-brand-500">
-                      <li>Aadhaar Card & PAN Card</li>
-                      <li>Driving License (DL)</li>
-                      <li>Vehicle Registration Certificate (RC)</li>
-                      <li>Bank Details</li>
-                    </ul>
-                  </div>
-                  <button 
-                    onClick={() => { setIsRegistered(false); setDriverName(""); setDriverPhone(""); setDriverCity(""); }}
-                    className="text-sm text-green-400 hover:text-green-300 font-bold underline transition-colors"
-                  >
-                    Submit Another Application
-                  </button>
+          {/* Small label below pin */}
+          <span className="mt-1 bg-white text-orange-600 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full shadow-md whitespace-nowrap transition-opacity duration-200">
+            Join Now
+          </span>
+        </div>
+      </section>
+
+      {/* ── Modal Popup ──────────────────────────────────────────────── */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          onClick={handleClose}
+        >
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px]" />
+
+          {/* Modal card — white/light, compact */}
+          <div
+            className="relative z-10 bg-slate-900 rounded-2xl shadow-2xl w-full max-w-sm p-6 border border-slate-700"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              onClick={handleClose}
+              className="absolute top-3 right-3 w-7 h-7 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-400 hover:text-slate-200 transition-colors"
+              aria-label="Close"
+            >
+              <X size={14} />
+            </button>
+
+            {isRegistered ? (
+              <div className="text-center py-6 space-y-4">
+                <div className="h-14 w-14 bg-green-500/20 border border-green-500/30 text-green-400 rounded-full flex items-center justify-center mx-auto animate-bounce shadow-lg shadow-green-500/20">
+                  <BadgeCheck size={30} />
                 </div>
-              ) : (
-                <form onSubmit={handleRegister} className="space-y-5">
-                  <div className="mb-6">
-                    <h3 className="text-2xl font-display font-bold text-white tracking-tight">Partner Registration</h3>
-                    <p className="text-sm text-slate-300 mt-2">Enter your details and our team will call you back.</p>
+                <div className="space-y-2">
+                  <h3 className="text-xl font-display font-extrabold text-white">Application Received!</h3>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    Thank you, <span className="text-green-400 font-semibold">{driverName}</span>. Our onboarding team will review the application and contact <span className="text-green-400 font-semibold">+91 {driverPhone}</span> when the relevant capacity is available.
+                  </p>
+                </div>
+                <div className="bg-slate-800/80 border border-slate-700 p-4 rounded-xl text-xs space-y-2 text-left">
+                  <p className="font-semibold text-white">Please prepare these documents:</p>
+                  <ul className="space-y-1 text-slate-300 list-disc list-inside marker:text-green-400">
+                    <li>Aadhaar Card & PAN Card</li>
+                    <li>Driving License (DL)</li>
+                    <li>Vehicle Registration Certificate (RC)</li>
+                    <li>Bank Details</li>
+                  </ul>
+                </div>
+                <button 
+                  onClick={() => { setIsRegistered(false); setDriverName(""); setDriverPhone(""); setDriverCity(""); }}
+                  className="text-xs text-green-400 hover:text-green-300 font-bold underline transition-colors"
+                >
+                  Submit Another Application
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleRegister} className="space-y-4">
+                <div>
+                  <h3 className="text-lg font-display font-bold text-white tracking-tight">Partner Registration</h3>
+                  <p className="text-xs text-slate-300 mt-1">Enter your details and our team will call you back.</p>
+                </div>
+
+                {regError && (
+                  <div className="bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-medium px-3 py-2 rounded-lg">
+                    {regError}
+                  </div>
+                )}
+
+                <div className="space-y-3">
+                  {/* Name */}
+                  <div>
+                    <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Full Name</label>
+                    <input
+                      type="text" placeholder="e.g. Ramesh Kumar" value={driverName}
+                      name="name" autoComplete="name" required
+                      onChange={(e) => setDriverName(e.target.value)}
+                      className="w-full bg-slate-800 border border-slate-700 rounded-lg py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-green-400 focus:ring-1 focus:ring-green-400 transition-all"
+                    />
                   </div>
 
-                  {regError && (
-                    <div className="bg-red-500/10 border border-red-500/30 text-red-400 text-sm font-medium px-4 py-3 rounded-xl backdrop-blur-sm">
-                      {regError}
-                    </div>
-                  )}
-
-                  <div className="space-y-4">
-                    {/* Name */}
-                    <div>
-                      <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Full Name</label>
+                  {/* Phone */}
+                  <div>
+                    <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Mobile Number</label>
+                    <div className="relative">
+                      <span className="absolute left-3 top-2.5 text-sm font-semibold text-slate-400">+91</span>
                       <input
-                        type="text" placeholder="e.g. Ramesh Kumar" value={driverName}
-                        name="name" autoComplete="name" required
-                        onChange={(e) => setDriverName(e.target.value)}
-                        className="w-full bg-slate-900/50 border border-slate-700 rounded-xl py-3 px-4 text-white placeholder-slate-500 focus:outline-none focus:border-green-400 focus:ring-1 focus:ring-green-400 transition-all"
+                        type="tel" maxLength={10} placeholder="98765 43210" value={driverPhone}
+                        name="phone" autoComplete="tel-national" inputMode="numeric" required
+                        onChange={(e) => setDriverPhone(e.target.value.replace(/\D/g, ""))}
+                        className="w-full bg-slate-800 border border-slate-700 rounded-lg py-2.5 pl-12 pr-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-green-400 focus:ring-1 focus:ring-green-400 transition-all"
                       />
                     </div>
-
-                    {/* Phone */}
-                    <div>
-                      <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Mobile Number</label>
-                      <div className="relative">
-                        <span className="absolute left-4 top-3 text-base font-semibold text-slate-400">+91</span>
-                        <input
-                          type="tel" maxLength={10} placeholder="98765 43210" value={driverPhone}
-                          name="phone" autoComplete="tel-national" inputMode="numeric" required
-                          onChange={(e) => setDriverPhone(e.target.value.replace(/\D/g, ""))}
-                          className="w-full bg-slate-900/50 border border-slate-700 rounded-xl py-3 pl-14 pr-4 text-white placeholder-slate-500 focus:outline-none focus:border-green-400 focus:ring-1 focus:ring-green-400 transition-all"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-4">
-                      {/* City */}
-                      <div>
-                        <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">City</label>
-                        <input
-                          type="text" placeholder="e.g. Kolkata" value={driverCity}
-                          name="city" autoComplete="address-level2" required
-                          onChange={(e) => setDriverCity(e.target.value)}
-                          className="w-full bg-slate-900/50 border border-slate-700 rounded-xl py-3 px-4 text-white placeholder-slate-500 focus:outline-none focus:border-green-400 focus:ring-1 focus:ring-green-400 transition-all"
-                        />
-                      </div>
-                      {/* Vehicle */}
-                      <div>
-                        <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Vehicle</label>
-                        <select
-                          value={vehicleType}
-                          onChange={(e) => setDriverVehicle(e.target.value)}
-                          className="w-full bg-slate-900/50 border border-slate-700 rounded-xl py-3 px-4 text-white focus:outline-none focus:border-green-400 focus:ring-1 focus:ring-green-400 transition-all cursor-pointer appearance-none"
-                        >
-                          <option className="bg-slate-800" value="Two Wheeler">Bike</option>
-                          <option className="bg-slate-800" value="3-Wheeler Auto">3-Wheeler Auto</option>
-                          <option className="bg-slate-800" value="Tata Ace">Tata Ace</option>
-                          <option className="bg-slate-800" value="Bolero Pickup">Bolero Pickup</option>
-                          <option className="bg-slate-800" value="Eicher / Heavy">Heavy Truck</option>
-                        </select>
-                      </div>
-                    </div>
                   </div>
 
-                  <button
-                    type="submit"
-                    disabled={isLoading}
-                    className="w-full mt-4 bg-green-500 hover:bg-green-400 text-slate-900 font-extrabold text-lg py-4 px-6 rounded-xl shadow-lg shadow-green-500/25 hover:shadow-green-500/40 hover:-translate-y-0.5 active:translate-y-0.5 transition-all flex items-center justify-center gap-2 group cursor-pointer"
-                  >
-                    <span>{isLoading ? "Submitting…" : "Register Now"}</span>
-                    {!isLoading && <Send size={20} className="transition-transform group-hover:translate-x-1" />}
-                  </button>
+                  <div className="grid grid-cols-2 gap-3">
+                    {/* City */}
+                    <div>
+                      <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">City</label>
+                      <input
+                        type="text" placeholder="e.g. Kolkata" value={driverCity}
+                        name="city" autoComplete="address-level2" required
+                        onChange={(e) => setDriverCity(e.target.value)}
+                        className="w-full bg-slate-800 border border-slate-700 rounded-lg py-2.5 px-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-green-400 focus:ring-1 focus:ring-green-400 transition-all"
+                      />
+                    </div>
+                    {/* Vehicle */}
+                    <div>
+                      <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Vehicle</label>
+                      <select
+                        value={vehicleType}
+                        onChange={(e) => setDriverVehicle(e.target.value)}
+                        className="w-full bg-slate-800 border border-slate-700 rounded-lg py-2.5 px-3 text-sm text-white focus:outline-none focus:border-green-400 focus:ring-1 focus:ring-green-400 transition-all cursor-pointer appearance-none"
+                      >
+                        <option className="bg-slate-800" value="Two Wheeler">Bike</option>
+                        <option className="bg-slate-800" value="3-Wheeler Auto">3-Wheeler Auto</option>
+                        <option className="bg-slate-800" value="Tata Ace">Tata Ace</option>
+                        <option className="bg-slate-800" value="Bolero Pickup">Bolero Pickup</option>
+                        <option className="bg-slate-800" value="Eicher / Heavy">Heavy Truck</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
 
-                  <p className="text-xs text-slate-400 text-center leading-relaxed font-medium mt-4">
-                    By submitting, you agree to our <a href="/legal/partner-terms" className="underline hover:text-white">Partner Terms</a> and <a href="/legal/privacy-policy" className="underline hover:text-white">Privacy Policy</a>. WhatsApp updates are sent only where consented.
-                  </p>
-                </form>
-              )}
-            </div>
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full mt-2 bg-green-500 hover:bg-green-400 text-slate-900 font-bold text-sm py-3 px-4 rounded-xl shadow-md shadow-green-500/25 hover:shadow-green-500/40 hover:-translate-y-0.5 active:translate-y-0.5 transition-all flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  <span>{isLoading ? "Submitting…" : "Register Now"}</span>
+                  {!isLoading && <Send size={16} className="transition-transform group-hover:translate-x-1" />}
+                </button>
+
+                <p className="text-[10px] text-slate-400 text-center leading-relaxed font-medium">
+                  By submitting, you agree to our <a href="/legal/partner-terms" className="underline hover:text-white">Partner Terms</a> and <a href="/legal/privacy-policy" className="underline hover:text-white">Privacy Policy</a>.
+                </p>
+              </form>
+            )}
           </div>
         </div>
-      </div>
-    </section>
+      )}
+    </>
   )
 }

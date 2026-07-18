@@ -77,7 +77,7 @@ export default function WorkforceHero() {
 
         {/* Bouncing Map Pin — centred horizontally, ~30% from top of image */}
         <div
-          className="absolute left-1/2 top-[28%] -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-1 cursor-pointer group"
+          className="absolute left-[42%] top-[28%] -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-1 cursor-pointer group"
           onClick={() => setIsOpen(true)}
           role="button"
           aria-label="Join our workforce"
@@ -86,12 +86,12 @@ export default function WorkforceHero() {
           <span className="absolute -inset-3 rounded-full bg-blue-500/20 animate-ping group-hover:bg-blue-500/30" />
 
           {/* Pin button */}
-          <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-blue-600 shadow-xl shadow-blue-500/40 flex items-center justify-center animate-bounce group-hover:scale-110 transition-transform">
-            <MapPin size={26} className="text-white" />
+          <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-600 shadow-xl shadow-blue-500/40 flex items-center justify-center animate-bounce group-hover:scale-110 transition-transform">
+            <MapPin size={30} className="text-white" />
           </div>
 
           {/* Small label below pin */}
-          <span className="mt-1 bg-white text-blue-600 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <span className="mt-1 bg-white text-blue-600 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full shadow-md whitespace-nowrap transition-opacity duration-200">
             Join Now
           </span>
         </div>

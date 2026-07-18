@@ -32,11 +32,26 @@ export default function LoginModal() {
   const handleLoginSubmit = async (e) => {
     e.preventDefault()
     setError("")
+    
+    if (!name.trim()) {
+      return setError("Please enter your name.")
+    }
+    
+    if (!phone.trim() || !/^[6-9]\d{9}$/.test(phone.trim())) {
+      return setError("Please enter a valid 10-digit Indian mobile number.")
+    }
+    
+    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      return setError("Please enter a valid email address.")
+    }
+
     setIsLoading(true)
     try {
       const res = await sendOtp(phone)
       if (res.data && res.data._devOtp) {
         setDevOtp(res.data._devOtp)
+        // Auto-fill OTP
+        setOtp(res.data._devOtp.split("").slice(0, 6))
       }
       setStep(2) // Move to OTP step
     } catch (err) {
@@ -46,17 +61,24 @@ export default function LoginModal() {
     }
   }
 
+  // Auto-focus next
   const handleOtpChange = (index, value) => {
     if (isNaN(value)) return
     const newOtp = [...otp]
     newOtp[index] = value
     setOtp(newOtp)
     
-    // Auto-focus next
     if (value !== "" && index < 5) {
       inputRefs.current[index + 1].focus()
     }
   }
+
+  // Auto-verify when all 6 digits are filled
+  useEffect(() => {
+    if (step === 2 && otp.every(digit => digit !== "") && !isLoading) {
+      handleVerify()
+    }
+  }, [otp, step])
 
   const handleOtpKeyDown = (index, e) => {
     if (e.key === "Backspace" && !otp[index] && index > 0) {
@@ -135,8 +157,12 @@ export default function LoginModal() {
                     type="tel"
                     placeholder="Phone Number"
                     required
+                    maxLength={10}
                     value={phone}
-                    onChange={e => setPhone(e.target.value)}
+                    onChange={e => {
+                      const val = e.target.value.replace(/\D/g, '').slice(0, 10);
+                      setPhone(val);
+                    }}
                     className="w-full pl-12 pr-4 py-3.5 bg-white border border-slate-200 rounded-xl text-sm font-medium text-slate-700 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
                   />
                 </div>

@@ -4,6 +4,7 @@ import { renderToPipeableStream } from "react-dom/server"
 import { StaticRouter } from "react-router-dom"
 import { HelmetProvider } from "react-helmet-async"
 import App from "./App.jsx"
+import { AuthProvider } from "./context/AuthContext.jsx"
 
 export function render(url) {
   return new Promise((resolve, reject) => {
@@ -16,7 +17,9 @@ export function render(url) {
       <React.StrictMode>
         <HelmetProvider context={helmetContext}>
           <StaticRouter location={url}>
-            <App />
+            <AuthProvider>
+              <App />
+            </AuthProvider>
           </StaticRouter>
         </HelmetProvider>
       </React.StrictMode>,

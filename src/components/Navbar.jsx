@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react"
-import { Menu, X, ChevronRight, PhoneCall } from "lucide-react"
+import { Menu, X, ChevronRight, PhoneCall, LogIn } from "lucide-react"
+import AppDownloadModal from "./AppDownloadModal"
+import { useAuth } from "../context/AuthContext"
 
 export default function Navbar({ onOpenEstimate, onScrollToSection }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false)
+  
+  const { setIsLoginModalOpen } = useAuth()
 
   useEffect(() => {
     setIsLoggedIn(!!localStorage.getItem("vahan_access_token"))
@@ -80,13 +85,13 @@ export default function Navbar({ onOpenEstimate, onScrollToSection }) {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            <div className="flex items-center gap-6 lg:gap-8">
+          <div className="hidden lg:flex items-center gap-4 xl:gap-6">
+            <div className="flex items-center gap-4 xl:gap-6">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => handleNavClick(item.id)}
-                  className={`font-semibold text-sm transition-colors relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:transition-all hover:after:w-full text-slate-600 hover:text-brand-600 after:bg-brand-600`}
+                  className={`font-semibold text-sm whitespace-nowrap transition-colors relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:transition-all hover:after:w-full text-slate-600 hover:text-brand-600 after:bg-brand-600`}
                 >
                   {item.name}
                 </button>
@@ -95,7 +100,7 @@ export default function Navbar({ onOpenEstimate, onScrollToSection }) {
 
             <div className="h-6 w-px bg-slate-300"></div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 xl:gap-4 shrink-0">
               <a 
                 href="tel:9331488999" 
                 className="flex items-center gap-1.5 font-bold text-sm transition-colors text-slate-700 hover:text-brand-600"
@@ -104,12 +109,20 @@ export default function Navbar({ onOpenEstimate, onScrollToSection }) {
                 <span className="hidden lg:inline">9331488999</span>
               </a>
 
-              {isLoggedIn && (
+              {isLoggedIn ? (
                 <button
                   onClick={handleLogout}
                   className="font-bold text-sm text-slate-600 hover:text-rose-600 transition-colors px-2"
                 >
                   Logout
+                </button>
+              ) : (
+                <button
+                  onClick={() => setIsLoginModalOpen(true)}
+                  className="font-bold text-sm text-slate-600 hover:text-brand-600 transition-colors px-2 flex items-center gap-1 cursor-pointer"
+                >
+                  <LogIn size={16} />
+                  Login
                 </button>
               )}
 
@@ -117,14 +130,27 @@ export default function Navbar({ onOpenEstimate, onScrollToSection }) {
                 onClick={onOpenEstimate}
                 className="btn-ripple bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm px-4 py-1.5 rounded-lg shadow-lg shadow-brand-500/20 hover:shadow-brand-500/30 active:scale-95 transition-all flex items-center gap-1.5"
               >
-                <span className="relative z-10">Get Estimate</span>
+                <span className="relative z-10 whitespace-nowrap">Get Estimate</span>
                 <ChevronRight size={16} className="relative z-10" />
+              </button>
+              
+              <button
+                onClick={() => setIsDownloadModalOpen(true)}
+                className="btn-ripple bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 font-bold text-sm px-4 py-1.5 rounded-lg shadow-sm active:scale-95 transition-all flex items-center gap-2"
+              >
+                <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.093 2.05A2.32 2.32 0 003 4.155v15.69c0 .878.47 1.674 1.223 2.08l10.364-10.426L4.093 2.05z" fill="#00C1FF"/>
+                  <path d="M15.918 10.31L19.46 8.3c1.19-.675 1.19-2.368 0-3.044L15.918 3.24l-1.332 1.334L15.918 10.31z" fill="#FFC900"/>
+                  <path d="M14.586 11.644L4.093 2.05l9.16 9.22 1.333.374z" fill="#00E676"/>
+                  <path d="M14.586 11.644l-10.493 10.56 11.825-6.68-1.332-3.88z" fill="#FF3A44"/>
+                </svg>
+                <span className="relative z-10 whitespace-nowrap">Download App</span>
               </button>
             </div>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center gap-3">
+          <div className="lg:hidden flex items-center gap-3">
             <a 
               href="tel:9331488999" 
               className="p-2 rounded-lg text-slate-700 hover:bg-slate-100"
@@ -145,7 +171,7 @@ export default function Navbar({ onOpenEstimate, onScrollToSection }) {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+      <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
         isOpen ? "max-h-screen border-t border-slate-200" : "max-h-0 pointer-events-none"
       }`}>
         <div className="bg-brand-50/95 backdrop-blur-xl px-4 pt-4 pb-6 space-y-3 shadow-2xl">
@@ -178,6 +204,31 @@ export default function Navbar({ onOpenEstimate, onScrollToSection }) {
             >
               <span className="relative z-10">Get an Estimate</span>
             </button>
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                setIsLoginModalOpen(true);
+              }}
+              className="flex items-center justify-center gap-2 border border-slate-300 text-slate-800 font-bold py-3 rounded-lg text-sm hover:bg-slate-50 active:scale-98 transition-all cursor-pointer"
+            >
+              <LogIn size={16} />
+              <span>Login</span>
+            </button>
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                setIsDownloadModalOpen(true);
+              }}
+              className="flex items-center justify-center gap-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold py-3 rounded-lg text-sm hover:bg-slate-100 active:scale-98 transition-all"
+            >
+              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.093 2.05A2.32 2.32 0 003 4.155v15.69c0 .878.47 1.674 1.223 2.08l10.364-10.426L4.093 2.05z" fill="#00C1FF"/>
+                <path d="M15.918 10.31L19.46 8.3c1.19-.675 1.19-2.368 0-3.044L15.918 3.24l-1.332 1.334L15.918 10.31z" fill="#FFC900"/>
+                <path d="M14.586 11.644L4.093 2.05l9.16 9.22 1.333.374z" fill="#00E676"/>
+                <path d="M14.586 11.644l-10.493 10.56 11.825-6.68-1.332-3.88z" fill="#FF3A44"/>
+              </svg>
+              <span>Download App</span>
+            </button>
           </div>
           
           {isLoggedIn && (
@@ -192,6 +243,11 @@ export default function Navbar({ onOpenEstimate, onScrollToSection }) {
           )}
         </div>
       </div>
+
+      <AppDownloadModal 
+        isOpen={isDownloadModalOpen} 
+        onClose={() => setIsDownloadModalOpen(false)} 
+      />
     </nav>
   )
 }
