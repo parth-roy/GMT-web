@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { setupApiClient } from '../api/apiClient';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { setupApiClient, apiClient } from '../api/apiClient';
 
 const AuthContext = createContext(null);
 
@@ -11,6 +11,22 @@ export function AuthProvider({ children }) {
   const [authCallback, setAuthCallback] = useState(null);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
+  const fetchUser = useCallback(async (token) => {
+    try {
+      const res = await apiClient('/auth/me');
+      if (res.ok) {
+        const json = await res.json();
+        if (json.success && json.data) {
+          setUser(json.data);
+          return json.data;
+        }
+      }
+    } catch (error) {
+      console.error('Failed to fetch user:', error);
+    }
+    return null;
+  }, []);
+
   useEffect(() => {
     // If we have a token, we might want to decode it or fetch the user profile later.
     // For now, if the token is present, we consider them logged in.
@@ -18,11 +34,19 @@ export function AuthProvider({ children }) {
       if (typeof window !== 'undefined') {
         const token = localStorage.getItem('vahan_access_token');
         setAccessToken(token);
+        if (token && !user) {
+          fetchUser(token);
+        } else if (!token) {
+          setUser(null);
+        }
       }
     };
 
     window.addEventListener("auth_changed", handleAuthChange);
     window.addEventListener("storage", handleAuthChange);
+    
+    // Initial fetch
+    handleAuthChange();
     
     // Inject getter and setter into apiClient
     setupApiClient(
@@ -36,6 +60,7 @@ export function AuthProvider({ children }) {
           } else {
             localStorage.setItem('vahan_access_token', token);
             setAccessToken(token);
+            fetchUser(token);
           }
         }
         window.dispatchEvent(new Event("auth_changed"));
@@ -46,19 +71,34 @@ export function AuthProvider({ children }) {
       window.removeEventListener("auth_changed", handleAuthChange);
       window.removeEventListener("storage", handleAuthChange);
     };
-  }, []);
+  }, [fetchUser, user]);
 
-  const login = (token, userData) => {
+  const login = async (token, userData) => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('vahan_access_token', token);
       window.dispatchEvent(new Event("auth_changed"));
     }
     setAccessToken(token);
-    setUser(userData);
+    
+    // Always fetch latest profile from backend to get full relations (driver, worker, etc)
+    let finalUser = userData;
+    try {
+      const res = await apiClient('/auth/me');
+      if (res.ok) {
+        const json = await res.json();
+        if (json.success && json.data) {
+          finalUser = json.data;
+        }
+      }
+    } catch (e) {
+      // fallback to passed user
+    }
+    
+    setUser(finalUser);
     
     // Resume execution of pending action
     if (authCallback) {
-      authCallback(token, userData);
+      authCallback(token, finalUser);
       setAuthCallback(null);
     }
   };
@@ -78,8 +118,18 @@ export function AuthProvider({ children }) {
    * If not logged in, opens the login modal and fires callback upon success.
    */
   const requireAuth = (callback) => {
-    if (accessToken) {
+    if (accessToken && user) {
       callback(accessToken, user);
+    } else if (accessToken && !user) {
+      // Edge case: token exists but user is still fetching
+      fetchUser(accessToken).then(fetchedUser => {
+        if (fetchedUser) {
+          callback(accessToken, fetchedUser);
+        } else {
+          setAuthCallback(() => callback);
+          setIsLoginModalOpen(true);
+        }
+      });
     } else {
       setAuthCallback(() => callback);
       setIsLoginModalOpen(true);

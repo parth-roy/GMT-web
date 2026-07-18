@@ -78,7 +78,13 @@ export default function PartnerBenefits() {
             <p className="text-slate-400 text-sm mb-6 relative z-10">
               Complete the registration form above. The onboarding team will review it and contact you when the relevant capacity is available.
             </p>
-            <button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="bg-brand-600 hover:bg-brand-500 text-white font-bold py-3 px-6 rounded-xl transition-colors relative z-10 w-max">
+            <button 
+              onClick={() => {
+                window.scrollTo({top: 0, behavior: 'smooth'})
+                window.dispatchEvent(new Event('open_partner_registration'))
+              }} 
+              className="bg-brand-600 hover:bg-brand-500 text-white font-bold py-3 px-6 rounded-xl transition-colors relative z-10 w-max"
+            >
               Register Now
             </button>
           </div>

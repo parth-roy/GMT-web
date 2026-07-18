@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Send, BadgeCheck, MapPin, X } from "lucide-react"
 import { trackFleetRegistration } from "../../utils/analytics"
 import { useAuth } from "../../context/AuthContext"
@@ -62,6 +62,12 @@ export default function WorkforceHero() {
   const handleClose = () => {
     setIsOpen(false)
   }
+
+  useEffect(() => {
+    const openModal = () => setIsOpen(true)
+    window.addEventListener('open_workforce_registration', openModal)
+    return () => window.removeEventListener('open_workforce_registration', openModal)
+  }, [])
 
   return (
     <>
