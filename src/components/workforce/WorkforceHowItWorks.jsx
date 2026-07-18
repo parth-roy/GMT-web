@@ -1,22 +1,34 @@
 import React from "react"
-import { ClipboardList, UserCheck, Banknote } from "lucide-react"
+import { ClipboardList, UserCheck, Banknote, CheckCircle2 } from "lucide-react"
+import { useAuth } from "../../context/AuthContext"
 
 export default function WorkforceHowItWorks() {
+  const { user } = useAuth()
+  
+  const isRegistered = !!user
+  const isDocVerified = user?.worker?.isDocVerified === true
+
   const steps = [
     {
       icon: ClipboardList,
       title: "1. Register Online",
-      desc: "Fill out the simple form above with your basic details and role preference."
+      desc: "Fill out the simple form above with your basic details and role preference.",
+      isCompleted: isRegistered,
+      isActive: !isRegistered
     },
     {
       icon: UserCheck,
       title: "2. Document Verification",
-      desc: "Our team will call you to verify your Aadhaar, PAN, and Bank details."
+      desc: "Our team will call you to verify your Aadhaar, PAN, and Bank details.",
+      isCompleted: isDocVerified,
+      isActive: isRegistered && !isDocVerified
     },
     {
       icon: Banknote,
       title: "3. Review Opportunities",
-      desc: "If approved, use the GoMyTruck Workforce app to review available assignments and their stated terms."
+      desc: "If approved, use the GoMyTruck Workforce app to review available assignments and their stated terms.",
+      isCompleted: false,
+      isActive: isDocVerified
     }
   ]
 
@@ -40,19 +52,33 @@ export default function WorkforceHowItWorks() {
 
           <div className="grid md:grid-cols-3 gap-12 relative z-10">
             {steps.map((step, index) => {
-              const Icon = step.icon
+              const Icon = step.isCompleted ? CheckCircle2 : step.icon
               return (
                 <div key={index} className="text-center group">
-                  <div className="w-24 h-24 mx-auto bg-white rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 flex items-center justify-center mb-6 relative group-hover:-translate-y-2 transition-transform duration-300">
-                    <div className="absolute inset-0 bg-blue-50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <Icon size={40} className="text-blue-600 relative z-10" strokeWidth={1.5} />
+                  <div className={`w-24 h-24 mx-auto rounded-3xl shadow-xl flex items-center justify-center mb-6 relative transition-transform duration-300 border-2 ${
+                    step.isCompleted
+                      ? "bg-emerald-50 border-emerald-200 shadow-emerald-100"
+                      : step.isActive
+                        ? "bg-white border-blue-200 shadow-blue-200/50 group-hover:-translate-y-2"
+                        : "bg-white border-slate-100 shadow-slate-200/50 group-hover:-translate-y-2"
+                  }`}>
+                    <div className={`absolute inset-0 rounded-3xl transition-opacity duration-300 ${
+                      step.isActive && !step.isCompleted ? "bg-blue-50 opacity-100 animate-pulse" : "bg-blue-50 opacity-0 group-hover:opacity-100"
+                    }`}></div>
+                    <Icon size={40} className={`relative z-10 ${
+                      step.isCompleted ? "text-emerald-500" : step.isActive ? "text-blue-600" : "text-slate-400"
+                    }`} strokeWidth={1.5} />
                     
                     {/* Step Number Badge */}
-                    <div className="absolute -top-3 -right-3 w-8 h-8 bg-slate-900 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-lg">
+                    <div className={`absolute -top-3 -right-3 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-lg ${
+                      step.isCompleted ? "bg-emerald-500 text-white" : "bg-slate-900 text-white"
+                    }`}>
                       {index + 1}
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">{step.title}</h3>
+                  <h3 className={`text-xl font-bold mb-3 ${step.isCompleted ? "text-emerald-600" : "text-slate-900"}`}>
+                    {step.title}
+                  </h3>
                   <p className="text-slate-600 leading-relaxed max-w-xs mx-auto">
                     {step.desc}
                   </p>
