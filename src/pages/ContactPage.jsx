@@ -58,7 +58,7 @@ const jsonLd = [localBusinessSchema, breadcrumbSchema];
 /* ─── Quick links data ────────────────────────────────────── */
 const quickLinks = [
   { to: '/book-truck-online', label: 'Book a Truck Online' },
-  { to: '/pricing', label: 'View Pricing' },
+  // { to: '/pricing', label: 'View Pricing' },
   { to: '/driver-partner', label: 'Become a Driver Partner' },
   { to: '/gomytruck-verified', label: 'GoMyTruck Verified' },
 ];
@@ -75,13 +75,28 @@ export default function ContactPage() {
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const text = `Hi GoMyTruck, I am ${form.name}. Phone: ${form.phone}. ${form.message}`;
-    window.open(`https://wa.me/919331488999?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
-    trackLead('contact_form_whatsapp', 'support');
-    trackWhatsAppClick('contact_form');
-    setSubmitted(true);
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("https://api.gomytruck.com/api/v1/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form)
+      });
+      if (res.ok) {
+        setSubmitted(true);
+        trackLead('contact_form_api', 'support');
+      } else {
+        alert("Failed to send message. Please try WhatsApp directly.");
+      }
+    } catch (err) {
+      alert("An error occurred. Please try WhatsApp directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -321,9 +336,9 @@ export default function ContactPage() {
                 <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
                   <CheckCircle size={32} className="text-green-500" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900">WhatsApp opened</h3>
+                <h3 className="text-xl font-bold text-slate-900">Message Sent!</h3>
                 <p className="text-slate-500 text-sm max-w-xs">
-                  Review the pre-filled message in WhatsApp and tap Send to share it with GoMyTruck.
+                  Thank you for reaching out. Our support team will get back to you shortly.
                 </p>
                 <button
                   onClick={() => { setSubmitted(false); setForm({ name: '', phone: '', message: '' }); }}
@@ -391,10 +406,11 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 px-8 text-base shadow-md shadow-brand-600/30 hover:shadow-brand-600/50 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+                  disabled={isSubmitting}
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 hover:bg-brand-700 disabled:opacity-70 disabled:hover:bg-brand-600 text-white font-bold py-4 px-8 text-base shadow-md shadow-brand-600/30 hover:shadow-brand-600/50 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
                 >
-                  Send Message
-                  <ArrowRight size={18} />
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                  {!isSubmitting && <ArrowRight size={18} />}
                 </button>
 
                 <p className="text-xs text-slate-400 text-center">

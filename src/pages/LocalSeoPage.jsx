@@ -24,7 +24,7 @@ const pages = {
     intro: "Arrange goods movement across Barrackpore, the surrounding industrial belt and routes into Kolkata. Vehicle assignment and pickup timing depend on the declared cargo, route and partner availability.",
     context: "The Barrackpore belt combines residential lanes, wholesale distribution and industrial freight. A clear goods declaration—including weight, quantity and handling needs—helps prevent a vehicle mismatch at pickup.",
     areas: ["Titagarh", "Khardah", "Sodepur", "Naihati", "Shyamnagar", "Kolkata connections"],
-    services: [["Truck booking", "/barrackpore/truck-booking"], ["Goods transport", "/barrackpore/goods-transport"], ["Loading labour", "/barrackpore/loading-unloading-labour"], ["Pricing guide", "/pricing"]],
+    services: [["Truck booking", "/barrackpore/truck-booking"], ["Goods transport", "/barrackpore/goods-transport"], ["Loading labour", "/barrackpore/loading-unloading-labour"], ["Contact us", "/contact"]],
   },
   howrah: {
     canonical: "/howrah",
@@ -57,7 +57,7 @@ const pages = {
     intro: "Arrange office, retail, construction-material and household-goods movement in New Town with route-based estimates and digital booking updates.",
     context: "High-rise access rules, loading bays and scheduled entry windows matter in New Town. Confirm them with the property and include handling instructions so the transport and optional workforce request reflect the job.",
     areas: ["Action Area I", "Action Area II", "Action Area III", "Rajarhat", "Chinar Park", "Sector V connections"],
-    services: [["New Town goods transport", "/new-town/goods-transport"], ["Mini truck booking", "/kolkata/mini-truck-booking"], ["Commercial transport", "/services/commercial-goods-transport"], ["Pricing guide", "/pricing"]],
+    services: [["New Town goods transport", "/new-town/goods-transport"], ["Mini truck booking", "/kolkata/mini-truck-booking"], ["Commercial transport", "/services/commercial-goods-transport"], ["Contact us", "/contact"]],
   },
   "kolkata-14ft": {
     canonical: "/kolkata/14-feet-truck-rental",
@@ -68,7 +68,7 @@ const pages = {
     intro: "A 14 feet truck can suit furniture, packaged stock, appliances and medium commercial loads that exceed mini-truck capacity. Declare the goods, approximate weight and dimensions before selecting the vehicle.",
     context: "Payload varies by exact vehicle, body type and permit. The assigned vehicle and final payable amount are shown through the booking flow; toll, waiting, labour and statutory charges may apply when relevant and disclosed.",
     areas: ["Kolkata", "Howrah", "Salt Lake", "New Town", "Barrackpore", "West Bengal routes"],
-    services: [["Start booking", "/book-truck-online"], ["Kolkata truck booking", "/kolkata/truck-booking"], ["Commercial transport", "/services/commercial-goods-transport"], ["Pricing guide", "/pricing"]],
+    services: [["Start booking", "/book-truck-online"], ["Kolkata truck booking", "/kolkata/truck-booking"], ["Commercial transport", "/services/commercial-goods-transport"], ["Contact us", "/contact"]],
   },
   "kolkata-packers": {
     canonical: "/kolkata/packers-and-movers",
@@ -112,7 +112,7 @@ const pages = {
     intro: "Request a mini truck, pickup or other suitable vehicle for goods movement across Bidhannagar and nearby Kolkata locations.",
     context: "Share building access, loading-slot and contact details before pickup. A route estimate is not a guarantee of immediate allocation; the app confirms assignment and trip status separately.",
     areas: ["Sector I", "Sector II", "Sector III", "Sector V", "Lake Town", "Kestopur"],
-    services: [["Salt Lake hub", "/salt-lake"], ["Mini truck", "/kolkata/mini-truck-booking"], ["Enterprise logistics", "/enterprise"], ["Pricing guide", "/pricing"]],
+    services: [["Salt Lake hub", "/salt-lake"], ["Mini truck", "/kolkata/mini-truck-booking"], ["Enterprise logistics", "/enterprise"], ["Contact us", "/contact"]],
   },
   "new-town-goods": {
     canonical: "/new-town/goods-transport",

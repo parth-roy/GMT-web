@@ -46,6 +46,7 @@ const blogPosts = [
     slug: "book-truck-online",
     href: "/book-truck-online",
   },
+  /*
   {
     title: "How GoMyTruck Route Pricing Is Calculated",
     category: "Pricing",
@@ -56,6 +57,7 @@ const blogPosts = [
     slug: "pricing",
     href: "/pricing",
   },
+  */
   {
     title: "How to Scope a Packing and Moving Quote",
     category: "Moving Tips",
@@ -302,6 +304,7 @@ export default function BlogPage() {
             </Link>
 
             {/* Pricing */}
+            {/*
             <Link
               to="/pricing"
               className="group flex flex-col items-center gap-3 p-6 rounded-2xl border border-slate-100 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 transition-all duration-200 text-center"
@@ -316,6 +319,7 @@ export default function BlogPage() {
                 <p className="text-xs text-slate-400 mt-0.5">Transparent fare breakdown</p>
               </div>
             </Link>
+            */}
 
             {/* Goods Transport Services */}
             <Link

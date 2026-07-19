@@ -16,7 +16,7 @@ export default function Footer({ onScrollToSection }) {
   const popularSearches = [
     { label: "Online Truck Booking",         to: "/book-truck-online" },
     { label: "Mini Truck Booking Near Me",   to: "/mini-truck-booking" },
-    { label: "Tata Ace on Rent",             to: "/mini-truck-booking" },
+    { label: "Tata Ace on Rent",             to: "/kolkata/tata-ace-booking" },
     { label: "Part Load Transport",          to: "/goods-transport-services" },
     { label: "Full Truck Load (FTL)",        to: "/intercity/kolkata" },
     { label: "Goods Transport Services",     to: "/goods-transport-services" },
@@ -30,12 +30,12 @@ export default function Footer({ onScrollToSection }) {
     { label: "Truck Booking Kolkata",        to: "/kolkata/truck-booking" },
     { label: "Truck Booking Barrackpore",    to: "/barrackpore/truck-booking" },
     { label: "Intercity Transport Booking",  to: "/intercity/kolkata" },
-    { label: "Pickup Truck Near Me",         to: "/book-truck-online" },
+    { label: "Pickup Truck Near Me",         to: "/kolkata/pickup-truck-booking" },
     { label: "Lorry Load Matching",          to: "/driver-partner" },
     { label: "Local Truck Transport",        to: "/local-transport/kolkata" },
-    { label: "PTL Logistics",               to: "/intercity/kolkata" },
+    { label: "PTL Logistics",                to: "/goods-transport-services" },
     { label: "Supply Chain Logistics",       to: "/enterprise" },
-    { label: "Pricing & Fare Estimate",      to: "/pricing" },
+    // { label: "Pricing & Fare Estimate",      to: "/pricing" },
     { label: "GoMyTruck Verified",           to: "/gomytruck-verified" },
   ]
 
@@ -114,42 +114,41 @@ export default function Footer({ onScrollToSection }) {
               <div className="space-y-4">
                 <h4 className="text-white font-bold text-sm tracking-wide">Company</h4>
                 <ul className="space-y-3">
-                  <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="About GoMyTruck — Online Truck Booking Company India">About Us</Link></li>
-                  <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Contact Us</Link></li>
-                  <li><Link to="/workforce" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Join Workforce</Link></li>
-                  <li><Link to="/blog" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Blog</Link></li>
-                  <li><Link to="/gomytruck-verified" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">GoMyTruck Verified</Link></li>
+                  <li><Link to="/about" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="About GoMyTruck — Online Truck Booking Company India">About Us</Link></li>
+                  <li><Link to="/contact" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Contact Us</Link></li>
+                  <li><Link to="/workforce" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Join Workforce</Link></li>
+                  <li><Link to="/blog" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Blog</Link></li>
+                  <li><Link to="/gomytruck-verified" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">GoMyTruck Verified</Link></li>
                 </ul>
               </div>
               
               <div className="space-y-4">
                 <h4 className="text-white font-bold text-sm tracking-wide">Services</h4>
                 <ul className="space-y-3">
-                  <li><Link to="/truck" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Online truck booking & mini truck hire">Mini Truck Booking</Link></li>
-                  <li><Link to="/truck" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Tata Ace on rent — per km pricing">Tata Ace on Rent</Link></li>
-                  <li><Link to="/services" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="FTL full truck load transport services">FTL Transport</Link></li>
-                  <li><Link to="/services" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Part load transport PTL logistics">Part Load (PTL)</Link></li>
-                  <li><Link to="/enterprise" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="B2B enterprise logistics solutions">Enterprise Logistics</Link></li>
-                  <li><Link to="/bike" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Two-wheeler courier & delivery service">Two Wheeler Courier</Link></li>
-                  <li><Link to="/packers-and-movers" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Packers and movers service – GoMyTruck">Packers & Movers</Link></li>
+                  <li><Link to="/truck" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Online truck booking & mini truck hire">Mini Truck Booking</Link></li>
+                  <li><Link to="/services" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="FTL full truck load transport services">FTL Transport</Link></li>
+                  <li><Link to="/services" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Part load transport PTL logistics">Part Load (PTL)</Link></li>
+                  <li><Link to="/enterprise" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="B2B enterprise logistics solutions">Enterprise Logistics</Link></li>
+                  <li><Link to="/bike" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Two-wheeler courier & delivery service">Two Wheeler Courier</Link></li>
+                  <li><Link to="/packers-and-movers" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Packers and movers service – GoMyTruck">Packers & Movers</Link></li>
                 </ul>
               </div>
 
               <div className="space-y-4">
                 <h4 className="text-white font-bold text-sm tracking-wide">Support</h4>
                 <ul className="space-y-3">
-                  <li><Link to="/support" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Support Center</Link></li>
-                  <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Contact Us</Link></li>
-                  <li><Link to="/pricing" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Pricing & Fare Estimate</Link></li>
-                  <li><Link to="/legal/privacy-policy" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Privacy Policy</Link></li>
-                  <li><Link to="/legal/terms" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Terms of Service</Link></li>
-                  <li><Link to="/legal/partner-terms" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Driver partner terms and conditions">Partner Agreement</Link></li>
-                  <li><Link to="/legal/refund-cancellation" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Cancellation and refund rules">Refund & Cancellation</Link></li>
-                  <li><Link to="/legal/community-guidelines" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Community Guidelines">Community Guidelines</Link></li>
+                  <li><Link to="/support" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Support Center</Link></li>
+                  <li><Link to="/contact" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Contact Us</Link></li>
+                  {/* <li><Link to="/pricing" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Pricing & Fare Estimate</Link></li> */}
+                  <li><Link to="/legal/privacy-policy" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Privacy Policy</Link></li>
+                  <li><Link to="/legal/terms" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium">Terms of Service</Link></li>
+                  <li><Link to="/legal/partner-terms" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Driver partner terms and conditions">Partner Agreement</Link></li>
+                  <li><Link to="/legal/refund-cancellation" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Cancellation and refund rules">Refund & Cancellation</Link></li>
+                  <li><Link to="/legal/community-guidelines" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Community Guidelines">Community Guidelines</Link></li>
                 </ul>
               </div>
 
-              <div className="space-y-4">
+              {/* <div className="space-y-4">
                 <h4 className="text-white font-bold text-sm tracking-wide">Truck Owners</h4>
                 <ul className="space-y-3">
                   <li><Link to="/driver-partner" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Find return load online — load board India">Find Return Load</Link></li>
@@ -157,7 +156,7 @@ export default function Footer({ onScrollToSection }) {
                   <li><Link to="/driver-partner" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Truck owner registration — fleet platform">Register as Owner</Link></li>
                   <li><Link to="/driver-partner" className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium" title="Driver and fleet load marketplace">Load Marketplace</Link></li>
                 </ul>
-              </div>
+              </div> */}
             </div>
 
             {/* Popular Searches — keyword-rich SEO block */}
@@ -169,6 +168,7 @@ export default function Footer({ onScrollToSection }) {
                     key={i}
                     to={item.to}
                     title={item.label}
+                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                     className="px-2.5 py-1 bg-gray-900 border border-gray-700 text-gray-400 hover:text-white hover:border-gray-500 text-[11px] font-medium rounded-full transition-colors"
                   >
                     {item.label}
@@ -186,6 +186,7 @@ export default function Footer({ onScrollToSection }) {
                     key={index}
                     to={city.to}
                     title={`Truck booking in ${city.name} — mini truck & goods transport`}
+                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                     className="text-gray-400 hover:text-white transition-colors text-[13px] font-medium"
                   >
                     {city.name}

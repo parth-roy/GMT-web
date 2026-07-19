@@ -140,7 +140,7 @@ export default function App() {
             <Route path="/transport-services-kolkata" element={<Navigate to="/kolkata/truck-booking" replace />} />
             <Route path="/transport-services-barrackpore" element={<Navigate to="/barrackpore/truck-booking" replace />} />
             <Route path="/contact" element={<ContactPage />} />
-            <Route path="/pricing" element={<PricingPage />} />
+            {/* <Route path="/pricing" element={<PricingPage />} /> */}
             <Route path="/local-transport" element={<Navigate to="/local-transport/kolkata" replace />} />
             <Route path="/intercity-transport" element={<Navigate to="/intercity/kolkata" replace />} />
             <Route path="/blog" element={<BlogPage />} />

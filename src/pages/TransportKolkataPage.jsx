@@ -55,7 +55,7 @@ export default function TransportKolkataPage() {
               </span>
             </summary>
             <p className="mt-4 text-slate-600 leading-relaxed">
-              The estimate uses the route, vehicle, duration, current pricing configuration, declared goods and optional services. Review the component breakdown and any stated toll or waiting treatment before confirming. <Link to="/pricing" className="text-brand-600 font-semibold hover:underline">See how estimates work</Link>.
+              The estimate uses the route, vehicle, duration, current pricing configuration, declared goods and optional services. Review the component breakdown and any stated toll or waiting treatment before confirming.
             </p>
           </details>
           <details className="group bg-white border border-slate-200 rounded-xl p-6 open:shadow-md transition-all">

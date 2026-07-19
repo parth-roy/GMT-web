@@ -48,16 +48,14 @@ export default function EnterpriseHero() {
 
   return (
     <section className="relative w-full bg-slate-950 overflow-hidden py-16 sm:py-24 lg:py-28">
-      <picture className="absolute inset-0">
-        <source type="image/webp" srcSet="/hero-bg-640.webp 640w, /hero-bg-960.webp 960w, /hero-bg-1600.webp 1600w" sizes="100vw" />
-        <img src="/hero-bg-960.webp" alt="GoMyTruck logistics operations" width="1600" height="894" className="w-full h-full object-cover" fetchpriority="high" />
-      </picture>
-      <div className="absolute inset-0 bg-slate-950/85" />
+      <div className="absolute inset-0">
+        <img src="/enterprise-hero.webp" alt="GoMyTruck enterprise logistics operations" className="w-full h-full object-cover" fetchpriority="high" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/70 to-transparent w-full lg:w-2/3" />
+      </div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <p className="inline-block bg-white/10 border border-white/20 rounded-full px-4 py-2 text-xs font-bold text-brand-200 uppercase tracking-widest">GoMyTruck Enterprise</p>
           <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight">Enterprise logistics planned around your lanes and volumes</h1>
-          <p className="mt-6 text-lg text-slate-200 max-w-2xl leading-8">Discuss scheduled distribution, dedicated routes, commercial truck requirements and integration needs with our team. Coverage, account support and service levels are defined in the approved commercial agreement.</p>
           <ul className="mt-8 grid sm:grid-cols-2 gap-3 text-slate-100">
             {["Route and vehicle planning", "Digital trip visibility", "GST invoice records", "API requirements assessment"].map((item) => <li key={item} className="flex gap-2"><CheckCircle2 className="text-brand-300 shrink-0" size={20} />{item}</li>)}
           </ul>

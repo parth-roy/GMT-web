@@ -59,60 +59,18 @@ const jsonLd = [
 ];
 
 /* ─────────────────────────── Data ─────────────────────────── */
-const vehicles = [
-  {
-    id: 'bike',
-    label: 'Bike Delivery',
-    emoji: '🛵',
-    baseFare: 25,
-    perKm: 8,
-    minFare: 40,
-    capacity: 'Up to 10 kg',
-    bestFor: 'Documents & light parcels',
-    color: 'from-sky-50 to-white',
-    accent: 'bg-sky-100 text-sky-700',
-    popular: false,
-  },
-  {
-    id: 'tempo',
-    label: '3-Wheeler / Tempo',
-    emoji: '🛺',
-    baseFare: 80,
-    perKm: 12,
-    minFare: 150,
-    capacity: 'Up to 500 kg',
-    bestFor: 'Small goods & furniture',
-    color: 'from-violet-50 to-white',
-    accent: 'bg-violet-100 text-violet-700',
-    popular: false,
-  },
-  {
-    id: 'tata-ace',
-    label: 'Tata Ace',
-    emoji: '🚐',
-    baseFare: 120,
-    perKm: 15,
-    minFare: 250,
-    capacity: 'Up to 750 kg',
-    bestFor: 'Business delivery & shop stock',
-    color: 'from-brand-50 to-white',
-    accent: 'bg-brand-100 text-brand-700',
-    popular: true,
-  },
-  {
-    id: 'mini-truck',
-    label: 'Mini Truck',
-    emoji: '🚛',
-    baseFare: 200,
-    perKm: 18,
-    minFare: 400,
-    capacity: 'Up to 1500 kg',
-    bestFor: 'Large shifting & FTL loads',
-    color: 'from-amber-50 to-white',
-    accent: 'bg-amber-100 text-amber-700',
-    popular: false,
-  },
-];
+import { fetchVehicles } from '../api/pricingApi';
+
+const VEHICLE_VISUALS = {
+  BIKE: { emoji: '🛵', color: 'from-sky-50 to-white', accent: 'bg-sky-100 text-sky-700', bestFor: 'Documents & light parcels' },
+  '3_WHEELER': { emoji: '🛺', color: 'from-violet-50 to-white', accent: 'bg-violet-100 text-violet-700', bestFor: 'Small goods & furniture' },
+  TATA_ACE: { emoji: '🚐', color: 'from-brand-50 to-white', accent: 'bg-brand-100 text-brand-700', bestFor: 'Business delivery & shop stock', popular: true },
+  MINI_TRUCK: { emoji: '🚛', color: 'from-amber-50 to-white', accent: 'bg-amber-100 text-amber-700', bestFor: 'Large shifting & FTL loads' },
+  TRUCK_14FT: { emoji: '🚚', color: 'from-blue-50 to-white', accent: 'bg-blue-100 text-blue-700', bestFor: 'Commercial goods & large moves' },
+  TRUCK_17FT: { emoji: '🚚', color: 'from-indigo-50 to-white', accent: 'bg-indigo-100 text-indigo-700', bestFor: 'Commercial goods & heavy loads' },
+  TRUCK_20FT: { emoji: '🚚', color: 'from-teal-50 to-white', accent: 'bg-teal-100 text-teal-700', bestFor: 'Industrial cargo & wholesale' },
+  CONTAINER_32FT: { emoji: '🏗️', color: 'from-slate-100 to-white', accent: 'bg-slate-200 text-slate-800', bestFor: 'Container & bulk freight' },
+};
 
 const howItWorks = [
   {
@@ -159,28 +117,28 @@ const faqs = [
 
 function PricingCard({ vehicle }) {
   const {
-    label,
-    emoji,
+    displayName,
+    vehicleType,
     baseFare,
-    perKm,
+    pricePerKm,
     minFare,
-    capacity,
-    bestFor,
-    color,
-    accent,
-    popular,
+    capacityDesc,
   } = vehicle;
+
+  const visual = VEHICLE_VISUALS[vehicleType] || {
+    emoji: '🚛', color: 'from-slate-50 to-white', accent: 'bg-slate-100 text-slate-700', bestFor: 'General transport'
+  };
 
   return (
     <div
       className={`relative flex flex-col rounded-2xl border ${
-        popular
+        visual.popular
           ? 'border-brand-500 shadow-xl shadow-brand-100 scale-[1.02]'
           : 'border-slate-200 shadow-md hover:shadow-xl'
-      } bg-gradient-to-b ${color} transition-all duration-300 hover:-translate-y-1 overflow-hidden`}
+      } bg-gradient-to-b ${visual.color} transition-all duration-300 hover:-translate-y-1 overflow-hidden`}
     >
       {/* Popular badge */}
-      {popular && (
+      {visual.popular && (
         <div className="absolute top-0 inset-x-0 flex justify-center">
           <span className="inline-flex items-center gap-1 bg-brand-600 text-white text-xs font-semibold px-4 py-1 rounded-b-xl tracking-wide">
             <BadgeCheck className="w-3.5 h-3.5" />
@@ -189,18 +147,18 @@ function PricingCard({ vehicle }) {
         </div>
       )}
 
-      <div className={`p-6 ${popular ? 'pt-9' : ''} flex flex-col gap-4 grow`}>
+      <div className={`p-6 ${visual.popular ? 'pt-9' : ''} flex flex-col gap-4 grow`}>
         {/* Header */}
         <div className="flex items-center gap-3">
-          <span className="text-4xl">{emoji}</span>
+          <span className="text-4xl">{visual.emoji}</span>
           <div>
             <h3 className="text-lg font-bold text-slate-900 leading-tight">
-              {label}
+              {displayName}
             </h3>
             <span
-              className={`inline-block mt-1 text-xs font-medium px-2 py-0.5 rounded-full ${accent}`}
+              className={`inline-block mt-1 text-xs font-medium px-2 py-0.5 rounded-full ${visual.accent}`}
             >
-              {capacity}
+              {capacityDesc}
             </span>
           </div>
         </div>
@@ -216,7 +174,7 @@ function PricingCard({ vehicle }) {
           <div className="bg-white rounded-xl py-3 px-1 border border-slate-100">
             <p className="text-xs text-slate-500 mb-1">Per Km</p>
             <p className="text-xl font-extrabold text-brand-600">
-              &#8377;{perKm}
+              &#8377;{pricePerKm}
             </p>
           </div>
           <div className="bg-white rounded-xl py-3 px-1 border border-slate-100">
@@ -232,16 +190,16 @@ function PricingCard({ vehicle }) {
           <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
           <span>
             <span className="font-semibold text-slate-700">Best for: </span>
-            {bestFor}
+            {visual.bestFor}
           </span>
         </p>
 
         {/* CTA */}
         <div className="mt-auto pt-2">
           <Link
-            to="/book-truck-online"
+            to={`/book-truck-online?vehicle=${vehicleType}`}
             className={`block w-full text-center py-2.5 rounded-xl text-sm font-semibold transition-colors duration-200 ${
-              popular
+              visual.popular
                 ? 'bg-brand-600 text-white hover:bg-brand-700'
                 : 'bg-slate-900 text-white hover:bg-slate-700'
             }`}
@@ -286,9 +244,15 @@ function FaqItem({ faq, isOpen, onToggle }) {
 
 export default function PricingPage() {
   const [openFaq, setOpenFaq] = useState(null);
+  const [vehicles, setVehicles] = useState([]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Fetch live vehicle pricing data
+    fetchVehicles()
+      .then(data => setVehicles(data))
+      .catch(err => console.error('Error fetching vehicles:', err));
   }, []);
 
   const toggleFaq = (idx) => setOpenFaq((prev) => (prev === idx ? null : idx));

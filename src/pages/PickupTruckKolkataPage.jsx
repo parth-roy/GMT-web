@@ -162,7 +162,7 @@ export default function PickupTruckKolkataPage() {
       <ol>
         <li><strong>Enter Your Route:</strong> Open our app or website and enter your exact pickup and drop-off locations in Kolkata.</li>
         <li><strong>Select Pickup Truck:</strong> Choose the "Pickup Truck" category (typically 8ft or 10ft depending on your load).</li>
-        <li><strong>Review the Estimate:</strong> The pricing engine uses distance, time, vehicle, fuel surcharge, demand, workforce, and tax inputs. <Link to="/pricing">View the pricing explanation</Link>.</li>
+        <li><strong>Review the Estimate:</strong> The pricing engine uses distance, time, vehicle, fuel surcharge, demand, workforce, and tax inputs.</li>
         <li><strong>Confirm and Follow Status:</strong> Confirmation starts partner matching. Assignment is not immediate or guaranteed; supported active trips can provide status and location updates.</li>
       </ol>
 

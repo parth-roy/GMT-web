@@ -158,7 +158,7 @@ export default function MiniTruckKolkataPage() {
 
       <h3>Transparent Mini Truck Fares</h3>
       <p>
-        The server calculates an estimate using the selected vehicle, route distance and duration, current pricing configuration, declared goods and optional services. Tolls, waiting, route changes and other trip actuals can affect the final amount. <Link to="/pricing">See how the estimate is built</Link>.
+        The server calculates an estimate using the selected vehicle, route distance and duration, current pricing configuration, declared goods and optional services. Tolls, waiting, route changes and other trip actuals can affect the final amount.
       </p>
 
       <div className="my-10 bg-brand-50 border border-brand-200 rounded-2xl p-8 text-center">

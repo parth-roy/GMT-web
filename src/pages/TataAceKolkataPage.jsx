@@ -153,7 +153,7 @@ export default function TataAceKolkataPage() {
 
       <h3>Transparent Fare Structure</h3>
       <p>
-        The server calculates the current estimate from the route, estimated duration, vehicle configuration, declared load and optional services. Applicable toll, waiting or scope changes can affect trip actuals. <Link to="/pricing">See how fare components work</Link>.
+        The server calculates the current estimate from the route, estimated duration, vehicle configuration, declared load and optional services. Applicable toll, waiting or scope changes can affect trip actuals.
       </p>
 
       <div className="my-10 bg-brand-50 border border-brand-200 rounded-2xl p-8 text-center">
