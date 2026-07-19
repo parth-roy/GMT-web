@@ -34,7 +34,7 @@ export default function PartnerHero({ isFleetOwner = false }) {
           headers["Authorization"] = `Bearer ${token}`
         }
         
-        const response = await fetch("https://api.gomytruck.com/api/v1/leads/workforce", {
+        const response = await fetch("https://api.gomytruck.com/api/v1/leads", {
           method: "POST",
           headers,
           body: JSON.stringify({
