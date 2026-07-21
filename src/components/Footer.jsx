@@ -48,15 +48,13 @@ export default function Footer({ onScrollToSection }) {
           
           {/* Left Column */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="flex items-center gap-1 sm:gap-1.5 cursor-pointer" onClick={() => onScrollToSection('home')}>
-              <div className="relative flex items-center shrink-0">
+            <div className="flex items-center gap-2 sm:gap-3 cursor-pointer" onClick={() => onScrollToSection('home')}>
+              <div className="relative flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 shrink-0">
                 <img 
-                  src="/logo-320.webp"
-                  alt="GoMyTruck — Online Truck Booking & Goods Transport Services India" 
-                  width="320"
-                  height="213"
+                  src="/go-my-truck-logo.png"
+                  alt="GoMyTruck - Online Truck Booking & Goods Transport Services India" 
                   loading="lazy"
-                  className="h-10 sm:h-14 w-auto object-contain" 
+                  className="w-full h-full object-cover rounded-xl shadow-sm" 
                 />
               </div>
               <div className="flex flex-col justify-center items-start">
@@ -91,9 +89,14 @@ export default function Footer({ onScrollToSection }) {
             <div className="border-t border-dashed border-gray-700 w-full max-w-[200px]"></div>
 
             <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="bg-brand-600 p-2 rounded-lg text-white">
-                  <Smartphone size={20} />
+              <div className="flex items-center gap-3">
+                <div className="relative flex items-center justify-center w-9 h-9 shrink-0">
+                  <img 
+                    src="/go-my-truck-logo.png"
+                    alt="GoMyTruck App" 
+                    loading="lazy"
+                    className="w-full h-full object-cover rounded-[10px] shadow-sm" 
+                  />
                 </div>
                 <div>
                   <h4 className="text-white font-bold text-[13px] leading-tight">Download our app now!</h4>

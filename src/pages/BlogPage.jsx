@@ -19,7 +19,7 @@ const jsonLdSchema = [
       "url": "https://gomytruck.com",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://gomytruck.com/logo.webp"
+        "url": "https://gomytruck.com/go-my-truck-logo.png"
       }
     },
     "inLanguage": "en-IN"

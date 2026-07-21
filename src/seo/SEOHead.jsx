@@ -29,7 +29,7 @@ const DEFAULT_GLOBAL_SCHEMA = {
       "url": "https://gomytruck.com",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://gomytruck.com/logo-320.webp",
+        "url": "https://gomytruck.com/go-my-truck-logo.png",
         "width": 320,
         "height": 214
       },

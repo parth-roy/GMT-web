@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Menu, X, ChevronRight, PhoneCall, LogIn } from "lucide-react"
+import { useLocation } from "react-router-dom"
 import AppDownloadModal from "./AppDownloadModal"
 import { useAuth } from "../context/AuthContext"
 
@@ -10,6 +11,9 @@ export default function Navbar({ onOpenEstimate, onScrollToSection }) {
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false)
   
   const { setIsLoginModalOpen } = useAuth()
+  const location = useLocation()
+  
+  const isDarkTheme = location.pathname === '/plans'
 
   useEffect(() => {
     setIsLoggedIn(!!localStorage.getItem("vahan_access_token"))
@@ -44,7 +48,7 @@ export default function Navbar({ onOpenEstimate, onScrollToSection }) {
   const navItems = [
     { name: "Enterprise", id: "enterprise" },
     { name: "Driver Partner", id: "driver-partner" },
-    { name: "Workforce", id: "workforce" },
+    { name: "Workforce", url: "https://workforce.gomytruck.com" },
     { name: "About", id: "about" },
     { name: "Support", id: "support" }
   ]
@@ -57,28 +61,26 @@ export default function Navbar({ onOpenEstimate, onScrollToSection }) {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled
-        ? "bg-brand-50/80 backdrop-blur-md shadow-md py-1 border-b border-slate-200/50"
-        : "bg-brand-50 py-1.5 border-b border-slate-200"
+        ? isDarkTheme ? "bg-[#262833]/90 backdrop-blur-md shadow-md py-1 border-b border-white/10" : "bg-brand-50/80 backdrop-blur-md shadow-md py-1 border-b border-slate-200/50"
+        : isDarkTheme ? "bg-[#262833] py-1.5 border-b border-transparent" : "bg-brand-50 py-1.5 border-b border-slate-200"
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-0.5">
 
           {/* Logo and Brand */}
-          <div className="flex-shrink-0 flex items-center gap-1 sm:gap-1.5 cursor-pointer" onClick={() => onScrollToSection('home')}>
-            <div className="relative flex items-center">
+          <div className="flex-shrink-0 flex items-center gap-2 sm:gap-3 cursor-pointer" onClick={() => onScrollToSection('home')}>
+            <div className="relative flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 shrink-0">
               <img
-                src="/logo-320.webp"
+                src="/go-my-truck-logo.png"
                 alt="GoMyTruck Logo"
-                width="320"
-                height="213"
-                className="h-8 sm:h-10 w-auto object-contain"
+                className="w-full h-full object-cover rounded-xl shadow-sm"
               />
             </div>
             <div className="flex flex-col justify-center items-start">
-              <span className="font-sans font-bold text-[17px] sm:text-[20px] tracking-tight leading-none text-slate-900">
+              <span className={`font-sans font-bold text-[18px] sm:text-[22px] tracking-tight leading-none ${isDarkTheme ? 'text-white' : 'text-slate-900'}`}>
                 Go<span className="text-orange-500">My</span>Truck
               </span>
-              <span className="text-[7px] sm:text-[8px] font-bold tracking-[0.15em] uppercase mt-0.5 leading-none text-slate-500 whitespace-nowrap">
+              <span className={`text-[7px] sm:text-[8.5px] font-bold tracking-[0.15em] uppercase mt-0.5 leading-none whitespace-nowrap ${isDarkTheme ? 'text-gray-400' : 'text-slate-500'}`}>
                 ASAN JARIYA TRANSPORT KA
               </span>
             </div>
@@ -88,38 +90,50 @@ export default function Navbar({ onOpenEstimate, onScrollToSection }) {
           <div className="hidden lg:flex items-center gap-4 xl:gap-6">
             <div className="flex items-center gap-4 xl:gap-6">
               {navItems.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => handleNavClick(item.id)}
-                  className={`font-semibold text-sm whitespace-nowrap transition-colors relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:transition-all hover:after:w-full text-slate-600 hover:text-brand-600 after:bg-brand-600`}
-                >
-                  {item.name}
-                </button>
+                item.url ? (
+                  <a
+                    key={item.name}
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`font-semibold text-sm whitespace-nowrap transition-colors relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:transition-all hover:after:w-full ${isDarkTheme ? 'text-gray-200 hover:text-white after:bg-white' : 'text-slate-600 hover:text-brand-600 after:bg-brand-600'}`}
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <button
+                    key={item.name}
+                    onClick={() => handleNavClick(item.id)}
+                    className={`font-semibold text-sm whitespace-nowrap transition-colors relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:transition-all hover:after:w-full ${isDarkTheme ? 'text-gray-200 hover:text-white after:bg-white' : 'text-slate-600 hover:text-brand-600 after:bg-brand-600'}`}
+                  >
+                    {item.name}
+                  </button>
+                )
               ))}
             </div>
 
-            <div className="h-6 w-px bg-slate-300"></div>
+            <div className={`h-6 w-px ${isDarkTheme ? 'bg-gray-600' : 'bg-slate-300'}`}></div>
 
             <div className="flex items-center gap-2 xl:gap-4 shrink-0">
               <a 
                 href="tel:9331488999" 
-                className="flex items-center gap-1.5 font-bold text-sm transition-colors text-slate-700 hover:text-brand-600"
+                className={`flex items-center gap-1.5 font-bold text-sm transition-colors ${isDarkTheme ? 'text-white hover:text-gray-300' : 'text-slate-700 hover:text-brand-600'}`}
               >
-                <PhoneCall size={15} className="text-brand-500" />
+                <PhoneCall size={15} className={`${isDarkTheme ? 'text-white' : 'text-brand-500'}`} />
                 <span className="hidden lg:inline">9331488999</span>
               </a>
 
               {isLoggedIn ? (
                 <button
                   onClick={handleLogout}
-                  className="font-bold text-sm text-slate-600 hover:text-rose-600 transition-colors px-2"
+                  className={`font-bold text-sm transition-colors px-2 ${isDarkTheme ? 'text-gray-200 hover:text-rose-400' : 'text-slate-600 hover:text-rose-600'}`}
                 >
                   Logout
                 </button>
               ) : (
                 <button
                   onClick={() => setIsLoginModalOpen(true)}
-                  className="font-bold text-sm text-slate-600 hover:text-brand-600 transition-colors px-2 flex items-center gap-1 cursor-pointer"
+                  className={`font-bold text-sm transition-colors px-2 flex items-center gap-1 cursor-pointer ${isDarkTheme ? 'text-white hover:text-gray-300' : 'text-slate-600 hover:text-brand-600'}`}
                 >
                   <LogIn size={16} />
                   Login
@@ -176,13 +190,26 @@ export default function Navbar({ onOpenEstimate, onScrollToSection }) {
       }`}>
         <div className="bg-brand-50/95 backdrop-blur-xl px-4 pt-4 pb-6 space-y-3 shadow-2xl">
           {navItems.map((item) => (
-            <button
-              key={item.name}
-              onClick={() => handleNavClick(item.id)}
-              className="block w-full text-left px-4 py-3 text-base font-bold text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-lg transition-colors"
-            >
-              {item.name}
-            </button>
+            item.url ? (
+              <a
+                key={item.name}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsOpen(false)}
+                className="block w-full text-left px-4 py-3 text-base font-bold text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-lg transition-colors"
+              >
+                {item.name}
+              </a>
+            ) : (
+              <button
+                key={item.name}
+                onClick={() => handleNavClick(item.id)}
+                className="block w-full text-left px-4 py-3 text-base font-bold text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-lg transition-colors"
+              >
+                {item.name}
+              </button>
+            )
           ))}
           
           <div className="h-px bg-slate-200 my-4"></div>

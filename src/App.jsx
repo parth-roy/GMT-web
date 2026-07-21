@@ -11,6 +11,7 @@ import Home from "./pages/Home"
 // Code splitting — keep the home shell small and load route/modal code on demand.
 const TruckPage = lazy(() => import("./pages/TruckPage"))
 const PricingPage = lazy(() => import("./pages/PricingPage"))
+const PlansPage = lazy(() => import("./pages/PlansPage"))
 const ContactPage = lazy(() => import("./pages/ContactPage"))
 const GetEstimateModal = lazy(() => import("./components/GetEstimateModal"))
 const BikePage = lazy(() => import("./pages/BikePage"))
@@ -140,6 +141,7 @@ export default function App() {
             <Route path="/transport-services-kolkata" element={<Navigate to="/kolkata/truck-booking" replace />} />
             <Route path="/transport-services-barrackpore" element={<Navigate to="/barrackpore/truck-booking" replace />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/plans" element={<PlansPage />} />
             {/* <Route path="/pricing" element={<PricingPage />} /> */}
             <Route path="/local-transport" element={<Navigate to="/local-transport/kolkata" replace />} />
             <Route path="/intercity-transport" element={<Navigate to="/intercity/kolkata" replace />} />
