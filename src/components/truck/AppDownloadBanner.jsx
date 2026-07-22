@@ -30,8 +30,8 @@ export default function AppDownloadBanner() {
 
           {/* QR Code Section */}
           <div className="flex-shrink-0 flex flex-col items-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 shadow-xl">
-            <div className="bg-white p-3 rounded-xl shadow-lg mb-3 w-[140px] h-[140px] flex items-center justify-center">
-              <img src="/app-qr.png" alt="Download GoMyTruck App QR Code" className="w-[120px] h-[120px] object-contain" />
+            <div className="bg-white p-3 rounded-xl shadow-lg mb-3 w-[200px] h-[200px] flex items-center justify-center">
+              <img src="/download-qr.webp" alt="Download GoMyTruck App QR Code" width="180" height="180" loading="eager" decoding="async" className="w-[180px] h-[180px] object-contain" />
             </div>
             <p className="text-white font-bold tracking-wide text-sm uppercase">Scan to download</p>
           </div>

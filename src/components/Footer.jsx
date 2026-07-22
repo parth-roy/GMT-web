@@ -103,8 +103,8 @@ export default function Footer({ onScrollToSection }) {
                   <p className="text-gray-400 text-[11px] mt-1">Scan the QR code to download</p>
                 </div>
               </div>
-              <div className="w-[110px] h-[110px] bg-white rounded-md p-1.5 shadow-lg">
-                 <img src="/app-qr.png" alt="Download GoMyTruck App QR Code" width="110" height="110" loading="lazy" className="w-full h-full object-contain" />
+              <div className="w-[200px] h-[200px] bg-white rounded-xl p-1 shadow-lg">
+                <img src="/download-qr.webp" alt="Download GoMyTruck App QR Code" width="200" height="200" loading="eager" className="w-full h-full object-contain" />
               </div>
             </div>
           </div>
