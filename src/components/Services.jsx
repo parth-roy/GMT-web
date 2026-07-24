@@ -3,6 +3,7 @@ import { Sparkles, Navigation, Dumbbell, ShieldAlert, BadgeCent } from "lucide-r
 
 export default function Services({ onSelectVehicle }) {
   const [filterWeight, setFilterWeight] = useState(500)
+  const [filterDistance, setFilterDistance] = useState(15)
 
   // Expanded fleet data with 2-3 vehicles per category
   const fleet = [
@@ -61,6 +62,22 @@ export default function Services({ onSelectVehicle }) {
   const activeCategory = getRecommendedCategory(filterWeight)
   const displayedVehicles = fleet.filter(v => v.cat === activeCategory)
 
+  const getEstimatedPrice = () => {
+    let base = 0;
+    let perKm = 0;
+    if (filterWeight <= 20) { base = 49; perKm = 10; }
+    else if (filterWeight <= 500) { base = 149; perKm = 14; }
+    else if (filterWeight <= 850) { base = 249; perKm = 18; }
+    else if (filterWeight <= 1500) { base = 399; perKm = 22; }
+    else { base = 699; perKm = 30; }
+
+    const multiplier = filterDistance > 50 ? 0.9 : 1.0; 
+    const minPrice = Math.floor((base + (filterDistance * perKm * multiplier)) * 0.95);
+    const maxPrice = Math.floor((base + (filterDistance * perKm * multiplier)) * 1.15);
+    
+    return `₹${minPrice} - ₹${maxPrice}`;
+  }
+
   const handleSelect = (vehicleId) => {
     let category = "truck"
     if (vehicleId.includes("bike")) category = "bike"
@@ -88,37 +105,103 @@ export default function Services({ onSelectVehicle }) {
           </p>
         </div>
 
-        {/* Interactive Weight Slider */}
-        <div className="max-w-3xl mx-auto mb-16 bg-white p-6 sm:p-10 rounded-[2rem] border border-slate-200 shadow-xl">
-          <div className="flex justify-between items-end mb-6">
-            <div>
-              <h3 className="font-extrabold text-2xl text-slate-900">Cargo Weight Estimator</h3>
-              <p className="text-sm font-medium text-slate-500 mt-1">Slide to find the recommended vehicles for your load.</p>
-            </div>
-            <div className="bg-slate-900 text-white font-black text-2xl px-6 py-2 rounded-xl shadow-md border-b-4 border-brand-500">
-              {filterWeight} kg
-            </div>
-          </div>
+        {/* Interactive Estimator Widget (Unified Card) */}
+        <div className="max-w-5xl mx-auto mb-20 bg-white rounded-[2rem] border border-slate-200 shadow-2xl shadow-slate-200/50 flex flex-col lg:flex-row overflow-hidden">
           
-          <input 
-            type="range" 
-            min="1" 
-            max="3500" 
-            step="10" 
-            value={filterWeight} 
-            onChange={(e) => setFilterWeight(Number(e.target.value))}
-            className="w-full h-3 bg-slate-200 rounded-full appearance-none cursor-pointer accent-brand-500 mb-2"
-          />
-          <div className="flex justify-between text-[11px] font-black text-slate-400 uppercase px-1">
-            <span>1 kg</span>
-            <span>3500+ kg</span>
+          {/* Left Column: Dialers */}
+          <div className="p-6 sm:p-8 lg:p-10 lg:w-[55%] flex flex-col justify-center relative">
+            <h3 className="font-extrabold text-2xl sm:text-3xl text-slate-900 mb-2">Cargo & Route Estimator</h3>
+            <p className="text-sm font-medium text-slate-500 mb-8 sm:mb-10">Slide to match your load and distance.</p>
+            
+            {/* Weight Dialer */}
+            <div className="mb-8 sm:mb-10">
+              <div className="flex justify-between items-end mb-4">
+                <span className="font-bold text-slate-700 text-xs sm:text-sm uppercase tracking-widest flex items-center gap-2">
+                  <Dumbbell size={16} className="text-brand-500" /> Weight
+                </span>
+                <span className="bg-slate-50 text-slate-900 font-black text-base sm:text-lg px-4 py-1.5 rounded-lg border border-slate-200 shadow-sm">
+                  {filterWeight} kg
+                </span>
+              </div>
+              <input 
+                type="range" 
+                min="1" 
+                max="3500" 
+                step="10" 
+                value={filterWeight} 
+                onChange={(e) => setFilterWeight(Number(e.target.value))}
+                className="w-full h-2.5 bg-slate-200 rounded-full appearance-none cursor-pointer accent-brand-500 mb-2"
+              />
+              <div className="flex justify-between text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase px-1">
+                <span>1 kg</span>
+                <span>3500+ kg</span>
+              </div>
+            </div>
+
+            {/* Distance Dialer */}
+            <div className="mb-6">
+              <div className="flex justify-between items-end mb-4">
+                <span className="font-bold text-slate-700 text-xs sm:text-sm uppercase tracking-widest flex items-center gap-2">
+                  <Navigation size={16} className="text-brand-500" /> Distance
+                </span>
+                <span className="bg-slate-50 text-slate-900 font-black text-base sm:text-lg px-4 py-1.5 rounded-lg border border-slate-200 shadow-sm">
+                  {filterDistance} km
+                </span>
+              </div>
+              <input 
+                type="range" 
+                min="1" 
+                max="500" 
+                step="1" 
+                value={filterDistance} 
+                onChange={(e) => setFilterDistance(Number(e.target.value))}
+                className="w-full h-2.5 bg-slate-200 rounded-full appearance-none cursor-pointer accent-brand-500 mb-2"
+              />
+              <div className="flex justify-between text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase px-1">
+                <span>1 km</span>
+                <span>500 km</span>
+              </div>
+            </div>
+            
+            <div className="mt-6 sm:mt-8 pt-6 border-t-2 border-slate-50 flex items-center justify-between">
+              <span className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-widest">Recommended Vehicles</span>
+              <span className="text-xs sm:text-sm font-black text-brand-700 bg-brand-50 px-3 sm:px-4 py-1.5 rounded-full border border-brand-100">
+                {displayedVehicles.length} Options
+              </span>
+            </div>
           </div>
 
-          <div className="mt-8 pt-6 border-t-2 border-slate-100 flex items-center justify-center gap-3">
-            <span className="text-base font-bold text-slate-500 uppercase tracking-widest">Recommended Vehicles:</span>
-            <span className="text-xl font-black text-brand-600 bg-brand-50 px-4 py-1 rounded-lg">
-              {displayedVehicles.length} Options Found
-            </span>
+          {/* Right Column: Price Result (Light Panel) */}
+          <div className="lg:w-[45%] bg-gradient-to-br from-brand-50/50 to-white text-slate-900 p-8 sm:p-10 flex flex-col justify-center items-center text-center relative border-t lg:border-t-0 lg:border-l border-slate-100">
+            {/* Subtle background glow */}
+            <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-brand-100/40 via-transparent to-transparent pointer-events-none"></div>
+            
+            <div className="bg-white border border-brand-200 text-brand-700 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest mb-6 flex items-center gap-1.5 z-10 shadow-sm">
+              <Sparkles size={12} className="text-brand-500" /> Estimated Fare
+            </div>
+            
+            <h4 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 mb-4 tracking-tighter whitespace-nowrap z-10">
+              {getEstimatedPrice()}
+            </h4>
+            
+            <p className="text-slate-600 text-sm font-medium mb-8 sm:mb-10 leading-relaxed z-10 max-w-[260px]">
+              Dynamic pricing based on <strong className="text-slate-900">{filterDistance}km</strong> distance and up to <strong className="text-slate-900">{filterWeight}kg</strong> load capacity.
+            </p>
+            
+            <button 
+              onClick={() => handleSelect(displayedVehicles[0].id)}
+              className="w-full max-w-[280px] bg-brand-600 hover:bg-brand-700 text-white font-black text-sm py-4 px-4 rounded-xl transition-all shadow-lg shadow-brand-500/30 hover:-translate-y-0.5 z-10 uppercase tracking-widest"
+            >
+              Get Exact Quote
+            </button>
+
+            {/* Zero Commission Banner inside the light panel */}
+            <div className="mt-8 z-10 w-full pt-6 border-t border-slate-200">
+              <span className="flex items-center justify-center gap-2 text-emerald-600 text-[11px] sm:text-xs font-black uppercase tracking-widest">
+                <BadgeCent size={16} />
+                0 Commission Charges
+              </span>
+            </div>
           </div>
         </div>
 
