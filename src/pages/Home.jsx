@@ -63,15 +63,32 @@ export default function Home({ selectedService, setSelectedService, onOpenEstima
         onSelectVehicle={onSelectVehicle}
       />
 
-      <section className="services-intro-text" style={{ padding: '40px 20px', maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
-          <h2>Reliable Online Truck Booking & Logistics Services</h2>
+      <section className="services-intro-text" style={{ padding: '40px 20px', maxWidth: '1200px', margin: '0 auto', textAlign: 'left' }}>
+          <h2 style={{ textAlign: 'center' }}>Reliable Online Truck Booking & Logistics Services</h2>
           
-          <p style={{ fontSize: '16px', lineHeight: '1.6', color: '#333', marginTop: '15px' }}>
-              GoMyTruck is a digital logistics marketplace for local deliveries, household goods and commercial freight.
-              Enter the pickup, drop, goods declaration and handling needs for an <strong>online truck booking</strong>; the platform can then
-              show suitable <strong>mini truck</strong>, pickup or larger commercial vehicle options. Route coverage, partner assignment, pickup
-              timing and final trip charges are confirmed through the booking flow rather than promised by this page.
-          </p>
+          <div style={{ fontSize: '16px', lineHeight: '1.6', color: '#333', marginTop: '15px' }}>
+              <p>GoMyTruck is a digital logistics marketplace for local deliveries, household goods and commercial freight.</p>
+              
+              <h3 style={{ marginTop: '20px', fontSize: '18px', fontWeight: 'bold' }}>How to Book a Truck Online</h3>
+              <ol style={{ paddingLeft: '20px', listStyleType: 'decimal', marginTop: '10px', marginBottom: '20px' }}>
+                <li><strong>Enter route:</strong> Provide pickup and drop locations.</li>
+                <li><strong>Select vehicle:</strong> Choose a suitable <strong>mini truck</strong>, pickup, or larger commercial vehicle.</li>
+                <li><strong>Declare goods:</strong> Provide goods declaration and handling needs.</li>
+                <li><strong>Confirm:</strong> Review route coverage, timing, and confirm the booking.</li>
+              </ol>
+
+              <h3 style={{ marginTop: '20px', fontSize: '18px', fontWeight: 'bold' }}>Fare Calculation Components</h3>
+              <dl style={{ marginTop: '10px', display: 'grid', gridTemplateColumns: '120px 1fr', gap: '10px' }}>
+                <dt style={{ fontWeight: 'bold' }}>Base Fare</dt>
+                <dd>Initial charge based on the vehicle type.</dd>
+                <dt style={{ fontWeight: 'bold' }}>Distance</dt>
+                <dd>Calculated cost based on route distance.</dd>
+                <dt style={{ fontWeight: 'bold' }}>Time & Fuel</dt>
+                <dd>Adjustments for travel time and current fuel surcharge.</dd>
+                <dt style={{ fontWeight: 'bold' }}>Add-ons</dt>
+                <dd>Tolls, loading workforce, and taxes shown at confirmation.</dd>
+              </dl>
+          </div>
       </section>
 
       <Services onSelectVehicle={onSelectVehicle} />

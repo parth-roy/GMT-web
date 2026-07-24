@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react"
-import { MapPin, ChevronDown, ArrowRight, Loader2, AlertCircle } from "lucide-react"
+import { MapPin, ChevronDown, ArrowRight, Loader2, AlertCircle, Shield, CheckCircle } from "lucide-react"
 import { geocodeAddress, fetchEstimate, SERVICE_TO_VEHICLE_TYPE, detectCurrentCity, SERVED_CITIES, CITY_HERO_IMAGES } from "../../api/pricingApi"
 import EstimateResultModal from "../EstimateResultModal"
 import AddressAutocomplete from "../AddressAutocomplete"
@@ -284,6 +284,11 @@ export default function TruckHero({ city, setCity }) {
                     </>
                   )}
                 </button>
+                <div className="mt-2 flex flex-wrap items-center justify-center gap-1.5 text-[9px] sm:text-[10px] text-slate-400 font-medium tracking-wide">
+                  <span className="flex items-center gap-1"><Shield size={10} className="text-emerald-500" /> Secure 256-bit Booking</span>
+                  <span className="hidden sm:inline text-slate-300">|</span>
+                  <span className="flex items-center gap-1"><CheckCircle size={10} className="text-blue-500" /> Verified Partners</span>
+                </div>
               </div>
 
             </form>

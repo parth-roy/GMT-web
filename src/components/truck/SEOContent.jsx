@@ -38,9 +38,13 @@ export default function SEOContent({ city }) {
             Online Truck Booking in {city}
           </h2>
           <div className="space-y-4 text-left text-base leading-relaxed text-slate-600 lg:text-lg">
-            <p>
-              GoMyTruck lets customers request a mini truck, Tata Ace, pickup, or larger goods vehicle for a declared route and load. Enter both addresses, choose a vehicle, describe the goods, and review the current estimate before confirming. The booking then enters the platform&apos;s partner-assignment flow.
-            </p>
+            <h3 className="text-xl font-bold text-slate-800">How to Book a Truck</h3>
+            <ol className="list-decimal pl-6 space-y-2">
+              <li><strong>Enter Locations:</strong> Provide your exact pickup and drop-off addresses.</li>
+              <li><strong>Select Vehicle:</strong> Choose a mini truck, Tata Ace, pickup, or larger goods vehicle.</li>
+              <li><strong>Declare Goods:</strong> Describe the load, weight, and handling requirements.</li>
+              <li><strong>Review & Confirm:</strong> Check the current estimate before confirming the request.</li>
+            </ol>
             <p>
               Serviceability, partner assignment, and arrival depend on the exact pickup, destination, goods, vehicle class, requested time, and current supply. The website therefore avoids unsupported &ldquo;instant driver&rdquo; or fixed-arrival promises.
             </p>
@@ -56,9 +60,19 @@ export default function SEOContent({ city }) {
             <p>
               Vehicle capacity is only a starting point. The load must also fit the body dimensions, weight rating, handling requirement, access conditions, and applicable goods restrictions. Customers remain responsible for an accurate declaration.
             </p>
-            <p>
-              GoMyTruck does not publish a universal per-kilometre promise. The live estimate can include base, distance, time, fuel-surcharge, demand, workforce, and GST components. Waiting, tolls, or a confirmed trip change may be handled separately as described during booking.
-            </p>
+            <h3 className="text-xl font-bold text-slate-800">Fare Calculation Components</h3>
+            <dl className="grid grid-cols-1 sm:grid-cols-[150px_1fr] gap-2">
+              <dt className="font-bold">Base Fare</dt>
+              <dd>Standard starting amount based on vehicle class.</dd>
+              <dt className="font-bold">Distance & Time</dt>
+              <dd>Calculated mapped travel cost.</dd>
+              <dt className="font-bold">Fuel Surcharge</dt>
+              <dd>Adjustments based on current fuel prices.</dd>
+              <dt className="font-bold">Demand</dt>
+              <dd>Dynamic pricing adjustments during peak hours.</dd>
+              <dt className="font-bold">Add-ons</dt>
+              <dd>Workforce, tolls, and GST components.</dd>
+            </dl>
           </div>
           <div className="mt-6 overflow-x-auto">
             <table className="w-full border-collapse text-left text-sm">

@@ -126,7 +126,7 @@ export default function App() {
             <Route path="/truck" element={<TruckPage />} />
             <Route path="/bike" element={<BikePage />} />
             <Route path="/packers-and-movers" element={<PackersAndMoversPage />} />
-            <Route path="/services" element={<ServicesPage onSelectVehicle={handleSelectVehicle} />} />
+            <Route path="/services" element={<Navigate to="/goods-transport-services" replace />} />
             <Route path="/enterprise" element={<EnterprisePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/support" element={<SupportPage />} />

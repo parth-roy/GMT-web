@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { X, ArrowRight, Truck, Bike, Package, ChevronDown, Loader2, AlertCircle } from "lucide-react"
+import { X, ArrowRight, Truck, Bike, Package, ChevronDown, Loader2, AlertCircle, Shield, CheckCircle } from "lucide-react"
 import { geocodeAddress, fetchEstimate, fetchVehicles, SERVICE_TO_VEHICLE_TYPE } from "../api/pricingApi"
 import { trackEstimateRequested, trackLead } from "../utils/analytics"
 import EstimateResultModal from "./EstimateResultModal"
@@ -292,6 +292,11 @@ export default function GetEstimateModal({ isOpen, onClose, onSelectService }) {
                     <><span>Get Live Estimate</span><ArrowRight size={18} /></>
                   )}
                 </button>
+                <div className="mt-3 flex flex-wrap items-center justify-center gap-2 text-[10px] sm:text-xs text-slate-400 font-medium tracking-wide">
+                  <span className="flex items-center gap-1"><Shield size={12} className="text-emerald-500" /> Secure 256-bit Booking</span>
+                  <span className="hidden sm:inline text-slate-300">|</span>
+                  <span className="flex items-center gap-1"><CheckCircle size={12} className="text-blue-500" /> Verified Partners</span>
+                </div>
               </form>
             )}
 

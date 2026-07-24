@@ -34,6 +34,26 @@ export default function TruckPage() {
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://gomytruck.com" },
         { "@type": "ListItem", "position": 2, "name": `Truck Booking in ${city}`, "item": "https://gomytruck.com/truck" }
       ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Tata Ace / Mini Truck Booking",
+      "description": "Mini truck and Tata Ace on rent for local goods transport.",
+      "image": "https://gomytruck.com/mini_truck.webp",
+      "brand": { "@type": "Brand", "name": "GoMyTruck" },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "124"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "INR",
+        "price": "250",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock"
+      }
     }
   ]
 

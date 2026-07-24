@@ -12,30 +12,20 @@ export default function Footer({ onScrollToSection }) {
     { name: "Kolkata–Asansol", to: "/routes/kolkata-to-asansol" },
   ]
 
-  // Popular Searches — all keyword tiers mapped to site routes
+  // Popular Searches — consolidated to prevent Link Equity Dilution
   const popularSearches = [
     { label: "Online Truck Booking",         to: "/book-truck-online" },
     { label: "Mini Truck Booking Near Me",   to: "/mini-truck-booking" },
     { label: "Tata Ace on Rent",             to: "/kolkata/tata-ace-booking" },
-    { label: "Part Load Transport",          to: "/goods-transport-services" },
-    { label: "Full Truck Load (FTL)",        to: "/intercity/kolkata" },
     { label: "Goods Transport Services",     to: "/goods-transport-services" },
     { label: "Local Transport Near Me",      to: "/local-transport/kolkata" },
     { label: "Intercity Transport",          to: "/intercity/kolkata" },
     { label: "Find Return Load Online",      to: "/driver-partner" },
     { label: "Attach Truck to Company",      to: "/fleet-partner-registration" },
     { label: "B2B Logistics Services",       to: "/enterprise" },
-    { label: "FMCG Transport Service",       to: "/enterprise" },
-    { label: "Corporate Truck Rental",       to: "/enterprise" },
     { label: "Truck Booking Kolkata",        to: "/kolkata/truck-booking" },
     { label: "Truck Booking Barrackpore",    to: "/barrackpore/truck-booking" },
-    { label: "Intercity Transport Booking",  to: "/intercity/kolkata" },
     { label: "Pickup Truck Near Me",         to: "/kolkata/pickup-truck-booking" },
-    { label: "Lorry Load Matching",          to: "/driver-partner" },
-    { label: "Local Truck Transport",        to: "/local-transport/kolkata" },
-    { label: "PTL Logistics",                to: "/goods-transport-services" },
-    { label: "Supply Chain Logistics",       to: "/enterprise" },
-    // { label: "Pricing & Fare Estimate",      to: "/pricing" },
     { label: "GoMyTruck Verified",           to: "/gomytruck-verified" },
   ]
 
@@ -100,11 +90,18 @@ export default function Footer({ onScrollToSection }) {
                 </div>
                 <div>
                   <h4 className="text-white font-bold text-[13px] leading-tight">Download our app now!</h4>
-                  <p className="text-gray-400 text-[11px] mt-1">Scan the QR code to download</p>
+                  <p className="text-gray-400 text-[11px] mt-1">Available for iOS and Android</p>
                 </div>
               </div>
-              <div className="w-[200px] h-[200px] bg-white rounded-xl p-1 shadow-lg">
-                <img src="/download-qr.webp" alt="Download GoMyTruck App QR Code" width="200" height="200" loading="eager" className="w-full h-full object-contain" />
+              <div className="flex flex-col gap-3">
+                <a href="https://play.google.com/store/apps/details?id=com.gomytruck.app" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 text-white py-2 px-4 rounded-lg transition-colors border border-gray-700 w-[200px]">
+                  <Smartphone size={18} />
+                  <span className="text-sm font-semibold">Get it on Google Play</span>
+                </a>
+                <a href="https://apps.apple.com/app/gomytruck/id123456789" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 text-white py-2 px-4 rounded-lg transition-colors border border-gray-700 w-[200px]">
+                  <Smartphone size={18} />
+                  <span className="text-sm font-semibold">Download on App Store</span>
+                </a>
               </div>
             </div>
           </div>
