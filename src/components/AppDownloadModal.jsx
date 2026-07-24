@@ -23,7 +23,8 @@ const APPS = [
     name: "GoMyTruck Workforce",   
     desc: "Workforce app for helpers & loaders.",        
     iconSrc: "/work-logo.png",
-    bg: "bg-brand-50"
+    bg: "bg-brand-50",
+    url: "https://play.google.com/store/apps/details?id=com.gomytruck.workforce&pcampaignid=web_share"
   },
 ]
 
