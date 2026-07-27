@@ -3,7 +3,6 @@ export const INDEXABLE_ROUTES = [
   "/truck",
   "/bike",
   "/packers-and-movers",
-  "/services",
   "/enterprise",
   "/about",
   "/support",
