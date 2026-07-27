@@ -181,6 +181,7 @@ export default function App() {
             <Route path="/truck-booking-barrackpore" element={<Navigate to="/barrackpore/truck-booking" replace />} />
             <Route path="/mini-truck-booking-kolkata" element={<Navigate to="/kolkata/mini-truck-booking" replace />} />
             <Route path="/pickup-truck-booking-kolkata" element={<Navigate to="/kolkata/pickup-truck-booking" replace />} />
+            <Route path="/pickup-truck-booking-in-kolkata" element={<Navigate to="/kolkata/pickup-truck-booking" replace />} />
             <Route path="/kolkata/pickup-truck-rent" element={<Navigate to="/kolkata/pickup-truck-booking" replace />} />
             <Route path="/goods-transport-kolkata" element={<Navigate to="/kolkata/goods-transport" replace />} />
             <Route path="/local-transport-kolkata" element={<Navigate to="/local-transport/kolkata" replace />} />
