@@ -79,29 +79,12 @@ export default function Footer({ onScrollToSection }) {
             <div className="border-t border-dashed border-gray-700 w-full max-w-[200px]"></div>
 
             <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="relative flex items-center justify-center w-9 h-9 shrink-0">
-                  <img 
-                    src="/go-my-truck-logo.png"
-                    alt="GoMyTruck App" 
-                    loading="lazy"
-                    className="w-full h-full object-cover rounded-[10px] shadow-sm" 
-                  />
-                </div>
-                <div>
-                  <h4 className="text-white font-bold text-[13px] leading-tight">Download our app now!</h4>
-                  <p className="text-gray-400 text-[11px] mt-1">Available for iOS and Android</p>
-                </div>
-              </div>
               <div className="flex flex-col gap-3">
-                <a href="https://play.google.com/store/apps/details?id=com.gomytruck.app" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 text-white py-2 px-4 rounded-lg transition-colors border border-gray-700 w-[200px]">
-                  <Smartphone size={18} />
-                  <span className="text-sm font-semibold">Get it on Google Play</span>
-                </a>
-                <a href="https://apps.apple.com/app/gomytruck/id123456789" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 text-white py-2 px-4 rounded-lg transition-colors border border-gray-700 w-[200px]">
-                  <Smartphone size={18} />
-                  <span className="text-sm font-semibold">Download on App Store</span>
-                </a>
+                <img 
+                  src="/download-qr.webp" 
+                  alt="Scan to Download GoMyTruck App" 
+                  className="w-48 h-auto rounded-xl drop-shadow-lg hover:scale-105 transition-transform duration-300"
+                />
               </div>
             </div>
           </div>
