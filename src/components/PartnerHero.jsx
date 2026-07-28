@@ -74,18 +74,28 @@ export default function PartnerHero({ isFleetOwner = false }) {
           : "Attach Your Vehicle & Earn From Completed Trips - GoMyTruck Driver Partner"}
       </h1>
       {/* ── Hero Section ─────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-white pt-16 sm:pt-20">
-        {/* Full-width image, no crop */}
-        <img
-          src="/driver-hero.webp"
-          alt={isFleetOwner ? "GoMyTruck Fleet Partner Operations" : "GoMyTruck Driver Partner Operations"}
-          className="w-full h-auto block"
-          fetchpriority="high"
-        />
+      <section className="relative min-h-[85vh] pt-16 sm:pt-20 flex flex-col justify-end items-center bg-slate-900 overflow-visible">
+        
+        {/* Full-bleed Video Background with dark overlay for white text contrast */}
+        <div className="absolute inset-0 z-0">
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            poster="/hero-bg-960.webp"
+            className="h-full w-full object-cover object-center"
+          >
+            <source src="/hero-video.webm" type="video/webm" />
+            <source src="/hero-video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div className="absolute inset-0 bg-slate-900/40"></div>
+        </div>
 
-        {/* Bouncing Map Pin — centred horizontally, ~30% from top of image */}
+        {/* Bouncing Map Pin — centred perfectly in the middle */}
         <div
-          className="absolute left-1/2 top-[28%] -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-1 cursor-pointer group"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-1 cursor-pointer group"
           onClick={() => setIsOpen(true)}
           role="button"
           aria-label="Join our driver network"
