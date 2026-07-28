@@ -27,24 +27,20 @@ export default function Hero({
 
   return (
     <section className="relative min-h-[85vh] pt-24 pb-24 sm:pb-32 flex flex-col justify-end items-center bg-slate-900 overflow-visible mb-32">
-      {/* Standard Image Background with dark overlay for white text contrast */}
+      {/* Full-bleed Video Background with dark overlay for white text contrast */}
       <div className="absolute inset-0 z-0">
-        <picture>
-          <source
-            type="image/webp"
-            srcSet="/hero-bg-640.webp 640w, /hero-bg-960.webp 960w, /hero-bg-1600.webp 1600w"
-            sizes="100vw"
-          />
-          <img
-            src="/hero-bg-960.webp"
-            alt="GoMyTruck branded delivery rider, warehouse handler and mini truck"
-            width="1600"
-            height="894"
-            className="h-full w-full object-cover object-center"
-            fetchpriority="high"
-            decoding="async"
-          />
-        </picture>
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          poster="/hero-bg-960.webp"
+          className="h-full w-full object-cover object-center"
+        >
+          <source src="/hero-video.webm" type="video/webm" />
+          <source src="/hero-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
         <div className="absolute inset-0 bg-slate-900/60"></div>
       </div>
 
