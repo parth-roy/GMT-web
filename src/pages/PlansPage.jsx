@@ -12,7 +12,7 @@ export default function PlansPage() {
     },
     {
       question: "Why should I subscribe? What are the benefits?",
-      answer: "Subscribing allows you to find continuous commercial loads on the GoMyTruck platform without paying hefty commissions to brokers or transporters. You get to keep 100% of your freight earnings directly from the customer, resulting in significantly higher take-home profit per trip."
+      answer: "Subscribing allows you to find continuous commercial loads on the GoMyTruck platform without paying hefty commissions to brokers. We are a minimum commission platform, charging only 0 - 5% so you maximize your take-home profit per trip."
     },
     {
       question: "How much does the subscription cost? When will the payment be due?",
@@ -48,7 +48,7 @@ export default function PlansPage() {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>GoMyTruck | Partner Plans</title>
-        <meta name="description" content="GoMyTruck Subscription Plan for partners. Zero commission loads and 100% direct payment." />
+        <meta name="description" content="GoMyTruck Subscription Plan for partners. 0 - 5% lowest commission platform with direct payments." />
       </Helmet>
 
       {/* Header Section */}
@@ -69,17 +69,17 @@ export default function PlansPage() {
               GoMyTruck Partner Plans
             </h1>
             <p className="text-lg md:text-xl lg:text-xl xl:text-2xl text-gray-200 leading-relaxed mb-12 drop-shadow-sm font-medium opacity-95">
-              We built GoMyTruck to revolutionize logistics by guaranteeing zero-commission loads 
-              and 100% direct earnings for our partners. To sustain this promise and keep our 
+              We built GoMyTruck to revolutionize logistics by offering 0 - 5% commission loads 
+              (the lowest commission logistics platform) and direct earnings for our partners. To sustain this promise and keep our 
               technology running smoothly, we are launching the GoMyTruck Partner Subscription. 
               By paying a small, predictable fee, you help us cover essential platform costs 
-              while you keep every single rupee you earn from your trips.
+              while you keep maximum profit from your trips.
             </p>
             
             <ul className="space-y-6 md:space-y-6">
               <li className="flex items-center text-white">
                 <Check className="text-[#00d084] mr-4 drop-shadow-sm" size={28} strokeWidth={3} />
-                <span className="font-bold text-lg md:text-xl lg:text-xl xl:text-2xl drop-shadow-sm tracking-wide">ZERO commission</span>
+                <span className="font-bold text-lg md:text-xl lg:text-xl xl:text-2xl drop-shadow-sm tracking-wide">0 - 5% Lowest Commission</span>
               </li>
               <li className="flex items-center text-white">
                 <Check className="text-[#00d084] mr-4 drop-shadow-sm" size={28} strokeWidth={3} />

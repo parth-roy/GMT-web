@@ -34,6 +34,20 @@ const jsonLdSchema = [
   }
 ]
 
+// ─── Industry Reports ────────────────────────────────────────────────────────
+const industryReports = [
+  {
+    title: "Kolkata to North-East Freight Market Report",
+    category: "Market Report",
+    readTime: "4 min read",
+    date: "Aug 2026",
+    excerpt:
+      "The definitive guide to container shipping rates, capacity challenges, and seasonal fluctuations on the Kolkata to Guwahati corridor.",
+    slug: "kolkata-northeast-freight-market-report",
+    href: "/blog/kolkata-northeast-freight-market-report",
+  },
+]
+
 // ─── Blog Posts ──────────────────────────────────────────────────────────────
 const blogPosts = [
   {
@@ -102,6 +116,12 @@ const blogPosts = [
 
 // ─── Category Colour Map ─────────────────────────────────────────────────────
 const categoryStyles = {
+  "Market Report": {
+    badge: "bg-indigo-100 text-indigo-700 border-indigo-200",
+    bar: "bg-indigo-500",
+    accentHover: "hover:text-indigo-600",
+    linkHover: "group-hover:text-indigo-600",
+  },
   "Booking Guide": {
     badge: "bg-green-100 text-green-700 border-green-200",
     bar: "bg-green-500",
@@ -250,8 +270,31 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* ── Blog Grid ─────────────────────────────────────────────────────── */}
+      {/* ── Industry Reports & News ───────────────────────────────────────── */}
       <section className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-10">
+            <div>
+              <h2 className="text-2xl font-bold text-slate-900">Industry Reports & News</h2>
+              <p className="text-slate-500 text-sm mt-1">
+                Latest market insights, freight trends, and updates
+              </p>
+            </div>
+            <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium text-slate-400 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-full">
+              <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
+              New
+            </span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {industryReports.map((post) => (
+              <BlogCard key={post.slug} post={post} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Service Guides ────────────────────────────────────────────────── */}
+      <section className="bg-slate-50 py-16 border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section header */}
           <div className="flex items-center justify-between mb-10">

@@ -9,6 +9,7 @@ import SEOContent from "../components/truck/SEOContent"
 import InternalLinks from "../components/truck/InternalLinks"
 import TruckFAQ from "../components/truck/TruckFAQ"
 import SEOHead from "../seo/SEOHead"
+import { CITY_HERO_IMAGES } from "../api/pricingApi"
 
 export default function TruckPage() {
   const [city, setCity] = useState("Kolkata")
@@ -65,6 +66,7 @@ export default function TruckPage() {
         canonical="/truck"
         keywords={`truck booking ${city}, mini truck booking near me, tata ace on rent, tata ace rent per km, pickup truck booking, FTL transport services, part load transport, goods transport ${city}, intercity transport booking, commercial truck rental, PTL logistics`}
         jsonLd={truckSchema}
+        preloadImage={CITY_HERO_IMAGES[city] || "/hero-bg.webp"}
       />
       <TruckHero city={city} setCity={setCity} />
       <VehicleSelection city={city} />

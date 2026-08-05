@@ -44,8 +44,26 @@ export const INDEXABLE_ROUTES = [
   "/legal/partner-terms",
   "/legal/refund-cancellation",
   "/legal/community-guidelines",
-]
 
+  // --- PHASE 1 ROUTES ---
+  "/dankuni", "/uluberia", "/sankrail", "/durgapur", "/asansol", "/kharagpur", "/haldia", "/siliguri", "/burrabazar",
+  "/routes/kolkata-to-guwahati", "/routes/kolkata-to-patna", "/routes/kolkata-to-bhubaneswar", "/routes/kolkata-to-siliguri", "/routes/kolkata-to-cuttack", "/routes/kolkata-to-ranchi", "/routes/kolkata-to-dhanbad", "/routes/kolkata-to-haldia", "/routes/kolkata-to-durgapur",
+  "/kolkata/32ft-container-truck", "/kolkata/bolero-pickup-rent", "/kolkata/14-feet-eicher-truck",
+  "/industries/steel-logistics/durgapur", "/industries/jute-logistics/barrackpore", "/industries/fmcg-logistics/west-bengal", "/industries/pharma-logistics/kolkata", "/industries/agri-logistics/east-india",
+
+  // --- PHASE 2 ROUTES ---
+  "/cuttack", "/bhubaneswar", "/guwahati", "/patna", "/ranchi", "/dhanbad", "/bardhaman", "/dumdum-barasat", "/paradeep", "/krishnanagar",
+  "/routes/kolkata-to-delhi", "/routes/kolkata-to-mumbai", "/routes/kolkata-to-hyderabad", "/routes/kolkata-to-bangalore", "/routes/kolkata-to-chennai", "/routes/kolkata-to-paradeep", "/routes/guwahati-to-kolkata", "/routes/cuttack-to-kolkata",
+  "/west-bengal", "/odisha", "/bihar", "/assam-northeast",
+  "/resources/gst-for-goods-transport-agency", "/resources/e-way-bill-guide", "/resources/gst-rcm-transporters", "/resources/ftl-vs-ptl", "/resources/motor-vehicle-aggregator-guidelines-2025",
+  "/industries/coal-logistics/dhanbad", "/industries/tea-logistics/siliguri", "/industries/textile-logistics/kolkata", "/industries/ecommerce-logistics/kolkata", "/industries/construction-logistics/west-bengal",
+
+  // --- PHASE 3 ROUTES ---
+  "/freight-rate-index",
+  "/blog/kolkata-northeast-freight-market-report",
+  "/resources/hsn-codes-for-logistics",
+  "/resources/section-9-5-vs-52-gta"
+]
 export const NOINDEX_ROUTES = ["/delete-account"]
 
 export const PRERENDER_ROUTES = [...INDEXABLE_ROUTES, ...NOINDEX_ROUTES]

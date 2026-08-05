@@ -199,7 +199,7 @@ export default function Services({ onSelectVehicle }) {
             <div className="mt-8 z-10 w-full pt-6 border-t border-slate-200">
               <span className="flex items-center justify-center gap-2 text-emerald-600 text-[11px] sm:text-xs font-black uppercase tracking-widest">
                 <BadgeCent size={16} />
-                0 Commission Charges
+                0 - 5% Commission Charges
               </span>
             </div>
           </div>

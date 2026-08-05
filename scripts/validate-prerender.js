@@ -55,13 +55,28 @@ if (!fs.existsSync(notFound) || !/Page Not Found/i.test(fs.readFileSync(notFound
   errors.push("404.html: missing or invalid")
 }
 
-const sitemap = fs.readFileSync(path.join(root, "dist", "sitemap.xml"), "utf8")
+const sitemaps = [
+  "sitemap-core.xml",
+  "sitemap-cities.xml",
+  "sitemap-routes.xml",
+  "sitemap-vehicles.xml",
+  "sitemap-resources.xml",
+]
+
+let allSitemapContent = ""
+for (const sm of sitemaps) {
+  const filePath = path.join(root, "dist", sm)
+  if (fs.existsSync(filePath)) {
+    allSitemapContent += fs.readFileSync(filePath, "utf8")
+  }
+}
+
 for (const route of INDEXABLE_ROUTES) {
   const url = route === "/" ? `${baseUrl}/` : `${baseUrl}${route}`
-  if (!sitemap.includes(`<loc>${url}</loc>`)) errors.push(`${route}: missing from sitemap.xml`)
+  if (!allSitemapContent.includes(`<loc>${url}</loc>`)) errors.push(`${route}: missing from sitemaps`)
 }
 for (const route of NOINDEX_ROUTES) {
-  if (sitemap.includes(`${baseUrl}${route}`)) errors.push(`${route}: noindex URL found in sitemap.xml`)
+  if (allSitemapContent.includes(`${baseUrl}${route}`)) errors.push(`${route}: noindex URL found in sitemaps`)
 }
 
 if (errors.length) {

@@ -10,6 +10,9 @@ import { Helmet } from "react-helmet-async"
  *     description="Book mini truck near you..."
  *     canonical="https://gomytruck.com/truck"
  *     jsonLd={[...]} // optional additional JSON-LD objects
+ *     logisticsService={{...}}
+ *     offerCatalog={{...}}
+ *     faqPage={{...}}
  *   />
  */
 
@@ -97,7 +100,7 @@ const DEFAULT_GLOBAL_SCHEMA = {
 const toAbsoluteUrl = (value, fallback = BASE_URL) => {
   if (!value) return fallback
   if (/^https?:\/\//i.test(value)) return value
-  return `${BASE_URL}${value.startsWith("/") ? value : `/${value}`}`
+  return `${BASE_URL}${value.startsWith("/") ? value : '/' + value}`
 }
 
 const serializeJsonLd = (schema) => JSON.stringify(schema).replace(/</g, "\\u003c")
@@ -109,6 +112,9 @@ export default function SEOHead({
   canonical,
   ogImage = DEFAULT_IMAGE,
   jsonLd = [],
+  logisticsService,
+  offerCatalog,
+  faqPage,
   noIndex = false,
   preloadImage,
   preloadImageSrcSet,
@@ -121,6 +127,21 @@ export default function SEOHead({
   const fullCanonical = toAbsoluteUrl(canonical)
   const fullOgImage = toAbsoluteUrl(ogImage, DEFAULT_IMAGE)
   const metaDescription = description || "Book trucks and goods transport with GoMyTruck across Kolkata, Barrackpore and West Bengal. Get a route-based estimate online."
+  
+  // Custom Global Schema for injected props
+  const customGlobalSchema = JSON.parse(JSON.stringify(DEFAULT_GLOBAL_SCHEMA))
+  const localBusiness = customGlobalSchema["@graph"].find(g => g["@id"].includes("#localbusiness"))
+  
+  if (offerCatalog && localBusiness) {
+    localBusiness.hasOfferCatalog = offerCatalog
+  }
+  if (logisticsService) {
+    customGlobalSchema["@graph"].push(logisticsService)
+  }
+  if (faqPage) {
+    customGlobalSchema["@graph"].push(faqPage)
+  }
+
   const pageSchemas = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []
 
   return (
@@ -167,7 +188,7 @@ export default function SEOHead({
       <meta name="theme-color" content="#001f3f" />
 
       {/* JSON-LD Structured Data (additional, per-page) */}
-      {[DEFAULT_GLOBAL_SCHEMA, ...pageSchemas].map((schema, i) => (
+      {[customGlobalSchema, ...pageSchemas].map((schema, i) => (
         <script key={i} type="application/ld+json">
           {serializeJsonLd(schema)}
         </script>
@@ -175,3 +196,4 @@ export default function SEOHead({
     </Helmet>
   )
 }
+
