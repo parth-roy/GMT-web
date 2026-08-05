@@ -46,6 +46,12 @@ const GoodsTransportBarrackporePage = lazy(() => import("./pages/GoodsTransportB
 const StaticLegalDocument = lazy(() => import("./pages/StaticLegalDocument"))
 const LocalSeoPage = lazy(() => import("./pages/LocalSeoPage"))
 const DeleteAccountPage = lazy(() => import("./pages/DeleteAccountPage"))
+const VehicleTypePage = lazy(() => import("./pages/VehicleTypePage"))
+const IndustryLogisticsPage = lazy(() => import("./pages/IndustryLogisticsPage"))
+const StateHubPage = lazy(() => import("./pages/StateHubPage"))
+const ResourcesPage = lazy(() => import("./pages/ResourcesPage"))
+const FreightRateIndexPage = lazy(() => import("./pages/FreightRateIndexPage"))
+const BlogPostPage = lazy(() => import("./pages/BlogPostPage"))
 
 // A simple premium spinner for Suspense fallback
 const PageLoader = () => (
@@ -146,6 +152,8 @@ export default function App() {
             <Route path="/local-transport" element={<Navigate to="/local-transport/kolkata" replace />} />
             <Route path="/intercity-transport" element={<Navigate to="/intercity/kolkata" replace />} />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogPostPage />} />
+            <Route path="/freight-rate-index" element={<FreightRateIndexPage />} />
 
             {/* NEW SILO ARCHITECTURE ROUTES */}
             <Route path="/kolkata/truck-booking" element={<TransportKolkataPage />} />
@@ -168,6 +176,85 @@ export default function App() {
             <Route path="/salt-lake/goods-transport" element={<LocalSeoPage pageKey="salt-lake-goods" />} />
             <Route path="/new-town/goods-transport" element={<LocalSeoPage pageKey="new-town-goods" />} />
             <Route path="/routes/kolkata-to-asansol" element={<LocalSeoPage pageKey="kolkata-asansol" />} />
+
+            {/* PHASE 2 STATE HUBS */}
+            <Route path="/west-bengal" element={<StateHubPage stateKey="west-bengal" />} />
+            <Route path="/odisha" element={<StateHubPage stateKey="odisha" />} />
+            <Route path="/bihar" element={<StateHubPage stateKey="bihar" />} />
+            <Route path="/assam-northeast" element={<StateHubPage stateKey="assam-northeast" />} />
+
+            {/* NEW PHASE 1 CITY HUBS */}
+            <Route path="/dankuni" element={<LocalSeoPage pageKey="dankuni" />} />
+            <Route path="/uluberia" element={<LocalSeoPage pageKey="uluberia" />} />
+            <Route path="/sankrail" element={<LocalSeoPage pageKey="sankrail" />} />
+            <Route path="/durgapur" element={<LocalSeoPage pageKey="durgapur" />} />
+            <Route path="/asansol" element={<LocalSeoPage pageKey="asansol" />} />
+            <Route path="/kharagpur" element={<LocalSeoPage pageKey="kharagpur" />} />
+            <Route path="/haldia" element={<LocalSeoPage pageKey="haldia" />} />
+            <Route path="/siliguri" element={<LocalSeoPage pageKey="siliguri" />} />
+            <Route path="/burrabazar" element={<LocalSeoPage pageKey="burrabazar" />} />
+
+            {/* NEW PHASE 2 CITY HUBS */}
+            <Route path="/cuttack" element={<LocalSeoPage pageKey="cuttack" />} />
+            <Route path="/bhubaneswar" element={<LocalSeoPage pageKey="bhubaneswar" />} />
+            <Route path="/guwahati" element={<LocalSeoPage pageKey="guwahati" />} />
+            <Route path="/patna" element={<LocalSeoPage pageKey="patna" />} />
+            <Route path="/ranchi" element={<LocalSeoPage pageKey="ranchi" />} />
+            <Route path="/dhanbad" element={<LocalSeoPage pageKey="dhanbad" />} />
+            <Route path="/bardhaman" element={<LocalSeoPage pageKey="bardhaman" />} />
+            <Route path="/dumdum-barasat" element={<LocalSeoPage pageKey="dumdum-barasat" />} />
+            <Route path="/paradeep" element={<LocalSeoPage pageKey="paradeep" />} />
+            <Route path="/krishnanagar" element={<LocalSeoPage pageKey="krishnanagar" />} />
+
+            {/* NEW PHASE 1 INTERCITY ROUTE PAGES */}
+            <Route path="/routes/kolkata-to-guwahati" element={<LocalSeoPage pageKey="kolkata-guwahati" />} />
+            <Route path="/routes/kolkata-to-patna" element={<LocalSeoPage pageKey="kolkata-patna" />} />
+            <Route path="/routes/kolkata-to-bhubaneswar" element={<LocalSeoPage pageKey="kolkata-bhubaneswar" />} />
+            <Route path="/routes/kolkata-to-siliguri" element={<LocalSeoPage pageKey="kolkata-siliguri" />} />
+            <Route path="/routes/kolkata-to-cuttack" element={<LocalSeoPage pageKey="kolkata-cuttack" />} />
+            <Route path="/routes/kolkata-to-ranchi" element={<LocalSeoPage pageKey="kolkata-ranchi" />} />
+            <Route path="/routes/kolkata-to-dhanbad" element={<LocalSeoPage pageKey="kolkata-dhanbad" />} />
+            <Route path="/routes/kolkata-to-haldia" element={<LocalSeoPage pageKey="kolkata-haldia-route" />} />
+            <Route path="/routes/kolkata-to-durgapur" element={<LocalSeoPage pageKey="kolkata-durgapur-route" />} />
+
+            {/* NEW PHASE 2 INTERCITY ROUTE PAGES */}
+            <Route path="/routes/kolkata-to-delhi" element={<LocalSeoPage pageKey="kolkata-delhi" />} />
+            <Route path="/routes/kolkata-to-mumbai" element={<LocalSeoPage pageKey="kolkata-mumbai" />} />
+            <Route path="/routes/kolkata-to-hyderabad" element={<LocalSeoPage pageKey="kolkata-hyderabad" />} />
+            <Route path="/routes/kolkata-to-bangalore" element={<LocalSeoPage pageKey="kolkata-bangalore" />} />
+            <Route path="/routes/kolkata-to-chennai" element={<LocalSeoPage pageKey="kolkata-chennai" />} />
+            <Route path="/routes/kolkata-to-paradeep" element={<LocalSeoPage pageKey="kolkata-paradeep" />} />
+            <Route path="/routes/guwahati-to-kolkata" element={<LocalSeoPage pageKey="guwahati-kolkata" />} />
+            <Route path="/routes/cuttack-to-kolkata" element={<LocalSeoPage pageKey="cuttack-kolkata" />} />
+
+            {/* NEW PHASE 1 VEHICLE TYPE PAGES */}
+            <Route path="/kolkata/32ft-container-truck" element={<VehicleTypePage vehicleKey="32ft-container" />} />
+            <Route path="/kolkata/bolero-pickup-rent" element={<VehicleTypePage vehicleKey="bolero-pickup" />} />
+            <Route path="/kolkata/14-feet-eicher-truck" element={<VehicleTypePage vehicleKey="14ft-eicher" />} />
+
+            {/* NEW PHASE 1 INDUSTRY LOGISTICS PAGES */}
+            <Route path="/industries/steel-logistics/durgapur" element={<IndustryLogisticsPage industryKey="steel-durgapur" />} />
+            <Route path="/industries/jute-logistics/barrackpore" element={<IndustryLogisticsPage industryKey="jute-barrackpore" />} />
+            <Route path="/industries/fmcg-logistics/west-bengal" element={<IndustryLogisticsPage industryKey="fmcg-west-bengal" />} />
+            <Route path="/industries/pharma-logistics/kolkata" element={<IndustryLogisticsPage industryKey="pharma-kolkata" />} />
+            <Route path="/industries/agri-logistics/east-india" element={<IndustryLogisticsPage industryKey="agri-east-india" />} />
+
+            {/* NEW PHASE 2 INDUSTRY LOGISTICS PAGES */}
+            <Route path="/industries/coal-logistics/dhanbad" element={<IndustryLogisticsPage industryKey="coal-dhanbad" />} />
+            <Route path="/industries/tea-logistics/siliguri" element={<IndustryLogisticsPage industryKey="tea-siliguri" />} />
+            <Route path="/industries/textile-logistics/kolkata" element={<IndustryLogisticsPage industryKey="textile-kolkata" />} />
+            <Route path="/industries/ecommerce-logistics/kolkata" element={<IndustryLogisticsPage industryKey="ecommerce-kolkata" />} />
+            <Route path="/industries/construction-logistics/west-bengal" element={<IndustryLogisticsPage industryKey="construction-westbengal" />} />
+
+            {/* PHASE 2 RESOURCES / KNOWLEDGE BASE */}
+            <Route path="/resources/gst-for-goods-transport-agency" element={<ResourcesPage resourceKey="gst-for-gta" />} />
+            <Route path="/resources/e-way-bill-guide" element={<ResourcesPage resourceKey="e-way-bill-guide" />} />
+            <Route path="/resources/gst-rcm-transporters" element={<ResourcesPage resourceKey="gst-rcm-transporters" />} />
+            <Route path="/resources/ftl-vs-ptl" element={<ResourcesPage resourceKey="ftl-vs-ptl" />} />
+            <Route path="/resources/motor-vehicle-aggregator-guidelines-2025" element={<ResourcesPage resourceKey="mv-aggregator-guidelines" />} />
+            <Route path="/resources/hsn-codes-for-logistics" element={<ResourcesPage resourceKey="hsn-codes-for-logistics" />} />
+            <Route path="/resources/section-9-5-vs-52-gta" element={<ResourcesPage resourceKey="section-9-5-vs-52-gta" />} />
+
             
             <Route path="/services/transport-for-msmes" element={<TransportMSMEPage />} />
             <Route path="/services/commercial-goods-transport" element={<CommercialGoodsTransportPage />} />

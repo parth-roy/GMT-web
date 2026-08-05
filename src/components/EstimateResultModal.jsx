@@ -160,7 +160,7 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
       <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-10">
         <div className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm" onClick={onClose}></div>
 
-        <div className="relative bg-white rounded-3xl w-full max-w-5xl shadow-2xl overflow-hidden z-10 flex flex-col md:flex-row max-h-[90vh]">
+        <div className="relative bg-white rounded-3xl w-full max-w-5xl shadow-2xl overflow-hidden z-10 flex flex-col md:flex-row max-h-[90vh] min-h-[600px] md:min-h-[650px]">
           <button onClick={onClose} className="absolute top-4 right-4 p-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 cursor-pointer z-20">
             <X size={18} />
           </button>
@@ -223,7 +223,9 @@ export default function EstimateResultModal({ isOpen, onClose, estimateData }) {
                         <span>Estimated payable</span>
                         <span>₹{currentFare.toFixed(2)}</span>
                       </div>
-                      <p className="text-xs text-slate-500">Actual toll and post-free-window waiting charges are added when applicable.</p>
+                      <p className="text-xs text-slate-500 mt-2 font-medium bg-slate-50 p-2 rounded-lg border border-slate-200 text-center shadow-sm">
+                        Total Cost = Driver Payout (95%) + GoMyTruck Commission (5%) + Applicable GST/Tolls
+                      </p>
                     </div>
                     <div className="flex justify-between items-center py-4 border-t border-slate-100 text-sm">
                       <div className="flex items-center gap-2 text-slate-500">
