@@ -449,7 +449,7 @@ export default function ContactPage() {
         {/* ── Floating WhatsApp button ──────────────────────── */}
         <div className="fixed bottom-6 right-6 z-50">
           <a
-            href={`https://wa.me/919331488999?text=${encodeURIComponent("Hello Sir/Ma'am 👋\n\nThank you for contacting GoMyTruck.\n\nKindly share the following details:\n\n📍 Pickup Location:\n📍 Drop Location:\n📦 Goods Type:\n⚖ Approx Weight:\n🚚 Truck Required:\n📅 Loading Date & Time:\n💰 Budget (if any):\n👤 Contact Person:\n📞 Contact Number:\n\nOnce received, we'll arrange the best verified truck for you.")}`}
+            href={`https://wa.me/919331488999?text=${encodeURIComponent("Hello GoMyTruck 👋\n\nI am looking to book a truck. Here are my details:\n\n📍 Pickup Location: \n📍 Drop Location: \n📦 Goods Type: \n⚖ Approx Weight: \n🚚 Truck Required: \n📅 Loading Date & Time: \n💰 Budget (if any): \n👤 Contact Person: \n📞 Contact Number: \n\nPlease arrange a verified truck for me!")}`}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Chat on WhatsApp"

@@ -6,7 +6,7 @@ export default function GlobalFABs() {
   const { pathname } = useLocation()
   const whatsappNumber = "919331488999"
   const whatsappMessage = encodeURIComponent(
-    `Hello Sir/Ma'am 👋\n\nThank you for contacting GoMyTruck.\n\nKindly share the following details:\n\n📍 Pickup Location:\n📍 Drop Location:\n📦 Goods Type:\n⚖ Approx Weight:\n🚚 Truck Required:\n📅 Loading Date & Time:\n💰 Budget (if any):\n👤 Contact Person:\n📞 Contact Number:\n\nOnce received, we'll arrange the best verified truck for you.`
+    `Hello GoMyTruck 👋\n\nI am looking to book a truck. Here are my details:\n\n📍 Pickup Location: \n📍 Drop Location: \n📦 Goods Type: \n⚖ Approx Weight: \n🚚 Truck Required: \n📅 Loading Date & Time: \n💰 Budget (if any): \n👤 Contact Person: \n📞 Contact Number: \n\nPlease arrange a verified truck for me!`
   )
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`
 
