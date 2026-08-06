@@ -143,7 +143,7 @@ export default function DriverOnboardingPage() {
                 <select required name="vehicleType" value={formData.vehicleType} onChange={handleInputChange} className="w-full rounded-md border-gray-300 shadow-sm focus:border-brand-500 focus:ring-brand-500 py-2 px-3 border">
                   <option value="">Select vehicle type...</option>
                   <option value="TATA_ACE">Tata Ace / Chota Hathi</option>
-                  <option value="PICKUP_8FT">Pickup 8ft</option>
+                  <option value="BOLERO_PICKUP">Pickup 8ft (Bolero etc.)</option>
                   <option value="TRUCK_14FT">14ft Truck</option>
                   <option value="TRUCK_17FT">17ft Truck</option>
                   <option value="TRUCK_20FT">20ft Truck</option>
