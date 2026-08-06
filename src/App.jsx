@@ -46,12 +46,16 @@ const GoodsTransportBarrackporePage = lazy(() => import("./pages/GoodsTransportB
 const StaticLegalDocument = lazy(() => import("./pages/StaticLegalDocument"))
 const LocalSeoPage = lazy(() => import("./pages/LocalSeoPage"))
 const DeleteAccountPage = lazy(() => import("./pages/DeleteAccountPage"))
+<<<<<<< Updated upstream
 const VehicleTypePage = lazy(() => import("./pages/VehicleTypePage"))
 const IndustryLogisticsPage = lazy(() => import("./pages/IndustryLogisticsPage"))
 const StateHubPage = lazy(() => import("./pages/StateHubPage"))
 const ResourcesPage = lazy(() => import("./pages/ResourcesPage"))
 const FreightRateIndexPage = lazy(() => import("./pages/FreightRateIndexPage"))
 const BlogPostPage = lazy(() => import("./pages/BlogPostPage"))
+=======
+const DriverOnboardingPage = lazy(() => import("./pages/DriverOnboardingPage"))
+>>>>>>> Stashed changes
 
 // A simple premium spinner for Suspense fallback
 const PageLoader = () => (
@@ -130,6 +134,7 @@ export default function App() {
               />
             } />
             <Route path="/truck" element={<TruckPage />} />
+            <Route path="/driver-onboarding" element={<DriverOnboardingPage />} />
             <Route path="/bike" element={<BikePage />} />
             <Route path="/packers-and-movers" element={<PackersAndMoversPage />} />
             <Route path="/services" element={<Navigate to="/goods-transport-services" replace />} />

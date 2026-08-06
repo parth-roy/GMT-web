@@ -1,6 +1,7 @@
 export const INDEXABLE_ROUTES = [
   "/",
   "/truck",
+  "/driver-onboarding",
   "/bike",
   "/packers-and-movers",
   "/enterprise",
