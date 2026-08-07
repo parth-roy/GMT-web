@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import SEOHead from "../seo/SEOHead";
 export default function DriverOnboardingPage() {
   const [formData, setFormData] = useState({
     name: "",
@@ -99,7 +99,13 @@ export default function DriverOnboardingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <>
+      <SEOHead 
+        title="Driver Partner Onboarding | GoMyTruck" 
+        description="Join GoMyTruck as a driver partner. Fill out the onboarding form and upload your documents to start earning."
+        canonical="https://gomytruck.com/driver-onboarding"
+      />
+      <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
         <div className="bg-brand-600 py-6 px-8 text-white">
           <h1 className="text-2xl font-bold">Driver Partner Onboarding</h1>
@@ -199,5 +205,6 @@ export default function DriverOnboardingPage() {
         </form>
       </div>
     </div>
+    </>
   );
 }
