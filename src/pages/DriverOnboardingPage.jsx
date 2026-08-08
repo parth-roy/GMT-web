@@ -101,9 +101,10 @@ export default function DriverOnboardingPage() {
   return (
     <>
       <SEOHead 
-        title="Driver Partner Onboarding | GoMyTruck" 
-        description="Join GoMyTruck as a driver partner. Fill out the onboarding form and upload your documents to start earning."
+        title="Rent Out My Truck | Attach Truck to GoMyTruck | Driver Partner Onboarding" 
+        description="Looking to rent out my truck? Join GoMyTruck as a driver partner. Attach your pickup truck or mini truck, fill out the onboarding form, upload your documents, and start earning today."
         canonical="https://gomytruck.com/driver-onboarding"
+        keywords="rent out my truck, attach truck to gomytruck, driver partner onboarding, go my truck driver, attach pickup truck, earn with truck, truck driving jobs"
       />
       <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
